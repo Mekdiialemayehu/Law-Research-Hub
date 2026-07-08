@@ -3,45 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Law Research Hub</title>
 
 <style>
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
+    font-family: Georgia, serif;
+    background-color: #f8f8f8;
     color: #222;
 }
 
 header {
-    background: #1f2a44;
+    background-color: #0b1f3a;
     color: white;
-    padding: 40px 20px;
+    padding: 60px 20px;
     text-align: center;
 }
 
-.container {
-    max-width: 1100px;
+header h1 {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+header p {
+    font-size: 20px;
+    max-width: 700px;
     margin: auto;
-    padding: 30px;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 25px;
+    background-color: #c9a227;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+h2 {
+    color: #0b1f3a;
+    font-size: 30px;
 }
 
 .card {
     background: white;
-    padding: 20px;
-    margin-bottom: 15px;
+    padding: 25px;
+    margin: 20px 0;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
 }
 
-a {
-    text-decoration: none;
-    color: #1f2a44;
-    font-weight: bold;
+.card h3 {
+    color: #0b1f3a;
 }
 
-a:hover {
-    text-decoration: underline;
+footer {
+    background:#0b1f3a;
+    color:white;
+    text-align:center;
+    padding:20px;
 }
 </style>
 
@@ -49,21 +77,130 @@ a:hover {
 
 <body>
 
+
 <header>
-    <h1>Law Research Hub</h1>
-    <p>Legal case studies and criminal law database</p>
+
+<h1>Law Research Hub</h1>
+
+<p>
+Exploring legal principles, landmark cases, and human rights through independent research.
+</p>
+
+<a class="button" href="#cases">
+Explore Case Studies
+</a>
+
 </header>
 
-<div class="container">
 
-    <h2>Case Database</h2>
+<section>
 
-    <div class="card">
-        <a href="case-rvg.html">R v G and Another (2003)</a>
-        <p>Recklessness and subjective legal test in criminal law</p>
-    </div>
+<h2>About The Project</h2>
+
+<div class="card">
+
+<p>
+Law Research Hub is a student-created platform dedicated to exploring the world of law through case analysis, legal research, and discussions about how courts interpret justice and responsibility.
+</p>
+
+<p>
+This project represents my journey in understanding criminal law, human rights, and the role of legal systems in protecting society.
+</p>
 
 </div>
+
+</section>
+
+
+
+<section id="cases">
+
+<h2>Featured Case Studies</h2>
+
+
+<div class="card">
+
+<h3>R v G and Another (2003)</h3>
+
+<p>
+<strong>Area:</strong> Criminal Law
+</p>
+
+<p>
+An analysis of how this landmark House of Lords case changed the legal meaning of recklessness and introduced a more subjective approach to criminal responsibility.
+</p>
+
+<a class="button" href="case-rvg.html">
+Read Case Study
+</a>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Human Rights Research</h3>
+
+<p>
+Exploring important human rights cases and how courts address issues of state responsibility, protection, and justice.
+</p>
+
+</div>
+
+
+</section>
+
+
+
+<section>
+
+<h2>Research Interests</h2>
+
+<div class="card">
+
+<ul>
+<li>Criminal Law</li>
+<li>Human Rights Law</li>
+<li>Women's Rights</li>
+<li>Legal Reasoning</li>
+<li>Comparative Legal Studies</li>
+</ul>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>Skills Developed</h2>
+
+<div class="card">
+
+<ul>
+<li>Case analysis</li>
+<li>Legal research</li>
+<li>Academic writing</li>
+<li>Critical thinking</li>
+<li>Source evaluation</li>
+</ul>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+<p>
+© 2026 Law Research Hub | Independent Student Legal Research Project
+</p>
+
+</footer>
+
 
 </body>
 </html>
