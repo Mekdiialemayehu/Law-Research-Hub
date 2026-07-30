@@ -7,110 +7,239 @@
 <title>Law Research Hub</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Georgia, serif;
-    background-color: #f8f8f8;
-    color: #222;
+
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-header {
-    background-color: #0b1f3a;
-    color: white;
-    padding: 60px 20px;
-    text-align: center;
+html{
+scroll-behavior:smooth;
 }
 
-header h1 {
-    font-size: 45px;
-    margin-bottom: 15px;
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+line-height:1.7;
 }
 
-header p {
-    font-size: 20px;
-    max-width: 700px;
-    margin: auto;
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
 }
 
-.button {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 12px 25px;
-    background-color: #c9a227;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
 }
 
-section {
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
+nav a:hover{
+color:#c9a227;
 }
 
-h2 {
-    color: #0b1f3a;
-    font-size: 30px;
+/* HERO */
+
+header{
+background:linear-gradient(rgba(11,31,58,.92),rgba(11,31,58,.92)),
+url("https://images.unsplash.com/photo-1528740561666-dc2479dc08ab?auto=format&fit=crop&w=1600&q=80");
+background-size:cover;
+background-position:center;
+color:white;
+text-align:center;
+padding:90px 20px;
 }
 
-.card {
-    background: white;
-    padding: 25px;
-    margin: 20px 0;
-    border-radius: 10px;
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
+header h1{
+font-size:52px;
+margin-bottom:20px;
 }
 
-.card h3 {
-    color: #0b1f3a;
+header p{
+font-size:21px;
+max-width:760px;
+margin:auto;
 }
 
-footer {
-    background:#0b1f3a;
-    color:white;
-    text-align:center;
-    padding:20px;
+.button{
+display:inline-block;
+margin-top:35px;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+transition:.3s;
 }
+
+.button:hover{
+background:#a88312;
+}
+
+/* SECTIONS */
+
+section{
+max-width:1150px;
+margin:auto;
+padding:60px 20px;
+}
+
+section h2{
+text-align:center;
+color:#0b1f3a;
+font-size:36px;
+margin-bottom:35px;
+}
+
+/* CARDS */
+
+.card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+margin-bottom:25px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card h3{
+color:#0b1f3a;
+margin-bottom:12px;
+}
+
+/* RESOURCE CARDS */
+
+.resources-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.resource-card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+text-align:center;
+transition:.3s;
+}
+
+.resource-card:hover{
+transform:translateY(-6px);
+}
+
+.resource-card h3{
+color:#0b1f3a;
+margin-bottom:15px;
+}
+
+.resource-card p{
+margin-bottom:20px;
+}
+
+/* FEATURED CASES */
+
+.case-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+}
+
+/* LISTS */
+
+ul{
+padding-left:22px;
+}
+
+li{
+margin-bottom:10px;
+}
+
+/* LATEST */
+
+.latest{
+background:#eef4ff;
+border-left:6px solid #c9a227;
+padding:25px;
+border-radius:10px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:38px;
+}
+
+header p{
+font-size:18px;
+}
+
+section h2{
+font-size:30px;
+}
+
+}
+
 </style>
-<style>
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-/* your existing website styles */
-
-
-/* ADD THIS AT THE BOTTOM */
-
-nav {
-    background: #111827;
-    padding: 15px;
-    text-align: center;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 16px;
-}
-
-nav a:hover {
-    color: #60a5fa;
-}
-
-</style>
 </head>
 
 <body>
+
 <nav>
-    <a href="index.html">Home</a>
-    <a href="case-studies.html">Case Studies</a>
-    <a href="research.html">Research</a>
-    <a href="about.html">About Me</a>
-    <a href="contact.html">Contact</a>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
 </nav>
 
 <header>
@@ -118,51 +247,122 @@ nav a:hover {
 <h1>Law Research Hub</h1>
 
 <p>
-Exploring legal principles, landmark cases, and human rights through independent research.
+Exploring landmark legal cases, human rights, and criminal law through independent student research, educational notes, and interactive quizzes.
 </p>
 
-<a class="button" href="#cases">
-Explore Case Studies
+<a href="#resources" class="button">
+Start Learning
 </a>
 
 </header>
 
-
 <section>
 
-<h2>About The Project</h2>
+<h2>About the Project</h2>
 
 <div class="card">
 
 <p>
-Law Research Hub is a student-created platform dedicated to exploring the world of law through case analysis, legal research, and discussions about how courts interpret justice and responsibility.
+Law Research Hub is an educational website created to make legal concepts more accessible to students. Through carefully researched case studies, concise notes, and interactive quizzes, the project aims to help learners understand how courts interpret the law and protect human rights.
+</p>
+
+<br>
+
+<p>
+The website reflects my interest in criminal law, human rights law, legal reasoning, and academic research while encouraging others to explore landmark court decisions from around the world.
+</p>
+
+</div>
+
+</section>
+<section id="resources">
+
+<h2>Latest Additions</h2>
+
+<div class="latest">
+
+<h3>📢 Recently Added</h3>
+
+<p>
+⭐ M.C. v. Bulgaria (2003)<br>
+⭐ Osman v. United Kingdom (1998)<br>
+⭐ Opuz v. Turkey (2009)
 </p>
 
 <p>
-This project represents my journey in understanding criminal law, human rights, and the role of legal systems in protecting society.
+New case studies, notes, and quizzes are added regularly as the project continues to grow.
 </p>
 
 </div>
 
 </section>
 
+<section>
 
+<h2>Learning Resources</h2>
 
-<section id="cases">
+<div class="resources-grid">
+
+<div class="resource-card">
+
+<h3>📚 Case Studies</h3>
+
+<p>
+Explore landmark court decisions with case facts, legal issues, judicial reasoning, critical evaluations, and legal impact.
+</p>
+
+<a class="button" href="case-studies.html">
+Browse Case Studies
+</a>
+
+</div>
+
+<div class="resource-card">
+
+<h3>📝 Notes</h3>
+
+<p>
+Study concise notes covering criminal law, human rights law, legal principles, and important concepts.
+</p>
+
+<a class="button" href="notes.html">
+View Notes
+</a>
+
+</div>
+
+<div class="resource-card">
+
+<h3>🧠 Quizzes</h3>
+
+<p>
+Test your understanding with interactive quizzes featuring instant feedback and automatic scoring.
+</p>
+
+<a class="button" href="quiz.html">
+Take a Quiz
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
 
 <h2>Featured Case Studies</h2>
 
+<div class="case-grid">
 
 <div class="card">
 
 <h3>R v G and Another (2003)</h3>
 
-<p>
-<strong>Area:</strong> Criminal Law
-</p>
+<p><strong>Area:</strong> Criminal Law</p>
 
 <p>
-An analysis of how this landmark House of Lords case changed the legal meaning of recklessness and introduced a more subjective approach to criminal responsibility.
+A landmark decision that redefined recklessness by introducing a subjective approach to criminal responsibility.
 </p>
 
 <a class="button" href="case-rvg.html">
@@ -170,33 +370,74 @@ Read Case Study
 </a>
 
 </div>
-<div class="card">
-
-<h2>Airey v Ireland (1979)</h2>
-
-<p>
-A landmark human rights case on access to justice, legal aid, and the principle that rights must be practical and effective.
-</p>
-
-<a class="button" href="case-airey.html">Read Case Study</a>
-
-</div>
-
 
 <div class="card">
 
-<h3>Human Rights Research</h3>
+<h3>Airey v. Ireland (1979)</h3>
+
+<p><strong>Area:</strong> Human Rights Law</p>
 
 <p>
-Exploring important human rights cases and how courts address issues of state responsibility, protection, and justice.
+Established that access to justice must be practical and effective, leading to important developments in legal aid.
 </p>
+
+<a class="button" href="case-airey.html">
+Read Case Study
+</a>
 
 </div>
 
+<div class="card">
+
+<h3>Osman v. United Kingdom (1998)</h3>
+
+<p><strong>Area:</strong> Human Rights Law</p>
+
+<p>
+Clarified when States have a positive obligation to protect individuals whose lives are at real and immediate risk.
+</p>
+
+<a class="button" href="case-osman.html">
+Read Case Study
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>Opuz v. Turkey (2009)</h3>
+
+<p><strong>Area:</strong> Human Rights Law</p>
+
+<p>
+A landmark judgment recognising domestic violence as a human rights issue and a form of gender discrimination.
+</p>
+
+<a class="button" href="case-opuz.html">
+Read Case Study
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>M.C. v. Bulgaria (2003)</h3>
+
+<p><strong>Area:</strong> Human Rights Law</p>
+
+<p>
+Confirmed that the absence of consent—not physical resistance—is the central element in rape investigations and prosecutions.
+</p>
+
+<a class="button" href="case-mc.html">
+Read Case Study
+</a>
+
+</div>
+
+</div>
 
 </section>
-
-
 
 <section>
 
@@ -205,18 +446,26 @@ Exploring important human rights cases and how courts address issues of state re
 <div class="card">
 
 <ul>
-<li>Criminal Law</li>
+
 <li>Human Rights Law</li>
+
+<li>Criminal Law</li>
+
 <li>Women's Rights</li>
+
+<li>European Court of Human Rights Case Law</li>
+
 <li>Legal Reasoning</li>
+
 <li>Comparative Legal Studies</li>
+
+<li>Access to Justice</li>
+
 </ul>
 
 </div>
 
 </section>
-
-
 
 <section>
 
@@ -225,28 +474,40 @@ Exploring important human rights cases and how courts address issues of state re
 <div class="card">
 
 <ul>
-<li>Case analysis</li>
-<li>Legal research</li>
-<li>Academic writing</li>
-<li>Critical thinking</li>
-<li>Source evaluation</li>
+
+<li>Legal Research</li>
+
+<li>Case Analysis</li>
+
+<li>Academic Writing</li>
+
+<li>Critical Thinking</li>
+
+<li>Legal Interpretation</li>
+
+<li>Source Evaluation</li>
+
+<li>Human Rights Analysis</li>
+
 </ul>
 
 </div>
 
 </section>
 
-
-
 <footer>
 
+<p><strong>Law Research Hub</strong></p>
+
 <p>
-© 2026 Law Research Hub | Independent Student Legal Research Project
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
 </p>
 
 </footer>
 
-
 </body>
-<!-- Update -->
-</html>
+    </html>
