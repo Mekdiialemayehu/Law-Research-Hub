@@ -27,24 +27,29 @@ color:#222;
 line-height:1.7;
 }
 
-/* NAVIGATION */
+
+/* =========================
+   NAVIGATION
+========================= */
 
 nav{
 background:#0b1f3a;
 padding:18px 5%;
 display:flex;
 justify-content:center;
+align-items:center;
 gap:30px;
 position:sticky;
 top:0;
 z-index:1000;
-box-shadow:0 2px 10px rgba(0,0,0,.15);
+box-shadow:0 2px 10px rgba(0,0,0,.20);
 }
 
 nav a{
 color:white;
 text-decoration:none;
 font-weight:bold;
+font-size:18px;
 transition:.3s;
 }
 
@@ -52,46 +57,127 @@ nav a:hover{
 color:#c9a227;
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
 
 header{
-background:linear-gradient(rgba(11,31,58,.92),rgba(11,31,58,.92)),
-url("https://images.unsplash.com/photo-1528740561666-dc2479dc08ab?auto=format&fit=crop&w=1600&q=80");
+
+/*
+IMPORTANT:
+Put your law background image in the same GitHub
+repository as this file and name it:
+
+law-background.jpg
+*/
+
+background:
+linear-gradient(
+rgba(5,20,40,.78),
+rgba(5,20,40,.88)
+),
+url("law-background.jpg");
+
 background-size:cover;
 background-position:center;
+background-repeat:no-repeat;
+
+min-height:680px;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
 color:white;
 text-align:center;
+
 padding:90px 20px;
+
+position:relative;
+overflow:hidden;
+}
+
+
+/* Subtle cinematic overlay */
+
+header::after{
+content:"";
+position:absolute;
+inset:0;
+
+background:
+radial-gradient(
+circle at center,
+rgba(255,255,255,.05),
+transparent 60%
+);
+
+pointer-events:none;
+}
+
+
+/* Hero content */
+
+header h1,
+header p,
+header .button{
+position:relative;
+z-index:2;
 }
 
 header h1{
-font-size:52px;
-margin-bottom:20px;
+font-size:62px;
+line-height:1.15;
+margin-bottom:28px;
+letter-spacing:.5px;
+text-shadow:0 4px 15px rgba(0,0,0,.45);
 }
 
 header p{
-font-size:21px;
-max-width:760px;
+font-size:22px;
+max-width:800px;
 margin:auto;
+line-height:1.7;
+text-shadow:0 3px 10px rgba(0,0,0,.6);
 }
+
+
+/* GOLD BUTTON */
 
 .button{
 display:inline-block;
 margin-top:35px;
-padding:14px 30px;
+padding:16px 32px;
+
 background:#c9a227;
 color:white;
+
 text-decoration:none;
-border-radius:8px;
+
+border-radius:9px;
+
 font-weight:bold;
+font-size:17px;
+
+box-shadow:
+0 5px 15px rgba(0,0,0,.25);
+
 transition:.3s;
 }
 
 .button:hover{
 background:#a88312;
+transform:translateY(-3px);
+box-shadow:
+0 8px 20px rgba(0,0,0,.30);
 }
 
-/* SECTIONS */
+
+/* =========================
+   SECTIONS
+========================= */
 
 section{
 max-width:1150px;
@@ -106,19 +192,29 @@ font-size:36px;
 margin-bottom:35px;
 }
 
-/* CARDS */
+
+/* =========================
+   CARDS
+========================= */
 
 .card{
 background:white;
 padding:30px;
 border-radius:12px;
-box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+box-shadow:
+0 4px 12px rgba(0,0,0,.08);
+
 margin-bottom:25px;
+
 transition:.3s;
 }
 
 .card:hover{
 transform:translateY(-5px);
+
+box-shadow:
+0 8px 20px rgba(0,0,0,.12);
 }
 
 .card h3{
@@ -126,25 +222,39 @@ color:#0b1f3a;
 margin-bottom:12px;
 }
 
-/* RESOURCE CARDS */
+
+/* =========================
+   RESOURCE CARDS
+========================= */
 
 .resources-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
 gap:25px;
 }
 
 .resource-card{
 background:white;
+
 padding:30px;
+
 border-radius:12px;
-box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+box-shadow:
+0 4px 12px rgba(0,0,0,.08);
+
 text-align:center;
+
 transition:.3s;
 }
 
 .resource-card:hover{
 transform:translateY(-6px);
+
+box-shadow:
+0 8px 20px rgba(0,0,0,.12);
 }
 
 .resource-card h3{
@@ -156,15 +266,24 @@ margin-bottom:15px;
 margin-bottom:20px;
 }
 
-/* FEATURED CASES */
+
+/* =========================
+   FEATURED CASES
+========================= */
 
 .case-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+grid-template-columns:
+repeat(auto-fit,minmax(320px,1fr));
+
 gap:25px;
 }
 
-/* LISTS */
+
+/* =========================
+   LISTS
+========================= */
 
 ul{
 padding-left:22px;
@@ -174,22 +293,35 @@ li{
 margin-bottom:10px;
 }
 
-/* LATEST */
+
+/* =========================
+   LATEST
+========================= */
 
 .latest{
 background:#eef4ff;
+
 border-left:6px solid #c9a227;
+
 padding:25px;
+
 border-radius:10px;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
 background:#0b1f3a;
+
 color:white;
+
 text-align:center;
+
 padding:30px 20px;
+
 margin-top:40px;
 }
 
@@ -197,25 +329,66 @@ footer p{
 margin:6px 0;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
 nav{
 flex-wrap:wrap;
-gap:15px;
+gap:14px;
+padding:16px 12px;
+}
+
+nav a{
+font-size:16px;
+}
+
+header{
+min-height:650px;
+padding:70px 20px;
 }
 
 header h1{
-font-size:38px;
+font-size:42px;
 }
 
 header p{
 font-size:18px;
+line-height:1.6;
+}
+
+.button{
+padding:14px 26px;
 }
 
 section h2{
 font-size:30px;
+}
+
+}
+
+
+/* VERY SMALL PHONES */
+
+@media(max-width:400px){
+
+header h1{
+font-size:36px;
+}
+
+header p{
+font-size:17px;
+}
+
+nav{
+gap:11px;
+}
+
+nav a{
+font-size:15px;
 }
 
 }
@@ -225,6 +398,11 @@ font-size:30px;
 </head>
 
 <body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
@@ -242,6 +420,11 @@ font-size:30px;
 
 </nav>
 
+
+<!-- =========================
+     HERO
+========================= -->
+
 <header>
 
 <h1>Law Research Hub</h1>
@@ -255,6 +438,11 @@ Start Learning
 </a>
 
 </header>
+
+
+<!-- =========================
+     ABOUT PROJECT
+========================= -->
 
 <section>
 
@@ -275,6 +463,12 @@ The website reflects my interest in criminal law, human rights law, legal reason
 </div>
 
 </section>
+
+
+<!-- =========================
+     LATEST ADDITIONS
+========================= -->
+
 <section id="resources">
 
 <h2>Latest Additions</h2>
@@ -297,11 +491,17 @@ New case studies, notes, and quizzes are added regularly as the project continue
 
 </section>
 
+
+<!-- =========================
+     LEARNING RESOURCES
+========================= -->
+
 <section>
 
 <h2>Learning Resources</h2>
 
 <div class="resources-grid">
+
 
 <div class="resource-card">
 
@@ -317,6 +517,7 @@ Browse Case Studies
 
 </div>
 
+
 <div class="resource-card">
 
 <h3>📝 Notes</h3>
@@ -330,6 +531,7 @@ View Notes
 </a>
 
 </div>
+
 
 <div class="resource-card">
 
@@ -345,15 +547,22 @@ Take a Quiz
 
 </div>
 
+
 </div>
 
 </section>
+
+
+<!-- =========================
+     FEATURED CASE STUDIES
+========================= -->
 
 <section>
 
 <h2>Featured Case Studies</h2>
 
 <div class="case-grid">
+
 
 <div class="card">
 
@@ -371,6 +580,7 @@ Read Case Study
 
 </div>
 
+
 <div class="card">
 
 <h3>Airey v. Ireland (1979)</h3>
@@ -386,6 +596,7 @@ Read Case Study
 </a>
 
 </div>
+
 
 <div class="card">
 
@@ -403,6 +614,7 @@ Read Case Study
 
 </div>
 
+
 <div class="card">
 
 <h3>Opuz v. Turkey (2009)</h3>
@@ -418,6 +630,7 @@ Read Case Study
 </a>
 
 </div>
+
 
 <div class="card">
 
@@ -435,9 +648,15 @@ Read Case Study
 
 </div>
 
+
 </div>
 
 </section>
+
+
+<!-- =========================
+     RESEARCH INTERESTS
+========================= -->
 
 <section>
 
@@ -467,6 +686,11 @@ Read Case Study
 
 </section>
 
+
+<!-- =========================
+     SKILLS
+========================= -->
+
 <section>
 
 <h2>Skills Developed</h2>
@@ -495,6 +719,11 @@ Read Case Study
 
 </section>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
 <p><strong>Law Research Hub</strong></p>
@@ -508,6 +737,7 @@ An independent educational project dedicated to making legal knowledge accessibl
 </p>
 
 </footer>
+
 
 </body>
     </html>
