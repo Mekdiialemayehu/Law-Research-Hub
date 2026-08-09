@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -43,12 +42,25 @@ header{
     padding:40px 20px;
 }
 
+/* SEARCH BAR */
+
+.search-box{
+    width:100%;
+    padding:16px;
+    font-size:16px;
+    border:2px solid #c9a227;
+    border-radius:8px;
+    box-sizing:border-box;
+    margin-bottom:30px;
+}
+
 .card{
     background:white;
     padding:25px;
     margin-bottom:25px;
     border-radius:12px;
     box-shadow:0 4px 12px rgba(0,0,0,.1);
+    display:none;
 }
 
 h2,h3{
@@ -75,7 +87,6 @@ footer{
 
 </head>
 
-
 <body>
 
 <nav>
@@ -87,22 +98,26 @@ footer{
 
 </nav>
 
-
 <header>
 
 <h1>Legal Case Studies</h1>
 
 <p>
-Explore landmark cases in criminal law and human rights law.
+Search and explore landmark cases in criminal law and human rights law.
 </p>
 
 </header>
 
-
 <div class="container">
 
+<input
+    type="text"
+    id="search"
+    class="search-box"
+    placeholder="🔎 Search case studies..."
+>
 
-<div class="card">
+<div class="card" data-title="r v g and another 2003 criminal law recklessness">
 
 <h2>R v G and Another (2003)</h2>
 
@@ -117,7 +132,7 @@ Read Case Study
 </div>
 
 
-<div class="card">
+<div class="card" data-title="airey v ireland 1979 human rights legal aid">
 
 <h2>Airey v Ireland (1979)</h2>
 
@@ -132,7 +147,7 @@ Read Case Study
 </div>
 
 
-<div class="card">
+<div class="card" data-title="osman v united kingdom 1998 human rights right to life">
 
 <h2>Osman v United Kingdom (1998)</h2>
 
@@ -147,7 +162,7 @@ Read Case Study
 </div>
 
 
-<div class="card">
+<div class="card" data-title="opuz v turkey 2009 domestic violence human rights">
 
 <h2>Opuz v Turkey (2009)</h2>
 
@@ -162,7 +177,7 @@ Read Case Study
 </div>
 
 
-<div class="card">
+<div class="card" data-title="m.c. v bulgaria 2003 sexual violence consent human rights">
 
 <h2>M.C. v Bulgaria (2003)</h2>
 
@@ -176,9 +191,7 @@ Read Case Study
 
 </div>
 
-
 </div>
-
 
 <footer>
 
@@ -188,6 +201,28 @@ Read Case Study
 
 </footer>
 
+<script>
+
+const search = document.getElementById("search");
+const cards = document.querySelectorAll(".card");
+
+search.addEventListener("input", function(){
+
+    const searchText = search.value.toLowerCase().trim();
+
+    cards.forEach(function(card){
+
+        if(searchText !== "" && card.dataset.title.includes(searchText)){
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+});
+
+</script>
 
 </body>
 
