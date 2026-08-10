@@ -14,6 +14,11 @@ body{
     font-family:Georgia, serif;
     background:#f5f7fa;
     color:#222;
+
+    /* NEW: makes the page fill the screen */
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
 }
 
 nav{
@@ -40,6 +45,9 @@ header{
     max-width:1000px;
     margin:auto;
     padding:40px 20px;
+
+    /* NEW: pushes footer to bottom */
+    flex:1;
 }
 
 /* SEARCH BAR */
@@ -81,6 +89,9 @@ footer{
     color:white;
     text-align:center;
     padding:20px;
+
+    /* NEW */
+    margin-top:auto;
 }
 
 </style>
@@ -131,7 +142,6 @@ Read Case Study
 
 </div>
 
-
 <div class="card" data-title="airey v ireland 1979 human rights legal aid">
 
 <h2>Airey v Ireland (1979)</h2>
@@ -145,7 +155,6 @@ Read Case Study
 </a>
 
 </div>
-
 
 <div class="card" data-title="osman v united kingdom 1998 human rights right to life">
 
@@ -161,7 +170,6 @@ Read Case Study
 
 </div>
 
-
 <div class="card" data-title="opuz v turkey 2009 domestic violence human rights">
 
 <h2>Opuz v Turkey (2009)</h2>
@@ -175,7 +183,6 @@ Read Case Study
 </a>
 
 </div>
-
 
 <div class="card" data-title="m.c. v bulgaria 2003 sexual violence consent human rights">
 
