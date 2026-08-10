@@ -1,216 +1,257 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Article 8 – Right to Respect for Private and Family Life | Law Research Hub</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Article 8 – Right to Respect for Private and Family Life | Law Research Hub</title><style>
 
-  <style>
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    body{
-      font-family: Georgia, serif;
-      background:#f5f7fa;
-      color:#222;
-      line-height:1.7;
-    }
+html{
+scroll-behavior:smooth;
+}
 
-    nav{
-      background:#0b1f3a;
-      padding:18px;
-      text-align:center;
-    }
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+line-height:1.7;
+}
 
-    nav a{
-      color:#fff;
-      text-decoration:none;
-      margin:0 14px;
-      font-weight:bold;
-    }
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
 
-    nav a:hover{
-      text-decoration:underline;
-    }
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
 
-    .container{
-      max-width:950px;
-      margin:40px auto;
-      background:#fff;
-      padding:40px;
-      border-radius:14px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.08);
-    }
+nav a:hover{
+color:#c9a227;
+}
 
-    h1{
-      color:#0b1f3a;
-      font-size:2.1em;
-      margin-bottom:10px;
-    }
+header{
+background:linear-gradient(rgba(11,31,58,.94),rgba(11,31,58,.94));
+color:white;
+text-align:center;
+padding:75px 20px;
+}
 
-    h2{
-      color:#123c69;
-      margin-top:32px;
-      margin-bottom:12px;
-      font-size:1.4em;
-    }
+header h1{
+font-size:44px;
+margin-bottom:15px;
+}
 
-    p{
-      margin-bottom:14px;
-    }
+header p{
+font-size:19px;
+max-width:820px;
+margin:auto;
+}
 
-    ul{
-      margin-left:22px;
-      margin-bottom:16px;
-    }
+section{
+max-width:1100px;
+margin:auto;
+padding:55px 20px;
+}
 
-    li{
-      margin-bottom:8px;
-    }
+.section-title{
+text-align:center;
+color:#0b1f3a;
+font-size:32px;
+margin-bottom:18px;
+}
 
-    .highlight{
-      background:#eef4ff;
-      border-left:5px solid #0b1f3a;
-      padding:16px 18px;
-      border-radius:8px;
-      margin:18px 0;
-    }
+.card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+margin-bottom:24px;
+}
 
-    .sources{
-      background:#fafafa;
-      padding:18px;
-      border-radius:10px;
-      border:1px solid #e5e5e5;
-    }
+.card h2{
+color:#0b1f3a;
+font-size:26px;
+margin-bottom:15px;
+}
 
-    .sources ul{
-      margin-top:8px;
-    }
+.card h3{
+color:#0b1f3a;
+font-size:22px;
+margin-bottom:12px;
+margin-top:10px;
+}
 
-    footer{
-      text-align:center;
-      padding:20px;
-      color:#666;
-      font-size:0.95em;
-    }
+.card p{
+margin-bottom:14px;
+}
 
-    .small{
-      font-size:0.98em;
-    }
-  </style>
-</head>
-<body>
+.card ul{
+padding-left:22px;
+margin-top:10px;
+}
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="case-studies.html">Case Studies</a>
-    <a href="notes.html">Notes & Quizzes</a>
-    <a href="about.html">About</a>
-  </nav>
+.card li{
+margin-bottom:10px;
+}
 
-  <div class="container">
-    <h1>Article 8 – Right to Respect for Private and Family Life</h1>
+.button{
+display:inline-block;
+padding:12px 22px;
+background:#c9a227;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+transition:.3s;
+}
 
-    <h2>Definition</h2>
-    <p>
-      Article 8 of the European Convention on Human Rights protects the right to respect for private and family life, home, and correspondence.
-      It is a qualified right, which means public authorities may interfere with it only in limited circumstances and only when the interference is lawful,
-      necessary, and proportionate. The European Court of Human Rights has interpreted Article 8 broadly, especially in areas such as personal privacy,
-      family relationships, home life, communications, data protection, and surveillance.
-    </p>
+.button:hover{
+background:#a88312;
+}
 
-    <h2>Legal Provision</h2>
-    <p>
-      Article 8 states that everyone has the right to respect for private and family life, home, and correspondence.
-      It also provides that there shall be no interference by a public authority with the exercise of this right except where the interference is in accordance
-      with the law and necessary in a democratic society for one of the legitimate aims listed in Article 8(2), such as national security, public safety,
-      the economic well-being of the country, prevention of disorder or crime, protection of health or morals, or protection of the rights and freedoms of others.
-    </p>
+.info-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:22px;
+}
 
-    <h2>Purpose of Article 8</h2>
-    <p>
-      The purpose of Article 8 is to protect personal autonomy, dignity, identity, and family relationships.
-      It also protects individuals from unjustified interference by the State in their private lives, homes, and communications.
-      In addition, Article 8 can require States to take positive steps to protect people from serious private-life harms, including unsafe surveillance practices,
-      unlawful data retention, and failures to protect family life in appropriate cases.
-    </p>
+.badge{
+display:inline-block;
+background:#eef4ff;
+color:#0b1f3a;
+padding:5px 10px;
+border-radius:20px;
+font-size:13px;
+font-weight:bold;
+margin-bottom:12px;
+}
 
-    <h2>Key Principles</h2>
-    <ul>
-      <li><strong>Private Life</strong> – Article 8 protects personal privacy and aspects of identity, including professional and business life in some situations.</li>
-      <li><strong>Family Life</strong> – The Article protects real and effective family relationships, not just formal family ties.</li>
-      <li><strong>Home</strong> – Article 8 protects the place where a person lives and, in some contexts, can extend to premises closely connected with private life.</li>
-      <li><strong>Correspondence</strong> – Communications such as letters, telephone calls, emails, and internet use can be protected.</li>
-      <li><strong>Qualified Right</strong> – Interference is allowed only if it is lawful, pursues a legitimate aim, and is necessary in a democratic society.</li>
-      <li><strong>Proportionality</strong> – Even where the State has a lawful reason to interfere, it must not go further than necessary.</li>
-      <li><strong>Positive Obligation</strong> – States may have a duty to take practical measures to protect Article 8 rights in some situations.</li>
-      <li><strong>Data Protection and Surveillance</strong> – The Court has treated secret monitoring, data retention, and workplace surveillance as Article 8 issues.</li>
-    </ul>
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
 
-    <h2>Leading Cases</h2>
-    <ul>
-      <li><strong>Niemietz v. Germany</strong> – Expanded the meaning of private life and showed that it can include professional or business activities.</li>
-      <li><strong>Copland v. the United Kingdom</strong> – Held that monitoring a worker’s telephone, email, and internet use without a clear legal basis violated Article 8.</li>
-      <li><strong>Peck v. the United Kingdom</strong> – Confirmed that disclosure of private images and information can interfere with private life.</li>
-      <li><strong>Von Hannover v. Germany</strong> – Protected private life against intrusive press coverage and developed the Court’s approach to privacy and publicity.</li>
-      <li><strong>S. and Marper v. the United Kingdom</strong> – Held that indefinite retention of fingerprints and DNA profiles of unconvicted persons interfered with private life.</li>
-      <li><strong>Halford v. the United Kingdom</strong> – Recognised that workplace telephone communications can fall within the protection of Article 8.</li>
-    </ul>
+footer p{
+margin:6px 0;
+}
 
-    <h2>Key Legal Terms</h2>
-    <ul>
-      <li><strong>Private Life</strong> – A broad concept covering identity, privacy, personal development, and some professional life.</li>
-      <li><strong>Family Life</strong> – The legal protection of genuine family relationships.</li>
-      <li><strong>Home</strong> – A person’s living space, protected from unjustified interference.</li>
-      <li><strong>Correspondence</strong> – Private communications such as letters, calls, emails, and messages.</li>
-      <li><strong>Interference</strong> – Any State action that affects Article 8 rights.</li>
-      <li><strong>Necessity in a Democratic Society</strong> – A test used by the Court to check whether interference is proportionate and justified.</li>
-      <li><strong>Proportionality</strong> – A balance between the individual’s rights and the State’s aim.</li>
-    </ul>
+@media(max-width:700px){
 
-    <h2>Exam Tips</h2>
-    <div class="highlight">
-      <p class="small">– Remember that Article 8 is a qualified right, not an absolute one.</p>
-      <p class="small">– Always ask whether there was an interference, whether it was lawful, and whether it was necessary and proportionate.</p>
-      <p class="small">– Mention that Article 8 protects private life, family life, home, and correspondence.</p>
-      <p class="small">– Use cases like Niemietz, Copland, Peck, Von Hannover, and S. and Marper to support your answer.</p>
-    </div>
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
 
-    <h2>Summary</h2>
-    <p>
-      Article 8 is one of the most important rights in the Convention because it protects personal privacy, family relationships, the home, and communications.
-      It does not give an unlimited right to privacy, but it does require States to justify any interference and to act proportionately.
-      Through its case law, the European Court of Human Rights has made Article 8 a powerful protection for dignity, identity, and private life in modern society.
-    </p>
+header h1{
+font-size:34px;
+}
 
-    <h2>Sources</h2>
-    <div class="sources">
-      <ul>
-        <li>European Convention on Human Rights, Article 8 (official text).</li>
-        <li>European Court of Human Rights, Guide on Article 8 – Right to respect for private and family life.</li>
-        <li>HUDOC case-law database, European Court of Human Rights.</li>
-      </ul>
-    </div>
+header p{
+font-size:17px;
+}
 
-    <h2>Individual Case Sources</h2>
-    <div class="sources">
-      <ul>
-        <li>Niemietz v. Germany (1992) – European Court of Human Rights.</li>
-        <li>Copland v. the United Kingdom (2007) – European Court of Human Rights.</li>
-        <li>Peck v. the United Kingdom (2003) – European Court of Human Rights.</li>
-        <li>Von Hannover v. Germany (2004) – European Court of Human Rights.</li>
-        <li>S. and Marper v. the United Kingdom (2008) – European Court of Human Rights.</li>
-        <li>Halford v. the United Kingdom (1997) – European Court of Human Rights.</li>
-      </ul>
-    </div>
-  </div>
+.section-title{
+font-size:28px;
+}
 
-  <footer>
-    © 2026 Law Research Hub
-  </footer>
+.card h2{
+font-size:24px;
+}
 
-</body>
-            </html>
+}
+
+</style></head><body><nav>
+<a href="index.html">Home</a>
+<a href="case-studies.html">Case Studies</a>
+<a href="notes.html">Notes</a>
+<a href="quiz.html">Quizzes</a>
+<a href="about.html">About Me</a>
+<a href="contact.html">Contact</a>
+</nav><header>
+<h1>Article 8 – Right to Respect for Private and Family Life</h1>
+<p>
+A structured legal note on the right to respect for private and family life, home, and correspondence under the European Convention on Human Rights.
+</p>
+</header><section><div class="card"><span class="badge"></span><h2>Definition</h2>
+<p>
+Article 8 of the European Convention on Human Rights protects the right to respect for private and family life, home, and correspondence. It is a qualified right, which means that public authorities may interfere with it only in limited circumstances and only when the interference is lawful, necessary, and proportionate. The European Court of Human Rights has interpreted Article 8 broadly, especially in areas such as personal privacy, family relationships, home life, communications, data protection, and surveillance.
+</p></div><div class="card"><span class="badge"></span><h2>Legal Provision</h2>
+<p><strong>Article 8 provides that everyone has the right to respect for private and family life, home, and correspondence.</strong></p><p>
+It also states that there shall be no interference by a public authority with the exercise of this right except where the interference is in accordance with the law and necessary in a democratic society for one of the legitimate aims listed in Article 8(2), such as national security, public safety, the economic well-being of the country, prevention of disorder or crime, protection of health or morals, or protection of the rights and freedoms of others.
+</p><p>
+These rules mean that any interference must be lawful, pursue a legitimate aim, and be proportionate to that aim.
+</p></div><div class="card"><span class="badge"></span><h2>Purpose of Article 8</h2>
+<p>
+The purpose of Article 8 is to protect personal autonomy, dignity, identity, and family relationships. It also protects individuals from unjustified interference by the State in their private lives, homes, and communications. In addition, Article 8 may require States to take positive steps to protect people from serious private-life harms in some situations.
+</p></div><div class="card"><span class="badge"></span><h2>Key Principles</h2>
+<ul>
+<li><strong>Private Life</strong> – Article 8 protects personal privacy and aspects of identity, including professional and business life in some situations.</li>
+<li><strong>Family Life</strong> – The Article protects real and effective family relationships, not just formal family ties.</li>
+<li><strong>Home</strong> – Article 8 protects the place where a person lives and, in some contexts, premises closely connected with private life.</li>
+<li><strong>Correspondence</strong> – Communications such as letters, telephone calls, emails, and internet use can be protected.</li>
+<li><strong>Qualified Right</strong> – Interference is allowed only if it is lawful, pursues a legitimate aim, and is necessary in a democratic society.</li>
+<li><strong>Proportionality</strong> – Even where the State has a lawful reason to interfere, it must not go further than necessary.</li>
+<li><strong>Positive Obligation</strong> – States may have a duty to take practical measures to protect Article 8 rights in some situations.</li>
+<li><strong>Data Protection and Surveillance</strong> – The Court has treated secret monitoring, data retention, and workplace surveillance as Article 8 issues.</li>
+</ul></div><div class="card"><span class="badge"></span><h2>Leading Cases</h2>
+<ul>
+<li><strong>Niemietz v. Germany</strong> – Expanded the meaning of private life and showed that it can include professional or business activities.</li>
+<li><strong>Copland v. the United Kingdom</strong> – Held that monitoring a worker’s telephone, email, and internet use without a clear legal basis violated Article 8.</li>
+<li><strong>Peck v. the United Kingdom</strong> – Confirmed that disclosure of private images and information can interfere with private life.</li>
+<li><strong>Von Hannover v. Germany</strong> – Protected private life against intrusive press coverage and developed the Court’s approach to privacy and publicity.</li>
+<li><strong>S. and Marper v. the United Kingdom</strong> – Held that indefinite retention of fingerprints and DNA profiles of unconvicted persons interfered with private life.</li>
+<li><strong>Halford v. the United Kingdom</strong> – Recognised that workplace telephone communications can fall within the protection of Article 8.</li>
+</ul></div><div class="info-grid"><div class="card"><h2>Key Legal Terms</h2>
+<ul>
+<li><strong>Private Life</strong> – A broad concept covering identity, privacy, personal development, and some professional life.</li>
+<li><strong>Family Life</strong> – The legal protection of genuine family relationships.</li>
+<li><strong>Home</strong> – A person’s living space, protected from unjustified interference.</li>
+<li><strong>Correspondence</strong> – Private communications such as letters, calls, emails, and messages.</li>
+<li><strong>Interference</strong> – Any State action that affects Article 8 rights.</li>
+<li><strong>Necessity in a Democratic Society</strong> – A test used by the Court to check whether interference is proportionate and justified.</li>
+<li><strong>Proportionality</strong> – A balance between the individual’s rights and the State’s aim.</li>
+</ul></div><div class="card"><h2>Exam Tips</h2>
+<ul>
+<li>Remember that Article 8 is a qualified right, not an absolute one.</li>
+<li>Always ask whether there was an interference, whether it was lawful, and whether it was necessary and proportionate.</li>
+<li>Mention that Article 8 protects private life, family life, home, and correspondence.</li>
+<li>Use cases like <strong>Niemietz</strong>, <strong>Copland</strong>, <strong>Peck</strong>, <strong>Von Hannover</strong>, and <strong>S. and Marper</strong> to support your answer.</li>
+</ul></div></div><div class="card"><h2>Summary</h2>
+<p>
+Article 8 is one of the most important rights in the Convention because it protects personal privacy, family relationships, the home, and communications. It does not give an unlimited right to privacy, but it does require States to justify any interference and to act proportionately. Through its case law, the European Court of Human Rights has made Article 8 a powerful protection for dignity, identity, and private life in modern society.
+</p></div><div class="card"><h2>Sources</h2>
+<ul>
+<li>European Convention on Human Rights, Article 8 (official text).</li>
+<li>European Court of Human Rights, Guide on Article 8 – Right to respect for private and family life.</li>
+<li>HUDOC case-law database, European Court of Human Rights.</li>
+</ul></div><div class="card"><h2>Individual Case Sources</h2>
+<ul>
+<li>Niemietz v. Germany (1992) – European Court of Human Rights.</li>
+<li>Copland v. the United Kingdom (2007) – European Court of Human Rights.</li>
+<li>Peck v. the United Kingdom (2003) – European Court of Human Rights.</li>
+<li>Von Hannover v. Germany (2004) – European Court of Human Rights.</li>
+<li>S. and Marper v. the United Kingdom (2008) – European Court of Human Rights.</li>
+<li>Halford v. the United Kingdom (1997) – European Court of Human Rights.</li>
+</ul></div><div style="text-align:center; margin-top:15px;">
+<a class="button" href="echr.html">← Back to ECHR Articles</a>
+</div></section><footer>
+<p><strong>Law Research Hub</strong></p>
+<p>An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.</p>
+<p>© 2026 Law Research Hub. All Rights Reserved.</p>
+</footer></body>
+  </html>    
