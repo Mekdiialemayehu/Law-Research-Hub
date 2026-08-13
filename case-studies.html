@@ -14,8 +14,6 @@ body{
     font-family:Georgia, serif;
     background:#f5f7fa;
     color:#222;
-
-    /* NEW: makes the page fill the screen */
     min-height:100vh;
     display:flex;
     flex-direction:column;
@@ -34,6 +32,10 @@ nav a{
     font-weight:bold;
 }
 
+nav a:hover{
+    color:#c9a227;
+}
+
 header{
     background:#0b1f3a;
     color:white;
@@ -41,12 +43,14 @@ header{
     padding:50px 20px;
 }
 
+header h1{
+    font-size:42px;
+}
+
 .container{
     max-width:1000px;
     margin:auto;
     padding:40px 20px;
-
-    /* NEW: pushes footer to bottom */
     flex:1;
 }
 
@@ -84,13 +88,15 @@ h2,h3{
     border-radius:6px;
 }
 
+.button:hover{
+    opacity:0.9;
+}
+
 footer{
     background:#0b1f3a;
     color:white;
     text-align:center;
     padding:20px;
-
-    /* NEW */
     margin-top:auto;
 }
 
@@ -109,6 +115,7 @@ footer{
 
 </nav>
 
+
 <header>
 
 <h1>Legal Case Studies</h1>
@@ -119,6 +126,7 @@ Search and explore landmark cases in criminal law and human rights law.
 
 </header>
 
+
 <div class="container">
 
 <input
@@ -127,6 +135,9 @@ Search and explore landmark cases in criminal law and human rights law.
     class="search-box"
     placeholder="🔎 Search case studies..."
 >
+
+
+<!-- R v G -->
 
 <div class="card" data-title="r v g and another 2003 criminal law recklessness">
 
@@ -142,7 +153,10 @@ Read Case Study
 
 </div>
 
-<div class="card" data-title="airey v ireland 1979 human rights legal aid">
+
+<!-- Airey -->
+
+<div class="card" data-title="airey v ireland 1979 human rights legal aid access justice">
 
 <h2>Airey v Ireland (1979)</h2>
 
@@ -155,6 +169,9 @@ Read Case Study
 </a>
 
 </div>
+
+
+<!-- Osman -->
 
 <div class="card" data-title="osman v united kingdom 1998 human rights right to life">
 
@@ -170,6 +187,9 @@ Read Case Study
 
 </div>
 
+
+<!-- Opuz -->
+
 <div class="card" data-title="opuz v turkey 2009 domestic violence human rights">
 
 <h2>Opuz v Turkey (2009)</h2>
@@ -184,7 +204,10 @@ Read Case Study
 
 </div>
 
-<div class="card" data-title="m.c. v bulgaria 2003 sexual violence consent human rights">
+
+<!-- M.C. -->
+
+<div class="card" data-title="m c v bulgaria 2003 sexual violence consent human rights">
 
 <h2>M.C. v Bulgaria (2003)</h2>
 
@@ -198,7 +221,196 @@ Read Case Study
 
 </div>
 
+
+<!-- S. and Marper -->
+
+<div class="card" data-title="s and marper v united kingdom 2008 human rights dna fingerprints privacy article 8">
+
+<h2>S. and Marper v United Kingdom (2008)</h2>
+
+<p>
+Human rights case concerning the retention of DNA profiles, fingerprints, privacy, and Article 8.
+</p>
+
+<a class="button" href="S-and-Marper-v-united-kingdom.html">
+Read Case Study
+</a>
+
 </div>
+
+
+<!-- S.A.S. -->
+
+<div class="card" data-title="sas v france 2014 human rights face covering freedom religion article 9">
+
+<h2>S.A.S. v France (2014)</h2>
+
+<p>
+Human rights case concerning religious freedom, personal autonomy, and restrictions on face covering.
+</p>
+
+<a class="button" href="SAS-v-France.html">
+Read Case Study
+</a>
+
+</div>
+
+
+<!-- A. v United Kingdom -->
+
+<div class="card" data-title="a v united kingdom 1998 human rights article 3 corporal punishment children">
+
+<h2>A. v United Kingdom (1998)</h2>
+
+<p>
+Human rights case concerning corporal punishment of children and the prohibition of degrading treatment.
+</p>
+
+<a class="button" href="a-v-united-kingdom.html">
+Read Case Study
+</a>
+
+</div>
+
+
+<!-- Hirst -->
+
+<div class="card" data-title="hirst v united kingdom no 2 2005 prisoners voting right vote article 3 protocol 1">
+
+<h2>Hirst v the United Kingdom (No. 2) (2005)</h2>
+
+<p>
+Human rights case concerning prisoners' voting rights and the right to free elections.
+</p>
+
+<a class="button" href="case.hirst.html">
+Read Case Study
+</a>
+
+</div>
+
+
+<!-- Christine Goodwin -->
+
+<div class="card" data-title="christine goodwin v united kingdom 2002 transgender privacy gender recognition article 8">
+
+<h2>Christine Goodwin v United Kingdom (2002)</h2>
+
+<p>
+Human rights case concerning gender recognition, privacy, and the right to respect for private life.
+</p>
+
+<a class="button" href="christine-goodwin-v-united-kingdom.html">
+Read Case Study
+</a>
+
+</div>
+
+
+<!-- D.H. and Others -->
+
+<div class="card" data-title="dh and others v czech republic 2007 discrimination education roma article 14 protocol 1">
+
+<h2>D.H. and Others v Czech Republic (2007)</h2>
+
+<p>
+Human rights case concerning discrimination in education and equal treatment.
+</p>
+
+<a class="button" href="dh-and-others-v-czech-republic.html">
+Read Case Study
+</a>
+
+</div>
+
+
+<!-- Handyside -->
+
+<div class="card" data-title="handyside v united kingdom 1976 freedom expression article 10 human rights">
+
+<h2>Handyside v United Kingdom (1976)</h2>
+
+<p>
+Landmark human rights case concerning freedom of expression and the limits of State interference.
+</p>
+
+<a class="button" href="handyside-v-united-kingdom.html">
+Read Case Study
+</a>
+
+</div>
+
+
+<!-- Leyla Sahin -->
+
+<div class="card" data-title="leyla sahin v turkey 2005 freedom religion education article 9">
+
+<h2>Leyla Şahin v Turkey (2005)</h2>
+
+<p>
+Human rights case concerning freedom of religion, education, and restrictions on religious dress.
+</p>
+
+<a class="button" href="leyla-sahin-v-turkey.html">
+Read Case Study
+</a>
+
+</div>
+
+
+<!-- Selmouni -->
+
+<div class="card" data-title="selmouni v france 1999 torture police ill treatment article 3 living instrument">
+
+<h2>Selmouni v France (1999)</h2>
+
+<p>
+Landmark human rights case concerning torture, police ill-treatment, and the living-instrument principle.
+</p>
+
+<a class="button" href="selmouni-v-france.html">
+Read Case Study
+</a>
+
+</div>
+
+
+<!-- Soering -->
+
+<div class="card" data-title="soering v united kingdom 1989 extradition article 3 torture inhuman degrading treatment">
+
+<h2>Soering v United Kingdom (1989)</h2>
+
+<p>
+Human rights case concerning extradition and the risk of torture or inhuman and degrading treatment.
+</p>
+
+<a class="button" href="soering-v-united-kingdom.html">
+Read Case Study
+</a>
+
+</div>
+
+
+<!-- Tyrer -->
+
+<div class="card" data-title="tyrer v united kingdom 1978 corporal punishment article 3 degrading treatment living instrument">
+
+<h2>Tyrer v United Kingdom (1978)</h2>
+
+<p>
+Landmark human rights case concerning corporal punishment and the living-instrument interpretation of the Convention.
+</p>
+
+<a class="button" href="tyrer-v-united-kingdom.html">
+Read Case Study
+</a>
+
+</div>
+
+
+</div>
+
 
 <footer>
 
@@ -207,6 +419,7 @@ Read Case Study
 </p>
 
 </footer>
+
 
 <script>
 
@@ -230,6 +443,7 @@ search.addEventListener("input", function(){
 });
 
 </script>
+
 
 </body>
 
