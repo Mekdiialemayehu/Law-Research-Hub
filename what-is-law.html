@@ -931,19 +931,23 @@ showCard(currentCard - 1);
 ========================= */
 
 let touchStartX = 0;
+let touchStartY = 0;
 let touchEndX = 0;
+let touchEndY = 0;
 
 const swipeArea = document.querySelector(".card-wrapper");
 
 swipeArea.addEventListener("touchstart", function(event){
 
 touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
 
 });
 
 swipeArea.addEventListener("touchend", function(event){
 
 touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
 
 handleSwipe();
 
@@ -951,29 +955,39 @@ handleSwipe();
 
 function handleSwipe(){
 
-const difference = touchStartX - touchEndX;
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
 
-if(Math.abs(difference) < 50){
+/*
+Only recognize a swipe when the
+horizontal movement is clearly greater
+than the vertical movement.
+*/
+
+if(Math.abs(differenceX) < 70){
 return;
 }
 
-/* Swipe left = next */
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
 
-if(difference > 0){
+/*
+Swipe left = next card
+Swipe right = previous card
+*/
+
+if(differenceX > 0){
 
 nextCard();
 
-}
-
-/* Swipe right = previous */
-
-else{
+}else{
 
 previousCard();
 
 }
 
-}
+   }
 
 
 /* =========================
