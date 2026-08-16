@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Legal Concepts | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+line-height:1.7;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(rgba(11,31,58,.95),rgba(11,31,58,.95));
+color:white;
+text-align:center;
+padding:70px 20px;
+}
+
+header h1{
+font-size:46px;
+margin-bottom:15px;
+}
+
+header p{
+font-size:19px;
+max-width:780px;
+margin:auto;
+}
+
+/* MAIN SECTION */
+
+section{
+max-width:1100px;
+margin:auto;
+padding:60px 20px;
+}
+
+section h2{
+text-align:center;
+color:#0b1f3a;
+font-size:34px;
+margin-bottom:15px;
+}
+
+.section-intro{
+text-align:center;
+max-width:750px;
+margin:0 auto 40px;
+}
+
+/* SECTION GRID */
+
+.concept-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
+
+/* CONCEPT CARDS */
+
+.concept-card{
+background:white;
+padding:30px;
+border-radius:14px;
+box-shadow:0 4px 14px rgba(0,0,0,.08);
+transition:.3s;
+border-top:5px solid #c9a227;
+}
+
+.concept-card:hover{
+transform:translateY(-7px);
+box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+
+.concept-number{
+font-size:14px;
+font-weight:bold;
+color:#c9a227;
+letter-spacing:1px;
+margin-bottom:8px;
+}
+
+.concept-card h3{
+color:#0b1f3a;
+font-size:24px;
+margin-bottom:12px;
+}
+
+.concept-card p{
+margin-bottom:20px;
+}
+
+.topic-count{
+display:inline-block;
+background:#eef4ff;
+color:#0b1f3a;
+padding:5px 12px;
+border-radius:20px;
+font-size:13px;
+font-weight:bold;
+margin-bottom:18px;
+}
+
+.button{
+display:inline-block;
+padding:12px 24px;
+background:#c9a227;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+transition:.3s;
+}
+
+.button:hover{
+background:#a88312;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:36px;
+}
+
+header p{
+font-size:17px;
+}
+
+section h2{
+font-size:29px;
+}
+
+.concept-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Legal Concepts</h1>
+
+<p>
+Explore essential legal concepts through structured, student-friendly notes and interactive quizzes designed to build legal knowledge and reasoning skills.
+</p>
+
+</header>
+
+
+<!-- LEGAL CONCEPT SECTIONS -->
+
+<section>
+
+<h2>Explore the Sections</h2>
+
+<p class="section-intro">
+Choose a field of law to explore its key concepts. Each section contains organized legal notes followed by interactive quizzes to test your understanding.
+</p>
+
+
+<div class="concept-grid">
+
+
+<!-- FOUNDATIONS OF LAW -->
+
+<div class="concept-card">
+
+<div class="concept-number">
+SECTION 01
+</div>
+
+<h3>⚖️ Foundations of Law</h3>
+
+<p>
+Learn the fundamental principles and structures that form the basis of legal systems and legal reasoning.
+</p>
+
+<span class="topic-count">
+6 Topics
+</span>
+
+<br>
+
+<a class="button" href="foundations-of-law.html">
+Explore Section
+</a>
+
+</div>
+
+
+<!-- COURTS & LEGAL PROCESS -->
+
+<div class="concept-card">
+
+<div class="concept-number">
+SECTION 02
+</div>
+
+<h3>🏛️ Courts & Legal Process</h3>
+
+<p>
+Understand how courts operate, how legal disputes are decided, and the principles that guide judicial proceedings.
+</p>
+
+<span class="topic-count">
+8 Topics
+</span>
+
+<br>
+
+<a class="button" href="courts-legal-process.html">
+Explore Section
+</a>
+
+</div>
+
+
+<!-- CRIMINAL LAW -->
+
+<div class="concept-card">
+
+<div class="concept-number">
+SECTION 03
+</div>
+
+<h3>⚔️ Criminal Law</h3>
+
+<p>
+Explore the principles governing criminal offences, responsibility, defences, and the criminal justice process.
+</p>
+
+<span class="topic-count">
+8 Topics
+</span>
+
+<br>
+
+<a class="button" href="criminal-law.html">
+Explore Section
+</a>
+
+</div>
+
+
+<!-- HUMAN RIGHTS -->
+
+<div class="concept-card">
+
+<div class="concept-number">
+SECTION 04
+</div>
+
+<h3>🕊️ Human Rights</h3>
+
+<p>
+Study fundamental rights, state obligations, equality, proportionality, and the protection of human dignity.
+</p>
+
+<span class="topic-count">
+5 Topics
+</span>
+
+<br>
+
+<a class="button" href="human-rights.html">
+Explore Section
+</a>
+
+</div>
+
+
+<!-- CONTRACT & TORT LAW -->
+
+<div class="concept-card">
+
+<div class="concept-number">
+SECTION 05
+</div>
+
+<h3>📜 Contract & Tort Law</h3>
+
+<p>
+Learn the foundations of agreements, contractual obligations, negligence, duties of care, and legal remedies.
+</p>
+
+<span class="topic-count">
+7 Topics
+</span>
+
+<br>
+
+<a class="button" href="contract-tort-law.html">
+Explore Section
+</a>
+
+</div>
+
+
+<!-- INTERNATIONAL LAW -->
+
+<div class="concept-card">
+
+<div class="concept-number">
+SECTION 06
+</div>
+
+<h3>🌍 International Law</h3>
+
+<p>
+Explore the legal principles governing relationships between states, international obligations, courts, treaties, and refugee protection.
+</p>
+
+<span class="topic-count">
+6 Topics
+</span>
+
+<br>
+
+<a class="button" href="international-law.html">
+Explore Section
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+</body>
+</html>
