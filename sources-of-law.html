@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining the main sources of law, primary and secondary sources, and their importance.">
+
+<title>Sources of Law | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding:25px 20px 50px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources h3{
+margin-top:0;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Sources of Law</h1>
+
+<p>
+Foundations of Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+SOURCES OF LAW?
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>Sources of Law</h2>
+
+<div class="definition">
+
+Sources of law are the places, authorities, and legal materials from which legal rules come.
+
+</div>
+
+<p>
+They explain where laws originate and how courts and other legal institutions determine the rules that apply to a particular situation.
+</p>
+
+<p>
+Different legal systems recognise different sources of law. The main sources can include constitutions, legislation, judicial decisions, customary law, treaties, and legal principles.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · CONSTITUTIONS & LEGISLATION
+</div>
+
+<h2>Main Sources of Law</h2>
+
+<h3>1. Constitutions</h3>
+
+<p>
+A constitution establishes the fundamental principles and structures of a State. It usually explains how government is organised, defines the powers of public institutions, and may protect fundamental rights and freedoms.
+</p>
+
+<p>
+In countries with written constitutions, ordinary laws generally must comply with constitutional requirements.
+</p>
+
+<h3>2. Legislation</h3>
+
+<p>
+Legislation consists of laws formally created by a legislative body, such as a parliament.
+</p>
+
+<p>
+Legislation is one of the most important sources of law in many legal systems. It can create new legal rules, change existing rules, or remove rules that are no longer considered appropriate.
+</p>
+
+<p>
+For example, a parliament may pass legislation regulating employment, education, taxation, or criminal offences.
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · JUDICIAL DECISIONS & CUSTOM
+</div>
+
+<h2>Main Sources of Law</h2>
+
+<h3>3. Judicial Decisions and Precedent</h3>
+
+<p>
+Courts interpret and apply the law when deciding cases. In legal systems that recognise the doctrine of precedent, decisions of higher courts can establish legal principles that lower courts must or may follow in later cases.
+</p>
+
+<p>
+Judicial decisions can therefore play an important role in developing and clarifying the law.
+</p>
+
+<h3>4. Customary Law</h3>
+
+<p>
+Customary law develops from practices that have been followed over a long period and are recognised as legally binding within a particular legal system.
+</p>
+
+<p>
+Customary rules may be especially important in legal systems where traditional practices form part of the recognised law.
+</p>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · TREATIES & LEGAL PRINCIPLES
+</div>
+
+<h2>Main Sources of Law</h2>
+
+<h3>5. Treaties and International Law</h3>
+
+<p>
+Treaties are formal agreements between States or other recognised international actors.
+</p>
+
+<p>
+When a State becomes a party to a treaty, it may acquire international legal obligations. Treaties can regulate subjects such as human rights, international trade, refugees, and relations between States.
+</p>
+
+<p>
+International law can therefore influence domestic legal systems, although the effect of treaties within national law depends on the country's constitutional and legal arrangements.
+</p>
+
+<h3>6. Legal Principles</h3>
+
+<p>
+Courts may also rely on broader principles of law when interpreting legislation or resolving legal questions.
+</p>
+
+<p>
+Examples include principles such as fairness, equality, proportionality, legal certainty, and natural justice.
+</p>
+
+<p>
+The role of these principles varies between legal systems.
+</p>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · PRIMARY & SECONDARY SOURCES
+</div>
+
+<h2>Primary and Secondary Sources</h2>
+
+<p>
+Legal materials can also be described as primary or secondary sources.
+</p>
+
+<h3>Primary Sources</h3>
+
+<p>
+Primary sources are authoritative legal materials that establish or contain law.
+</p>
+
+<ul>
+
+<li>Constitutions</li>
+
+<li>Acts of Parliament</li>
+
+<li>Regulations</li>
+
+<li>Treaties</li>
+
+<li>Judicial decisions</li>
+
+</ul>
+
+<h3>Secondary Sources</h3>
+
+<p>
+Secondary sources explain, analyse, or comment on the law rather than creating binding legal rules themselves.
+</p>
+
+<ul>
+
+<li>Textbooks</li>
+
+<li>Legal commentaries</li>
+
+<li>Academic articles</li>
+
+<li>Legal encyclopaedias</li>
+
+<li>Research papers</li>
+
+</ul>
+
+<p>
+Secondary sources can help students, lawyers, and judges understand legal principles, but their authority is generally different from that of primary legal sources.
+</p>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · EXAMPLE
+</div>
+
+<h2>Sources of Law in Practice</h2>
+
+<p>
+Imagine a dispute concerning freedom of expression.
+</p>
+
+<div class="definition">
+
+A court might examine the relevant constitutional provisions or human rights legislation first.
+
+</div>
+
+<p>
+It may then consider previous judicial decisions interpreting those provisions.
+</p>
+
+<p>
+The court could also consider an international human rights treaty where it is legally relevant within that legal system.
+</p>
+
+<p>
+This demonstrates how several sources of law can work together when resolving a legal issue.
+</p>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · IMPORTANCE & LEGAL SYSTEMS
+</div>
+
+<h2>Why Sources of Law Matter</h2>
+
+<p>
+Understanding the sources of law is essential because it helps determine:
+</p>
+
+<ul>
+
+<li>Where a legal rule comes from.</li>
+
+<li>Which legal authority has the power to create or change it.</li>
+
+<li>Whether a rule is legally binding.</li>
+
+<li>How courts should interpret and apply it.</li>
+
+<li>Whether one legal rule has priority over another.</li>
+
+</ul>
+
+<p>
+Without understanding sources of law, it would be difficult to determine which rules a court should apply in a particular case.
+</p>
+
+<h3>Sources of Law in Different Legal Systems</h3>
+
+<p>
+The importance of different sources varies depending on the legal tradition of a country.
+</p>
+
+<p>
+In common-law systems, judicial precedent can have a particularly significant role. In civil-law systems, legislation and comprehensive legal codes are generally more central.
+</p>
+
+<p>
+Many modern legal systems also combine different sources, including legislation, judicial decisions, constitutional rules, and international obligations.
+</p>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · RELATED CONCEPTS & KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+Sources of law are the recognised origins of legal rules. They can include constitutions, legislation, judicial decisions, customs, treaties, and legal principles.
+
+</div>
+
+<p>
+Understanding where law comes from makes it easier to understand how legal rules are created, interpreted, and enforced.
+</p>
+
+<h3>Related Legal Concepts</h3>
+
+<ul>
+
+<li>Rule of Law</li>
+
+<li>Precedent</li>
+
+<li>Judicial Review</li>
+
+<li>Jurisdiction</li>
+
+<li>Separation of Powers</li>
+
+<li>Statutory Interpretation</li>
+
+<li>International Law</li>
+
+</ul>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Council of Europe, European Convention on Human Rights.</li>
+
+<li>United Nations, Charter of the United Nations.</li>
+
+<li>Encyclopaedia Britannica, "Law."</li>
+
+<li>Cambridge Dictionary of Law and legal reference materials.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Sources of Law</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+
+/* NEXT */
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+
+/* PREVIOUS */
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+/*
+Ignore small movements.
+*/
+
+if(Math.abs(differenceX) < 70){
+
+return;
+
+}
+
+/*
+If vertical movement is greater,
+allow normal page scrolling.
+*/
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+
+return;
+
+}
+
+/*
+Horizontal swipe:
+
+Left = next
+Right = previous
+*/
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"Which of the following is a source of law?",
+options:[
+"Personal opinion",
+"Constitution",
+"Rumour",
+"Private preference"
+],
+answer:1
+},
+
+{
+question:"What is legislation?",
+options:[
+"Laws formally created by a legislative body",
+"Opinions written by students",
+"Traditional practices only",
+"Private agreements between individuals"
+],
+answer:0
+},
+
+{
+question:"What is precedent?",
+options:[
+"A type of contract",
+"A previous judicial decision that may guide or bind later cases",
+"A constitutional amendment",
+"A form of customary behaviour"
+],
+answer:1
+},
+
+{
+question:"What is the difference between primary and secondary sources?",
+options:[
+"Primary sources contain or establish law, while secondary sources explain or analyse it",
+"Primary sources are always international and secondary sources are always domestic",
+"Secondary sources are more authoritative than constitutions",
+"There is no difference"
+],
+answer:0
+},
+
+{
+question:"Why is it important to understand sources of law?",
+options:[
+"To determine where legal rules come from and how they should be applied",
+"To avoid reading legislation",
+"To eliminate courts",
+"To ensure that every country has identical laws"
+],
+answer:0
+}
+
+];
+
+let currentQuestion = 0;
+
+
+/* START QUIZ */
+
+function startQuiz(){
+
+/*
+Once the quiz begins,
+the note section and note
+navigation are permanently hidden.
+*/
+
+document.getElementById("notesSection").style.display = "none";
+
+document.getElementById("noteNavigation").style.display = "none";
+
+document.getElementById("quizStart").style.display = "none";
+
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+
+document.getElementById("quizSection").classList.add("active");
+
+
+loadQuestion();
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+
+document.getElementById("feedback").textContent = "";
+
+
+document.getElementById("quizNext").style.display =
+"none";
+
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+
+/* QUIZ RESULT */
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Sources of Law</strong> quiz.
+</p>
+
+<p>
+You can now return to the Foundations of Law section and explore another legal concept.
+</p>
+
+<a href="foundations-of-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Foundations of Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
