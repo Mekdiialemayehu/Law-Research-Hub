@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining the Rule of Law, its principles, importance, and relationship with government and human rights.">
+
+<title>Rule of Law | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding:25px 20px 50px;
+display:none;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources h3{
+margin-top:0;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Rule of Law</h1>
+
+<p>
+Foundations of Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+RULE OF LAW
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is the Rule of Law?</h2>
+
+<div class="definition">
+
+The Rule of Law is the principle that everyone, including individuals, organisations, and governments, is subject to the law.
+
+</div>
+
+<p>
+Government power must be exercised according to established legal rules rather than personal decisions or arbitrary authority.
+</p>
+
+<p>
+The Rule of Law is a fundamental principle of democratic societies because it helps prevent the misuse of power and provides individuals with legal protection.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · MAIN PRINCIPLES
+</div>
+
+<h2>Main Principles of the Rule of Law</h2>
+
+<h3>1. Supremacy of the Law</h3>
+
+<p>
+The law is the highest authority within the legal system. Individuals and public officials must act according to the law.
+</p>
+
+<p>
+Government officials cannot simply ignore legal rules because they have political or institutional power.
+</p>
+
+<h3>2. Equality Before the Law</h3>
+
+<p>
+The Rule of Law requires people to be treated equally under the law.
+</p>
+
+<p>
+A person's position, wealth, occupation, or status should not place them above ordinary legal rules.
+</p>
+
+<h3>3. Legal Certainty</h3>
+
+<p>
+People should be able to understand what the law requires and reasonably predict the legal consequences of their actions.
+</p>
+
+<p>
+Laws should therefore be sufficiently clear and accessible.
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · RIGHTS, JUSTICE & COURTS
+</div>
+
+<h2>Main Principles of the Rule of Law</h2>
+
+<h3>4. Protection of Rights</h3>
+
+<p>
+The Rule of Law supports the protection of fundamental rights and freedoms.
+</p>
+
+<p>
+Courts can play an important role in protecting individuals when government actions interfere with legally protected rights.
+</p>
+
+<h3>5. Access to Justice</h3>
+
+<p>
+Individuals should have meaningful access to courts and other legal mechanisms for resolving disputes and challenging unlawful decisions.
+</p>
+
+<p>
+Justice should not exist only in theory; people must have a practical way to enforce their legal rights.
+</p>
+
+<h3>6. Independent Judiciary</h3>
+
+<p>
+Courts must be able to make decisions independently and fairly.
+</p>
+
+<p>
+Judges should be protected from improper political or personal interference so that legal disputes can be decided according to law.
+</p>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · GOVERNMENT
+</div>
+
+<h2>Rule of Law and Government</h2>
+
+<p>
+The Rule of Law places limits on government power.
+</p>
+
+<p>
+Government institutions may have significant authority, but they must exercise that authority within legal boundaries.
+</p>
+
+<div class="definition">
+
+A government cannot lawfully punish a person simply because an official dislikes them. There must be a legal basis for the action and appropriate legal procedures must be followed.
+
+</div>
+
+<p>
+This principle is particularly important when governments exercise powers such as arrest, detention, taxation, or regulation.
+</p>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · EXAMPLE
+</div>
+
+<h2>Rule of Law in Practice</h2>
+
+<p>
+Imagine that a government authority orders the detention of a person.
+</p>
+
+<p>
+Under the Rule of Law, the authority should have a lawful basis for the detention.
+</p>
+
+<p>
+The person should also have access to appropriate legal procedures for challenging the detention.
+</p>
+
+<div class="definition">
+
+The government cannot rely solely on its power to justify the decision.
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · RULE OF LAW VS. RULE BY LAW
+</div>
+
+<h2>Rule of Law vs. Rule by Law</h2>
+
+<p>
+These concepts are related but different.
+</p>
+
+<h3>Rule of Law</h3>
+
+<p>
+Rule of Law means that government power itself is limited and controlled by legal principles.
+</p>
+
+<h3>Rule by Law</h3>
+
+<p>
+Rule by Law can describe a situation where those in power use laws as tools of government without necessarily respecting principles such as equality, rights, judicial independence, or fairness.
+</p>
+
+<div class="definition">
+
+A government can therefore have many laws while still failing to respect the deeper principles of the Rule of Law.
+
+</div>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · IMPORTANCE & HUMAN RIGHTS
+</div>
+
+<h2>Why the Rule of Law Matters</h2>
+
+<p>
+The Rule of Law is important because it:
+</p>
+
+<ul>
+
+<li>Limits arbitrary government power.</li>
+
+<li>Protects individual rights.</li>
+
+<li>Promotes equality before the law.</li>
+
+<li>Supports independent courts.</li>
+
+<li>Provides predictable legal rules.</li>
+
+<li>Creates mechanisms for challenging unlawful government actions.</li>
+
+<li>Strengthens public trust in legal institutions.</li>
+
+</ul>
+
+<p>
+Without the Rule of Law, people may have little protection against arbitrary decisions by those with political or institutional power.
+</p>
+
+<h3>Rule of Law and Human Rights</h3>
+
+<p>
+The Rule of Law is closely connected to human rights.
+</p>
+
+<p>
+Human rights protections often require States to act according to law, provide effective legal remedies, and respect principles such as equality, fairness, and legal certainty.
+</p>
+
+<p>
+For example, the European Convention on Human Rights protects rights through an international legal framework and provides individuals with access to the European Court of Human Rights after relevant domestic requirements have been met.
+</p>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · RELATED CONCEPTS & KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+The Rule of Law means that law governs the exercise of power and that everyone, including governments, is subject to the law.
+
+</div>
+
+<p>
+It protects people from arbitrary government action and supports equality, justice, legal certainty, and the protection of fundamental rights.
+</p>
+
+<h3>Related Legal Concepts</h3>
+
+<ul>
+
+<li>Separation of Powers</li>
+
+<li>Judicial Independence</li>
+
+<li>Access to Justice</li>
+
+<li>Due Process</li>
+
+<li>Judicial Review</li>
+
+<li>Equality Before the Law</li>
+
+<li>Human Rights</li>
+
+</ul>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>United Nations, What is the Rule of Law?</li>
+
+<li>Council of Europe, The Rule of Law.</li>
+
+<li>European Commission for Democracy through Law (Venice Commission), Report on the Rule of Law.</li>
+
+<li>Encyclopaedia Britannica, "Rule of Law."</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Rule of Law</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+/* Ignore small movements */
+
+if(Math.abs(differenceX) < 70){
+
+return;
+
+}
+
+/* Vertical movement = normal scrolling */
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+
+return;
+
+}
+
+/* Horizontal movement = change card */
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What does the Rule of Law mean?",
+options:[
+"Only citizens must obey the law",
+"Government officials are above the law",
+"Everyone, including governments, is subject to the law",
+"Courts can ignore legal rules"
+],
+answer:2
+},
+
+{
+question:"Which principle requires laws to be sufficiently clear and accessible?",
+options:[
+"Legal certainty",
+"Political immunity",
+"Executive privilege",
+"Absolute sovereignty"
+],
+answer:0
+},
+
+{
+question:"Why is an independent judiciary important to the Rule of Law?",
+options:[
+"Judges should follow political instructions",
+"Courts should decide cases fairly and independently",
+"Courts should create unlimited government power",
+"Judges should avoid applying legal rules"
+],
+answer:1
+},
+
+{
+question:"What is a key difference between Rule of Law and Rule by Law?",
+options:[
+"They always mean exactly the same thing",
+"Rule of Law limits government power, while Rule by Law can describe laws being used as instruments of government",
+"Rule by Law always protects every human right",
+"Rule of Law means government does not need laws"
+],
+answer:1
+},
+
+{
+question:"Why is the Rule of Law important?",
+options:[
+"It removes the need for courts",
+"It allows arbitrary government decisions",
+"It limits arbitrary power and supports rights, equality, and legal certainty",
+"It prevents laws from ever changing"
+],
+answer:2
+}
+
+];
+
+let currentQuestion = 0;
+
+
+/* START QUIZ */
+
+function startQuiz(){
+
+/*
+Once the quiz begins,
+the notes and note navigation
+are permanently hidden.
+*/
+
+document.getElementById("notesSection").style.display = "none";
+
+document.getElementById("noteNavigation").style.display = "none";
+
+document.getElementById("quizStart").style.display = "none";
+
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+
+document.getElementById("quizSection").classList.add("active");
+
+
+loadQuestion();
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display =
+"none";
+
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+
+/* QUIZ RESULT */
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Rule of Law</strong> quiz.
+</p>
+
+<p>
+You can now return to the Foundations of Law section and explore another legal concept.
+</p>
+
+<a href="foundations-of-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Foundations of Law
+</a>
+
+`;
+
+}
+
+
+/* INITIALIZE */
+
+showCard(0);
+
+</script>
+
+</body>
+</html>
