@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining judicial review, its purpose, grounds, remedies, limitations, and relationship with the Rule of Law and separation of powers.">
+
+<title>Judicial Review | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* QUOTE / DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* COMPARISON */
+
+.comparison{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin:20px 0;
+}
+
+.comparison-box{
+background:#f5f7fa;
+padding:20px;
+border-radius:10px;
+}
+
+.comparison-box h3{
+margin-top:0;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+.comparison{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Judicial Review</h1>
+
+<p>
+Courts & Legal Process · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+JUDICIAL REVIEW
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is Judicial Review?</h2>
+
+<div class="definition">
+
+Judicial review is the process by which courts examine whether a decision, action, or law is lawful.
+
+</div>
+
+<p>
+It is particularly important when courts review the actions of government bodies and public authorities.
+</p>
+
+<p>
+Judicial review helps ensure that public authorities act within the powers given to them by law and follow the legal procedures that apply to them.
+</p>
+
+<p>
+The exact meaning and scope of judicial review vary between legal systems.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · PURPOSE
+</div>
+
+<h2>Purpose of Judicial Review</h2>
+
+<p>
+The main purpose of judicial review is to ensure that public power is exercised lawfully, fairly, and within legal limits.
+</p>
+
+<h3>Courts may review whether a public authority:</h3>
+
+<ul>
+
+<li>Had the legal power to make a decision.</li>
+
+<li>Followed the correct legal procedure.</li>
+
+<li>Took relevant factors into account.</li>
+
+<li>Acted fairly.</li>
+
+<li>Exercised its powers for a proper purpose.</li>
+
+<li>Respected applicable legal rights.</li>
+
+</ul>
+
+<div class="definition">
+
+Judicial review is therefore an important part of the Rule of Law because it helps prevent public authorities from exercising power arbitrarily or unlawfully.
+
+</div>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · PUBLIC AUTHORITIES
+</div>
+
+<h2>Who Can Be Subject to Judicial Review?</h2>
+
+<p>
+Judicial review commonly concerns decisions made by public authorities, such as:
+</p>
+
+<ul>
+
+<li>Government ministries.</li>
+
+<li>Local government authorities.</li>
+
+<li>Regulatory agencies.</li>
+
+<li>Public officials.</li>
+
+<li>Administrative tribunals.</li>
+
+<li>Other bodies exercising public functions.</li>
+
+</ul>
+
+<p>
+Whether a particular organisation can be reviewed depends on the legal system and the nature of the power it is exercising.
+</p>
+
+<div class="definition">
+
+The central question is generally whether the body is exercising a public power that is legally subject to judicial supervision.
+
+</div>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · GROUNDS
+</div>
+
+<h2>Grounds of Judicial Review</h2>
+
+<h3>1. Illegality</h3>
+
+<p>
+A public authority must act within the powers given to it by law.
+</p>
+
+<p>
+If an authority goes beyond its legal powers, its decision may be unlawful.
+</p>
+
+<p>
+This is sometimes described using the Latin term <em>ultra vires</em>, meaning "beyond the powers."
+</p>
+
+<h3>2. Procedural Unfairness</h3>
+
+<p>
+Public authorities are generally required to follow legally required procedures and, in appropriate circumstances, act fairly.
+</p>
+
+<p>
+A decision may be challenged if the authority failed to follow an important procedural requirement.
+</p>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · REASONABLENESS & PROPORTIONALITY
+</div>
+
+<h2>Unreasonableness and Proportionality</h2>
+
+<h3>Unreasonableness</h3>
+
+<p>
+In some legal systems, courts may review a decision that is so unreasonable that it falls outside the range of decisions that a lawful public authority could properly make.
+</p>
+
+<p>
+The precise standard used by courts differs between jurisdictions.
+</p>
+
+<h3>Proportionality</h3>
+
+<p>
+In some legal systems, particularly in cases involving fundamental rights, courts may consider whether a government measure was proportionate to the legitimate objective it was intended to achieve.
+</p>
+
+<p>
+Proportionality can involve examining whether:
+</p>
+
+<ul>
+
+<li>The measure pursued a legitimate purpose.</li>
+
+<li>The measure was suitable for achieving that purpose.</li>
+
+<li>A less restrictive measure could have been used.</li>
+
+<li>The effect on individual rights was justified in the circumstances.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · LEGALITY VS. MERITS
+</div>
+
+<h2>Judicial Review and the Merits of a Decision</h2>
+
+<p>
+Judicial review is generally concerned with the legality of a decision, rather than simply whether the decision was the best or most sensible one.
+</p>
+
+<p>
+Imagine that a government department has the legal authority to choose between several possible policies.
+</p>
+
+<p>
+A court conducting judicial review may examine whether the department acted lawfully when making its choice.
+</p>
+
+<div class="definition">
+
+The court will not necessarily replace the department's policy judgment with its own simply because the judges might have preferred a different policy.
+
+</div>
+
+<p>
+This helps maintain a distinction between the roles of courts and public authorities.
+</p>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · EXAMPLE
+</div>
+
+<h2>Judicial Review in Practice</h2>
+
+<p>
+Imagine that a local government authority refuses to grant a permit.
+</p>
+
+<p>
+The person believes the authority made the decision without having the legal power to do so and failed to follow the required procedure.
+</p>
+
+<p>
+The person may seek judicial review.
+</p>
+
+<h3>The court could examine:</h3>
+
+<ul>
+
+<li>Whether the authority had legal authority to make the decision.</li>
+
+<li>Whether the correct procedure was followed.</li>
+
+<li>Whether the authority acted within the limits of its powers.</li>
+
+</ul>
+
+<div class="definition">
+
+If the court finds that the decision was unlawful, it may provide an appropriate legal remedy.
+
+</div>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · REMEDIES
+</div>
+
+<h2>Remedies in Judicial Review</h2>
+
+<p>
+The remedies available in judicial review depend on the legal system.
+</p>
+
+<h3>Possible remedies can include:</h3>
+
+<ul>
+
+<li><strong>Quashing an unlawful decision</strong> — removing the legal effect of the decision.</li>
+
+<li><strong>Ordering a public authority to perform a legal duty.</strong></li>
+
+<li><strong>Prohibiting a public authority from acting unlawfully.</strong></li>
+
+<li><strong>Making a declaration</strong> about the legal rights or position of the parties.</li>
+
+</ul>
+
+<p>
+In some circumstances, other forms of relief may also be available.
+</p>
+
+<div class="definition">
+
+The purpose of a remedy is generally to address the legal problem identified by the court.
+
+</div>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · CONSTITUTION & HUMAN RIGHTS
+</div>
+
+<h2>Judicial Review, Constitutional Law & Human Rights</h2>
+
+<h3>Constitutional Law</h3>
+
+<p>
+Judicial review can be closely connected to constitutional law.
+</p>
+
+<p>
+In some countries, courts have authority to review legislation to determine whether it is compatible with the constitution.
+</p>
+
+<p>
+However, not every legal system gives courts the same power to review legislation.
+</p>
+
+<h3>Human Rights</h3>
+
+<p>
+Judicial review can also play an important role in protecting human rights.
+</p>
+
+<p>
+Courts may be able to examine whether a public authority acted consistently with applicable human rights protections.
+</p>
+
+<ul>
+
+<li>Freedom of expression.</li>
+
+<li>Freedom from discrimination.</li>
+
+<li>The right to privacy.</li>
+
+<li>Freedom from arbitrary detention.</li>
+
+<li>The right to a fair hearing.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · SEPARATION OF POWERS
+</div>
+
+<h2>Judicial Review and Separation of Powers</h2>
+
+<p>
+Judicial review is closely connected to the principle of separation of powers.
+</p>
+
+<div class="comparison">
+
+<div class="comparison-box">
+
+<h3>Legislature</h3>
+
+<p>
+Creates and changes laws.
+</p>
+
+</div>
+
+<div class="comparison-box">
+
+<h3>Executive</h3>
+
+<p>
+Implements and administers laws.
+</p>
+
+</div>
+
+<div class="comparison-box">
+
+<h3>Judiciary</h3>
+
+<p>
+Interprets and applies the law and may review certain exercises of public power.
+</p>
+
+</div>
+
+</div>
+
+<p>
+Judicial review allows courts to ensure that public authorities remain within the legal limits imposed on them.
+</p>
+
+<p>
+At the same time, courts must respect the responsibilities assigned to other branches of government.
+</p>
+
+<div class="definition">
+
+Judicial review therefore involves a balance between controlling unlawful government action and respecting the proper role of public institutions.
+
+</div>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · APPEAL & LIMITATIONS
+</div>
+
+<h2>Judicial Review vs. Appeal</h2>
+
+<div class="comparison">
+
+<div class="comparison-box">
+
+<h3>Appeal</h3>
+
+<p>
+Usually involves asking a higher court to reconsider a decision made by a lower court.
+</p>
+
+<p>
+<strong>Question:</strong> "Did the lower court make the correct legal decision?"
+</p>
+
+</div>
+
+<div class="comparison-box">
+
+<h3>Judicial Review</h3>
+
+<p>
+Commonly involves examining whether a public authority or other body acted lawfully.
+</p>
+
+<p>
+<strong>Question:</strong> "Did the public authority act within its legal powers and follow the law?"
+</p>
+
+</div>
+
+</div>
+
+<h3>Limitations</h3>
+
+<ul>
+
+<li>Which bodies can be reviewed.</li>
+
+<li>Which decisions can be challenged.</li>
+
+<li>The time allowed to bring a claim.</li>
+
+<li>The legal grounds on which a challenge can be made.</li>
+
+<li>The remedies a court can provide.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · KEY TAKEAWAY
+</div>
+
+<h2>Why Judicial Review Matters</h2>
+
+<p>
+Judicial review helps:
+</p>
+
+<ul>
+
+<li>Protect the Rule of Law.</li>
+
+<li>Prevent abuse of public power.</li>
+
+<li>Ensure that public authorities remain within their legal powers.</li>
+
+<li>Protect individuals from unlawful government decisions.</li>
+
+<li>Promote lawful and fair administration.</li>
+
+<li>Provide a mechanism for challenging certain government actions.</li>
+
+</ul>
+
+<div class="definition">
+
+Judicial Review = Judicial examination of the legality of public power.
+
+</div>
+
+<p>
+Judicial review is an important safeguard against unlawful government action. It helps ensure that public authorities exercise their powers within the limits established by law while respecting the rights of individuals.
+</p>
+
+<h3>Related Legal Concepts</h3>
+
+<ul>
+
+<li>Rule of Law</li>
+
+<li>Separation of Powers</li>
+
+<li>Constitutional Law</li>
+
+<li>Administrative Law</li>
+
+<li>Human Rights Law</li>
+
+<li>Jurisdiction</li>
+
+<li>Appeals</li>
+
+<li><em>Ultra Vires</em></li>
+
+<li>Access to Justice</li>
+
+<li>Judicial Independence</li>
+
+</ul>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Encyclopaedia Britannica, materials on judicial review.</li>
+
+<li>Cornell Law School Legal Information Institute, materials on judicial review.</li>
+
+<li>Council of Europe, materials on the rule of law, judicial independence, and administrative justice.</li>
+
+<li>United Nations, Universal Declaration of Human Rights, 1948.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Judicial Review</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+/* Swipe left = next card
+   Swipe right = previous card */
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is the main purpose of judicial review?",
+options:[
+"To replace every government decision with a court's preferred decision",
+"To ensure public power is exercised lawfully and within legal limits",
+"To create all government policies",
+"To decide every criminal case"
+],
+answer:1
+},
+
+{
+question:"Which of the following may be a ground for judicial review?",
+options:[
+"Illegality",
+"The judge's personal disagreement with a policy",
+"A person's dislike of a government official",
+"The age of the public authority"
+],
+answer:0
+},
+
+{
+question:"What does ultra vires mean?",
+options:[
+"According to the constitution",
+"Beyond the powers",
+"Within the law",
+"Without evidence"
+],
+answer:1
+},
+
+{
+question:"How is judicial review generally different from an appeal?",
+options:[
+"An appeal usually asks a higher court to reconsider a lower court's decision, while judicial review commonly examines the legality of public action",
+"Judicial review only applies to private contracts",
+"An appeal never involves a court",
+"There is no difference between them"
+],
+answer:0
+},
+
+{
+question:"Why is judicial review connected to the Rule of Law?",
+options:[
+"Because it allows courts to ensure public authorities act within the limits imposed by law",
+"Because it gives courts unlimited political power",
+"Because it eliminates government institutions",
+"Because it prevents people from challenging government decisions"
+],
+answer:0
+}
+
+];
+
+let currentQuestion = 0;
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Judicial Review</strong> quiz.
+</p>
+
+<p>
+You can now return to the Courts & Legal Process section and explore another legal concept.
+</p>
+
+<a href="courts-and-legal-process.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Courts & Legal Process
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
