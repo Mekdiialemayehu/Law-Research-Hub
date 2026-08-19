@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining jurisdiction, its types, importance, and relationship with courts and legal process.">
+
+<title>Jurisdiction | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* QUOTE / DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Jurisdiction</h1>
+
+<p>
+Courts & Legal Process · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+JURISDICTION
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is Jurisdiction?</h2>
+
+<div class="definition">
+
+Jurisdiction refers to the legal authority of a court or other legal institution to hear and decide a particular case.
+
+</div>
+
+<p>
+A court does not automatically have the power to decide every legal dispute. Its jurisdiction depends on factors such as the type of case, the location of the parties or events, and the legal authority given to that court.
+</p>
+
+<p>
+The concept of jurisdiction helps determine which court has the legal power to hear a case and make a binding decision.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · TYPES OF JURISDICTION
+</div>
+
+<h2>Types of Jurisdiction</h2>
+
+<p>
+Jurisdiction can be divided into several important categories.
+</p>
+
+<ul>
+
+<li>Subject-Matter Jurisdiction</li>
+
+<li>Personal Jurisdiction</li>
+
+<li>Territorial Jurisdiction</li>
+
+<li>Original Jurisdiction</li>
+
+<li>Appellate Jurisdiction</li>
+
+<li>Exclusive Jurisdiction</li>
+
+<li>Concurrent Jurisdiction</li>
+
+</ul>
+
+<h3>Subject-Matter Jurisdiction</h3>
+
+<p>
+Subject-matter jurisdiction refers to a court's authority to hear a particular type of legal dispute.
+</p>
+
+<p>
+Different courts may have authority over different areas of law, such as criminal cases, civil disputes, family matters, constitutional questions, or administrative disputes.
+</p>
+
+<h3>Personal Jurisdiction</h3>
+
+<p>
+Personal jurisdiction refers to a court's legal authority over the parties involved in a case.
+</p>
+
+<p>
+A court may have personal jurisdiction over a defendant because the defendant lives, works, conducts business, or has another legally recognised connection within that jurisdiction.
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · TERRITORIAL AND COURT JURISDICTION
+</div>
+
+<h2>Where and Which Court?</h2>
+
+<h3>Territorial Jurisdiction</h3>
+
+<p>
+Territorial jurisdiction concerns the geographical area within which a court has authority.
+</p>
+
+<p>
+A court may have jurisdiction over cases arising within a particular city, district, state or region, or country.
+</p>
+
+<p>
+The rules governing territorial jurisdiction vary between legal systems.
+</p>
+
+<h3>Original Jurisdiction</h3>
+
+<p>
+Original jurisdiction refers to the authority of a court to hear a case at its initial stage.
+</p>
+
+<p>
+A court exercising original jurisdiction is the court where the case begins rather than a court reviewing a decision made by another court.
+</p>
+
+<h3>Appellate Jurisdiction</h3>
+
+<p>
+Appellate jurisdiction is the authority of a higher court to review a decision made by a lower court.
+</p>
+
+<p>
+An appellate court generally examines whether legal or procedural errors may have occurred rather than conducting the case in exactly the same way as the original trial court.
+</p>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · EXCLUSIVE AND CONCURRENT JURISDICTION
+</div>
+
+<h2>Exclusive vs. Concurrent Jurisdiction</h2>
+
+<h3>Exclusive Jurisdiction</h3>
+
+<p>
+Exclusive jurisdiction exists when a particular court or legal system has the sole authority to decide a certain type of case.
+</p>
+
+<p>
+Other courts may therefore be prevented from hearing the same matter.
+</p>
+
+<h3>Concurrent Jurisdiction</h3>
+
+<p>
+Concurrent jurisdiction exists when more than one court or legal system has legal authority to hear the same type of dispute.
+</p>
+
+<p>
+In such circumstances, the rules of the relevant legal system may determine which court is appropriate.
+</p>
+
+<div class="definition">
+
+Exclusive jurisdiction means one court or legal system has the authority. Concurrent jurisdiction means more than one court or legal system may have authority.
+
+</div>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · EXAMPLE
+</div>
+
+<h2>Jurisdiction in Practice</h2>
+
+<p>
+Imagine that a person living in Ethiopia enters into a contract with a company based in another country.
+</p>
+
+<p>
+The company later fails to perform the contract, and the person wants to bring a legal claim.
+</p>
+
+<p>
+Several jurisdictional questions may arise:
+</p>
+
+<ul>
+
+<li>Which country's courts have authority over the dispute?</li>
+
+<li>Which court has jurisdiction over contract claims?</li>
+
+<li>Does the defendant have a sufficient connection with that country?</li>
+
+<li>Where did the contract arise or where was it performed?</li>
+
+<li>Does the contract contain a clause selecting a particular court or country?</li>
+
+</ul>
+
+<p>
+These questions may need to be considered before determining where the case should be brought.
+</p>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · CRIMINAL AND INTERNATIONAL JURISDICTION
+</div>
+
+<h2>Jurisdiction Beyond One Court</h2>
+
+<h3>Jurisdiction in Criminal Cases</h3>
+
+<p>
+Jurisdiction is also important in criminal law.
+</p>
+
+<p>
+A country will generally exercise criminal jurisdiction over offences committed within its territory.
+</p>
+
+<p>
+However, legal systems can recognise other forms of jurisdiction in certain circumstances. A country's laws may provide jurisdiction over certain conduct committed outside its territory where particular legal conditions are satisfied.
+</p>
+
+<h3>Jurisdiction and International Law</h3>
+
+<p>
+Jurisdiction can become especially complicated when a case involves more than one country.
+</p>
+
+<p>
+For example, a dispute may involve a person in one country, a company based in another country, and a contract performed in a third country.
+</p>
+
+<p>
+Courts may then need to consider territorial jurisdiction, personal jurisdiction, and the interaction between different legal systems.
+</p>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · HUMAN RIGHTS AND JUDICIAL REVIEW
+</div>
+
+<h2>Jurisdiction and Legal Protection</h2>
+
+<h3>Jurisdiction and Human Rights</h3>
+
+<p>
+Jurisdiction can be connected to human rights because individuals may need access to a competent and independent court in order to have their legal rights properly determined.
+</p>
+
+<p>
+The right to a fair hearing requires legal systems to provide appropriate courts or tribunals capable of deciding disputes according to law.
+</p>
+
+<h3>Jurisdiction and Judicial Review</h3>
+
+<p>
+Jurisdiction is closely connected to judicial review.
+</p>
+
+<p>
+Courts may review whether a public authority has acted within the legal powers given to it.
+</p>
+
+<p>
+If a public body acts outside the authority granted to it by law, this may be described as acting <em>ultra vires</em>, meaning "beyond the powers."
+</p>
+
+<div class="definition">
+
+Jurisdiction helps establish the legal authority to decide a matter, while judicial review can examine whether public authorities have acted within the powers given to them by law.
+
+</div>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · IMPORTANCE AND KEY TAKEAWAY
+</div>
+
+<h2>Why Jurisdiction Matters</h2>
+
+<p>
+Jurisdiction helps determine:
+</p>
+
+<ul>
+
+<li>Which court can hear a case.</li>
+
+<li>Which legal system applies.</li>
+
+<li>Whether a court has authority over the parties.</li>
+
+<li>Whether a decision will be legally binding.</li>
+
+<li>Where a legal claim should be brought.</li>
+
+<li>Which court can review or appeal a decision.</li>
+
+</ul>
+
+<p>
+A case brought before a court without the required jurisdiction may be dismissed, transferred, or otherwise affected depending on the legal system and circumstances.
+</p>
+
+<h3>Related Legal Concepts</h3>
+
+<ul>
+
+<li>Courts</li>
+
+<li>Judicial Review</li>
+
+<li>Appeals</li>
+
+<li>Precedent</li>
+
+<li>Civil Procedure</li>
+
+<li>Criminal Procedure</li>
+
+<li>Territorial Sovereignty</li>
+
+<li>Access to Justice</li>
+
+<li>International Law</li>
+
+<li>Conflict of Laws</li>
+
+</ul>
+
+<div class="definition">
+
+Jurisdiction = The legal power of a court or legal institution to hear and decide a case.
+
+</div>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Encyclopaedia Britannica, materials on jurisdiction.</li>
+
+<li>Cornell Law School Legal Information Institute, "Jurisdiction."</li>
+
+<li>United Nations, Charter of the United Nations, materials concerning jurisdiction and state authority.</li>
+
+<li>Council of Europe, materials on access to justice and the right to a fair hearing.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Jurisdiction</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+/* Swipe left = next card
+   Swipe right = previous card */
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What does jurisdiction refer to?",
+options:[
+"The punishment given to a defendant",
+"The legal authority of a court to hear and decide a case",
+"The evidence presented during a trial",
+"The written judgment of a court"
+],
+answer:1
+},
+
+{
+question:"What is subject-matter jurisdiction?",
+options:[
+"A court's authority over the people involved",
+"A court's geographical boundaries",
+"A court's authority to hear a particular type of legal dispute",
+"A court's power to review appeals only"
+],
+answer:2
+},
+
+{
+question:"What is appellate jurisdiction?",
+options:[
+"The authority to hear a case for the first time",
+"The authority to review a decision made by a lower court",
+"The authority to enforce a contract",
+"The authority to investigate crimes"
+],
+answer:1
+},
+
+{
+question:"What is concurrent jurisdiction?",
+options:[
+"When only one court can hear a particular case",
+"When no court has authority over a dispute",
+"When more than one court or legal system has authority to hear the same type of dispute",
+"When a court loses its authority after a trial"
+],
+answer:2
+},
+
+{
+question:"Why is jurisdiction important?",
+options:[
+"It determines which court has legal authority to hear and decide a case",
+"It guarantees that every case will be successful",
+"It determines the punishment before a trial begins",
+"It prevents courts from reviewing decisions"
+],
+answer:0
+}
+
+];
+
+let currentQuestion = 0;
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Jurisdiction</strong> quiz.
+</p>
+
+<p>
+You can now return to the Courts & Legal Process section and explore another legal concept.
+</p>
+
+<a href="courts-and-legal-process.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Courts & Legal Process
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
