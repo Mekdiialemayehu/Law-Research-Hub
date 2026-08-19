@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining Separation of Powers, the branches of government, checks and balances, judicial independence, and the Rule of Law.">
+
+<title>Separation of Powers | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* QUOTE / DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Separation of Powers</h1>
+
+<p>
+Foundations of Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+SEPARATION OF POWERS
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is Separation of Powers?</h2>
+
+<div class="definition">
+
+Separation of Powers is the principle that the powers of government should be divided between different institutions so that no single institution has unlimited authority.
+
+</div>
+
+<p>
+The exact structure differs between countries, but the basic purpose is to prevent excessive concentration of government power.
+</p>
+
+<p>
+Government functions are generally divided between three main branches: the legislature, the executive, and the judiciary.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · THE THREE BRANCHES
+</div>
+
+<h2>The Three Branches of Government</h2>
+
+<p>
+The three main branches of government are generally:
+</p>
+
+<ul>
+
+<li><strong>The Legislature</strong> — makes and changes laws.</li>
+
+<li><strong>The Executive</strong> — carries out and administers laws.</li>
+
+<li><strong>The Judiciary</strong> — interprets and applies the law and resolves legal disputes.</li>
+
+</ul>
+
+<div class="definition">
+
+The purpose of dividing these functions is to reduce the risk that too much government power will be concentrated in one institution.
+
+</div>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · THE LEGISLATURE
+</div>
+
+<h2>The Legislature</h2>
+
+<p>
+The legislature is responsible for creating and changing laws.
+</p>
+
+<p>
+In many countries, the legislature is a parliament or congress. Legislators debate proposed laws and vote on legislation.
+</p>
+
+<h3>Main Functions</h3>
+
+<ul>
+
+<li>Creating and changing laws.</li>
+
+<li>Debating proposed legislation.</li>
+
+<li>Approving taxation and public spending.</li>
+
+<li>Representing the public.</li>
+
+<li>Scrutinising the actions of the executive.</li>
+
+</ul>
+
+<p>
+The precise powers of a legislature depend on the constitutional system of the country.
+</p>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · THE EXECUTIVE
+</div>
+
+<h2>The Executive</h2>
+
+<p>
+The executive is responsible for implementing and administering laws.
+</p>
+
+<p>
+It commonly includes the head of government, ministers, government departments, and public authorities.
+</p>
+
+<h3>Main Functions</h3>
+
+<ul>
+
+<li>Implementing laws.</li>
+
+<li>Developing government policies.</li>
+
+<li>Administering public services.</li>
+
+<li>Making decisions within powers given by law.</li>
+
+<li>Managing the day-to-day functions of government.</li>
+
+</ul>
+
+<div class="definition">
+
+The executive must generally exercise its powers within the legal limits established by the constitution and other laws.
+
+</div>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · THE JUDICIARY
+</div>
+
+<h2>The Judiciary</h2>
+
+<p>
+The judiciary consists of courts and judges.
+</p>
+
+<p>
+Its role includes interpreting and applying the law, resolving disputes, and protecting legal rights.
+</p>
+
+<h3>Why Judicial Independence Matters</h3>
+
+<p>
+Courts must be able to make decisions independently and impartially.
+</p>
+
+<p>
+If the executive or legislature could directly control judicial decisions, individuals would have less protection against unlawful government action.
+</p>
+
+<div class="definition">
+
+An independent judiciary is therefore an important safeguard against the misuse of government power.
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · CHECKS AND BALANCES
+</div>
+
+<h2>Checks and Balances</h2>
+
+<p>
+Separation of powers does not necessarily mean that the three branches operate completely independently.
+</p>
+
+<p>
+Modern constitutional systems often use checks and balances, where each branch has certain powers that can limit, supervise, or hold another branch accountable.
+</p>
+
+<h3>Examples</h3>
+
+<ul>
+
+<li>A legislature may scrutinise the actions of the executive.</li>
+
+<li>Courts may review whether government decisions are lawful.</li>
+
+<li>The executive may have powers relating to the implementation of legislation.</li>
+
+<li>Courts or other institutions may review legislation for compliance with higher legal rules.</li>
+
+</ul>
+
+<p>
+The overall purpose is to prevent too much power from being concentrated in one institution.
+</p>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · EXAMPLE
+</div>
+
+<h2>Separation of Powers in Practice</h2>
+
+<p>
+Imagine that a government department makes a decision that seriously affects an individual's legal rights.
+</p>
+
+<p>
+Under a system based on separation of powers, the individual may be able to challenge the legality of that decision before an independent court.
+</p>
+
+<p>
+The court does not simply accept the government's decision because the government has political authority.
+</p>
+
+<div class="definition">
+
+Instead, the court examines whether the decision was made within the powers given to the government by law.
+
+</div>
+
+<p>
+This creates an important check on executive power and helps protect individuals from unlawful government action.
+</p>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · DIFFERENT SYSTEMS
+</div>
+
+<h2>Separation of Powers in Different Countries</h2>
+
+<p>
+The separation of powers is not organised identically everywhere.
+</p>
+
+<p>
+Some countries have a stronger institutional separation between the branches, while others have greater overlap between government institutions.
+</p>
+
+<p>
+For example, in some parliamentary systems, members of the executive are also members of the legislature.
+</p>
+
+<p>
+This does not necessarily mean that separation of powers is absent. Accountability can operate through different constitutional mechanisms.
+</p>
+
+<div class="definition">
+
+Separation of powers should therefore be understood as a principle of limiting and controlling government power rather than requiring every branch to be completely isolated from the others.
+
+</div>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · RULE OF LAW
+</div>
+
+<h2>Relationship with the Rule of Law</h2>
+
+<p>
+Separation of powers is closely connected to the Rule of Law.
+</p>
+
+<p>
+The Rule of Law requires public authorities to act according to law and helps prevent arbitrary uses of government power.
+</p>
+
+<p>
+Separating government functions between different institutions creates opportunities for oversight and accountability.
+</p>
+
+<h3>Why Separation of Powers Matters</h3>
+
+<ul>
+
+<li>Prevents abuse of government power.</li>
+
+<li>Protects individual rights.</li>
+
+<li>Supports judicial independence.</li>
+
+<li>Creates accountability between government institutions.</li>
+
+<li>Reduces the risk of arbitrary government decisions.</li>
+
+<li>Strengthens the Rule of Law.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+Separation of Powers is the principle that government authority should be distributed between different branches, usually the legislature, executive, and judiciary.
+
+</div>
+
+<p>
+Its purpose is not simply to divide government into three parts.
+</p>
+
+<p>
+It also creates checks, accountability, and limits on power, helping prevent abuse of authority and protect the Rule of Law.
+</p>
+
+<h3>Related Legal Concepts</h3>
+
+<ul>
+
+<li>Rule of Law</li>
+
+<li>Judicial Independence</li>
+
+<li>Judicial Review</li>
+
+<li>Constitutional Law</li>
+
+<li>Checks and Balances</li>
+
+<li>Access to Justice</li>
+
+<li>Government Accountability</li>
+
+</ul>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Council of Europe, The Rule of Law Checklist.</li>
+
+<li>Council of Europe, Promoting the Rule of Law.</li>
+
+<li>Venice Commission, Council of Europe, materials on separation of powers and constitutionalism.</li>
+
+<li>Council of Europe, The Rule of Law and Why It Matters.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Separation of Powers</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is the main purpose of the Separation of Powers?",
+options:[
+"To give all power to the executive",
+"To prevent government power from becoming too concentrated",
+"To eliminate the judiciary",
+"To prevent legislatures from making laws"
+],
+answer:1
+},
+
+{
+question:"Which branch of government is generally responsible for making laws?",
+options:[
+"The Judiciary",
+"The Executive",
+"The Legislature",
+"The Courts"
+],
+answer:2
+},
+
+{
+question:"What is the primary role of the judiciary?",
+options:[
+"To create government policies",
+"To interpret and apply the law and resolve disputes",
+"To collect all taxes",
+"To manage government departments"
+],
+answer:1
+},
+
+{
+question:"What are checks and balances?",
+options:[
+"A system where each branch can limit or supervise the power of another",
+"A system where the executive has unlimited power",
+"A system where courts make every government decision",
+"A system where the branches never interact"
+],
+answer:0
+},
+
+{
+question:"Why is judicial independence important?",
+options:[
+"Because courts should always follow the executive",
+"Because judges should be able to make decisions without improper interference",
+"Because the legislature should control court decisions",
+"Because courts should only deal with political decisions"
+],
+answer:1
+}
+
+];
+
+let currentQuestion = 0;
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Separation of Powers</strong> quiz.
+</p>
+
+<p>
+You can now return to the Foundations of Law section and explore another legal concept.
+</p>
+
+<a href="foundations-of-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Foundations of Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
