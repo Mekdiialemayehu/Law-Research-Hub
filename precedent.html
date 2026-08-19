@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining judicial precedent, stare decisis, binding and persuasive precedent, ratio decidendi, obiter dicta, and the development of law.">
+
+<title>Precedent | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* QUOTE / DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* COURT HIERARCHY */
+
+.hierarchy{
+background:#f5f7fa;
+border:1px solid #ddd;
+border-radius:10px;
+padding:20px;
+margin:20px 0;
+text-align:center;
+font-weight:bold;
+color:#0b1f3a;
+line-height:2;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Precedent</h1>
+
+<p>
+Courts & Legal Process · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+PRECEDENT
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is Precedent?</h2>
+
+<div class="definition">
+
+Precedent refers to a previous judicial decision that may be used as authority when deciding a later case.
+
+</div>
+
+<p>
+The principle of precedent is particularly important in legal systems based on common law, where courts may follow legal principles established by earlier decisions.
+</p>
+
+<p>
+Precedent helps promote consistency, predictability, and stability in the law.
+</p>
+
+<p>
+The basic idea is that when a court has already decided an important legal question, later courts may use that decision when dealing with similar facts or legal issues.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · STARE DECISIS
+</div>
+
+<h2>The Doctrine of Stare Decisis</h2>
+
+<p>
+The use of precedent is often connected to the principle of <em>stare decisis</em>, a Latin phrase meaning that courts should generally stand by decided matters.
+</p>
+
+<p>
+Under this principle, courts generally follow relevant decisions from higher courts within the same legal system.
+</p>
+
+<div class="definition">
+
+This does not mean that every previous case must always be followed. Whether a precedent is binding or persuasive depends on factors such as the court that made the original decision and the legal system involved.
+
+</div>
+
+<p>
+The doctrine therefore balances consistency with the ability of courts to deal with cases that are meaningfully different.
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · BINDING PRECEDENT
+</div>
+
+<h2>Binding Precedent</h2>
+
+<p>
+Binding precedent is a previous judicial decision that a court is required to follow.
+</p>
+
+<p>
+In a hierarchical court system, lower courts are generally bound by relevant decisions of higher courts.
+</p>
+
+<p>
+For example, if a country's highest court establishes a legal principle, lower courts may be required to apply that principle when deciding similar cases.
+</p>
+
+<div class="definition">
+
+Binding precedent helps create consistency because similar legal issues are more likely to be decided according to the same legal rules.
+
+</div>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · PERSUASIVE PRECEDENT
+</div>
+
+<h2>Persuasive Precedent</h2>
+
+<p>
+Persuasive precedent is a previous decision that a court is not required to follow but may consider when making its decision.
+</p>
+
+<h3>Persuasive authority can come from:</h3>
+
+<ul>
+
+<li>Decisions of lower courts.</li>
+
+<li>Decisions from courts in other jurisdictions.</li>
+
+<li><em>Obiter dicta</em> from earlier cases.</li>
+
+<li>Judicial decisions that are not binding on the court.</li>
+
+</ul>
+
+<p>
+A judge may find a persuasive precedent convincing and use its reasoning when reaching a decision.
+</p>
+
+<div class="definition">
+
+Binding precedent must generally be followed when applicable. Persuasive precedent may influence a court but does not require the court to follow it.
+
+</div>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · RATIO DECIDENDI & OBITER DICTA
+</div>
+
+<h2>Ratio Decidendi and Obiter Dicta</h2>
+
+<h3>Ratio Decidendi</h3>
+
+<p>
+The <em>ratio decidendi</em> is the legal principle or rule that was necessary for the court's decision.
+</p>
+
+<p>
+It is the part of a judgment that provides the legal reasoning supporting the outcome and may form the basis of a binding precedent.
+</p>
+
+<h3>Obiter Dicta</h3>
+
+<p>
+<em>Obiter dicta</em> refers to statements made by a judge that are not essential to the decision in the case.
+</p>
+
+<p>
+The term is Latin for "things said by the way."
+</p>
+
+<div class="definition">
+
+Obiter dicta is generally not binding in the same way as the ratio decidendi, but it may still be persuasive.
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · COURT HIERARCHY
+</div>
+
+<h2>Court Hierarchy and Precedent</h2>
+
+<p>
+The effect of precedent depends heavily on the hierarchy of courts.
+</p>
+
+<p>
+Higher courts generally have greater authority than lower courts.
+</p>
+
+<div class="hierarchy">
+
+Supreme or Highest Court
+
+<br>
+↓
+<br>
+
+Appeal Court
+
+<br>
+↓
+<br>
+
+Trial or Lower Courts
+
+</div>
+
+<p>
+A lower court will generally be required to follow relevant decisions from a higher court within the same legal system.
+</p>
+
+<p>
+However, the precise rules differ between countries because each legal system has its own court structure and rules concerning precedent.
+</p>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · EXAMPLE
+</div>
+
+<h2>Precedent in Practice</h2>
+
+<p>
+Imagine that a higher court decides that a particular type of government action is unlawful because it violates a legal requirement.
+</p>
+
+<p>
+Later, a lower court hears a case involving very similar circumstances.
+</p>
+
+<p>
+If the earlier decision is binding, the lower court will generally have to apply the legal principle established by the higher court.
+</p>
+
+<div class="definition">
+
+This allows similar cases to be treated consistently and helps people understand how courts are likely to approach similar legal issues.
+
+</div>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · FOLLOWING, DISTINGUISHING & OVERRULING
+</div>
+
+<h2>What Courts Can Do With Precedent</h2>
+
+<h3>Following Precedent</h3>
+
+<p>
+A court follows precedent when it applies the legal principle from an earlier case to a later case involving sufficiently similar legal issues or facts.
+</p>
+
+<h3>Distinguishing Precedent</h3>
+
+<p>
+A court may distinguish an earlier case when the facts or legal circumstances are sufficiently different.
+</p>
+
+<p>
+Distinguishing allows courts to respect existing precedent while recognising meaningful differences between cases.
+</p>
+
+<h3>Overruling Precedent</h3>
+
+<p>
+A higher court may overrule an earlier judicial decision when it determines that the earlier legal principle should no longer be treated as correct.
+</p>
+
+<p>
+Overruling can allow the law to develop when previous decisions are considered outdated, incorrect, or inconsistent with later legal principles.
+</p>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · LEGAL DEVELOPMENT
+</div>
+
+<h2>Precedent and the Development of Law</h2>
+
+<p>
+Precedent can contribute to the development of law.
+</p>
+
+<p>
+Courts may interpret existing legal principles and apply them to new situations, especially when legislation does not provide a complete answer.
+</p>
+
+<p>
+This can allow legal rules to develop gradually through judicial decisions.
+</p>
+
+<div class="definition">
+
+Courts are generally expected to work within the authority given to them by the legal system. Major changes in the law may sometimes be more appropriately made by legislation.
+
+</div>
+
+<h3>Precedent and Statute Law</h3>
+
+<p>
+Statute law is created by the legislature, while precedent develops through judicial decisions.
+</p>
+
+<p>
+Courts often interpret legislation when deciding cases. Their interpretations can then become important precedents for future cases.
+</p>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · ADVANTAGES AND LIMITATIONS
+</div>
+
+<h2>Advantages and Limitations of Precedent</h2>
+
+<h3>Advantages</h3>
+
+<ul>
+
+<li><strong>Consistency:</strong> Similar cases can be treated similarly.</li>
+
+<li><strong>Predictability:</strong> People can better understand how courts may approach legal disputes.</li>
+
+<li><strong>Efficiency:</strong> Courts can rely on established legal reasoning.</li>
+
+<li><strong>Development of Law:</strong> Judicial decisions can clarify unclear areas and apply principles to new situations.</li>
+
+</ul>
+
+<h3>Limitations</h3>
+
+<ul>
+
+<li><strong>Complexity:</strong> Large numbers of decisions can make relevant precedents difficult to identify.</li>
+
+<li><strong>Rigidity:</strong> Strict reliance on previous decisions can make the law less adaptable.</li>
+
+<li><strong>Conflicting Decisions:</strong> Different courts may sometimes produce apparently inconsistent decisions.</li>
+
+<li><strong>Lengthy Legal Reasoning:</strong> Judicial decisions can contain complex discussions of facts and legal principles.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · DIFFERENT LEGAL SYSTEMS
+</div>
+
+<h2>Precedent in Different Legal Systems</h2>
+
+<p>
+The role of precedent differs between legal systems.
+</p>
+
+<h3>Common Law Systems</h3>
+
+<p>
+In common law systems, judicial precedent generally plays a major role in the development and application of law.
+</p>
+
+<h3>Civil Law Systems</h3>
+
+<p>
+In civil law systems, legislation and legal codes generally play a more central role, although decisions of higher courts may still influence how laws are interpreted and applied.
+</p>
+
+<div class="definition">
+
+The importance and binding effect of precedent therefore depend on the legal tradition and rules of the particular country.
+
+</div>
+
+<h3>Precedent and Judicial Independence</h3>
+
+<p>
+Precedent is also connected to judicial independence.
+</p>
+
+<p>
+Judges must apply legal principles independently and impartially while respecting the rules governing precedent.
+</p>
+
+<p>
+A system of precedent can limit arbitrary decision-making by requiring courts to consider existing legal authorities rather than deciding cases entirely according to personal preference.
+</p>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · KEY TAKEAWAY
+</div>
+
+<h2>Why Precedent Matters</h2>
+
+<p>
+The doctrine of precedent helps determine:
+</p>
+
+<ul>
+
+<li>How previous court decisions influence later cases.</li>
+
+<li>When courts must follow earlier decisions.</li>
+
+<li>When judges may consider earlier decisions only as persuasive authority.</li>
+
+<li>How legal principles can develop over time.</li>
+
+<li>How consistency and predictability are maintained within the legal system.</li>
+
+</ul>
+
+<div class="definition">
+
+Precedent = Previous judicial decisions that guide future cases.
+
+</div>
+
+<p>
+In systems that recognise binding precedent, lower courts generally follow relevant decisions of higher courts. Other decisions may be persuasive rather than binding.
+</p>
+
+<p>
+Precedent therefore helps promote consistency and predictability while also allowing the law to develop through judicial reasoning.
+</p>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Encyclopaedia Britannica, materials on precedent and common law.</li>
+
+<li>Cornell Law School Legal Information Institute, materials on precedent and stare decisis.</li>
+
+<li>Council of Europe, materials on judicial systems and the rule of law.</li>
+
+<li>United Nations, Basic Principles on the Independence of the Judiciary, 1985.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Precedent</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+/* Swipe left = next card
+   Swipe right = previous card */
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is judicial precedent?",
+options:[
+"A previous judicial decision that may serve as authority in a later case",
+"A law created only by Parliament",
+"A punishment imposed after a trial",
+"A legal document signed by the parties"
+],
+answer:0
+},
+
+{
+question:"What is binding precedent?",
+options:[
+"A decision that a court is required to follow when applicable",
+"A decision that a judge may completely ignore",
+"A decision from any person outside the legal system",
+"A decision that only applies to criminal cases"
+],
+answer:0
+},
+
+{
+question:"What is the ratio decidendi?",
+options:[
+"A statement that is unrelated to the case",
+"The legal principle or rule necessary for the court's decision",
+"The name of the judge",
+"The facts of every previous case"
+],
+answer:1
+},
+
+{
+question:"What is obiter dicta?",
+options:[
+"The binding legal rule necessary to decide a case",
+"Statements made by a judge that are not essential to the decision",
+"A decision made by a legislature",
+"A court's jurisdiction"
+],
+answer:1
+},
+
+{
+question:"What does it mean for a court to distinguish a precedent?",
+options:[
+"The court applies the earlier decision exactly",
+"The court ignores all previous cases",
+"The court identifies important differences between the earlier and later case",
+"The court automatically overrules the earlier decision"
+],
+answer:2
+}
+
+];
+
+let currentQuestion = 0;
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Precedent</strong> quiz.
+</p>
+
+<p>
+You can now return to the Courts & Legal Process section and explore another legal concept.
+</p>
+
+<a href="courts-and-legal-process.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Courts & Legal Process
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
