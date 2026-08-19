@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining due process, procedural and substantive due process, fair trial rights, judicial review, human rights, and the rule of law.">
+
+<title>Due Process | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* QUOTE / DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* COMPARISON */
+
+.comparison{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin:20px 0;
+}
+
+.comparison-box{
+background:#f5f7fa;
+padding:20px;
+border-radius:10px;
+}
+
+.comparison-box h3{
+margin-top:0;
+}
+
+/* NUMBERED EXAMPLE */
+
+.example-steps{
+margin:10px 0 20px 25px;
+}
+
+.example-steps li{
+margin-bottom:10px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+.comparison{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Due Process</h1>
+
+<p>
+Courts & Legal Process · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+DUE PROCESS
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is Due Process?</h2>
+
+<div class="definition">
+
+Due process refers to the legal requirement that the State and other public authorities must follow fair and lawful procedures when making decisions that affect a person's rights, liberty, property, or other protected interests.
+
+</div>
+
+<p>
+It answers the question:
+</p>
+
+<div class="definition">
+
+<strong>Was the person treated fairly and according to law?</strong>
+
+</div>
+
+<p>
+Due process is a fundamental principle of the Rule of Law.
+</p>
+
+<p>
+It means that government authorities should not be able to deprive a person of important rights or interests arbitrarily or without following established legal procedures.
+</p>
+
+<p>
+The precise meaning and scope of due process varies between legal systems.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · PURPOSE
+</div>
+
+<h2>Purpose of Due Process</h2>
+
+<p>
+The main purpose of due process is to protect individuals from arbitrary or unfair government action.
+</p>
+
+<h3>It helps ensure that:</h3>
+
+<ul>
+
+<li>Laws and legal procedures are properly followed.</li>
+
+<li>Individuals have an opportunity to be heard.</li>
+
+<li>Decisions are made by appropriate authorities.</li>
+
+<li>People are given notice of proceedings affecting them.</li>
+
+<li>Individuals have an opportunity to respond to allegations or claims.</li>
+
+<li>Courts and other decision-makers act fairly.</li>
+
+<li>Government power is subject to legal limits.</li>
+
+</ul>
+
+<div class="definition">
+
+Due process therefore provides an important safeguard against abuse of governmental authority.
+
+</div>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · PROCEDURAL DUE PROCESS
+</div>
+
+<h2>Procedural Due Process</h2>
+
+<p>
+Procedural due process concerns how a legal decision is made.
+</p>
+
+<p>
+It requires authorities to use fair procedures before taking action that significantly affects a person's rights or interests.
+</p>
+
+<h3>Depending on the circumstances, it may include:</h3>
+
+<ul>
+
+<li>Notice of the proceedings or proposed action.</li>
+
+<li>An opportunity to present one's side of the case.</li>
+
+<li>An opportunity to respond to evidence or allegations.</li>
+
+<li>A hearing before an appropriate decision-maker.</li>
+
+<li>An impartial decision-maker.</li>
+
+<li>A decision based on relevant evidence.</li>
+
+<li>Access to appropriate legal remedies or appeals.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · SUBSTANTIVE DUE PROCESS
+</div>
+
+<h2>Substantive Due Process</h2>
+
+<p>
+Substantive due process concerns what the government is permitted to do, rather than only the procedures it follows.
+</p>
+
+<p>
+The concept is particularly associated with constitutional law in the United States.
+</p>
+
+<p>
+Under a substantive due process approach, certain government actions may be unlawful because they improperly interfere with fundamental rights, even if the government has followed apparently proper procedures.
+</p>
+
+<div class="definition">
+
+The meaning and scope of substantive due process varies considerably between legal systems.
+
+</div>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · COMPARISON
+</div>
+
+<h2>Procedural and Substantive Due Process</h2>
+
+<div class="comparison">
+
+<div class="comparison-box">
+
+<h3>Procedural Due Process</h3>
+
+<ul>
+
+<li>Focuses on how a decision is made.</li>
+
+<li>Requires fair legal procedures.</li>
+
+<li>May require notice and a hearing.</li>
+
+<li>Is concerned with fairness of the process.</li>
+
+</ul>
+
+</div>
+
+<div class="comparison-box">
+
+<h3>Substantive Due Process</h3>
+
+<ul>
+
+<li>Focuses on what government action is permitted.</li>
+
+<li>Concerns protection of certain fundamental rights.</li>
+
+<li>May examine whether interference with a right is constitutionally permissible.</li>
+
+<li>Concerns the legality or constitutionality of the government action itself.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<p>
+The distinction is particularly important in constitutional law.
+</p>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · CRIMINAL PROCEEDINGS
+</div>
+
+<h2>Due Process in Criminal Proceedings</h2>
+
+<p>
+Due process is especially important in criminal cases because criminal proceedings can result in serious restrictions on a person's liberty.
+</p>
+
+<p>
+Depending on the jurisdiction, due process protections may include:
+</p>
+
+<ul>
+
+<li>Being informed of the accusation.</li>
+
+<li>A fair and public hearing.</li>
+
+<li>An impartial tribunal.</li>
+
+<li>The opportunity to obtain legal assistance.</li>
+
+<li>The opportunity to challenge evidence.</li>
+
+<li>The opportunity to present a defence.</li>
+
+<li>Protection against unlawful detention.</li>
+
+<li>The right to appeal where provided by law.</li>
+
+</ul>
+
+<div class="definition">
+
+These protections help prevent criminal punishment from being imposed through arbitrary or unfair procedures.
+
+</div>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · RIGHT TO BE HEARD
+</div>
+
+<h2>Due Process and the Right to Be Heard</h2>
+
+<p>
+An important element of procedural fairness is the opportunity to be heard.
+</p>
+
+<p>
+A person affected by a legal decision should generally have an opportunity to present relevant arguments, evidence, or explanations where the law requires such an opportunity.
+</p>
+
+<div class="definition">
+
+A person should not normally be condemned without being given a meaningful opportunity to respond.
+
+</div>
+
+<p>
+For example, if an authority intends to impose a legal penalty on a person, due process may require the person to receive notice of the proposed action and an opportunity to challenge it.
+</p>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · NOTICE & IMPARTIALITY
+</div>
+
+<h2>Notice and an Impartial Decision-Maker</h2>
+
+<h3>Due Process and Notice</h3>
+
+<p>
+Notice is an important part of fair procedure.
+</p>
+
+<p>
+A person generally cannot meaningfully defend their rights if they do not know that legal proceedings or government action are taking place.
+</p>
+
+<h3>Notice may involve informing a person about:</h3>
+
+<ul>
+
+<li>The nature of the proceedings.</li>
+
+<li>The allegations or claims against them.</li>
+
+<li>A hearing date.</li>
+
+<li>A proposed government decision.</li>
+
+<li>The legal consequences of failing to respond.</li>
+
+</ul>
+
+<h3>Impartial Decision-Maker</h3>
+
+<p>
+Due process may require decisions to be made by an impartial and independent decision-maker.
+</p>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · REPRESENTATION & EVIDENCE
+</div>
+
+<h2>Legal Representation and Evidence</h2>
+
+<h3>Legal Representation</h3>
+
+<p>
+In certain legal proceedings, due process may include rights relating to legal representation.
+</p>
+
+<p>
+Legal assistance is particularly significant when a person faces serious criminal consequences or when legal issues are sufficiently complex that effective participation would otherwise be difficult.
+</p>
+
+<h3>Evidence</h3>
+
+<p>
+Due process is closely connected to the fair treatment of evidence.
+</p>
+
+<ul>
+
+<li>Knowing the evidence being relied upon.</li>
+
+<li>Challenging opposing evidence.</li>
+
+<li>Presenting relevant evidence.</li>
+
+<li>Questioning witnesses where appropriate.</li>
+
+<li>Making arguments about the meaning or reliability of evidence.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · PRESUMPTION & FAIR TRIAL
+</div>
+
+<h2>Due Process and Fair Trial Rights</h2>
+
+<h3>Presumption of Innocence</h3>
+
+<p>
+Due process is closely connected to the presumption of innocence in criminal proceedings.
+</p>
+
+<p>
+A person accused of a crime should not be treated as legally guilty merely because an accusation has been made.
+</p>
+
+<p>
+The prosecution generally has the responsibility of proving guilt according to the applicable legal standard.
+</p>
+
+<h3>Fair Trial Protections</h3>
+
+<ul>
+
+<li>An independent and impartial tribunal.</li>
+
+<li>A public hearing, subject to lawful exceptions.</li>
+
+<li>Reasonable notice of the proceedings.</li>
+
+<li>Adequate time and facilities to prepare a defence.</li>
+
+<li>Legal assistance where applicable.</li>
+
+<li>The opportunity to present and challenge evidence.</li>
+
+<li>A decision based on law and evidence.</li>
+
+<li>The ability to seek review or appeal where provided by law.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · CIVIL & ADMINISTRATIVE
+</div>
+
+<h2>Due Process Beyond Criminal Cases</h2>
+
+<h3>Due Process in Civil Proceedings</h3>
+
+<p>
+Due process can also apply to civil proceedings involving matters such as:
+</p>
+
+<ul>
+
+<li>Property.</li>
+
+<li>Contracts.</li>
+
+<li>Family matters.</li>
+
+<li>Compensation.</li>
+
+<li>Other legal rights and obligations.</li>
+
+</ul>
+
+<p>
+For example, if a person is involved in a civil lawsuit, procedural fairness may require appropriate notice and an opportunity to respond to the opposing party's claim.
+</p>
+
+<h3>Administrative Decisions</h3>
+
+<p>
+Government agencies and administrative authorities may also be required to follow fair procedures.
+</p>
+
+<p>
+Examples include decisions concerning licences, benefits, permits, professional qualifications, disciplinary measures, and government services.
+</p>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · RULE OF LAW & JUDICIAL REVIEW
+</div>
+
+<h2>Due Process and Government Power</h2>
+
+<h3>Rule of Law</h3>
+
+<p>
+The Rule of Law requires government power to be exercised according to established legal rules rather than personal preference or arbitrary authority.
+</p>
+
+<p>
+Due process supports this principle by requiring legal procedures to be followed when government action affects individuals.
+</p>
+
+<h3>Judicial Review</h3>
+
+<p>
+Judicial review can provide a mechanism for challenging unlawful government action.
+</p>
+
+<p>
+A court may examine whether a public authority:
+</p>
+
+<ul>
+
+<li>Had legal authority to make the decision.</li>
+
+<li>Followed required procedures.</li>
+
+<li>Acted fairly.</li>
+
+<li>Considered relevant matters.</li>
+
+<li>Avoided acting arbitrarily.</li>
+
+<li>Complied with constitutional or statutory requirements.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · HUMAN RIGHTS & EXAMPLE
+</div>
+
+<h2>Due Process and Human Rights</h2>
+
+<p>
+Due process is strongly connected to international human rights law.
+</p>
+
+<p>
+Article 10 of the Universal Declaration of Human Rights protects the right to a full and public hearing by an independent and impartial tribunal in the determination of rights and obligations and of criminal charges.
+</p>
+
+<p>
+Article 11 also protects the presumption of innocence and requires criminal guilt to be established according to law.
+</p>
+
+<h3>Example</h3>
+
+<p>
+Imagine that a government authority intends to revoke a person's professional licence.
+</p>
+
+<ol class="example-steps">
+
+<li>Inform the person of the proposed action.</li>
+
+<li>Explain the legal basis for the decision.</li>
+
+<li>Give the person an opportunity to respond.</li>
+
+<li>Consider the relevant evidence and arguments.</li>
+
+<li>Have the matter decided by an appropriate authority.</li>
+
+<li>Provide reasons for the decision where required.</li>
+
+<li>Allow an appeal or judicial review where provided by law.</li>
+
+</ol>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · REMEDIES & KEY TAKEAWAY
+</div>
+
+<h2>Why Due Process Matters</h2>
+
+<p>
+Due process helps:
+</p>
+
+<ul>
+
+<li>Protect individual rights and liberties.</li>
+
+<li>Prevent arbitrary government action.</li>
+
+<li>Promote fair and lawful decision-making.</li>
+
+<li>Ensure people have an opportunity to be heard.</li>
+
+<li>Support judicial independence and impartiality.</li>
+
+<li>Strengthen the Rule of Law.</li>
+
+<li>Protect fair trial rights.</li>
+
+<li>Provide mechanisms for challenging unlawful decisions.</li>
+
+<li>Limit the misuse of government power.</li>
+
+</ul>
+
+<h3>Possible Remedies</h3>
+
+<p>
+Depending on the jurisdiction and circumstances, remedies may include:
+</p>
+
+<ul>
+
+<li>Reconsideration of a decision.</li>
+
+<li>A new hearing.</li>
+
+<li>Judicial review.</li>
+
+<li>An order requiring an authority to follow the correct procedure.</li>
+
+<li>Reversal or cancellation of an unlawful decision.</li>
+
+<li>Appeal to a higher court.</li>
+
+</ul>
+
+<div class="definition">
+
+Due Process = Fair procedures + lawful decision-making.
+
+</div>
+
+<p>
+Procedural due process focuses mainly on how a decision is made, while substantive due process, particularly in United States constitutional law, concerns whether government action itself improperly interferes with protected rights.
+</p>
+
+<div class="definition">
+
+Due process is essential to the Rule of Law because it prevents government authorities from exercising power arbitrarily and helps ensure that legal decisions are made through fair, lawful, and accountable procedures.
+
+</div>
+
+<h3>Related Legal Concepts</h3>
+
+<ul>
+
+<li>Rule of Law</li>
+
+<li>Natural Justice</li>
+
+<li>Procedural Fairness</li>
+
+<li>Fair Trial Rights</li>
+
+<li>Judicial Review</li>
+
+<li>Separation of Powers</li>
+
+<li>Presumption of Innocence</li>
+
+<li>Burden of Proof</li>
+
+<li>Standard of Proof</li>
+
+<li>Evidence</li>
+
+<li>Appeals</li>
+
+<li>Administrative Law</li>
+
+<li>Constitutional Law</li>
+
+<li>Human Rights</li>
+
+</ul>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>United States Constitution, Fifth Amendment and Fourteenth Amendment, Due Process Clauses.</li>
+
+<li>Cornell Law School Legal Information Institute, materials on Due Process.</li>
+
+<li>United Nations, Universal Declaration of Human Rights, 1948, particularly Articles 10 and 11.</li>
+
+<li>United Nations, International Covenant on Civil and Political Rights, particularly Article 14.</li>
+
+<li>Council of Europe, European Convention on Human Rights, particularly Article 6 on the right to a fair trial.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Due Process</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+/* Swipe left = next card
+   Swipe right = previous card */
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is the main purpose of due process?",
+options:[
+"To give government authorities unlimited power",
+"To protect individuals from arbitrary or unfair government action",
+"To prevent courts from making decisions",
+"To eliminate all legal procedures"
+],
+answer:1
+},
+
+{
+question:"What does procedural due process primarily concern?",
+options:[
+"What government action is constitutionally permitted",
+"How a legal decision is made",
+"Whether a law was passed by Parliament",
+"Which court has jurisdiction"
+],
+answer:1
+},
+
+{
+question:"What does substantive due process primarily concern?",
+options:[
+"Only how hearings are scheduled",
+"What government action is permitted, particularly in relation to protected rights",
+"Only the presentation of evidence",
+"Only appellate procedure"
+],
+answer:1
+},
+
+{
+question:"Which of the following is an important element of procedural due process?",
+options:[
+"An opportunity to be heard",
+"Automatic conviction",
+"Unlimited government power",
+"Removal of all court procedures"
+],
+answer:0
+},
+
+{
+question:"How is due process connected to the Rule of Law?",
+options:[
+"It allows government authorities to act without legal limits",
+"It requires legal procedures to be followed when government action affects individuals",
+"It prevents individuals from challenging government decisions",
+"It eliminates judicial review"
+],
+answer:1
+}
+
+];
+
+let currentQuestion = 0;
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Due Process</strong> quiz.
+</p>
+
+<p>
+You can now return to the Courts & Legal Process section and explore another legal concept.
+</p>
+
+<a href="courts-and-legal-process.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Courts & Legal Process
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
