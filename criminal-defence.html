@@ -1,0 +1,2523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining Criminal Defences, including self-defence, necessity, duress, mistake, insanity, automatism, intoxication, consent, alibi, burden of proof, and criminal responsibility.">
+
+<title>Criminal Defences | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+max-width:850px;
+margin:auto;
+line-height:1.8;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* COMPARISON TABLE */
+
+.comparison{
+width:100%;
+border-collapse:collapse;
+margin:20px 0;
+font-size:15px;
+}
+
+.comparison th,
+.comparison td{
+border:1px solid #ddd;
+padding:14px;
+text-align:left;
+vertical-align:top;
+}
+
+.comparison th{
+background:#0b1f3a;
+color:white;
+}
+
+.comparison tr:nth-child(even){
+background:#f8f9fb;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+.comparison{
+font-size:13px;
+}
+
+.comparison th,
+.comparison td{
+padding:10px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Criminal Defences</h1>
+
+<p>
+Criminal Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+CRIMINAL DEFENCES
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Are Criminal Defences?</h2>
+
+<div class="definition">
+
+<strong>Criminal defences</strong> are legal arguments or grounds that may prevent a person from being held criminally responsible, reduce their criminal responsibility, or justify or excuse conduct that would otherwise constitute an offence.
+
+</div>
+
+<p>
+They operate within the criminal justice system by addressing whether the accused should be found legally responsible for the alleged offence.
+</p>
+
+<div class="definition">
+
+<strong>Why should the accused not be held criminally liable for the conduct alleged?</strong>
+
+</div>
+
+<p>
+A defence may challenge an element of the prosecution's case, provide a legal justification for the conduct, excuse the accused because of particular circumstances, or otherwise prevent criminal liability.
+</p>
+
+<p>
+The availability and requirements of criminal defences depend on the offence and the applicable legal system.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · PROSECUTION
+</div>
+
+<h2>Criminal Defences and the Prosecution's Case</h2>
+
+<p>
+The prosecution generally has the burden of proving the elements of the offence.
+</p>
+
+<p>
+An accused person does not necessarily have to prove their innocence simply because a defence is raised.
+</p>
+
+<p>
+A defence may operate by showing that:
+</p>
+
+<ul>
+
+<li>An essential element of the offence was not established.</li>
+
+<li>The accused possessed a legally recognized justification or excuse.</li>
+
+<li>A particular circumstance prevents criminal responsibility.</li>
+
+<li>The prosecution has failed to satisfy the required burden of proof.</li>
+
+</ul>
+
+<div class="definition">
+
+The effect of a defence depends on its legal classification and the applicable rules of evidence and criminal procedure.
+
+</div>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · ELEMENTS
+</div>
+
+<h2>Elements of an Offence and Defences</h2>
+
+<p>
+A criminal offence generally contains legal elements that the prosecution must prove.
+</p>
+
+<ul>
+
+<li>Actus reus.</li>
+
+<li>Mens rea.</li>
+
+<li>Causation.</li>
+
+<li>Particular circumstances specified by legislation.</li>
+
+</ul>
+
+<p>
+A defence may challenge one of these elements rather than operating as an independent justification.
+</p>
+
+<div class="definition">
+
+Not every reason for avoiding conviction is technically an affirmative defence. Sometimes the prosecution simply fails to prove an essential element.
+
+</div>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · FAILURE OF THE CASE
+</div>
+
+<h2>Failure of the Prosecution's Case</h2>
+
+<p>
+One of the most important ways an accused may avoid conviction is by showing that the prosecution has failed to prove an essential element of the offence.
+</p>
+
+<p>
+For example, if an offence requires proof that the accused acted intentionally and the evidence does not establish the required intention, the prosecution may fail to prove the offence.
+</p>
+
+<div class="definition">
+
+<strong>The prosecution must prove every element required by the offence according to the applicable standard of proof.</strong>
+
+</div>
+
+<p>
+In such circumstances, the accused may not need to rely on a separate affirmative defence.
+</p>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · CLASSIFICATION
+</div>
+
+<h2>Classification of Criminal Defences</h2>
+
+<p>
+Criminal defences may be divided into different categories.
+</p>
+
+<h3>Justifications</h3>
+
+<p>
+The conduct is treated as legally acceptable or justified in the circumstances.
+</p>
+
+<h3>Excuses</h3>
+
+<p>
+The conduct may have been wrongful, but the accused is not held criminally responsible because of particular circumstances affecting responsibility.
+</p>
+
+<h3>Common Examples</h3>
+
+<ul>
+
+<li>Self-defence.</li>
+
+<li>Duress.</li>
+
+<li>Necessity.</li>
+
+<li>Insanity or mental disorder defences.</li>
+
+<li>Automatism or involuntary conduct.</li>
+
+<li>Mistake of fact.</li>
+
+<li>Infancy or age-based responsibility rules.</li>
+
+<li>Consent in limited circumstances.</li>
+
+<li>Entrapment in jurisdictions where it is recognized.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · JUSTIFICATION & EXCUSE
+</div>
+
+<h2>Justification and Excuse</h2>
+
+<table class="comparison">
+
+<tr>
+
+<th>Justification</th>
+
+<th>Excuse</th>
+
+</tr>
+
+<tr>
+
+<td>
+The conduct is treated as legally justified.
+</td>
+
+<td>
+The conduct remains wrongful but the accused is excused.
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Focuses on the circumstances surrounding the conduct.
+</td>
+
+<td>
+Focuses more on the accused's responsibility or ability to choose.
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Self-defence is a common example.
+</td>
+
+<td>
+Duress and certain mental incapacity defences may be examples.
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+The law treats the conduct as permissible in the circumstances.
+</td>
+
+<td>
+The law recognizes a reason not to hold the accused responsible.
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · SELF-DEFENCE
+</div>
+
+<h2>Self-Defence</h2>
+
+<p>
+Self-defence is one of the most widely recognized criminal defences.
+</p>
+
+<p>
+It generally applies where a person uses force to protect themselves or another person from unlawful violence or an imminent threat.
+</p>
+
+<p>
+The law may require the accused to show that:
+</p>
+
+<ul>
+
+<li>They genuinely believed force was necessary.</li>
+
+<li>The belief was legally sufficient under the relevant test.</li>
+
+<li>The amount of force used was reasonable or proportionate in the circumstances.</li>
+
+</ul>
+
+<div class="definition">
+
+The exact requirements of self-defence differ significantly between jurisdictions.
+
+</div>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · DEFENCE OF ANOTHER
+</div>
+
+<h2>Defence of Another Person</h2>
+
+<p>
+A person may sometimes use force to protect another individual from unlawful violence.
+</p>
+
+<p>
+This is generally treated as an extension of the principles of self-defence.
+</p>
+
+<p>
+Whether the defence applies may depend on:
+</p>
+
+<ul>
+
+<li>The nature of the threat.</li>
+
+<li>Whether force was necessary.</li>
+
+<li>Whether the response was reasonable.</li>
+
+<li>The applicable legal rules.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · PROPORTIONALITY
+</div>
+
+<h2>Proportionality and Self-Defence</h2>
+
+<p>
+A major issue in self-defence cases is whether the force used was proportionate or reasonable in the circumstances.
+</p>
+
+<p>
+A person may not generally use unlimited force simply because they were threatened.
+</p>
+
+<h3>Courts May Consider</h3>
+
+<ul>
+
+<li>The seriousness of the threat.</li>
+
+<li>Whether the danger was immediate.</li>
+
+<li>The amount of force used.</li>
+
+<li>The circumstances known to the accused at the time.</li>
+
+</ul>
+
+<div class="definition">
+
+The precise legal test varies between jurisdictions.
+
+</div>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · NECESSITY
+</div>
+
+<h2>Necessity</h2>
+
+<p>
+Necessity is a defence based on the idea that the accused committed an otherwise unlawful act in order to avoid a greater harm.
+</p>
+
+<p>
+For example, a person may argue that they broke a legal rule because doing so was necessary to prevent a more serious and immediate danger.
+</p>
+
+<p>
+Depending on the jurisdiction, the defence may require:
+</p>
+
+<ul>
+
+<li>A serious and imminent danger.</li>
+
+<li>A genuine belief that the unlawful conduct was necessary.</li>
+
+<li>No reasonable alternative.</li>
+
+<li>A proportionate response.</li>
+
+</ul>
+
+<div class="definition">
+
+Necessity is not available in every situation, and courts generally apply strict requirements.
+
+</div>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · DURESS
+</div>
+
+<h2>Duress</h2>
+
+<p>
+Duress generally applies where a person commits an offence because they are subjected to threats of serious harm.
+</p>
+
+<p>
+The accused may argue that the threats were so serious that they should not be held criminally responsible for the conduct.
+</p>
+
+<p>
+Common requirements may involve:
+</p>
+
+<ul>
+
+<li>A threat of serious harm.</li>
+
+<li>Pressure directed at the accused.</li>
+
+<li>A sufficiently immediate or compelling threat.</li>
+
+<li>A causal connection between the threat and the criminal conduct.</li>
+
+</ul>
+
+<div class="definition">
+
+Some offences may be excluded from the defence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · DURESS BY THREATS
+</div>
+
+<h2>Duress by Threats</h2>
+
+<p>
+Duress by threats occurs where another person threatens the accused with serious harm unless the accused commits an offence.
+</p>
+
+<p>
+The accused may argue that they acted because of the threat rather than from free choice.
+</p>
+
+<p>
+The legal requirements concerning the seriousness, immediacy, and reasonableness of the response depend on the jurisdiction.
+</p>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · NECESSITY & DURESS
+</div>
+
+<h2>Necessity and Duress Compared</h2>
+
+<table class="comparison">
+
+<tr>
+
+<th>Necessity</th>
+
+<th>Duress</th>
+
+</tr>
+
+<tr>
+
+<td>
+Conduct is carried out to avoid a serious danger.
+</td>
+
+<td>
+Conduct is carried out because of threats or coercion.
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+The danger may arise from circumstances.
+</td>
+
+<td>
+The pressure commonly comes from another person.
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+The accused may argue that the unlawful act prevented a greater harm.
+</td>
+
+<td>
+The accused may argue that threats deprived them of genuine freedom of choice.
+</td>
+
+</tr>
+
+</table>
+
+<div class="definition">
+
+Although the concepts can overlap, they are legally distinct in many systems.
+
+</div>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · MISTAKE
+</div>
+
+<h2>Mistake of Fact and Mistake of Law</h2>
+
+<h3>Mistake of Fact</h3>
+
+<p>
+A mistake of fact occurs where the accused honestly misunderstands a factual circumstance.
+</p>
+
+<p>
+A mistake may affect criminal liability where the offence requires the accused to possess a particular mental state.
+</p>
+
+<div class="definition">
+
+For example, if an offence requires knowledge that an object belongs to another person, a genuine mistake about ownership may prevent the prosecution from proving the required knowledge.
+
+</div>
+
+<h3>Mistake of Law</h3>
+
+<p>
+A mistake of law occurs when a person is mistaken about what the law prohibits or requires.
+</p>
+
+<p>
+The general principle in many legal systems is:
+</p>
+
+<div class="definition">
+
+<strong>Ignorance of the law is not normally a defence.</strong>
+
+</div>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · INSANITY
+</div>
+
+<h2>Insanity and Mental Disorder Defences</h2>
+
+<p>
+Some legal systems recognize a defence based on severe mental disorder or legal insanity.
+</p>
+
+<p>
+The defence does not simply ask whether the accused had a mental illness.
+</p>
+
+<p>
+Instead, the law generally asks whether the accused's mental condition affected their ability to understand the nature of their conduct, understand its wrongfulness, or control their conduct according to a legally defined test.
+</p>
+
+<div class="definition">
+
+The requirements vary greatly between jurisdictions.
+
+</div>
+
+</div>
+
+
+<!-- CARD 16 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 16 · AUTOMATISM
+</div>
+
+<h2>Automatism and Involuntary Conduct</h2>
+
+<p>
+Automatism concerns situations where the accused's physical actions occurred without the required conscious control.
+</p>
+
+<p>
+Criminal law generally requires voluntary conduct.
+</p>
+
+<p>
+If the relevant conduct was truly involuntary, the prosecution may fail to establish the necessary actus reus.
+</p>
+
+<h3>Examples</h3>
+
+<ul>
+
+<li>Unconscious physical activity.</li>
+
+<li>Certain medical conditions.</li>
+
+<li>Sleep-related conduct.</li>
+
+<li>External physical influences.</li>
+
+</ul>
+
+<div class="definition">
+
+The exact legal treatment depends on the jurisdiction and the cause of the involuntary state.
+
+</div>
+
+</div>
+
+
+<!-- CARD 17 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 17 · INTOXICATION
+</div>
+
+<h2>Intoxication</h2>
+
+<p>
+Intoxication can sometimes affect criminal responsibility, particularly where a specific mental state is required.
+</p>
+
+<p>
+The legal treatment may depend upon:
+</p>
+
+<ul>
+
+<li>Whether the intoxication was voluntary or involuntary.</li>
+
+<li>The type of offence.</li>
+
+<li>Whether the offence requires intention or another specific mental state.</li>
+
+<li>Whether intoxication prevented formation of the required mens rea.</li>
+
+</ul>
+
+<div class="definition">
+
+Voluntary intoxication does not automatically provide a complete defence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 18 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 18 · AGE & CONSENT
+</div>
+
+<h2>Infancy, Consent and Entrapment</h2>
+
+<h3>Infancy</h3>
+
+<p>
+The law may recognize that children below a specified age should not be held criminally responsible in the same way as adults.
+</p>
+
+<p>
+Legal systems establish minimum ages of criminal responsibility and may have special rules for young offenders.
+</p>
+
+<h3>Consent</h3>
+
+<p>
+Consent may operate as a defence in some offences where the law recognizes that the consent of the relevant person affects criminal responsibility.
+</p>
+
+<h3>Entrapment</h3>
+
+<p>
+Entrapment concerns situations in which law enforcement officers or their agents induce a person to commit an offence that they would not otherwise have committed.
+</p>
+
+<div class="definition">
+
+The legal treatment of consent and entrapment differs substantially between jurisdictions.
+
+</div>
+
+</div>
+
+
+<!-- CARD 19 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 19 · STRICT LIABILITY
+</div>
+
+<h2>Defences and Strict Liability</h2>
+
+<p>
+Strict liability can affect the availability of certain defences.
+</p>
+
+<p>
+Where an offence does not require mens rea for a particular element, a person may not be able to rely on a mistake simply by showing that they lacked knowledge of that element.
+</p>
+
+<p>
+However, a statutory defence may still be available.
+</p>
+
+<div class="definition">
+
+For example, legislation may provide a defence based on reasonable precautions or due diligence.
+
+</div>
+
+<p>
+The precise effect depends on whether the offence is strict liability, absolute liability, or an ordinary mens rea offence.
+</p>
+
+</div>
+
+
+<!-- CARD 20 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 20 · PROPERTY & AUTHORITY
+</div>
+
+<h2>Defence of Property and Public Authority</h2>
+
+<h3>Defence of Property</h3>
+
+<p>
+Some legal systems permit limited force to protect property from unlawful interference.
+</p>
+
+<p>
+Courts may consider:
+</p>
+
+<ul>
+
+<li>Whether the property was under immediate threat.</li>
+
+<li>Whether the accused reasonably believed intervention was necessary.</li>
+
+<li>The amount of force used.</li>
+
+<li>Whether less harmful alternatives were available.</li>
+
+</ul>
+
+<h3>Public Authority</h3>
+
+<p>
+Conduct that would otherwise constitute an offence may be lawful because it was carried out under lawful authority.
+</p>
+
+<ul>
+
+<li>Lawful arrest.</li>
+
+<li>Execution of a court order.</li>
+
+<li>Use of force by authorized officials within legal limits.</li>
+
+<li>Conduct specifically authorized by legislation.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 21 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 21 · ALIBI & IDENTITY
+</div>
+
+<h2>Alibi and Mistaken Identity</h2>
+
+<h3>Alibi</h3>
+
+<p>
+An alibi is evidence that the accused was somewhere else when the offence occurred.
+</p>
+
+<p>
+It directly challenges the prosecution's identification of the accused as the person who committed the offence.
+</p>
+
+<h3>Mistaken Identity</h3>
+
+<p>
+The accused may argue that someone else committed the offence.
+</p>
+
+<p>
+Evidence may include:
+</p>
+
+<ul>
+
+<li>Eyewitness testimony.</li>
+
+<li>Identification procedures.</li>
+
+<li>CCTV evidence.</li>
+
+<li>Digital records.</li>
+
+<li>Physical evidence.</li>
+
+<li>Timing and location evidence.</li>
+
+</ul>
+
+<div class="definition">
+
+An alibi and mistaken identity are generally arguments that the prosecution has failed to prove who committed the offence, rather than justifications or excuses.
+
+</div>
+
+</div>
+
+
+<!-- CARD 22 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 22 · BURDEN OF PROOF
+</div>
+
+<h2>Defences and Burden of Proof</h2>
+
+<p>
+The burden of proof concerning a defence depends upon the legal system and the type of defence.
+</p>
+
+<p>
+In many criminal proceedings, the prosecution initially bears the burden of proving the elements of the offence beyond reasonable doubt.
+</p>
+
+<p>
+Some defences require only that the accused raise sufficient evidence to put the issue before the court.
+</p>
+
+<p>
+In other situations, legislation may place a particular evidential or persuasive burden on the accused.
+</p>
+
+<div class="definition">
+
+The exact allocation of burdens must be determined according to the applicable law.
+
+</div>
+
+</div>
+
+
+<!-- CARD 23 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 23 · STANDARD OF PROOF
+</div>
+
+<h2>Defences and Standard of Proof</h2>
+
+<p>
+The prosecution generally must prove the elements of the offence according to the applicable criminal standard of proof.
+</p>
+
+<p>
+In many common law systems this is <strong>beyond reasonable doubt</strong>.
+</p>
+
+<p>
+The standard applicable to a defence may be different depending on the legal system.
+</p>
+
+<div class="definition">
+
+Some jurisdictions require the prosecution to disprove a defence once it has been properly raised, while others may place a defined burden on the accused.
+
+</div>
+
+</div>
+
+
+<!-- CARD 24 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 24 · PRESUMPTION OF INNOCENCE
+</div>
+
+<h2>Defences and Presumption of Innocence</h2>
+
+<p>
+Criminal defences are closely connected with the presumption of innocence.
+</p>
+
+<div class="definition">
+
+The accused begins the criminal process presumed innocent unless and until the prosecution proves the offence according to law.
+
+</div>
+
+<p>
+A defence does not automatically shift the entire burden of proving guilt onto the accused.
+</p>
+
+<p>
+The prosecution must still prove the elements of the offence that are legally required.
+</p>
+
+</div>
+
+
+<!-- CARD 25 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 25 · MENS REA & ACTUS REUS
+</div>
+
+<h2>Defences and Mens Rea / Actus Reus</h2>
+
+<h3>Mens Rea</h3>
+
+<ul>
+
+<li>Mistake of fact may prevent proof of knowledge.</li>
+
+<li>Intoxication may affect the ability to form a specific intention in some circumstances.</li>
+
+<li>Involuntary conduct may undermine the requirement of voluntary action.</li>
+
+</ul>
+
+<h3>Actus Reus</h3>
+
+<p>
+If the accused's conduct was involuntary, the prosecution may fail to establish the required physical element.
+</p>
+
+<div class="definition">
+
+Some situations described as "defences" actually operate by preventing the prosecution from proving an essential element of the offence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 26 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 26 · EVIDENCE
+</div>
+
+<h2>Defence and Evidence</h2>
+
+<p>
+The effectiveness of a defence often depends on the available evidence.
+</p>
+
+<ul>
+
+<li>Witness testimony.</li>
+
+<li>Documents.</li>
+
+<li>Video recordings.</li>
+
+<li>Medical evidence.</li>
+
+<li>Digital communications.</li>
+
+<li>Physical evidence.</li>
+
+<li>Expert evidence.</li>
+
+<li>The accused's own statements.</li>
+
+</ul>
+
+<p>
+The court assesses evidence according to the rules of evidence and the applicable burden and standard of proof.
+</p>
+
+<h3>Expert Evidence</h3>
+
+<p>
+Some defences may require specialized evidence, such as medical evidence in mental disorder cases or scientific evidence concerning intoxication.
+</p>
+
+<div class="definition">
+
+Expert evidence does not automatically determine the outcome. The court remains responsible for deciding the legal issues.
+
+</div>
+
+</div>
+
+
+<!-- CARD 27 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 27 · JUSTIFICATION & RESPONSIBILITY
+</div>
+
+<h2>Defences and Criminal Responsibility</h2>
+
+<p>
+The existence of a defence does not necessarily mean that the accused's conduct was desirable or harmless.
+</p>
+
+<p>
+A defence determines whether the accused should be held legally responsible under circumstances recognized by law.
+</p>
+
+<div class="definition">
+
+Self-defence, for example, does not mean that violence is generally lawful. It means the law may recognize an exception where force was necessary and legally justified in response to an unlawful threat.
+
+</div>
+
+</div>
+
+
+<!-- CARD 28 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 28 · COMPLETE & PARTIAL
+</div>
+
+<h2>Complete and Partial Defences</h2>
+
+<h3>Complete Defence</h3>
+
+<p>
+A complete defence may result in an acquittal where all legal requirements are satisfied.
+</p>
+
+<h3>Partial Defence</h3>
+
+<p>
+A partial defence does not necessarily result in complete acquittal but may reduce the seriousness of criminal liability.
+</p>
+
+<div class="definition">
+
+One important example in some legal systems is a partial defence to murder that may reduce liability from murder to manslaughter.
+
+</div>
+
+<p>
+The availability and effect of partial defences vary by jurisdiction.
+</p>
+
+</div>
+
+
+<!-- CARD 29 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 29 · MURDER
+</div>
+
+<h2>Defences to Murder</h2>
+
+<p>
+Murder is among the most serious criminal offences, and legal systems often recognize specific defences or partial defences.
+</p>
+
+<h3>Potential Issues</h3>
+
+<ul>
+
+<li>Self-defence.</li>
+
+<li>Insanity or mental disorder.</li>
+
+<li>Diminished responsibility in jurisdictions that recognize it.</li>
+
+<li>Loss of control in certain legal systems.</li>
+
+<li>Duress in jurisdictions where it can apply.</li>
+
+<li>Mistake where relevant to the required mental element.</li>
+
+</ul>
+
+<div class="definition">
+
+The exact defences and their requirements depend on the jurisdiction.
+
+</div>
+
+</div>
+
+
+<!-- CARD 30 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 30 · PROCEDURE
+</div>
+
+<h2>Defences and Criminal Procedure</h2>
+
+<p>
+Defences must be raised and determined according to procedural rules.
+</p>
+
+<p>
+This may involve:
+</p>
+
+<ul>
+
+<li>Notice requirements.</li>
+
+<li>Disclosure of evidence.</li>
+
+<li>Admissibility of evidence.</li>
+
+<li>Expert reports.</li>
+
+<li>Jury directions.</li>
+
+<li>Judicial rulings.</li>
+
+<li>Burden and standard of proof.</li>
+
+</ul>
+
+<div class="definition">
+
+A legally recognized defence may still raise procedural questions about how and when the issue should be presented.
+
+</div>
+
+</div>
+
+
+<!-- CARD 31 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 31 · TRIAL
+</div>
+
+<h2>Defences at Trial</h2>
+
+<p>
+At trial, the defence may seek to:
+</p>
+
+<ul>
+
+<li>Challenge the prosecution's evidence.</li>
+
+<li>Establish that an element of the offence has not been proved.</li>
+
+<li>Raise a recognized affirmative defence.</li>
+
+<li>Introduce evidence supporting the defence.</li>
+
+<li>Challenge the reliability of witnesses.</li>
+
+<li>Argue that the prosecution has not met the required standard of proof.</li>
+
+</ul>
+
+<div class="definition">
+
+The judge determines questions of law, while the fact-finding function may belong to a jury or judge depending on the legal system.
+
+</div>
+
+</div>
+
+
+<!-- CARD 32 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 32 · APPEAL
+</div>
+
+<h2>Defences on Appeal</h2>
+
+<p>
+An appellate court may consider whether a trial court correctly applied the law relating to a defence.
+</p>
+
+<p>
+An appeal may concern:
+</p>
+
+<ul>
+
+<li>Whether the correct legal test was used.</li>
+
+<li>Whether the judge correctly directed the jury.</li>
+
+<li>Whether evidence relevant to the defence was improperly excluded.</li>
+
+<li>Whether the burden of proof was correctly allocated.</li>
+
+<li>Whether the defence was legally available.</li>
+
+<li>Whether the evidence was sufficient to support the defence.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 33 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 33 · STATUTORY INTERPRETATION
+</div>
+
+<h2>Defences and Statutory Interpretation</h2>
+
+<p>
+Many criminal defences are defined by legislation.
+</p>
+
+<p>
+Courts may therefore need to interpret statutory wording to determine:
+</p>
+
+<ul>
+
+<li>The elements of the defence.</li>
+
+<li>The required mental state.</li>
+
+<li>Whether the defence is complete or partial.</li>
+
+<li>Who bears the burden of proof.</li>
+
+<li>What evidence is sufficient to raise the defence.</li>
+
+</ul>
+
+<div class="definition">
+
+The wording of the statute and relevant case law are central to understanding a particular defence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 34 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 34 · DIFFERENT SYSTEMS
+</div>
+
+<h2>Defences in Different Legal Systems</h2>
+
+<p>
+Criminal defences vary significantly across jurisdictions.
+</p>
+
+<p>
+A defence recognized in one legal system may be limited, modified, or unavailable in another.
+</p>
+
+<p>
+Differences may concern:
+</p>
+
+<ul>
+
+<li>The name of the defence.</li>
+
+<li>The elements that must be established.</li>
+
+<li>Whether it is a justification or excuse.</li>
+
+<li>The burden of proof.</li>
+
+<li>The standard of proof.</li>
+
+<li>Whether the defence is complete or partial.</li>
+
+</ul>
+
+<div class="definition">
+
+Criminal defences must always be studied within the applicable legal system.
+
+</div>
+
+</div>
+
+
+<!-- CARD 35 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 35 · WHY IT MATTERS
+</div>
+
+<h2>Why Criminal Defences Matter</h2>
+
+<p>
+Criminal defences help:
+</p>
+
+<ul>
+
+<li>Protect individuals from unjust criminal punishment.</li>
+
+<li>Distinguish wrongful conduct from legally justified conduct.</li>
+
+<li>Recognize circumstances that reduce or eliminate criminal responsibility.</li>
+
+<li>Ensure that the prosecution proves the elements of an offence.</li>
+
+<li>Protect the presumption of innocence.</li>
+
+<li>Recognize limits on state punishment.</li>
+
+<li>Promote fairness in criminal proceedings.</li>
+
+</ul>
+
+<div class="definition">
+
+Defences are an essential part of the balance between individual responsibility and the power of the criminal justice system.
+
+</div>
+
+</div>
+
+
+<!-- CARD 36 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 36 · KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+<strong>Criminal defences are legal rules that may prevent, reduce, or otherwise limit criminal responsibility.</strong>
+
+</div>
+
+<p>
+They may operate in different ways.
+</p>
+
+<ul>
+
+<li><strong>Justification</strong> — the conduct is treated as legally justified, such as lawful self-defence.</li>
+
+<li><strong>Excuse</strong> — the conduct remains wrongful but the accused is excused, such as certain forms of duress or mental incapacity.</li>
+
+<li><strong>Failure of the prosecution's case</strong> — the prosecution has failed to prove an essential element of the offence.</li>
+
+</ul>
+
+<h3>Common Criminal Defences</h3>
+
+<ul>
+
+<li><strong>Self-defence</strong> — reasonable force used to protect against unlawful harm.</li>
+
+<li><strong>Necessity</strong> — unlawful conduct carried out to prevent a greater or serious danger.</li>
+
+<li><strong>Duress</strong> — criminal conduct carried out under legally sufficient coercion or threats.</li>
+
+<li><strong>Mistake of fact</strong> — a factual mistake that may prevent the required mental element from being established.</li>
+
+<li><strong>Insanity or mental disorder</strong> — a legally recognized mental condition that may prevent criminal responsibility under the applicable test.</li>
+
+<li><strong>Automatism</strong> — involuntary conduct occurring without the required conscious control.</li>
+
+<li><strong>Alibi</strong> — evidence showing that the accused was elsewhere when the offence occurred.</li>
+
+</ul>
+
+<div class="definition">
+
+<strong>Criminal Defences = Legal reasons why the accused should not be held criminally responsible for the alleged offence.</strong>
+
+</div>
+
+<p>
+Understanding criminal defences is essential because criminal law is not concerned only with whether prohibited conduct occurred. It also considers whether the law recognizes circumstances that justify, excuse, or otherwise prevent criminal responsibility.
+</p>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Cornell Law School Legal Information Institute, materials on criminal law and criminal defenses.</li>
+
+<li>Crown Prosecution Service, materials on self-defence, duress, necessity, and criminal responsibility.</li>
+
+<li>Encyclopaedia Britannica, materials concerning criminal law and legal responsibility.</li>
+
+<li>United Nations, International Covenant on Civil and Political Rights, particularly Article 14 concerning fair trial rights and the presumption of innocence.</li>
+
+<li>UK legislation and case law concerning self-defence, duress, insanity, intoxication, and related criminal defences.</li>
+
+<li>Australian Attorney-General's Department, Commonwealth Criminal Code Guide for Practitioners, materials on criminal responsibility, defences, and fault elements.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Criminal Defences</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+
+/* NEXT CARD */
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+
+/* PREVIOUS CARD */
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is the primary purpose of a criminal defence?",
+options:[
+"To guarantee that every accused person is acquitted",
+"To provide a legal basis for preventing, reducing, or limiting criminal responsibility",
+"To eliminate the prosecution's burden of proof",
+"To replace criminal procedure"
+],
+answer:1
+},
+
+{
+question:"Which of the following is a justification defence?",
+options:[
+"Self-defence",
+"Alibi",
+"Mistake of law",
+"Appeal"
+],
+answer:0
+},
+
+{
+question:"What does duress generally involve?",
+options:[
+"A disagreement over property",
+"Criminal conduct carried out because of legally sufficient threats or coercion",
+"Being accused of an offence",
+"An innocent mistake about a statute"
+],
+answer:1
+},
+
+{
+question:"What is an alibi?",
+options:[
+"A justification for using force",
+"Evidence that the accused was somewhere else when the offence occurred",
+"A form of insanity defence",
+"A type of sentencing"
+],
+answer:1
+},
+
+{
+question:"Which statement best describes the presumption of innocence?",
+options:[
+"The accused must always prove their innocence",
+"The prosecution must prove the offence according to law",
+"A defence automatically proves innocence",
+"The accused is presumed guilty until trial"
+],
+answer:1
+}
+
+];
+
+let currentQuestion = 0;
+
+
+/* START QUIZ */
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+
+/* QUIZ RESULT */
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Criminal Defences</strong> quiz.
+</p>
+
+<p>
+You can now return to the Criminal Law section and explore another topic.
+</p>
+
+<a href="criminal-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Criminal Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
