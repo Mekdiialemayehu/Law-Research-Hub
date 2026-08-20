@@ -1,0 +1,3221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining Sentencing, including sentencing purposes, proportionality, aggravating and mitigating factors, types of sentences, judicial discretion, appeals, rehabilitation, and human rights.">
+
+<title>Sentencing | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+max-width:850px;
+margin:auto;
+line-height:1.8;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* COMPARISON TABLE */
+
+.comparison{
+width:100%;
+border-collapse:collapse;
+margin:20px 0;
+font-size:15px;
+}
+
+.comparison th,
+.comparison td{
+border:1px solid #ddd;
+padding:14px;
+text-align:left;
+vertical-align:top;
+}
+
+.comparison th{
+background:#0b1f3a;
+color:white;
+}
+
+.comparison tr:nth-child(even){
+background:#f8f9fb;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+.comparison{
+font-size:13px;
+}
+
+.comparison th,
+.comparison td{
+padding:10px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Sentencing</h1>
+
+<p>
+Criminal Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+SENTENCING
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is Sentencing?</h2>
+
+<div class="definition">
+
+<strong>Sentencing</strong> is the process by which a court determines the legal punishment or other consequences imposed on a person who has been convicted of a criminal offence.
+
+</div>
+
+<p>
+It takes place after guilt has been established, either following a trial or after a valid guilty plea.
+</p>
+
+<div class="definition">
+
+<strong>What legal consequence should follow from this criminal conviction?</strong>
+
+</div>
+
+<p>
+Sentencing is not simply about imposing punishment. Courts may consider punishment, deterrence, public protection, rehabilitation, reparation, and denunciation.
+</p>
+
+<p>
+The precise purposes and sentencing powers differ between legal systems.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · CONVICTION
+</div>
+
+<h2>Sentencing and Conviction</h2>
+
+<div class="definition">
+
+<strong>Conviction</strong> = Has the accused been proved guilty?
+
+<br><br>
+
+<strong>Sentencing</strong> = What legal consequence should follow from that guilt?
+
+</div>
+
+<p>
+A conviction establishes that the accused has been found legally responsible for the offence.
+</p>
+
+<p>
+Sentencing is the next stage.
+</p>
+
+<p>
+The court considers the offence, the offender, the circumstances of the case, and the applicable sentencing law before determining the appropriate sentence.
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · PURPOSES
+</div>
+
+<h2>Purpose of Sentencing</h2>
+
+<p>
+Sentencing serves several possible purposes.
+</p>
+
+<ul>
+
+<li><strong>Retribution</strong> — proportionate punishment for wrongdoing.</li>
+
+<li><strong>Deterrence</strong> — discouraging future offending.</li>
+
+<li><strong>Rehabilitation</strong> — helping offenders change their behaviour.</li>
+
+<li><strong>Incapacitation</strong> — restricting the offender's ability to cause further harm.</li>
+
+<li><strong>Reparation</strong> — addressing harm caused to victims or communities.</li>
+
+<li><strong>Denunciation</strong> — expressing society's condemnation of criminal conduct.</li>
+
+</ul>
+
+<div class="definition">
+
+Not every sentencing system gives these purposes the same weight.
+
+</div>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · RETRIBUTION
+</div>
+
+<h2>Retribution</h2>
+
+<p>
+Retribution refers to the principle that criminal conduct should result in a proportionate punishment.
+</p>
+
+<p>
+It is based on the seriousness of the offence and the offender's level of responsibility.
+</p>
+
+<div class="definition">
+
+Retribution does not necessarily mean revenge. It involves the idea that punishment should reflect the wrongfulness of the conduct.
+
+</div>
+
+<p>
+A more serious offence may therefore justify a more severe sentence.
+</p>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · DETERRENCE
+</div>
+
+<h2>Deterrence</h2>
+
+<p>
+Deterrence aims to reduce future offending by making criminal conduct less attractive.
+</p>
+
+<h3>Specific Deterrence</h3>
+
+<p>
+Focuses on preventing the particular offender from committing further offences.
+</p>
+
+<h3>General Deterrence</h3>
+
+<p>
+Focuses on discouraging other people from committing similar offences.
+</p>
+
+<div class="definition">
+
+A substantial sentence for a serious offence may communicate that similar conduct will result in significant legal consequences.
+
+</div>
+
+<p>
+The effectiveness of deterrence can vary depending on the offence and circumstances.
+</p>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · REHABILITATION
+</div>
+
+<h2>Rehabilitation</h2>
+
+<p>
+Rehabilitation aims to address causes or circumstances that contribute to offending and help the offender return to lawful behaviour.
+</p>
+
+<h3>Possible Measures</h3>
+
+<ul>
+
+<li>Education.</li>
+
+<li>Counseling.</li>
+
+<li>Treatment programs where legally appropriate.</li>
+
+<li>Employment support.</li>
+
+<li>Structured supervision.</li>
+
+<li>Skills development.</li>
+
+</ul>
+
+<div class="definition">
+
+Rehabilitation is particularly important in sentencing systems that seek to reduce reoffending over the long term.
+
+</div>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · INCAPACITATION
+</div>
+
+<h2>Incapacitation</h2>
+
+<p>
+Incapacitation seeks to protect the public by restricting an offender's ability to commit further offences.
+</p>
+
+<p>
+Imprisonment is the most obvious example.
+</p>
+
+<p>
+Other restrictions, such as probation conditions or restrictions on particular activities, may also serve protective purposes.
+</p>
+
+<div class="definition">
+
+Incapacitation focuses on preventing further offending by limiting an offender's ability to commit certain offences.
+
+</div>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · REPARATION
+</div>
+
+<h2>Reparation</h2>
+
+<p>
+Reparation refers to steps taken by an offender to address harm caused by their conduct.
+</p>
+
+<p>
+Depending on the legal system, this may include:
+</p>
+
+<ul>
+
+<li>Compensation.</li>
+
+<li>Restitution.</li>
+
+<li>Returning property.</li>
+
+<li>Paying for damage.</li>
+
+<li>Other forms of restorative action.</li>
+
+</ul>
+
+<div class="definition">
+
+Reparation recognizes that criminal offences may cause direct harm to victims or communities.
+
+</div>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · DENUNCIATION
+</div>
+
+<h2>Denunciation</h2>
+
+<p>
+Denunciation involves the court expressing society's condemnation of particular criminal conduct.
+</p>
+
+<p>
+A sentence may communicate that certain conduct is especially serious or unacceptable.
+</p>
+
+<div class="definition">
+
+Denunciation is particularly connected to the symbolic function of criminal punishment.
+
+</div>
+
+<p>
+The principle may be especially relevant to serious offences involving violence, exploitation, corruption, or serious dishonesty.
+</p>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · PROPORTIONALITY
+</div>
+
+<h2>Proportionality</h2>
+
+<p>
+Proportionality is a central principle in sentencing.
+</p>
+
+<p>
+It generally requires the seriousness of the sentence to correspond appropriately to the seriousness of the offence and the offender's responsibility.
+</p>
+
+<p>
+Courts may consider:
+</p>
+
+<ul>
+
+<li>The harm caused.</li>
+
+<li>The offender's culpability.</li>
+
+<li>The circumstances of the offence.</li>
+
+<li>Aggravating factors.</li>
+
+<li>Mitigating factors.</li>
+
+<li>The applicable sentencing framework.</li>
+
+</ul>
+
+<div class="definition">
+
+A sentence should not normally be excessively severe compared with the offence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · AGGRAVATING
+</div>
+
+<h2>Aggravating Factors</h2>
+
+<p>
+Aggravating factors are circumstances that may justify a more severe sentence.
+</p>
+
+<ul>
+
+<li>Serious physical or psychological harm.</li>
+
+<li>Use of violence or weapons.</li>
+
+<li>Targeting a vulnerable victim.</li>
+
+<li>Abuse of a position of trust.</li>
+
+<li>Planning or premeditation.</li>
+
+<li>Previous relevant convictions.</li>
+
+<li>A particularly high level of culpability.</li>
+
+<li>Persistent or repeated offending.</li>
+
+</ul>
+
+<div class="definition">
+
+The court must apply only aggravating factors recognized by the applicable law.
+
+</div>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · MITIGATING
+</div>
+
+<h2>Mitigating Factors</h2>
+
+<p>
+Mitigating factors are circumstances that may support a less severe sentence.
+</p>
+
+<ul>
+
+<li>Genuine remorse.</li>
+
+<li>Cooperation with authorities.</li>
+
+<li>An appropriate guilty plea.</li>
+
+<li>Limited role in the offence.</li>
+
+<li>Lack of previous convictions.</li>
+
+<li>Young age, where legally relevant.</li>
+
+<li>Significant personal circumstances.</li>
+
+<li>Evidence of rehabilitation.</li>
+
+</ul>
+
+<div class="definition">
+
+Mitigation does not erase guilt. It may influence the appropriate punishment.
+
+</div>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · GUILTY PLEA
+</div>
+
+<h2>Guilty Plea</h2>
+
+<p>
+A guilty plea occurs when the accused formally admits the offence.
+</p>
+
+<p>
+In many legal systems, an early guilty plea may reduce the sentence because it can:
+</p>
+
+<ul>
+
+<li>Save court time.</li>
+
+<li>Avoid the need for a full trial.</li>
+
+<li>Reduce stress for witnesses and victims.</li>
+
+<li>Demonstrate acceptance of responsibility.</li>
+
+</ul>
+
+<div class="definition">
+
+The amount of any reduction depends on the jurisdiction and the stage at which the plea is entered.
+
+</div>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · PREVIOUS CONVICTIONS
+</div>
+
+<h2>Previous Convictions</h2>
+
+<p>
+Previous convictions may influence sentencing where the law permits them to be considered.
+</p>
+
+<p>
+The court may consider:
+</p>
+
+<ul>
+
+<li>The number of previous convictions.</li>
+
+<li>Their seriousness.</li>
+
+<li>Their similarity to the current offence.</li>
+
+<li>How recently they occurred.</li>
+
+<li>Evidence of rehabilitation since the earlier offences.</li>
+
+</ul>
+
+<div class="definition">
+
+Previous convictions do not automatically justify any particular punishment.
+
+</div>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · CHARACTER
+</div>
+
+<h2>Character and Sentencing</h2>
+
+<p>
+The offender's character may sometimes be relevant to sentencing.
+</p>
+
+<p>
+Evidence may concern:
+</p>
+
+<ul>
+
+<li>Reputation.</li>
+
+<li>Previous conduct.</li>
+
+<li>Community contributions.</li>
+
+<li>Employment or education.</li>
+
+<li>Personal circumstances.</li>
+
+<li>Rehabilitation efforts.</li>
+
+</ul>
+
+<div class="definition">
+
+Courts must apply the rules of the applicable legal system and avoid punishing an offender for conduct that is not legally relevant.
+
+</div>
+
+</div>
+
+
+<!-- CARD 16 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 16 · GUIDELINES
+</div>
+
+<h2>Sentencing Guidelines</h2>
+
+<p>
+Some legal systems use sentencing guidelines to promote consistency.
+</p>
+
+<p>
+Guidelines may identify:
+</p>
+
+<ul>
+
+<li>The starting point for a sentence.</li>
+
+<li>Relevant aggravating factors.</li>
+
+<li>Relevant mitigating factors.</li>
+
+<li>Appropriate sentence ranges.</li>
+
+<li>Adjustments for guilty pleas.</li>
+
+<li>Principles concerning different types of punishment.</li>
+
+</ul>
+
+<div class="definition">
+
+The legal force of sentencing guidelines differs between jurisdictions.
+
+</div>
+
+</div>
+
+
+<!-- CARD 17 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 17 · MANDATORY SENTENCES
+</div>
+
+<h2>Mandatory Sentences</h2>
+
+<p>
+A mandatory sentence is a punishment or minimum punishment required by law for a particular offence or circumstance.
+</p>
+
+<p>
+Mandatory sentencing can limit judicial discretion.
+</p>
+
+<h3>Arguments in Support</h3>
+
+<ul>
+
+<li>Consistency.</li>
+
+<li>Predictability.</li>
+
+<li>Deterrence.</li>
+
+</ul>
+
+<h3>Arguments Against</h3>
+
+<ul>
+
+<li>Possible disproportionate results.</li>
+
+<li>Reduced judicial flexibility.</li>
+
+<li>Less ability to consider individual circumstances.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 18 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 18 · MINIMUM & MAXIMUM
+</div>
+
+<h2>Minimum and Maximum Sentences</h2>
+
+<p>
+Legislation may establish a minimum or maximum penalty.
+</p>
+
+<div class="definition">
+
+<strong>Maximum sentence</strong> = the highest punishment the court is legally permitted to impose.
+
+<br><br>
+
+<strong>Minimum sentence</strong> = the lowest sentence required where the law makes a minimum mandatory.
+
+</div>
+
+<p>
+Where discretion exists between the minimum and maximum, the court determines the appropriate sentence according to the applicable principles.
+</p>
+
+</div>
+
+
+<!-- CARD 19 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 19 · JUDICIAL DISCRETION
+</div>
+
+<h2>Judicial Discretion</h2>
+
+<p>
+Judicial discretion refers to the authority of a judge to choose among legally permitted sentencing options.
+</p>
+
+<p>
+A judge must generally:
+</p>
+
+<ul>
+
+<li>Follow the law.</li>
+
+<li>Apply relevant sentencing principles.</li>
+
+<li>Consider mandatory factors.</li>
+
+<li>Avoid irrelevant considerations.</li>
+
+<li>Impose a lawful sentence.</li>
+
+</ul>
+
+<div class="definition">
+
+Judicial discretion allows individual circumstances to be considered, but it is not unlimited.
+
+</div>
+
+</div>
+
+
+<!-- CARD 20 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 20 · TYPES OF SENTENCES
+</div>
+
+<h2>Types of Sentences</h2>
+
+<p>
+Criminal justice systems recognize different forms of sentence.
+</p>
+
+<ul>
+
+<li>Imprisonment.</li>
+
+<li>Suspended sentences.</li>
+
+<li>Probation or community supervision.</li>
+
+<li>Community service.</li>
+
+<li>Fines.</li>
+
+<li>Restitution or compensation.</li>
+
+<li>Discharges.</li>
+
+<li>Treatment or rehabilitation orders where legally available.</li>
+
+<li>Other restrictions imposed by law.</li>
+
+</ul>
+
+<div class="definition">
+
+Not every legal system uses all of these forms of punishment.
+
+</div>
+
+</div>
+
+
+<!-- CARD 21 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 21 · IMPRISONMENT
+</div>
+
+<h2>Imprisonment</h2>
+
+<p>
+Imprisonment involves placing an offender in lawful custody for a specified period.
+</p>
+
+<p>
+It is generally used for serious offences or circumstances where other sanctions are considered inadequate.
+</p>
+
+<p>
+Courts may consider:
+</p>
+
+<ul>
+
+<li>The seriousness of the offence.</li>
+
+<li>Risk of reoffending.</li>
+
+<li>Protection of the public.</li>
+
+<li>Statutory requirements.</li>
+
+<li>Aggravating and mitigating factors.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 22 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 22 · SUSPENDED SENTENCE
+</div>
+
+<h2>Suspended Sentence</h2>
+
+<p>
+A suspended sentence is a sentence that may not be immediately served in custody, subject to legally defined conditions.
+</p>
+
+<p>
+Depending on the legal system, the sentence may become enforceable if the offender commits another offence or breaches specified conditions.
+</p>
+
+<div class="definition">
+
+Suspension can provide an alternative to immediate imprisonment in some circumstances.
+
+</div>
+
+<p>
+The terminology and legal effect differ across jurisdictions.
+</p>
+
+</div>
+
+
+<!-- CARD 23 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 23 · PROBATION
+</div>
+
+<h2>Probation</h2>
+
+<p>
+Probation generally involves allowing an offender to remain in the community subject to supervision and conditions.
+</p>
+
+<p>
+Conditions may include:
+</p>
+
+<ul>
+
+<li>Reporting to a probation officer.</li>
+
+<li>Attending rehabilitation programs.</li>
+
+<li>Avoiding particular people or places.</li>
+
+<li>Complying with treatment requirements where lawfully ordered.</li>
+
+<li>Remaining in education or employment where appropriate.</li>
+
+</ul>
+
+<div class="definition">
+
+A breach of probation conditions may result in additional legal consequences.
+
+</div>
+
+</div>
+
+
+<!-- CARD 24 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 24 · COMMUNITY SERVICE
+</div>
+
+<h2>Community Service</h2>
+
+<p>
+Community service requires an offender to perform unpaid work for a specified number of hours.
+</p>
+
+<h3>Possible Purposes</h3>
+
+<ul>
+
+<li>Punishment.</li>
+
+<li>Reparation to the community.</li>
+
+<li>Rehabilitation.</li>
+
+<li>Avoiding imprisonment for suitable offenders.</li>
+
+</ul>
+
+<div class="definition">
+
+Its availability and conditions vary between legal systems.
+
+</div>
+
+</div>
+
+
+<!-- CARD 25 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 25 · FINES
+</div>
+
+<h2>Fines</h2>
+
+<p>
+A fine is a monetary penalty imposed by the court.
+</p>
+
+<p>
+The amount may depend on:
+</p>
+
+<ul>
+
+<li>The seriousness of the offence.</li>
+
+<li>Statutory limits.</li>
+
+<li>The offender's financial circumstances.</li>
+
+<li>The purpose of the sentence.</li>
+
+</ul>
+
+<div class="definition">
+
+In some legal systems, unpaid fines can result in further legal consequences.
+
+</div>
+
+</div>
+
+
+<!-- CARD 26 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 26 · RESTITUTION
+</div>
+
+<h2>Restitution and Compensation</h2>
+
+<p>
+Restitution generally involves restoring property or value that was unlawfully taken or damaged.
+</p>
+
+<p>
+Compensation may require an offender to pay money to a victim for legally recognized losses.
+</p>
+
+<div class="definition">
+
+These forms of sentence emphasize the consequences suffered by victims.
+
+</div>
+
+<p>
+Their availability depends on the offence and applicable legislation.
+</p>
+
+</div>
+
+
+<!-- CARD 27 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 27 · DISCHARGES
+</div>
+
+<h2>Absolute and Conditional Discharges</h2>
+
+<h3>Absolute Discharge</h3>
+
+<p>
+An absolute discharge generally means that no additional punishment is imposed after conviction.
+</p>
+
+<h3>Conditional Discharge</h3>
+
+<p>
+A conditional discharge may require the offender to comply with specified conditions for a period of time.
+</p>
+
+<div class="definition">
+
+The legal consequences differ between jurisdictions.
+
+</div>
+
+</div>
+
+
+<!-- CARD 28 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 28 · CONCURRENT & CONSECUTIVE
+</div>
+
+<h2>Concurrent and Consecutive Sentences</h2>
+
+<table class="comparison">
+
+<tr>
+
+<th>Concurrent</th>
+
+<th>Consecutive</th>
+
+</tr>
+
+<tr>
+
+<td>
+Sentences are served at the same time.
+</td>
+
+<td>
+Sentences are served one after another.
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Multiple sentences may overlap in time.
+</td>
+
+<td>
+The periods are added sequentially, subject to applicable law.
+</td>
+
+</tr>
+
+</table>
+
+<p>
+These concepts commonly arise when an offender is convicted of multiple offences.
+</p>
+
+</div>
+
+
+<!-- CARD 29 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 29 · TOTALITY
+</div>
+
+<h2>Totality Principle</h2>
+
+<p>
+The totality principle concerns the overall effect of sentences imposed for multiple offences.
+</p>
+
+<p>
+The court may need to ensure that the combined sentence is proportionate to the offender's total criminality.
+</p>
+
+<div class="definition">
+
+This prevents a series of individual sentences from producing an overall punishment that is excessively severe.
+
+</div>
+
+<p>
+The precise operation of the totality principle varies between legal systems.
+</p>
+
+</div>
+
+
+<!-- CARD 30 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 30 · VICTIMS
+</div>
+
+<h2>Sentencing and Victims</h2>
+
+<p>
+Victims may have an important role in sentencing proceedings.
+</p>
+
+<p>
+Depending on the jurisdiction, victims may be able to provide a victim impact statement explaining how the offence affected them.
+</p>
+
+<div class="definition">
+
+Sentencing remains governed by legal principles, and punishment must remain proportionate and lawful.
+
+</div>
+
+</div>
+
+
+<!-- CARD 31 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 31 · VICTIM IMPACT
+</div>
+
+<h2>Victim Impact Statements</h2>
+
+<p>
+A victim impact statement generally describes the physical, emotional, financial, or other consequences of an offence.
+</p>
+
+<p>
+It may assist the court in understanding the harm suffered by the victim.
+</p>
+
+<div class="definition">
+
+A victim impact statement does not generally determine the sentence by itself.
+
+</div>
+
+<p>
+The court must consider the statement alongside the applicable sentencing law and other evidence.
+</p>
+
+</div>
+
+
+<!-- CARD 32 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 32 · OFFENDER CIRCUMSTANCES
+</div>
+
+<h2>Sentencing and the Offender's Circumstances</h2>
+
+<p>
+Courts may consider personal circumstances where they are legally relevant.
+</p>
+
+<ul>
+
+<li>Age.</li>
+
+<li>Family responsibilities.</li>
+
+<li>Health or disability where legally relevant.</li>
+
+<li>Employment.</li>
+
+<li>Education.</li>
+
+<li>Financial circumstances.</li>
+
+<li>Evidence of rehabilitation.</li>
+
+</ul>
+
+<div class="definition">
+
+Personal circumstances do not necessarily excuse criminal conduct. They may help determine an appropriate and proportionate sentence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 33 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 33 · YOUTH
+</div>
+
+<h2>Youth Sentencing</h2>
+
+<p>
+Young offenders may be sentenced differently from adults.
+</p>
+
+<p>
+This reflects recognition that children and adolescents may have:
+</p>
+
+<ul>
+
+<li>Greater capacity for rehabilitation.</li>
+
+<li>Different levels of maturity.</li>
+
+<li>Less developed judgment.</li>
+
+<li>Greater vulnerability to harmful environments.</li>
+
+</ul>
+
+<div class="definition">
+
+Youth justice systems may therefore prioritize rehabilitation and education more strongly than adult sentencing systems.
+
+</div>
+
+</div>
+
+
+<!-- CARD 34 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 34 · EQUALITY & CONSISTENCY
+</div>
+
+<h2>Sentencing and Equality</h2>
+
+<p>
+Sentencing should generally be consistent and non-discriminatory.
+</p>
+
+<p>
+Consistency promotes:
+</p>
+
+<ul>
+
+<li>Equality before the law.</li>
+
+<li>Predictability.</li>
+
+<li>Public confidence.</li>
+
+<li>Fairness.</li>
+
+</ul>
+
+<div class="definition">
+
+Consistency does not mean every offender must receive exactly the same sentence. Individual circumstances may justify differences.
+
+</div>
+
+</div>
+
+
+<!-- CARD 35 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 35 · PROPORTIONALITY & EQUALITY
+</div>
+
+<h2>Proportionality Compared with Equality</h2>
+
+<table class="comparison">
+
+<tr>
+
+<th>Proportionality</th>
+
+<th>Consistency</th>
+
+</tr>
+
+<tr>
+
+<td>
+Is the sentence appropriate for the seriousness of the offence and the offender's responsibility?
+</td>
+
+<td>
+Is the sentence reasonably consistent with comparable cases?
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Focuses on the relationship between offence and punishment.
+</td>
+
+<td>
+Focuses on comparable treatment between similar cases.
+</td>
+
+</tr>
+
+</table>
+
+<div class="definition">
+
+A sentence should be individualized while still remaining within the framework established by law.
+
+</div>
+
+</div>
+
+
+<!-- CARD 36 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 36 · HUMAN RIGHTS
+</div>
+
+<h2>Sentencing and Human Rights</h2>
+
+<p>
+Sentencing is subject to important legal and human-rights limits in many jurisdictions.
+</p>
+
+<p>
+These may restrict:
+</p>
+
+<ul>
+
+<li>Arbitrary punishment.</li>
+
+<li>Disproportionately severe penalties.</li>
+
+<li>Torture or cruel, inhuman, or degrading punishment.</li>
+
+<li>Retroactive criminal punishment.</li>
+
+<li>Discriminatory sentencing.</li>
+
+</ul>
+
+<div class="definition">
+
+Article 7 of the ICCPR prohibits torture and cruel, inhuman, or degrading treatment or punishment.
+
+</div>
+
+</div>
+
+
+<!-- CARD 37 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 37 · LEGALITY
+</div>
+
+<h2>Sentencing and the Principle of Legality</h2>
+
+<p>
+The principle of legality requires criminal punishment to have a lawful basis.
+</p>
+
+<p>
+A person should not be punished under a criminal rule that did not exist, in the relevant form, when the conduct occurred.
+</p>
+
+<div class="definition">
+
+A court generally cannot impose a sentence that exceeds the punishment authorized by law.
+
+</div>
+
+<p>
+The principle therefore limits arbitrary sentencing power.
+</p>
+
+</div>
+
+
+<!-- CARD 38 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 38 · RETROACTIVE PUNISHMENT
+</div>
+
+<h2>Retrospective Punishment</h2>
+
+<p>
+Criminal law generally prohibits imposing a heavier punishment than was legally available when the offence was committed.
+</p>
+
+<div class="definition">
+
+Article 15 of the International Covenant on Civil and Political Rights protects against retroactive criminal punishment while recognizing limited rules concerning later, more lenient penalties.
+
+</div>
+
+<p>
+The exact application depends on the jurisdiction.
+</p>
+
+</div>
+
+
+<!-- CARD 39 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 39 · REHABILITATION PROGRAMMES
+</div>
+
+<h2>Rehabilitation Programmes</h2>
+
+<p>
+Some sentences include programs designed to reduce the likelihood of future offending.
+</p>
+
+<ul>
+
+<li>Educational courses.</li>
+
+<li>Behavioral programs.</li>
+
+<li>Counseling.</li>
+
+<li>Vocational training.</li>
+
+<li>Supervision.</li>
+
+<li>Community-based rehabilitation.</li>
+
+</ul>
+
+<div class="definition">
+
+The availability of programs depends on the correctional and sentencing systems of the jurisdiction.
+
+</div>
+
+</div>
+
+
+<!-- CARD 40 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 40 · ELECTRONIC MONITORING
+</div>
+
+<h2>Electronic Monitoring</h2>
+
+<p>
+Some legal systems allow courts to impose electronic monitoring as part of community supervision or another sentence.
+</p>
+
+<p>
+Electronic monitoring can help enforce conditions such as:
+</p>
+
+<ul>
+
+<li>Curfews.</li>
+
+<li>Location restrictions.</li>
+
+<li>Residence requirements.</li>
+
+</ul>
+
+<div class="definition">
+
+Its use is governed by the applicable law and procedural safeguards.
+
+</div>
+
+</div>
+
+
+<!-- CARD 41 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 41 · IMMIGRATION CONSEQUENCES
+</div>
+
+<h2>Sentencing and Immigration Consequences</h2>
+
+<p>
+A criminal conviction may sometimes have consequences beyond the sentence imposed by the criminal court.
+</p>
+
+<p>
+For non-citizens, these may include immigration consequences under separate legal rules.
+</p>
+
+<ul>
+
+<li>Immigration detention.</li>
+
+<li>Loss of immigration status.</li>
+
+<li>Removal proceedings.</li>
+
+<li>Restrictions on future entry.</li>
+
+</ul>
+
+<div class="definition">
+
+Such consequences are often governed by immigration law rather than by the criminal sentence itself.
+
+</div>
+
+</div>
+
+
+<!-- CARD 42 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 42 · FINANCIAL CIRCUMSTANCES
+</div>
+
+<h2>Sentencing and Financial Circumstances</h2>
+
+<p>
+A person's ability to pay may be relevant when the court considers certain financial penalties.
+</p>
+
+<p>
+For example, a fine that is reasonable for one offender may be disproportionately burdensome for another.
+</p>
+
+<div class="definition">
+
+Some legal systems therefore permit courts to consider financial circumstances when determining fines.
+
+</div>
+
+<p>
+The precise approach depends on the applicable legislation.
+</p>
+
+</div>
+
+
+<!-- CARD 43 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 43 · PLEA BARGAINING
+</div>
+
+<h2>Sentencing and Plea Bargaining</h2>
+
+<p>
+Plea bargaining refers to negotiations in which an accused person may agree to plead guilty in exchange for a prosecutorial concession, such as the withdrawal or reduction of charges.
+</p>
+
+<p>
+Plea bargaining systems differ significantly around the world.
+</p>
+
+<div class="definition">
+
+Where legally permitted, an agreed outcome may influence the eventual sentence, but a court generally remains subject to its legal sentencing powers.
+
+</div>
+
+</div>
+
+
+<!-- CARD 44 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 44 · SENTENCING HEARING
+</div>
+
+<h2>Sentencing Hearings</h2>
+
+<p>
+A sentencing hearing is the stage at which the court receives information relevant to the appropriate sentence.
+</p>
+
+<p>
+The court may consider:
+</p>
+
+<ul>
+
+<li>The facts of the offence.</li>
+
+<li>The offender's criminal history.</li>
+
+<li>Aggravating factors.</li>
+
+<li>Mitigating factors.</li>
+
+<li>Victim impact.</li>
+
+<li>Guilty plea.</li>
+
+<li>Relevant sentencing guidelines.</li>
+
+<li>Applicable statutory requirements.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 45 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 45 · EVIDENCE & REASONS
+</div>
+
+<h2>Sentencing Evidence and Judicial Reasons</h2>
+
+<p>
+The evidence considered at sentencing may differ from the evidence required to establish guilt at trial.
+</p>
+
+<p>
+The court may receive information relevant to:
+</p>
+
+<ul>
+
+<li>The seriousness of the offence.</li>
+
+<li>Harm to victims.</li>
+
+<li>The offender's background.</li>
+
+<li>Risk of reoffending.</li>
+
+<li>Rehabilitation.</li>
+
+<li>Financial circumstances.</li>
+
+</ul>
+
+<h3>Judicial Reasons</h3>
+
+<p>
+Judges may be required to provide reasons for the sentence imposed.
+</p>
+
+<div class="definition">
+
+Reasons promote transparency and allow appellate courts to review whether the sentence was lawful.
+
+</div>
+
+</div>
+
+
+<!-- CARD 46 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 46 · APPEALS
+</div>
+
+<h2>Sentencing and Appeals</h2>
+
+<p>
+A sentence may sometimes be appealed.
+</p>
+
+<p>
+An appeal may argue that the sentence was:
+</p>
+
+<ul>
+
+<li>Excessive.</li>
+
+<li>Unduly lenient where the law permits such an appeal.</li>
+
+<li>Based on an error of law.</li>
+
+<li>Based on irrelevant considerations.</li>
+
+<li>Based on failure to consider a mandatory factor.</li>
+
+<li>Inconsistent with sentencing guidelines or statutory requirements.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 47 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 47 · SENTENCING ERRORS
+</div>
+
+<h2>Sentencing Errors</h2>
+
+<p>
+A sentencing error may occur where a court:
+</p>
+
+<ul>
+
+<li>Misinterprets the law.</li>
+
+<li>Applies the wrong sentencing framework.</li>
+
+<li>Fails to consider a mandatory factor.</li>
+
+<li>Considers an irrelevant factor.</li>
+
+<li>Miscalculates the applicable sentencing range.</li>
+
+<li>Imposes an unlawful sentence.</li>
+
+</ul>
+
+<div class="definition">
+
+An appellate court may correct the sentence according to its statutory powers.
+
+</div>
+
+</div>
+
+
+<!-- CARD 48 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 48 · CRIMINAL RECORD
+</div>
+
+<h2>Sentencing and Criminal Records</h2>
+
+<p>
+A sentence usually becomes part of the offender's criminal record after conviction.
+</p>
+
+<p>
+The existence of a criminal record may have future legal consequences involving:
+</p>
+
+<ul>
+
+<li>Future sentencing.</li>
+
+<li>Employment in regulated professions.</li>
+
+<li>Licensing.</li>
+
+<li>Immigration matters.</li>
+
+<li>Eligibility for certain programs.</li>
+
+</ul>
+
+<div class="definition">
+
+The extent and duration of these consequences vary between legal systems.
+
+</div>
+
+</div>
+
+
+<!-- CARD 49 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 49 · RELEASE & PAROLE
+</div>
+
+<h2>Rehabilitation After Release and Parole</h2>
+
+<h3>Supervision After Release</h3>
+
+<p>
+Some offenders remain subject to supervision after release from prison.
+</p>
+
+<ul>
+
+<li>Probation.</li>
+
+<li>Parole.</li>
+
+<li>Reporting requirements.</li>
+
+<li>Restrictions on activities.</li>
+
+<li>Rehabilitation programs.</li>
+
+</ul>
+
+<h3>Parole</h3>
+
+<p>
+Parole is the conditional release of a prisoner before the full custodial period has ended, subject to legal rules and supervision.
+</p>
+
+<div class="definition">
+
+A person released on parole may have to comply with conditions, and violations may result in further consequences.
+
+</div>
+
+</div>
+
+
+<!-- CARD 50 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 50 · RESTORATIVE JUSTICE
+</div>
+
+<h2>Sentencing and Restorative Justice</h2>
+
+<p>
+Restorative justice focuses on repairing harm caused by crime and involving affected individuals or communities where appropriate.
+</p>
+
+<p>
+It may involve:
+</p>
+
+<ul>
+
+<li>Victim-offender dialogue.</li>
+
+<li>Mediation.</li>
+
+<li>Community conferences.</li>
+
+<li>Agreements to repair harm.</li>
+
+<li>Other restorative processes.</li>
+
+</ul>
+
+<div class="definition">
+
+Restorative justice does not replace conventional sentencing in every legal system.
+
+</div>
+
+</div>
+
+
+<!-- CARD 51 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 51 · POLICY
+</div>
+
+<h2>Sentencing and Criminal Justice Policy</h2>
+
+<p>
+Sentencing reflects broader decisions about how a legal system responds to crime.
+</p>
+
+<p>
+Different systems may emphasize:
+</p>
+
+<ul>
+
+<li>Punishment.</li>
+
+<li>Deterrence.</li>
+
+<li>Rehabilitation.</li>
+
+<li>Public protection.</li>
+
+<li>Restorative justice.</li>
+
+</ul>
+
+<div class="definition">
+
+Changes in sentencing policy can affect imprisonment rates, rehabilitation programs, and the use of community-based penalties.
+
+</div>
+
+</div>
+
+
+<!-- CARD 52 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 52 · DIFFERENT SYSTEMS
+</div>
+
+<h2>Sentencing in Different Legal Systems</h2>
+
+<p>
+Sentencing differs considerably between jurisdictions.
+</p>
+
+<p>
+Differences may concern:
+</p>
+
+<ul>
+
+<li>Available punishments.</li>
+
+<li>Mandatory minimums.</li>
+
+<li>Maximum penalties.</li>
+
+<li>Sentencing guidelines.</li>
+
+<li>Judicial discretion.</li>
+
+<li>Youth sentencing.</li>
+
+<li>Parole.</li>
+
+<li>Fines.</li>
+
+<li>Restitution.</li>
+
+<li>Appeals.</li>
+
+</ul>
+
+<div class="definition">
+
+Sentencing principles must always be understood within the applicable legal system.
+
+</div>
+
+</div>
+
+
+<!-- CARD 53 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 53 · EXAMPLE
+</div>
+
+<h2>Example of Sentencing</h2>
+
+<p>
+Imagine that a person is convicted of theft.
+</p>
+
+<p>
+The conviction establishes that the prosecution has proved the offence according to law.
+</p>
+
+<p>
+The court must then determine an appropriate sentence.
+</p>
+
+<p>
+The judge may consider:
+</p>
+
+<ul>
+
+<li>The value of the property.</li>
+
+<li>Whether the offence was planned.</li>
+
+<li>Whether the victim suffered significant loss.</li>
+
+<li>Whether the offender has previous convictions.</li>
+
+<li>Whether the offender pleaded guilty early.</li>
+
+<li>Evidence of remorse or rehabilitation.</li>
+
+<li>Relevant sentencing guidelines.</li>
+
+</ul>
+
+<div class="definition">
+
+The sentence could potentially involve a fine, community-based punishment, probation, or imprisonment depending on the seriousness of the offence and applicable law.
+
+</div>
+
+</div>
+
+
+<!-- CARD 54 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 54 · CRIMINAL RESPONSIBILITY
+</div>
+
+<h2>Sentencing and Criminal Responsibility</h2>
+
+<div class="definition">
+
+<strong>Criminal responsibility</strong> asks: Is the accused legally responsible for the offence?
+
+<br><br>
+
+<strong>Sentencing</strong> asks: What lawful and proportionate consequence should follow from that responsibility?
+
+</div>
+
+<p>
+These are separate but connected questions.
+</p>
+
+<p>
+A person may be convicted of the same offence as another person but receive a different sentence because of differences in their circumstances.
+</p>
+
+</div>
+
+
+<!-- CARD 55 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 55 · WHY IT MATTERS
+</div>
+
+<h2>Why Sentencing Matters</h2>
+
+<p>
+Sentencing helps:
+</p>
+
+<ul>
+
+<li>Punish criminal conduct.</li>
+
+<li>Protect the public.</li>
+
+<li>Deter future offending.</li>
+
+<li>Encourage rehabilitation.</li>
+
+<li>Recognize harm suffered by victims.</li>
+
+<li>Express society's condemnation of serious offences.</li>
+
+<li>Promote consistency and proportionality.</li>
+
+<li>Provide lawful consequences for criminal responsibility.</li>
+
+</ul>
+
+<div class="definition">
+
+Sentencing is therefore an essential part of the criminal justice process.
+
+</div>
+
+</div>
+
+
+<!-- CARD 56 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 56 · KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+<strong>Sentencing is the process by which a court determines the legal consequences of a criminal conviction.</strong>
+
+</div>
+
+<p>
+It is guided by principles such as:
+</p>
+
+<ul>
+
+<li><strong>Retribution</strong> — punishment proportionate to the offence.</li>
+
+<li><strong>Deterrence</strong> — discouraging future offending.</li>
+
+<li><strong>Rehabilitation</strong> — helping offenders reduce future offending.</li>
+
+<li><strong>Incapacitation</strong> — protecting the public by restricting criminal conduct.</li>
+
+<li><strong>Reparation</strong> — addressing harm caused to victims or communities.</li>
+
+<li><strong>Denunciation</strong> — expressing society's condemnation of criminal conduct.</li>
+
+</ul>
+
+<h3>Possible Sentences</h3>
+
+<ul>
+
+<li>Imprisonment.</li>
+
+<li>Fines.</li>
+
+<li>Probation.</li>
+
+<li>Community service.</li>
+
+<li>Suspended sentences.</li>
+
+<li>Restitution or compensation.</li>
+
+<li>Other legally authorized penalties.</li>
+
+</ul>
+
+<div class="definition">
+
+<strong>Sentencing = Determining the lawful and proportionate consequence of a criminal conviction.</strong>
+
+</div>
+
+<p>
+The court must consider the seriousness of the offence, the offender's level of responsibility, aggravating and mitigating factors, applicable sentencing laws, and the legitimate purposes of punishment.
+</p>
+
+<p>
+Sentencing is therefore not simply about deciding how harshly to punish an offender. It is a structured legal process designed to produce a lawful, proportionate, and justified response to criminal conduct.
+</p>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>United Nations, International Covenant on Civil and Political Rights, particularly Articles 7, 14, and 15.</li>
+
+<li>United Nations, Universal Declaration of Human Rights, particularly Articles 10 and 11.</li>
+
+<li>Cornell Law School Legal Information Institute, materials on sentencing and criminal procedure.</li>
+
+<li>Crown Prosecution Service, materials on sentencing and sentencing principles.</li>
+
+<li>Sentencing Council of England and Wales, materials on sentencing principles, aggravating and mitigating factors, and sentencing guidelines.</li>
+
+<li>Encyclopaedia Britannica, materials concerning punishment, criminal justice, and sentencing.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Sentencing</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+
+/* NEXT CARD */
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+
+/* PREVIOUS CARD */
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"When does sentencing generally take place?",
+options:[
+"Before the offence occurs",
+"After guilt has been established",
+"Before an investigation begins",
+"Before the accused is charged"
+],
+answer:1
+},
+
+{
+question:"Which sentencing purpose focuses on discouraging future offending?",
+options:[
+"Deterrence",
+"Retribution",
+"Denunciation",
+"Reparation"
+],
+answer:0
+},
+
+{
+question:"What does proportionality generally require?",
+options:[
+"Every offender receives the same sentence",
+"The sentence appropriately reflects the seriousness of the offence and the offender's responsibility",
+"Only imprisonment may be imposed",
+"Previous convictions must always determine the sentence"
+],
+answer:1
+},
+
+{
+question:"Which of the following is an aggravating factor?",
+options:[
+"An early guilty plea",
+"Genuine remorse",
+"Targeting a vulnerable victim",
+"Evidence of rehabilitation"
+],
+answer:2
+},
+
+{
+question:"What is the main difference between concurrent and consecutive sentences?",
+options:[
+"Concurrent sentences are served at the same time, while consecutive sentences are served one after another",
+"Concurrent sentences are always longer",
+"Consecutive sentences are always replaced by fines",
+"There is no legal difference"
+],
+answer:0
+}
+
+];
+
+let currentQuestion = 0;
+
+
+/* START QUIZ */
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+
+/* QUIZ RESULT */
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Sentencing</strong> quiz.
+</p>
+
+<p>
+You can now return to the Criminal Law section and explore another topic.
+</p>
+
+<a href="criminal-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Criminal Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+</html>
