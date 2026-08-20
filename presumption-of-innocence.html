@@ -1,0 +1,2697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining the Presumption of Innocence, including burden of proof, standard of proof, fair trial rights, evidence, defences, pre-trial detention, appeals, and human rights.">
+
+<title>Presumption of Innocence | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+max-width:850px;
+margin:auto;
+line-height:1.8;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* COMPARISON TABLE */
+
+.comparison{
+width:100%;
+border-collapse:collapse;
+margin:20px 0;
+font-size:15px;
+}
+
+.comparison th,
+.comparison td{
+border:1px solid #ddd;
+padding:14px;
+text-align:left;
+vertical-align:top;
+}
+
+.comparison th{
+background:#0b1f3a;
+color:white;
+}
+
+.comparison tr:nth-child(even){
+background:#f8f9fb;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+.comparison{
+font-size:13px;
+}
+
+.comparison th,
+.comparison td{
+padding:10px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Presumption of Innocence</h1>
+
+<p>
+Criminal Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+PRESUMPTION OF INNOCENCE
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is the Presumption of Innocence?</h2>
+
+<div class="definition">
+
+<strong>The presumption of innocence</strong> is a fundamental principle of criminal law stating that a person accused of a crime must be treated as innocent unless and until their guilt is established according to law.
+
+</div>
+
+<p>
+It reflects the principle that an accusation is not the same as proof.
+</p>
+
+<div class="definition">
+
+<strong>Who must prove that the accused is guilty?</strong>
+
+</div>
+
+<p>
+In criminal proceedings, the prosecution generally bears the burden of proving the elements of the offence.
+</p>
+
+<p>
+The accused does not normally have to prove that they are innocent.
+</p>
+
+<p>
+The presumption of innocence is recognized in many legal systems and is closely connected to the right to a fair trial.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · PURPOSE
+</div>
+
+<h2>Purpose of the Presumption of Innocence</h2>
+
+<p>
+The presumption of innocence protects individuals from being treated as criminals merely because they have been accused.
+</p>
+
+<h3>Its Purposes Include</h3>
+
+<ul>
+
+<li>Protecting individuals against wrongful conviction.</li>
+
+<li>Requiring the prosecution to prove criminal responsibility.</li>
+
+<li>Preventing guilt from being assumed before trial.</li>
+
+<li>Supporting impartial and fair criminal proceedings.</li>
+
+<li>Limiting the power of the state to punish individuals without sufficient proof.</li>
+
+</ul>
+
+<div class="definition">
+
+Criminal punishment should follow proof of guilt rather than simply an allegation.
+
+</div>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · BURDEN OF PROOF
+</div>
+
+<h2>Presumption of Innocence and Burden of Proof</h2>
+
+<p>
+The presumption of innocence is closely connected to the burden of proof.
+</p>
+
+<p>
+In most criminal proceedings, the prosecution carries the burden of proving the accused's guilt.
+</p>
+
+<p>
+The prosecution must establish the elements of the offence according to the applicable standard of proof.
+</p>
+
+<div class="definition">
+
+In many common law systems, the criminal standard is described as <strong>beyond reasonable doubt</strong>.
+
+</div>
+
+<p>
+The accused generally does not have to prove that they did not commit the offence.
+</p>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · STANDARD OF PROOF
+</div>
+
+<h2>Presumption of Innocence and Standard of Proof</h2>
+
+<p>
+The presumption of innocence means that a person should not be convicted unless the prosecution satisfies the required standard of proof.
+</p>
+
+<p>
+In many common law jurisdictions, this standard is described as <strong>beyond reasonable doubt</strong>.
+</p>
+
+<div class="definition">
+
+<strong>Presumption of innocence + prosecution's burden of proof + required standard of proof = protection against conviction without sufficient evidence.</strong>
+
+</div>
+
+<p>
+The precise wording and application of the standard vary between legal systems.
+</p>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · ACCUSATION
+</div>
+
+<h2>Accusation Is Not Proof</h2>
+
+<p>
+An accusation is not proof of guilt.
+</p>
+
+<p>
+A person may be accused of an offence for many reasons, but the accusation itself does not establish that the offence was committed by that person.
+</p>
+
+<p>
+Criminal courts must determine guilt based on admissible evidence and the applicable law.
+</p>
+
+<div class="definition">
+
+The presumption of innocence prevents the criminal justice system from treating an allegation as an established fact.
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · BEFORE TRIAL
+</div>
+
+<h2>Presumption of Innocence Before Trial</h2>
+
+<p>
+The presumption applies before a criminal trial as well as during the trial.
+</p>
+
+<p>
+Before guilt is established, an accused person should not automatically be treated as a convicted criminal.
+</p>
+
+<p>
+This principle may affect:
+</p>
+
+<ul>
+
+<li>Public statements by authorities.</li>
+
+<li>Treatment of the accused.</li>
+
+<li>Judicial decisions.</li>
+
+<li>Bail proceedings.</li>
+
+<li>Pre-trial procedures.</li>
+
+<li>The presentation of information about the case.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · DURING TRIAL
+</div>
+
+<h2>Presumption of Innocence During Trial</h2>
+
+<p>
+During trial, the presumption of innocence affects how the case is presented and decided.
+</p>
+
+<p>
+The judge or jury should not begin with the assumption that the accused committed the offence.
+</p>
+
+<p>
+Instead, the prosecution must establish the required elements through evidence.
+</p>
+
+<div class="definition">
+
+The fact that a person has been charged does not itself satisfy the burden of proof.
+
+</div>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · PROSECUTION
+</div>
+
+<h2>Presumption of Innocence and the Prosecution</h2>
+
+<p>
+The prosecution generally has the responsibility of proving the accused's guilt.
+</p>
+
+<p>
+Depending on the offence, the elements may include:
+</p>
+
+<ul>
+
+<li>Actus reus.</li>
+
+<li>Mens rea.</li>
+
+<li>Causation.</li>
+
+<li>Particular factual circumstances.</li>
+
+</ul>
+
+<div class="definition">
+
+If the prosecution fails to prove an essential element, the accused should not be convicted of that offence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · THE ACCUSED
+</div>
+
+<h2>Presumption of Innocence and the Accused</h2>
+
+<p>
+The accused generally benefits from the presumption of innocence throughout the criminal process.
+</p>
+
+<p>
+The accused may:
+</p>
+
+<ul>
+
+<li>Challenge the prosecution's evidence.</li>
+
+<li>Remain silent where the law provides a right to silence.</li>
+
+<li>Present evidence.</li>
+
+<li>Call witnesses.</li>
+
+<li>Raise legal defences.</li>
+
+<li>Challenge the admissibility or reliability of evidence.</li>
+
+</ul>
+
+<div class="definition">
+
+The accused does not normally have to prove that they are innocent.
+
+</div>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · RIGHT TO SILENCE
+</div>
+
+<h2>Presumption of Innocence and Right to Silence</h2>
+
+<p>
+The presumption of innocence is closely connected with the right to silence in many legal systems.
+</p>
+
+<p>
+If the prosecution has the burden of proving guilt, an accused person should not ordinarily be required to provide a confession or prove their own innocence.
+</p>
+
+<div class="definition">
+
+The right to silence protects the accused against being compelled to contribute to the prosecution's case, subject to the specific rules of the jurisdiction.
+
+</div>
+
+<p>
+The relationship between the right to silence and the presumption of innocence varies between legal systems.
+</p>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · CRIMINAL DEFENCES
+</div>
+
+<h2>Presumption of Innocence and Criminal Defences</h2>
+
+<p>
+The prosecution must first establish the elements of the offence according to the applicable rules.
+</p>
+
+<p>
+Once a defence is properly raised, the legal system determines who bears the relevant evidential or persuasive burden.
+</p>
+
+<p>
+Some defences operate by showing that an element of the offence has not been proved.
+</p>
+
+<p>
+Other defences, such as self-defence or duress, may operate according to separate burden and proof rules.
+</p>
+
+<div class="definition">
+
+The exact allocation depends on the legal system and the particular defence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · MENS REA
+</div>
+
+<h2>Presumption of Innocence and Mens Rea</h2>
+
+<p>
+Mens rea is the mental element required for many criminal offences.
+</p>
+
+<p>
+Where mens rea forms part of the offence, the prosecution generally must prove the required mental state.
+</p>
+
+<p>
+For example, if an offence requires intention, the prosecution must establish the required intention according to the applicable legal test.
+</p>
+
+<div class="definition">
+
+The accused should not simply be assumed to have possessed the required mental state. The prosecution must prove it where the law requires it.
+
+</div>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · ACTUS REUS
+</div>
+
+<h2>Presumption of Innocence and Actus Reus</h2>
+
+<p>
+The actus reus is the physical or external element of a criminal offence.
+</p>
+
+<p>
+The prosecution generally must establish that the accused committed the legally prohibited conduct or that the required circumstances existed.
+</p>
+
+<div class="definition">
+
+The accused is not automatically assumed to have performed the prohibited act. The prosecution must establish the relevant physical elements through evidence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · CIRCUMSTANTIAL EVIDENCE
+</div>
+
+<h2>Presumption of Innocence and Circumstantial Evidence</h2>
+
+<p>
+Criminal cases may sometimes rely heavily on circumstantial evidence.
+</p>
+
+<p>
+This may include evidence concerning:
+</p>
+
+<ul>
+
+<li>Location.</li>
+
+<li>Communications.</li>
+
+<li>Financial records.</li>
+
+<li>Physical evidence.</li>
+
+<li>Conduct before or after an event.</li>
+
+</ul>
+
+<p>
+Circumstantial evidence may support an inference about what happened.
+</p>
+
+<div class="definition">
+
+The court must assess such evidence carefully rather than assuming guilt because the circumstances appear suspicious.
+
+</div>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · WITNESS EVIDENCE
+</div>
+
+<h2>Presumption of Innocence and Witness Evidence</h2>
+
+<p>
+Witness testimony may form an important part of a criminal case.
+</p>
+
+<p>
+The court may need to assess:
+</p>
+
+<ul>
+
+<li>The witness's reliability.</li>
+
+<li>Consistency.</li>
+
+<li>Opportunity to observe events.</li>
+
+<li>Possible bias.</li>
+
+<li>Accuracy of recollection.</li>
+
+<li>Whether the testimony is supported by other evidence.</li>
+
+</ul>
+
+<div class="definition">
+
+The existence of an accusation or witness statement does not automatically establish guilt.
+
+</div>
+
+</div>
+
+
+<!-- CARD 16 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 16 · EVIDENCE
+</div>
+
+<h2>Presumption of Innocence and Evidence</h2>
+
+<p>
+The presumption of innocence does not prevent evidence from being presented against the accused.
+</p>
+
+<p>
+The prosecution may present:
+</p>
+
+<ul>
+
+<li>Witness testimony.</li>
+
+<li>Documents.</li>
+
+<li>Physical evidence.</li>
+
+<li>Digital evidence.</li>
+
+<li>Expert evidence.</li>
+
+<li>Video or photographic material.</li>
+
+<li>Statements made by the accused where legally admissible.</li>
+
+</ul>
+
+<div class="definition">
+
+The court must determine whether the evidence is sufficient to establish guilt.
+
+</div>
+
+</div>
+
+
+<!-- CARD 17 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 17 · ADMISSIBILITY
+</div>
+
+<h2>Admissibility of Evidence</h2>
+
+<p>
+Not every piece of information is necessarily admissible in a criminal trial.
+</p>
+
+<p>
+Rules of evidence may restrict material that is:
+</p>
+
+<ul>
+
+<li>Irrelevant.</li>
+
+<li>Unreliable.</li>
+
+<li>Unfairly prejudicial.</li>
+
+<li>Obtained in violation of specific legal requirements.</li>
+
+<li>Protected by a legal privilege.</li>
+
+</ul>
+
+<div class="definition">
+
+The presumption of innocence reinforces the need for convictions to be based on legally usable evidence rather than mere suspicion.
+
+</div>
+
+</div>
+
+
+<!-- CARD 18 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 18 · IMPARTIALITY
+</div>
+
+<h2>Judicial Impartiality</h2>
+
+<p>
+Judges must approach criminal cases impartially.
+</p>
+
+<p>
+A judge should not assume that the accused is guilty simply because charges have been brought.
+</p>
+
+<div class="definition">
+
+Judicial impartiality helps protect the presumption of innocence by ensuring that the case is decided according to evidence and law.
+
+</div>
+
+<p>
+Judges may also be required to explain the burden and standard of proof to juries.
+</p>
+
+</div>
+
+
+<!-- CARD 19 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 19 · JURY
+</div>
+
+<h2>Presumption of Innocence and the Jury</h2>
+
+<p>
+In jury trials, jurors must generally be directed to begin with the presumption that the accused is innocent.
+</p>
+
+<p>
+They must then consider the evidence presented during the trial.
+</p>
+
+<p>
+A jury should not convict because:
+</p>
+
+<ul>
+
+<li>The accused appears suspicious.</li>
+
+<li>The jury dislikes the accused.</li>
+
+<li>The accused has failed to prove innocence.</li>
+
+<li>A mere allegation exists.</li>
+
+</ul>
+
+<div class="definition">
+
+The jury should convict only if the prosecution has proved the case according to the applicable standard.
+
+</div>
+
+</div>
+
+
+<!-- CARD 20 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 20 · PRE-TRIAL DETENTION
+</div>
+
+<h2>Pre-Trial Detention</h2>
+
+<p>
+A person may sometimes be detained before trial.
+</p>
+
+<div class="definition">
+
+Pre-trial detention does not necessarily mean that the person has been found guilty.
+
+</div>
+
+<p>
+Courts may impose pre-trial detention for legally recognized reasons such as:
+</p>
+
+<ul>
+
+<li>Risk of flight.</li>
+
+<li>Risk of interference with witnesses.</li>
+
+<li>Risk of further serious offending.</li>
+
+<li>Other legally recognized grounds.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 21 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 21 · BAIL
+</div>
+
+<h2>Presumption of Innocence and Bail</h2>
+
+<p>
+Bail is the temporary release of an accused person while criminal proceedings are ongoing, subject to conditions where required.
+</p>
+
+<p>
+The existence of bail systems is closely connected to the principle that an accused person has not yet been convicted.
+</p>
+
+<div class="definition">
+
+A decision to deny or grant bail is not necessarily a determination of guilt.
+
+</div>
+
+<p>
+The applicable legal standards vary between jurisdictions.
+</p>
+
+</div>
+
+
+<!-- CARD 22 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 22 · PUBLICITY
+</div>
+
+<h2>Pre-Trial Publicity</h2>
+
+<p>
+Public reporting can create challenges for the presumption of innocence.
+</p>
+
+<p>
+Media reports may present allegations before a court has determined whether they are true.
+</p>
+
+<p>
+Legal systems may respond through rules concerning:
+</p>
+
+<ul>
+
+<li>Contempt of court.</li>
+
+<li>Publication restrictions.</li>
+
+<li>Reporting of ongoing proceedings.</li>
+
+<li>Protection of juror impartiality.</li>
+
+<li>Defamation.</li>
+
+<li>Fair trial rights.</li>
+
+</ul>
+
+<div class="definition">
+
+The balance between freedom of expression and fair trial rights varies between jurisdictions.
+
+</div>
+
+</div>
+
+
+<!-- CARD 23 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 23 · PUBLIC STATEMENTS
+</div>
+
+<h2>Presumption of Innocence and Public Statements</h2>
+
+<p>
+Statements by police, prosecutors, government officials, or other public authorities may affect perceptions of guilt.
+</p>
+
+<p>
+Authorities should generally distinguish between:
+</p>
+
+<ul>
+
+<li>An allegation.</li>
+
+<li>Evidence.</li>
+
+<li>A charge.</li>
+
+<li>A conviction.</li>
+
+</ul>
+
+<div class="definition">
+
+Treating an accused person as though guilt has already been established can undermine the presumption of innocence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 24 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 24 · PREVIOUS CONVICTIONS
+</div>
+
+<h2>Previous Convictions and Character Evidence</h2>
+
+<p>
+Evidence of previous criminal convictions may sometimes be relevant in a later criminal case.
+</p>
+
+<p>
+However, previous wrongdoing does not automatically prove that the accused committed the current offence.
+</p>
+
+<p>
+Many legal systems therefore place restrictions on when previous convictions or prior misconduct may be presented.
+</p>
+
+<h3>Character Evidence</h3>
+
+<p>
+Character evidence concerns a person's general behavior, reputation, or previous conduct.
+</p>
+
+<div class="definition">
+
+The presumption of innocence supports careful limits on reasoning that a person should be convicted because they appear to be a "bad person."
+
+</div>
+
+</div>
+
+
+<!-- CARD 25 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 25 · BURDENS ON ACCUSED
+</div>
+
+<h2>Burdens on the Accused</h2>
+
+<p>
+Although the prosecution generally bears the burden of proving guilt, some legal systems permit limited burdens to be placed on the accused.
+</p>
+
+<p>
+These may arise in relation to particular statutory defences or exceptions.
+</p>
+
+<div class="definition">
+
+Human-rights law in some jurisdictions places limits on reverse burdens because they can affect the presumption of innocence.
+
+</div>
+
+<p>
+The validity and scope of such burdens depend on the legal system.
+</p>
+
+</div>
+
+
+<!-- CARD 26 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 26 · EVIDENTIAL & PERSUASIVE
+</div>
+
+<h2>Evidential and Persuasive Burdens</h2>
+
+<p>
+It is useful to distinguish between two different types of burden.
+</p>
+
+<h3>Evidential Burden</h3>
+
+<p>
+The responsibility of producing enough evidence to raise an issue.
+</p>
+
+<h3>Persuasive Burden</h3>
+
+<p>
+The responsibility of convincing the court of a particular proposition according to the required standard.
+</p>
+
+<div class="definition">
+
+An accused person may have an evidential burden without having the final persuasive burden.
+
+</div>
+
+</div>
+
+
+<!-- CARD 27 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 27 · REVERSE BURDENS
+</div>
+
+<h2>Presumption of Innocence and Reverse Burdens</h2>
+
+<p>
+A reverse burden occurs where the accused is required to establish or disprove a particular matter rather than leaving the entire burden on the prosecution.
+</p>
+
+<p>
+Reverse burdens can raise concerns because they may appear to require the accused to prove innocence.
+</p>
+
+<p>
+Courts in some jurisdictions therefore distinguish between:
+</p>
+
+<ul>
+
+<li>Evidential burdens.</li>
+
+<li>Persuasive burdens.</li>
+
+<li>Provisions compatible with the presumption of innocence.</li>
+
+<li>Provisions that place excessive pressure on the accused.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 28 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 28 · HUMAN RIGHTS
+</div>
+
+<h2>Presumption of Innocence and Human Rights</h2>
+
+<p>
+The presumption of innocence is recognized as a fundamental human-rights principle.
+</p>
+
+<div class="definition">
+
+<strong>Article 14(2) of the ICCPR</strong> provides that everyone charged with a criminal offence has the right to be presumed innocent until proved guilty according to law.
+
+<br><br>
+
+<strong>Article 6(2) of the ECHR</strong> contains a similar protection.
+
+</div>
+
+<p>
+These provisions demonstrate that the presumption of innocence is not merely a procedural rule in many systems but also a recognized fundamental right.
+</p>
+
+</div>
+
+
+<!-- CARD 29 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 29 · FAIR TRIAL
+</div>
+
+<h2>Presumption of Innocence and Fair Trial</h2>
+
+<p>
+The presumption of innocence forms part of the broader right to a fair trial.
+</p>
+
+<h3>A Fair Criminal Proceeding Generally Requires</h3>
+
+<ul>
+
+<li>An impartial decision-maker.</li>
+
+<li>A meaningful opportunity to challenge the prosecution's case.</li>
+
+<li>Adequate procedural safeguards.</li>
+
+<li>Proper application of the burden and standard of proof.</li>
+
+<li>Protection against arbitrary punishment.</li>
+
+</ul>
+
+<div class="definition">
+
+The presumption of innocence helps ensure that criminal proceedings focus on proving guilt rather than requiring the accused to prove innocence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 30 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 30 · EQUALITY
+</div>
+
+<h2>Equality Before the Law</h2>
+
+<p>
+The principle applies regardless of the identity or status of the accused.
+</p>
+
+<p>
+A person should not be presumed guilty because of:
+</p>
+
+<ul>
+
+<li>Wealth or poverty.</li>
+
+<li>Social position.</li>
+
+<li>Reputation.</li>
+
+<li>Occupation.</li>
+
+<li>Nationality.</li>
+
+<li>Previous allegations.</li>
+
+<li>Public attention surrounding the case.</li>
+
+</ul>
+
+<div class="definition">
+
+The prosecution must prove the case according to the same applicable legal standards.
+
+</div>
+
+</div>
+
+
+<!-- CARD 31 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 31 · DISCRIMINATION
+</div>
+
+<h2>Presumption of Innocence and Discrimination</h2>
+
+<p>
+The presumption of innocence supports equal treatment in criminal proceedings.
+</p>
+
+<p>
+A court should not assume that an accused person is guilty because of stereotypes or prejudice.
+</p>
+
+<div class="definition">
+
+Evidence should be evaluated objectively and according to the applicable law.
+
+</div>
+
+<p>
+Discriminatory assumptions may undermine both the presumption of innocence and the broader requirement of a fair trial.
+</p>
+
+</div>
+
+
+<!-- CARD 32 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 32 · GUILTY PLEAS
+</div>
+
+<h2>Guilty Pleas and Confessions</h2>
+
+<h3>Guilty Plea</h3>
+
+<p>
+A guilty plea is a formal admission by an accused person that they are guilty of the offence.
+</p>
+
+<p>
+Legal systems establish procedural safeguards to ensure that guilty pleas are made properly and voluntarily.
+</p>
+
+<h3>Confessions</h3>
+
+<p>
+A confession may provide significant evidence in a criminal case.
+</p>
+
+<p>
+The legal system may regulate:
+</p>
+
+<ul>
+
+<li>How the confession was obtained.</li>
+
+<li>Whether it was voluntary.</li>
+
+<li>Whether the accused understood their rights.</li>
+
+<li>Whether the confession is reliable.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 33 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 33 · SILENCE
+</div>
+
+<h2>Presumption of Innocence and Silence at Trial</h2>
+
+<p>
+An accused person's decision not to testify does not automatically mean that they are guilty.
+</p>
+
+<p>
+In many legal systems, the prosecution cannot simply rely on the accused's silence as proof that the charge is true.
+</p>
+
+<div class="definition">
+
+The relationship between silence and the presumption of innocence depends on the applicable law.
+
+</div>
+
+<p>
+Some jurisdictions permit limited legal consequences from silence in particular circumstances.
+</p>
+
+</div>
+
+
+<!-- CARD 34 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 34 · STRICT LIABILITY
+</div>
+
+<h2>Presumption of Innocence and Strict Liability</h2>
+
+<p>
+Strict liability offences can raise particular questions concerning the presumption of innocence.
+</p>
+
+<p>
+In a strict liability offence, the prosecution may not need to prove mens rea for one or more elements.
+</p>
+
+<div class="definition">
+
+Strict liability does not mean that an accused person is automatically presumed guilty.
+
+</div>
+
+<p>
+The prosecution must still prove the elements that the law requires.
+</p>
+
+<p>
+Strict liability changes what the prosecution must prove by removing a particular fault requirement.
+</p>
+
+</div>
+
+
+<!-- CARD 35 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 35 · APPEALS
+</div>
+
+<h2>Presumption of Innocence and Appeals</h2>
+
+<p>
+The presumption of innocence may remain relevant during appellate proceedings.
+</p>
+
+<p>
+An appeal may challenge:
+</p>
+
+<ul>
+
+<li>Whether the trial court correctly applied the burden of proof.</li>
+
+<li>Whether the correct standard of proof was used.</li>
+
+<li>Whether the judge properly directed the jury.</li>
+
+<li>Whether evidence was improperly admitted.</li>
+
+<li>Whether a legal rule unfairly affected the accused.</li>
+
+<li>Whether the conviction was supported by sufficient evidence.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 36 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 36 · WRONGFUL CONVICTIONS
+</div>
+
+<h2>Presumption of Innocence and Wrongful Convictions</h2>
+
+<p>
+The presumption of innocence plays an important role in reducing the risk of wrongful conviction.
+</p>
+
+<p>
+Requiring the prosecution to prove guilt creates a safeguard against conviction based on:
+</p>
+
+<ul>
+
+<li>Suspicion.</li>
+
+<li>Rumor.</li>
+
+<li>Prejudice.</li>
+
+<li>Unsupported allegations.</li>
+
+<li>Insufficient evidence.</li>
+
+</ul>
+
+<div class="definition">
+
+No legal system can eliminate all possibility of wrongful conviction, but procedural protections aim to reduce that risk.
+
+</div>
+
+</div>
+
+
+<!-- CARD 37 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 37 · REASONABLE DOUBT
+</div>
+
+<h2>Presumption of Innocence and Reasonable Doubt</h2>
+
+<p>
+Reasonable doubt is connected to the criminal standard of proof used in many legal systems.
+</p>
+
+<p>
+Where the prosecution has failed to establish guilt to the required level, the accused should not be convicted.
+</p>
+
+<div class="definition">
+
+The principle is not that every possible doubt requires acquittal. Instead, the court applies the legal standard established by the relevant jurisdiction.
+
+</div>
+
+</div>
+
+
+<!-- CARD 38 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 38 · EXAMPLE
+</div>
+
+<h2>Example of the Presumption of Innocence</h2>
+
+<p>
+Imagine that a person is accused of stealing a valuable item.
+</p>
+
+<p>
+The prosecution presents evidence suggesting that the accused was near the location where the item disappeared.
+</p>
+
+<p>
+Simply being near the location does not automatically establish guilt.
+</p>
+
+<p>
+The prosecution must prove the elements of the theft offence, including any required actus reus and mens rea.
+</p>
+
+<div class="definition">
+
+If the evidence is insufficient to establish guilt according to the required criminal standard, the accused should not be convicted.
+
+</div>
+
+<p>
+The presumption of innocence therefore requires the court to begin from the position that the accused is innocent and determine whether the prosecution has overcome that presumption through sufficient evidence.
+</p>
+
+</div>
+
+
+<!-- CARD 39 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 39 · DIFFERENT SYSTEMS
+</div>
+
+<h2>Presumption of Innocence in Different Legal Systems</h2>
+
+<p>
+The presumption of innocence is recognized in many legal traditions, although its precise operation differs.
+</p>
+
+<h3>Common Law Systems</h3>
+
+<ul>
+
+<li>The prosecution's burden of proof.</li>
+
+<li>The criminal standard of proof.</li>
+
+<li>The right to silence.</li>
+
+<li>Trial by an impartial court or jury.</li>
+
+</ul>
+
+<h3>Civil Law Systems</h3>
+
+<p>
+Civil law systems also recognize the principle, although procedural structures and terminology may differ.
+</p>
+
+<div class="definition">
+
+International human-rights instruments provide additional protections that influence many national legal systems.
+
+</div>
+
+</div>
+
+
+<!-- CARD 40 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 40 · STATUTORY INTERPRETATION
+</div>
+
+<h2>Presumption of Innocence and Statutory Interpretation</h2>
+
+<p>
+Courts may need to interpret legislation consistently with the presumption of innocence.
+</p>
+
+<p>
+Questions may arise where legislation:
+</p>
+
+<ul>
+
+<li>Places a burden on the accused.</li>
+
+<li>Creates evidential presumptions.</li>
+
+<li>Limits particular defences.</li>
+
+<li>Establishes strict liability.</li>
+
+<li>Alters ordinary criminal procedure.</li>
+
+</ul>
+
+<div class="definition">
+
+Courts may interpret such provisions carefully to determine their effect on the accused's procedural rights.
+
+</div>
+
+</div>
+
+
+<!-- CARD 41 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 41 · CRIMINAL PROCEDURE
+</div>
+
+<h2>Presumption of Innocence and Criminal Procedure</h2>
+
+<p>
+The principle influences many stages of criminal procedure, including:
+</p>
+
+<ul>
+
+<li>Investigation.</li>
+
+<li>Charging.</li>
+
+<li>Bail.</li>
+
+<li>Disclosure.</li>
+
+<li>Trial.</li>
+
+<li>Jury directions.</li>
+
+<li>Sentencing.</li>
+
+<li>Appeals.</li>
+
+</ul>
+
+<div class="definition">
+
+At each stage, the legal system must distinguish between an allegation and established criminal guilt.
+
+</div>
+
+<p>
+A person may be investigated, arrested, charged, or tried without having been convicted.
+</p>
+
+</div>
+
+
+<!-- CARD 42 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 42 · SENTENCING
+</div>
+
+<h2>Presumption of Innocence and Sentencing</h2>
+
+<p>
+Sentencing normally occurs after a person has been convicted or has entered a valid guilty plea.
+</p>
+
+<p>
+The presumption of innocence therefore continues to distinguish between:
+</p>
+
+<ul>
+
+<li>Alleged conduct.</li>
+
+<li>Proven criminal conduct.</li>
+
+<li>Conduct relevant to sentencing under the applicable law.</li>
+
+</ul>
+
+<div class="definition">
+
+The precise rules concerning unproved allegations and disputed conduct at sentencing vary between jurisdictions.
+
+</div>
+
+</div>
+
+
+<!-- CARD 43 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 43 · CRIMINAL RECORDS
+</div>
+
+<h2>Presumption of Innocence and Criminal Records</h2>
+
+<p>
+A criminal record generally reflects convictions established through the criminal justice system.
+</p>
+
+<div class="definition">
+
+An allegation, investigation, or charge is not necessarily equivalent to a conviction.
+
+</div>
+
+<p>
+Treating unproven allegations as established criminal conduct can conflict with the principle underlying the presumption of innocence.
+</p>
+
+<p>
+The legal treatment of arrest records, charges, and other information varies between jurisdictions.
+</p>
+
+</div>
+
+
+<!-- CARD 44 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 44 · WHY IT MATTERS
+</div>
+
+<h2>Why the Presumption of Innocence Matters</h2>
+
+<p>
+The presumption of innocence helps:
+</p>
+
+<ul>
+
+<li>Protect individuals from wrongful conviction.</li>
+
+<li>Place the primary burden of proving guilt on the prosecution.</li>
+
+<li>Support fair criminal trials.</li>
+
+<li>Prevent accusations from being treated as established facts.</li>
+
+<li>Protect the right to a fair hearing.</li>
+
+<li>Reinforce the criminal standard of proof.</li>
+
+<li>Limit arbitrary use of state power.</li>
+
+<li>Support public confidence in the justice system.</li>
+
+</ul>
+
+<div class="definition">
+
+It is therefore one of the most important principles in criminal procedure.
+
+</div>
+
+</div>
+
+
+<!-- CARD 45 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 45 · KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+<strong>The presumption of innocence is the principle that a person accused of a crime must be treated as innocent unless and until their guilt is established according to law.</strong>
+
+</div>
+
+<p>
+It places the primary burden of proving criminal responsibility on the prosecution.
+</p>
+
+<div class="definition">
+
+<strong>Presumption of Innocence = An accused person is not guilty merely because they have been accused.</strong>
+
+</div>
+
+<h3>The Prosecution Generally Must Prove</h3>
+
+<ul>
+
+<li>The required actus reus.</li>
+
+<li>The required mens rea.</li>
+
+<li>Any other elements of the offence.</li>
+
+<li>The case to the applicable criminal standard of proof.</li>
+
+</ul>
+
+<p>
+The accused generally does not have to prove their innocence.
+</p>
+
+<p>
+The presumption of innocence is closely connected to the burden of proof, standard of proof, right to a fair trial, right to silence, and criminal defences.
+</p>
+
+<p>
+It is fundamental because criminal justice should punish only where guilt has been established through a lawful and fair process.
+</p>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>United Nations, International Covenant on Civil and Political Rights, Article 14(2).</li>
+
+<li>Council of Europe, European Convention on Human Rights, Article 6(2).</li>
+
+<li>Cornell Law School Legal Information Institute, materials on the presumption of innocence, burden of proof, and criminal procedure.</li>
+
+<li>Encyclopaedia Britannica, materials concerning criminal procedure, fair trial rights, and the presumption of innocence.</li>
+
+<li>Crown Prosecution Service, materials concerning the burden and standard of proof in criminal proceedings.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Presumption of Innocence</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+
+/* NEXT CARD */
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+
+/* PREVIOUS CARD */
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What does the presumption of innocence mean?",
+options:[
+"An accused person must prove their innocence",
+"An accused person is treated as innocent unless and until guilt is established according to law",
+"A person is guilty once they are charged",
+"Only judges are protected by the principle"
+],
+answer:1
+},
+
+{
+question:"Who generally bears the burden of proving guilt in a criminal case?",
+options:[
+"The accused",
+"The prosecution",
+"The witness",
+"The jury"
+],
+answer:1
+},
+
+{
+question:"What is commonly used as the criminal standard of proof in many common law systems?",
+options:[
+"Balance of probabilities",
+"Beyond reasonable doubt",
+"Absolute certainty",
+"Reasonable suspicion"
+],
+answer:1
+},
+
+{
+question:"What does the presumption of innocence mean for an accusation?",
+options:[
+"An accusation automatically proves guilt",
+"An accusation is not the same as proof",
+"An accusation removes the right to a fair trial",
+"An accusation means the accused must testify"
+],
+answer:1
+},
+
+{
+question:"Which human-rights instrument expressly recognizes the presumption of innocence in Article 14(2)?",
+options:[
+"International Covenant on Civil and Political Rights",
+"Geneva Convention",
+"United Nations Convention on Contracts",
+"Paris Agreement"
+],
+answer:0
+}
+
+];
+
+let currentQuestion = 0;
+
+
+/* START QUIZ */
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+
+/* QUIZ RESULT */
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Presumption of Innocence</strong> quiz.
+</p>
+
+<p>
+You can now return to the Criminal Law section and explore another topic.
+</p>
+
+<a href="criminal-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Criminal Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
