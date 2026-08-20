@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining causation in criminal law, including factual causation, legal causation, intervening acts, multiple causes, homicide, evidence, and criminal responsibility.">
+
+<title>Causation | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* COMPARISON */
+
+.comparison{
+width:100%;
+border-collapse:collapse;
+margin:20px 0;
+font-size:15px;
+}
+
+.comparison th,
+.comparison td{
+border:1px solid #ddd;
+padding:14px;
+text-align:left;
+vertical-align:top;
+}
+
+.comparison th{
+background:#0b1f3a;
+color:white;
+}
+
+.comparison tr:nth-child(even){
+background:#f8f9fb;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+.comparison{
+font-size:13px;
+}
+
+.comparison th,
+.comparison td{
+padding:10px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Causation</h1>
+
+<p>
+Criminal Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+CAUSATION
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is Causation?</h2>
+
+<div class="definition">
+
+<strong>Causation</strong> refers to the legal connection between a person's conduct and a prohibited result in criminal law.
+
+</div>
+
+<p>
+It answers the question:
+</p>
+
+<div class="definition">
+
+<strong>Did the accused's conduct cause the prohibited result?</strong>
+
+</div>
+
+<p>
+Causation is particularly important in offences that require a specific consequence, such as death, injury, or property damage.
+</p>
+
+<p>
+For these offences, proving that the accused performed an act may not be enough. The prosecution may also need to establish that the act legally caused the required result.
+</p>
+
+<h3>Two Parts of Causation</h3>
+
+<ul>
+
+<li>Factual causation.</li>
+
+<li>Legal causation.</li>
+
+</ul>
+
+<p>
+The precise rules differ between offences and legal systems.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · CRIMINAL LIABILITY
+</div>
+
+<h2>Causation as an Element of Criminal Liability</h2>
+
+<p>
+Not every criminal offence requires proof of causation.
+</p>
+
+<p>
+A conduct-based offence may be established by proving that the prohibited conduct occurred.
+</p>
+
+<p>
+However, where an offence requires a particular result, the prosecution generally must establish a sufficient connection between the accused's conduct and that result.
+</p>
+
+<div class="definition">
+
+For a result-based offence, proving the act alone may not be enough. The prosecution must also establish the required causal connection.
+
+</div>
+
+<p>
+For example, if a person is charged with an offence requiring proof that they caused another person's death, the prosecution must establish the necessary causal connection between the accused's conduct and the death.
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · FACTUAL CAUSATION
+</div>
+
+<h2>Factual Causation</h2>
+
+<p>
+Factual causation asks whether the accused's conduct was a necessary cause of the result.
+</p>
+
+<p>
+A common way of expressing the test is the <strong>"but for" test</strong>.
+</p>
+
+<div class="definition">
+
+<strong>Would the result have occurred but for the accused's conduct?</strong>
+
+</div>
+
+<p>
+If the result would not have occurred without the accused's conduct, factual causation may be established.
+</p>
+
+<p>
+However, factual causation is usually only the first stage of the analysis.
+</p>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · BUT FOR TEST
+</div>
+
+<h2>The "But For" Test</h2>
+
+<p>
+The "but for" test is commonly used to establish factual causation.
+</p>
+
+<p>
+The court asks whether the prohibited result would have occurred but for the accused's conduct.
+</p>
+
+<h3>Example</h3>
+
+<p>
+A person pushes another individual, who falls and suffers an injury.
+</p>
+
+<div class="definition">
+
+<strong>But for the push, would the injury have occurred?</strong>
+
+</div>
+
+<p>
+If the answer is no, factual causation may be established.
+</p>
+
+<p>
+The test is not appropriate for every possible factual situation, and courts may use different approaches where multiple causes are involved.
+</p>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · LEGAL CAUSATION
+</div>
+
+<h2>Legal Causation</h2>
+
+<p>
+Legal causation asks whether the accused's conduct is sufficiently connected to the result for criminal responsibility to arise.
+</p>
+
+<p>
+Even when factual causation is established, the law may not automatically treat the accused as legally responsible for every consequence that follows.
+</p>
+
+<p>
+The court may therefore consider whether the connection between the conduct and result was legally sufficient.
+</p>
+
+<div class="definition">
+
+Legal causation is sometimes described as proximate causation or the requirement that the accused's conduct remain an operating and substantial cause, depending on the jurisdiction and offence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · COMPARISON
+</div>
+
+<h2>Factual and Legal Causation Compared</h2>
+
+<table class="comparison">
+
+<tr>
+
+<th>Factual Causation</th>
+
+<th>Legal Causation</th>
+
+</tr>
+
+<tr>
+
+<td>
+Asks whether the accused's conduct actually contributed to the result.
+</td>
+
+<td>
+Asks whether the conduct is sufficiently connected to the result for legal responsibility.
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Commonly uses the "but for" test.
+</td>
+
+<td>
+Considers whether the causal connection is legally sufficient.
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Focuses on the factual connection.
+</td>
+
+<td>
+Focuses on the legal significance of that connection.
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Usually comes first.
+</td>
+
+<td>
+Usually follows factual causation.
+</td>
+
+</tr>
+
+</table>
+
+<div class="definition">
+
+Both forms of causation may need to be established in result-based offences.
+
+</div>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · MULTIPLE CAUSES
+</div>
+
+<h2>Multiple and Concurrent Causes</h2>
+
+<p>
+Sometimes a result has more than one cause.
+</p>
+
+<p>
+For example, an injury or death may result from a combination of:
+</p>
+
+<ul>
+
+<li>The accused's conduct.</li>
+
+<li>Another person's actions.</li>
+
+<li>A pre-existing condition.</li>
+
+<li>Medical treatment.</li>
+
+<li>Environmental circumstances.</li>
+
+</ul>
+
+<p>
+The existence of other contributing factors does not automatically eliminate criminal responsibility.
+</p>
+
+<h3>Concurrent Causes</h3>
+
+<p>
+Concurrent causes occur when two or more events contribute to the same result.
+</p>
+
+<p>
+The court may need to determine whether the accused's conduct was a substantial or legally significant cause of the result.
+</p>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · INTERVENING ACTS
+</div>
+
+<h2>Intervening Acts</h2>
+
+<p>
+An intervening act is an event that occurs after the accused's conduct and may affect the causal connection between the conduct and the final result.
+</p>
+
+<p>
+Intervening events may involve:
+</p>
+
+<ul>
+
+<li>Another person's actions.</li>
+
+<li>Medical treatment.</li>
+
+<li>The victim's conduct.</li>
+
+<li>Natural events.</li>
+
+<li>Unexpected circumstances.</li>
+
+</ul>
+
+<p>
+The court may need to decide whether the intervening event is sufficiently independent or significant to break the chain of legal causation.
+</p>
+
+<div class="definition">
+
+<strong>Novus actus interveniens</strong> means a new intervening act that may affect the causal chain.
+
+</div>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · BREAKING THE CHAIN
+</div>
+
+<h2>Breaking the Chain of Causation</h2>
+
+<p>
+The chain of causation may be broken where an intervening event is sufficiently independent and significant that the accused's conduct can no longer fairly be treated as the legal cause of the result.
+</p>
+
+<p>
+However, not every intervening event breaks causation.
+</p>
+
+<p>
+Courts consider the circumstances as a whole.
+</p>
+
+<h3>Acts of Third Parties</h3>
+
+<p>
+The conduct of another person may sometimes intervene between the accused's conduct and the final result.
+</p>
+
+<p>
+The court may consider:
+</p>
+
+<ul>
+
+<li>Whether the intervention was foreseeable.</li>
+
+<li>Whether the original conduct remained an operating cause.</li>
+
+<li>How independent the intervening act was.</li>
+
+<li>Whether the intervening conduct was sufficiently significant to break the causal chain.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · MEDICAL TREATMENT
+</div>
+
+<h2>Medical Treatment</h2>
+
+<p>
+Medical treatment may sometimes occur between the accused's conduct and the final result.
+</p>
+
+<p>
+If the accused causes an injury and the victim later receives medical treatment, the court may need to determine whether the accused's original conduct remains a legally sufficient cause of the eventual result.
+</p>
+
+<div class="definition">
+
+The fact that medical treatment contributed to the outcome does not automatically break the chain of causation.
+
+</div>
+
+<p>
+However, exceptionally independent or extraordinary treatment may raise different legal questions.
+</p>
+
+<p>
+The precise test depends on the circumstances and applicable law.
+</p>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · VICTIM & VULNERABILITY
+</div>
+
+<h2>Victim's Conduct and Pre-Existing Conditions</h2>
+
+<h3>Victim's Conduct</h3>
+
+<p>
+The conduct of the victim can sometimes become relevant to causation.
+</p>
+
+<p>
+The court may consider whether the victim's response was a reasonably foreseeable reaction to the accused's conduct or whether it was so extraordinary and independent that it breaks the causal chain.
+</p>
+
+<h3>Pre-Existing Conditions</h3>
+
+<p>
+A victim may have a pre-existing physical or medical condition that affects the outcome.
+</p>
+
+<p>
+The accused may still be legally responsible where their conduct activates or contributes to the harmful result.
+</p>
+
+<div class="definition">
+
+The existence of a pre-existing condition does not automatically eliminate causation.
+
+</div>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · EGGSHELL SKULL RULE
+</div>
+
+<h2>The Eggshell Skull Rule</h2>
+
+<p>
+The eggshell skull rule reflects the principle that a person who unlawfully causes harm may be responsible for the consequences even if the victim was unusually vulnerable.
+</p>
+
+<p>
+For example, if an apparently minor act causes unusually serious injury because the victim has a particular vulnerability, the accused may still be responsible for the resulting harm where the applicable legal requirements are satisfied.
+</p>
+
+<div class="definition">
+
+The rule is not a universal answer to every causation question. Its application depends on the relevant legal system and offence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · HOMICIDE
+</div>
+
+<h2>Causation in Homicide</h2>
+
+<p>
+Causation is especially important in homicide offences.
+</p>
+
+<p>
+Where the prosecution alleges that the accused caused a person's death, it generally must establish:
+</p>
+
+<ol>
+
+<li>The accused performed the relevant conduct.</li>
+
+<li>The conduct was a factual cause of the death.</li>
+
+<li>The conduct remained a legally sufficient cause of the death.</li>
+
+<li>Any other required elements of the offence are established.</li>
+
+</ol>
+
+<p>
+The specific requirements depend on whether the charge is murder, manslaughter, or another homicide offence.
+</p>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · NON-FATAL OFFENCES
+</div>
+
+<h2>Causation in Non-Fatal Offences</h2>
+
+<p>
+Causation can also be important in offences involving injury or other prohibited consequences.
+</p>
+
+<p>
+For example, where an offence requires proof that the accused caused bodily harm, the prosecution must establish the required connection between the accused's conduct and the harm.
+</p>
+
+<div class="definition">
+
+The level and nature of harm required depend on the particular offence.
+
+</div>
+
+<h3>Example</h3>
+
+<p>
+If a person deliberately pushes another person and causes a serious injury, the prosecution may need to establish both that the push occurred and that the push legally caused the injury.
+</p>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · ACTUS REUS & MENS REA
+</div>
+
+<h2>Causation, Actus Reus and Mens Rea</h2>
+
+<h3>Causation and Actus Reus</h3>
+
+<p>
+Causation is closely connected to actus reus.
+</p>
+
+<div class="definition">
+
+<strong>Actus reus</strong> = the relevant physical conduct and required result.
+
+<br><br>
+
+<strong>Causation</strong> = the legal connection between the conduct and result.
+
+</div>
+
+<p>
+Therefore, causation may be necessary to establish the actus reus of a result-based offence.
+</p>
+
+<h3>Causation and Mens Rea</h3>
+
+<p>
+Causation and mens rea are separate concepts.
+</p>
+
+<p>
+Causation concerns the connection between conduct and result, while mens rea concerns the mental state required by the offence.
+</p>
+
+<p>
+In a result-based offence, the prosecution may need to establish both the causal connection and the required mental state.
+</p>
+
+</div>
+
+
+<!-- CARD 16 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 16 · EVIDENCE
+</div>
+
+<h2>Causation and Evidence</h2>
+
+<p>
+Courts may rely on different forms of evidence when determining causation.
+</p>
+
+<ul>
+
+<li>Witness testimony.</li>
+
+<li>Medical evidence.</li>
+
+<li>Forensic evidence.</li>
+
+<li>Expert testimony.</li>
+
+<li>Photographs and recordings.</li>
+
+<li>Physical evidence.</li>
+
+<li>Digital records.</li>
+
+<li>Scientific evidence.</li>
+
+</ul>
+
+<p>
+Experts may sometimes assist courts in understanding technical or medical questions concerning causation.
+</p>
+
+<div class="definition">
+
+Ultimately, the court applies the relevant legal test to the evidence.
+
+</div>
+
+<h3>Burden of Proof</h3>
+
+<p>
+Where causation is an element of the offence, the prosecution generally must prove the necessary causal connection according to the applicable criminal standard.
+</p>
+
+</div>
+
+
+<!-- CARD 17 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 17 · FORESEEABILITY
+</div>
+
+<h2>Causation and Foreseeability</h2>
+
+<p>
+Foreseeability may be relevant to legal causation in certain circumstances.
+</p>
+
+<p>
+The court may consider whether the result or intervening event was sufficiently connected to the accused's conduct.
+</p>
+
+<div class="definition">
+
+Foreseeability is not a universal test for causation.
+
+</div>
+
+<p>
+Different offences and legal systems use different approaches to determine whether a causal connection remains legally sufficient.
+</p>
+
+<h3>Causation and Coincidence</h3>
+
+<p>
+Where a crime requires particular conduct and a particular result, the accused's conduct must be connected to that result according to the applicable causation rules.
+</p>
+
+</div>
+
+
+<!-- CARD 18 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 18 · PRACTICAL EXAMPLE
+</div>
+
+<h2>Example of Causation</h2>
+
+<p>
+Imagine that a person deliberately pushes another person, causing them to fall and suffer a serious injury.
+</p>
+
+<p>
+The prosecution may need to establish:
+</p>
+
+<ol>
+
+<li>The accused pushed the victim.</li>
+
+<li>The victim suffered the required injury.</li>
+
+<li>The injury would not have occurred in the same way without the push.</li>
+
+<li>The push remained a legally sufficient cause of the injury.</li>
+
+<li>The other elements of the offence are established.</li>
+
+</ol>
+
+<div class="definition">
+
+If another event occurred after the push, the court might need to determine whether that event broke the chain of causation.
+
+</div>
+
+</div>
+
+
+<!-- CARD 19 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 19 · DEFENCES & APPEALS
+</div>
+
+<h2>Causation on Defence and Appeal</h2>
+
+<h3>Causation and Defences</h3>
+
+<p>
+Causation may become relevant when the accused argues that another event caused the prohibited result.
+</p>
+
+<p>
+The defence may argue that:
+</p>
+
+<ul>
+
+<li>The accused's conduct did not actually cause the result.</li>
+
+<li>Another event was the true cause.</li>
+
+<li>An intervening act broke the causal chain.</li>
+
+<li>The prosecution failed to establish the required connection.</li>
+
+</ul>
+
+<h3>Causation on Appeal</h3>
+
+<p>
+An appellate court may consider whether a lower court correctly applied the law of causation.
+</p>
+
+<p>
+An appeal may raise issues such as factual causation, legal causation, intervening acts, or whether the evidence was sufficient to support the causal finding.
+</p>
+
+</div>
+
+
+<!-- CARD 20 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 20 · LEGAL SYSTEMS
+</div>
+
+<h2>Different Legal Systems</h2>
+
+<p>
+The concept of causation exists across many legal systems, although terminology and legal tests differ.
+</p>
+
+<p>
+Common law systems often distinguish between:
+</p>
+
+<ul>
+
+<li>Factual causation.</li>
+
+<li>Legal causation.</li>
+
+</ul>
+
+<p>
+Other legal systems may use concepts such as:
+</p>
+
+<ul>
+
+<li>Causal connection.</li>
+
+<li>Objective attribution.</li>
+
+<li>Causation in fact.</li>
+
+<li>Legal attribution of a result.</li>
+
+</ul>
+
+<div class="definition">
+
+The precise rules must therefore be understood within the relevant legal system and offence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 21 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 21 · WHY IT MATTERS
+</div>
+
+<h2>Why Causation Matters</h2>
+
+<p>
+Causation helps:
+</p>
+
+<ul>
+
+<li>Connect criminal conduct with prohibited results.</li>
+
+<li>Prevent people from being held responsible for unrelated consequences.</li>
+
+<li>Identify when an accused legally caused harm.</li>
+
+<li>Establish responsibility in result-based offences.</li>
+
+<li>Evaluate intervening events.</li>
+
+<li>Distinguish factual connection from legal responsibility.</li>
+
+<li>Provide a structured method for analyzing criminal liability.</li>
+
+</ul>
+
+<div class="definition">
+
+Without causation rules, a person could potentially be held responsible for consequences that their conduct did not legally cause.
+
+</div>
+
+</div>
+
+
+<!-- CARD 22 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 22 · KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+<strong>Causation is the legal connection between an accused person's conduct and a prohibited result.</strong>
+
+</div>
+
+<p>
+A simple way to remember the concept is:
+</p>
+
+<div class="definition">
+
+<strong>Causation = Did the accused's conduct legally cause the result?</strong>
+
+</div>
+
+<h3>Two Main Questions</h3>
+
+<p>
+<strong>Factual causation:</strong> Did the result occur because of the accused's conduct?
+</p>
+
+<p>
+<strong>Legal causation:</strong> Is the connection between the conduct and result sufficient for criminal responsibility?
+</p>
+
+<p>
+Causation may become complicated when several factors contribute to a result, when another person intervenes, when medical treatment is involved, or when the victim has a pre-existing condition.
+</p>
+
+<p>
+Understanding causation is essential because criminal law must establish not only that a prohibited result occurred, but also that the accused's conduct was sufficiently responsible for that result under the law.
+</p>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Cornell Law School Legal Information Institute, materials on causation and criminal law.</li>
+
+<li>Crown Prosecution Service, materials on causation in criminal offences.</li>
+
+<li>Encyclopaedia Britannica, materials on criminal responsibility and causation.</li>
+
+<li>Legal Information Institute, materials concerning factual and legal causation.</li>
+
+<li>United Nations, International Covenant on Civil and Political Rights, particularly Article 14 concerning criminal proceedings and fair trial rights.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Causation</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+
+/* NEXT CARD */
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+
+/* PREVIOUS CARD */
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What does causation refer to in criminal law?",
+options:[
+"The punishment imposed by a court",
+"The legal connection between conduct and a prohibited result",
+"The mental state of the accused",
+"The procedure used to appeal a case"
+],
+answer:1
+},
+
+{
+question:"What question does factual causation commonly ask?",
+options:[
+"Was the accused's conduct morally wrong?",
+"Would the result have occurred but for the accused's conduct?",
+"Was the result foreseeable to everyone?",
+"Did the accused admit responsibility?"
+],
+answer:1
+},
+
+{
+question:"What does legal causation primarily consider?",
+options:[
+"Whether the accused had a motive",
+"Whether the conduct is sufficiently connected to the result for legal responsibility",
+"Whether the victim was injured",
+"Whether the accused was arrested"
+],
+answer:1
+},
+
+{
+question:"What is an intervening act?",
+options:[
+"An event that occurs after the accused's conduct and may affect causation",
+"The accused's original intention",
+"The sentence imposed after conviction",
+"The first act performed by the victim"
+],
+answer:0
+},
+
+{
+question:"Which statement best describes causation in a result-based offence?",
+options:[
+"Only the accused's mental state matters",
+"The prosecution may need to prove that the accused's conduct legally caused the required result",
+"Causation is never relevant",
+"Any later event automatically breaks causation"
+],
+answer:1
+}
+
+];
+
+let currentQuestion = 0;
+
+
+/* START QUIZ */
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+
+/* QUIZ RESULT */
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Causation</strong> quiz.
+</p>
+
+<p>
+You can now return to the Criminal Law section and explore another topic.
+</p>
+
+<a href="criminal-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Criminal Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+         </html>
