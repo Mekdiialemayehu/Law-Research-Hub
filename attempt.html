@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining Attempt in criminal law, including mens rea, actus reus, preparation, impossibility, abandonment, withdrawal, punishment, and criminal responsibility.">
+
+<title>Attempt | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+max-width:800px;
+margin:auto;
+line-height:1.8;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* COMPARISON TABLE */
+
+.comparison{
+width:100%;
+border-collapse:collapse;
+margin:20px 0;
+font-size:15px;
+}
+
+.comparison th,
+.comparison td{
+border:1px solid #ddd;
+padding:14px;
+text-align:left;
+vertical-align:top;
+}
+
+.comparison th{
+background:#0b1f3a;
+color:white;
+}
+
+.comparison tr:nth-child(even){
+background:#f8f9fb;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+.comparison{
+font-size:13px;
+}
+
+.comparison th,
+.comparison td{
+padding:10px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Attempt</h1>
+
+<p>
+Criminal Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+ATTEMPT
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is Attempt?</h2>
+
+<div class="definition">
+
+<strong>Attempt</strong> is a criminal law concept concerning conduct directed toward committing an offence that is not completed.
+
+</div>
+
+<p>
+It answers the question:
+</p>
+
+<div class="definition">
+
+<strong>What happens when a person intends to commit a crime and takes steps toward committing it, but the crime is not completed?</strong>
+
+</div>
+
+<p>
+A person may sometimes be criminally responsible for an attempt even though the intended offence was unsuccessful.
+</p>
+
+<p>
+Attempt is therefore an important part of the law of <strong>inchoate offences</strong>.
+</p>
+
+<p>
+An inchoate offence is an offence that is incomplete because the intended criminal result or full offence has not been achieved.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · PURPOSE
+</div>
+
+<h2>Purpose of the Law on Attempt</h2>
+
+<p>
+The law of attempt allows criminal justice systems to respond to sufficiently serious conduct directed toward committing an offence even when the final offence does not occur.
+</p>
+
+<p>
+It helps:
+</p>
+
+<ul>
+
+<li>Prevent serious crimes from being completed.</li>
+
+<li>Hold individuals accountable for substantial steps toward criminal conduct.</li>
+
+<li>Distinguish preparation from criminal attempts.</li>
+
+<li>Recognize the significance of criminal intent combined with conduct.</li>
+
+<li>Protect society from conduct that presents a serious risk of an offence being completed.</li>
+
+</ul>
+
+<div class="definition">
+
+The law generally does not treat every thought, plan, or preparatory act as an attempt.
+
+</div>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · INCHOATE OFFENCE
+</div>
+
+<h2>Attempt as an Inchoate Offence</h2>
+
+<p>
+Attempt is classified as an <strong>inchoate offence</strong> because the intended crime is incomplete.
+</p>
+
+<h3>Other Inchoate Offences</h3>
+
+<ul>
+
+<li>Conspiracy.</li>
+
+<li>Encouraging or assisting another person to commit an offence.</li>
+
+<li>Other offences established by particular legislation.</li>
+
+</ul>
+
+<p>
+The precise categories differ between legal systems.
+</p>
+
+<div class="definition">
+
+An attempt focuses on the accused's own conduct toward completing the intended offence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · ELEMENTS
+</div>
+
+<h2>Elements of Attempt</h2>
+
+<p>
+Although the precise legal test varies, an attempt commonly requires two main components:
+</p>
+
+<ol>
+
+<li><strong>The required mental element</strong> — the accused intended to commit the relevant offence.</li>
+
+<li><strong>An act beyond mere preparation</strong> — the accused took conduct sufficiently close to committing the offence.</li>
+
+</ol>
+
+<p>
+Both elements are important.
+</p>
+
+<div class="definition">
+
+A person may have a strong intention to commit a crime but still not have committed an attempt if they have not taken the legally required step.
+
+</div>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · MENS REA
+</div>
+
+<h2>Attempt and Mens Rea</h2>
+
+<p>
+Mens rea is particularly important in attempt cases.
+</p>
+
+<p>
+The prosecution generally needs to establish the mental state required for the attempted offence.
+</p>
+
+<p>
+For example, a person who accidentally performs an act that appears suspicious does not necessarily commit an attempt.
+</p>
+
+<div class="definition">
+
+The law generally distinguishes between intentional conduct directed toward committing a crime and accidental or merely careless conduct.
+
+</div>
+
+<p>
+The precise mental requirements depend on the offence and jurisdiction.
+</p>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · ACTUS REUS
+</div>
+
+<h2>The Actus Reus of Attempt</h2>
+
+<p>
+Attempt also requires an appropriate physical element.
+</p>
+
+<p>
+The accused must generally have moved beyond merely thinking about or preparing for the offence.
+</p>
+
+<p>
+The law therefore asks whether the conduct was sufficiently close to the commission of the intended crime.
+</p>
+
+<h3>Different Legal Approaches</h3>
+
+<ul>
+
+<li>An act beyond mere preparation.</li>
+
+<li>A substantial step.</li>
+
+<li>An overt act toward completion of the offence.</li>
+
+</ul>
+
+<p>
+The exact test depends on the applicable law.
+</p>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · PREPARATION
+</div>
+
+<h2>Preparation vs Attempt</h2>
+
+<p>
+One of the most important issues in attempt cases is distinguishing preparation from attempt.
+</p>
+
+<table class="comparison">
+
+<tr>
+
+<th>Preparation</th>
+
+<th>Attempt</th>
+
+</tr>
+
+<tr>
+
+<td>
+Getting ready to commit an offence.
+</td>
+
+<td>
+Conduct that has progressed further toward committing the offence.
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+May involve obtaining equipment or making plans.
+</td>
+
+<td>
+Generally involves conduct sufficiently beyond preparation.
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Usually does not by itself establish attempt.
+</td>
+
+<td>
+May satisfy the physical element of attempt where the legal test is met.
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · WHY PREPARATION IS NOT ENOUGH
+</div>
+
+<h2>Why Preparation Is Generally Not Enough</h2>
+
+<p>
+Criminal law generally avoids punishing people simply because they have criminal thoughts or have begun making plans.
+</p>
+
+<p>
+A person may change their mind before carrying out the plan.
+</p>
+
+<p>
+For this reason, the law generally requires conduct demonstrating a sufficiently serious commitment to the intended offence before criminal attempt liability arises.
+</p>
+
+<div class="definition">
+
+<strong>Thinking about a crime → Preparing for a crime → Attempting to commit a crime</strong>
+
+</div>
+
+<p>
+The precise boundary between these stages varies between jurisdictions.
+</p>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · PROXIMITY
+</div>
+
+<h2>Proximity to the Completed Offence</h2>
+
+<p>
+Some legal systems consider how close the accused's conduct was to completing the offence.
+</p>
+
+<p>
+The closer the conduct is to completion, the more likely it may satisfy the legal test for attempt.
+</p>
+
+<p>
+For example, entering the final stage of carrying out an offence may clearly go beyond preparation.
+</p>
+
+<div class="definition">
+
+Courts do not necessarily require the accused to have reached the final possible moment before the law recognizes an attempt.
+
+</div>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · FAILURE
+</div>
+
+<h2>Attempt and Failure</h2>
+
+<p>
+A person may commit an attempt even if the intended offence ultimately fails.
+</p>
+
+<p>
+The intended offence may fail because:
+</p>
+
+<ul>
+
+<li>The intended victim leaves.</li>
+
+<li>The police intervene.</li>
+
+<li>The equipment does not work.</li>
+
+<li>Another person stops the conduct.</li>
+
+<li>The intended result does not occur.</li>
+
+</ul>
+
+<div class="definition">
+
+Failure does not automatically eliminate criminal responsibility for attempt.
+
+</div>
+
+<p>
+The question is whether the legal requirements for attempt were satisfied.
+</p>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · IMPOSSIBILITY
+</div>
+
+<h2>Impossible Attempts</h2>
+
+<p>
+An impossible attempt occurs when a person intends to commit an offence but cannot actually complete it because of some circumstance unknown to them.
+</p>
+
+<p>
+Depending on the legal system, an impossible attempt may still result in criminal liability where the accused has demonstrated the required criminal intent and taken sufficient steps toward committing the offence.
+</p>
+
+<h3>Factual Impossibility</h3>
+
+<p>
+Factual impossibility occurs when external circumstances make completion of the offence impossible.
+</p>
+
+<h3>Legal Impossibility</h3>
+
+<p>
+Legal impossibility concerns circumstances in which the intended conduct, if completed as the accused planned it, would not actually amount to the intended crime under the law.
+</p>
+
+<div class="definition">
+
+The treatment of impossibility varies between jurisdictions.
+
+</div>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · ABANDONMENT
+</div>
+
+<h2>Abandonment</h2>
+
+<p>
+Abandonment occurs when a person voluntarily decides not to continue with an attempted offence.
+</p>
+
+<p>
+The effect of abandonment varies between legal systems.
+</p>
+
+<p>
+In some systems, voluntarily abandoning the offence may be relevant to criminal liability in particular circumstances.
+</p>
+
+<div class="definition">
+
+Once the legal requirements for attempt have already been satisfied, later abandonment may not automatically erase liability for the attempt.
+
+</div>
+
+<p>
+The precise rule depends on the applicable law.
+</p>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · ATTEMPT & COMPLETION
+</div>
+
+<h2>Attempt and Completion</h2>
+
+<table class="comparison">
+
+<tr>
+
+<th>Attempt</th>
+
+<th>Completed Offence</th>
+
+</tr>
+
+<tr>
+
+<td>
+The offence is not fully completed.
+</td>
+
+<td>
+All required elements of the offence are established.
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Requires conduct directed toward the offence.
+</td>
+
+<td>
+Requires completion of the prohibited conduct and any required result.
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Generally requires intent to commit the offence.
+</td>
+
+<td>
+Mental element depends on the completed offence.
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+Often carries a specific statutory penalty.
+</td>
+
+<td>
+Penalty is normally based on the completed offence.
+</td>
+
+</tr>
+
+</table>
+
+<p>
+The exact relationship between attempt and the completed offence varies between jurisdictions.
+</p>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · TYPES OF OFFENCES
+</div>
+
+<h2>Attempt and Different Types of Offences</h2>
+
+<h3>Result Crimes</h3>
+
+<p>
+Attempt can apply to offences that require a particular result.
+</p>
+
+<p>
+A person may intend to cause a prohibited result but fail to cause it.
+</p>
+
+<h3>Conduct Crimes</h3>
+
+<p>
+Attempt may also apply to offences focused on prohibited conduct.
+</p>
+
+<p>
+Where the underlying offence does not require a separate result, the court may focus more directly on whether the accused intended to carry out the prohibited conduct and took sufficient steps toward doing so.
+</p>
+
+<div class="definition">
+
+The legal analysis depends heavily on the wording of the particular offence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · CAUSATION
+</div>
+
+<h2>Attempt and Causation</h2>
+
+<p>
+Attempt can differ from completed result offences because the intended result may never occur.
+</p>
+
+<p>
+In a completed result offence, the prosecution may need to establish causation between the accused's conduct and the prohibited result.
+</p>
+
+<div class="definition">
+
+In an attempt case, the intended result may be absent. The prosecution instead focuses on whether the accused intended to commit the offence and performed the legally required conduct toward its completion.
+
+</div>
+
+<h3>Attempt and Actus Reus</h3>
+
+<p>
+The physical element of attempt concerns conduct that goes beyond mere preparation and is sufficiently connected to the intended offence.
+</p>
+
+<p>
+<strong>Actus reus of attempt = conduct sufficiently beyond preparation toward commission of the offence.</strong>
+</p>
+
+</div>
+
+
+<!-- CARD 16 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 16 · BURDEN & EVIDENCE
+</div>
+
+<h2>Attempt and Evidence</h2>
+
+<p>
+The prosecution generally carries the burden of proving the elements of an attempted offence.
+</p>
+
+<p>
+This may include proving:
+</p>
+
+<ul>
+
+<li>The accused's required intention.</li>
+
+<li>The relevant conduct.</li>
+
+<li>That the conduct went beyond mere preparation.</li>
+
+<li>Any other elements required by law.</li>
+
+</ul>
+
+<h3>Evidence</h3>
+
+<p>
+Evidence may include:
+</p>
+
+<ul>
+
+<li>Witness testimony.</li>
+
+<li>Physical evidence.</li>
+
+<li>Documents.</li>
+
+<li>Digital communications.</li>
+
+<li>Recordings.</li>
+
+<li>Statements made by the accused.</li>
+
+<li>Evidence concerning actions taken before the alleged attempt.</li>
+
+</ul>
+
+<p>
+Because intention is a mental state, courts may infer it from conduct and surrounding circumstances.
+</p>
+
+</div>
+
+
+<!-- CARD 17 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 17 · EXAMPLES
+</div>
+
+<h2>Examples of Attempt</h2>
+
+<h3>Example: Attempt</h3>
+
+<p>
+Imagine that a person intends to commit theft. They identify the property they want to take and begin carrying out their plan by physically attempting to take it.
+</p>
+
+<p>
+Before they can leave with the property, another person intervenes and prevents the offence from being completed.
+</p>
+
+<p>
+Depending on the applicable law, the person may be guilty of attempted theft because:
+</p>
+
+<ol>
+
+<li>They intended to commit the offence.</li>
+
+<li>They took conduct toward committing it.</li>
+
+<li>Their conduct went beyond mere preparation.</li>
+
+<li>The completed theft did not occur.</li>
+
+</ol>
+
+<h3>Example: Preparation</h3>
+
+<p>
+If a person merely thinks about committing a crime and buys equipment that could potentially be used to carry it out, but has not begun carrying out the planned offence, the conduct may remain preparation rather than attempt.
+</p>
+
+</div>
+
+
+<!-- CARD 18 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 18 · WITHDRAWAL
+</div>
+
+<h2>Attempt and Withdrawal</h2>
+
+<p>
+A person may decide to stop before completing the intended offence.
+</p>
+
+<p>
+Whether withdrawal prevents criminal liability depends on when the person stops and the rules of the relevant legal system.
+</p>
+
+<div class="definition">
+
+If the conduct has already crossed the legal threshold for attempt, simply stopping later may not automatically eliminate liability.
+
+</div>
+
+<p>
+The circumstances of the withdrawal may nevertheless be relevant under some legal systems.
+</p>
+
+</div>
+
+
+<!-- CARD 19 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 19 · PUNISHMENT
+</div>
+
+<h2>Punishment for Attempt</h2>
+
+<p>
+The punishment for attempt varies between legal systems.
+</p>
+
+<p>
+Some jurisdictions establish a specific statutory penalty for attempted offences.
+</p>
+
+<p>
+In some systems, an attempt may receive a lower maximum penalty than the completed offence.
+</p>
+
+<p>
+Other systems may provide different sentencing rules depending on the offence.
+</p>
+
+<div class="definition">
+
+The seriousness of the intended offence is often relevant to determining the potential punishment.
+
+</div>
+
+</div>
+
+
+<!-- CARD 20 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 20 · DIFFERENT SYSTEMS
+</div>
+
+<h2>Attempt in Different Legal Systems</h2>
+
+<p>
+The law of attempt differs between jurisdictions.
+</p>
+
+<p>
+Common law systems commonly require:
+</p>
+
+<ul>
+
+<li>An intention to commit the relevant offence.</li>
+
+<li>Conduct going beyond mere preparation.</li>
+
+</ul>
+
+<p>
+Other legal systems may use different concepts or statutory definitions.
+</p>
+
+<p>
+Some jurisdictions establish detailed rules concerning:
+</p>
+
+<ul>
+
+<li>Impossibility.</li>
+
+<li>Abandonment.</li>
+
+<li>Punishment for attempts.</li>
+
+<li>Attempted offences involving different mental states.</li>
+
+</ul>
+
+<div class="definition">
+
+The precise requirements and consequences of attempt must be determined according to the relevant legal system.
+
+</div>
+
+</div>
+
+
+<!-- CARD 21 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 21 · APPEAL & PUBLIC PROTECTION
+</div>
+
+<h2>Attempt on Appeal and Public Protection</h2>
+
+<h3>Attempt on Appeal</h3>
+
+<p>
+An appellate court may consider whether the trial court correctly applied the legal test for attempt.
+</p>
+
+<p>
+An appeal may concern:
+</p>
+
+<ul>
+
+<li>Whether the accused intended to commit the offence.</li>
+
+<li>Whether the conduct went beyond preparation.</li>
+
+<li>Whether the correct legal test was applied.</li>
+
+<li>Whether impossibility was treated correctly.</li>
+
+<li>Whether the evidence was sufficient to establish attempt.</li>
+
+</ul>
+
+<h3>Public Protection</h3>
+
+<p>
+The law of attempt can serve a preventive function by allowing the legal system to intervene when a person has progressed significantly toward committing a serious offence.
+</p>
+
+<div class="definition">
+
+The law must also avoid criminalizing mere thoughts or ordinary preparation.
+
+</div>
+
+</div>
+
+
+<!-- CARD 22 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 22 · WHY IT MATTERS
+</div>
+
+<h2>Why Attempt Matters</h2>
+
+<p>
+The law of attempt helps:
+</p>
+
+<ul>
+
+<li>Distinguish criminal thoughts from criminal conduct.</li>
+
+<li>Prevent serious offences before completion.</li>
+
+<li>Hold people responsible for substantial steps toward criminal conduct.</li>
+
+<li>Establish liability when the intended crime fails.</li>
+
+<li>Provide a legal boundary between preparation and criminal action.</li>
+
+<li>Protect society while maintaining limits on criminal liability.</li>
+
+</ul>
+
+<div class="definition">
+
+Attempt is important because a person does not always need to complete a crime before the law recognizes serious criminal conduct.
+
+</div>
+
+</div>
+
+
+<!-- CARD 23 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 23 · KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+<strong>Attempt is an inchoate criminal offence involving conduct directed toward committing an offence that is not completed.</strong>
+
+</div>
+
+<p>
+A simple way to remember the concept is:
+</p>
+
+<div class="definition">
+
+<strong>Attempt = Criminal intention + conduct beyond mere preparation</strong>
+
+</div>
+
+<p>
+The law generally requires more than thoughts or plans. The accused must usually have taken a sufficiently significant step toward committing the intended offence.
+</p>
+
+<p>
+An attempt may still be criminal even when the intended offence fails because the victim escapes, another person intervenes, the circumstances prevent completion, or another factor stops the crime from being completed.
+</p>
+
+<p>
+Understanding attempt is essential because criminal law can impose responsibility not only for completed offences but, in appropriate circumstances, for sufficiently serious conduct directed toward committing them.
+</p>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Cornell Law School Legal Information Institute, materials on Attempt and criminal law.</li>
+
+<li>Crown Prosecution Service, materials on inchoate offences and attempt.</li>
+
+<li>Encyclopaedia Britannica, materials on criminal responsibility and attempt.</li>
+
+<li>Legal Information Institute, materials on preparation, attempt, and criminal liability.</li>
+
+<li>United Nations, International Covenant on Civil and Political Rights, particularly Article 14 concerning criminal proceedings and fair trial rights.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Attempt</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+
+/* NEXT CARD */
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+
+/* PREVIOUS CARD */
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is an attempt in criminal law?",
+options:[
+"A completed criminal offence",
+"An inchoate offence involving conduct directed toward an offence that is not completed",
+"A civil dispute",
+"A type of criminal sentence"
+],
+answer:1
+},
+
+{
+question:"Which two elements commonly form the basis of an attempt?",
+options:[
+"Negligence and causation",
+"Intention and conduct beyond mere preparation",
+"Punishment and appeal",
+"Knowledge and sentencing"
+],
+answer:1
+},
+
+{
+question:"Why is mere preparation generally not enough for attempt liability?",
+options:[
+"Because criminal law does not usually punish thoughts or ordinary preparation alone",
+"Because preparation is always a complete offence",
+"Because preparation cannot involve intention",
+"Because preparation automatically proves innocence"
+],
+answer:0
+},
+
+{
+question:"What does an impossible attempt involve?",
+options:[
+"A completed offence",
+"An intended offence that cannot be completed because of certain circumstances",
+"An offence that was fully successful",
+"A case in which the accused had no intention"
+],
+answer:1
+},
+
+{
+question:"Which statement best describes the key takeaway for attempt?",
+options:[
+"Attempt requires only a criminal thought",
+"Attempt = criminal intention + conduct beyond mere preparation",
+"Attempt requires the completed offence",
+"Attempt is identical to negligence"
+],
+answer:1
+}
+
+];
+
+let currentQuestion = 0;
+
+
+/* START QUIZ */
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+
+/* QUIZ RESULT */
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Attempt</strong> quiz.
+</p>
+
+<p>
+You can now return to the Criminal Law section and explore another topic.
+</p>
+
+<a href="criminal-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Criminal Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
