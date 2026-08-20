@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining Actus Reus, including voluntary acts, omissions, causation, possession, strict liability, and its relationship with mens rea.">
+
+<title>Actus Reus | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Actus Reus</h1>
+
+<p>
+Criminal Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+ACTUS REUS
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is Actus Reus?</h2>
+
+<div class="definition">
+
+<strong>Actus reus</strong> is a Latin term meaning "guilty act."
+
+<br><br>
+
+In criminal law, actus reus refers to the physical or external element of a criminal offence.
+
+</div>
+
+<p>
+It concerns the conduct, action, omission, or other external element that the law prohibits or requires.
+</p>
+
+<p>
+It answers the question:
+</p>
+
+<div class="definition">
+
+<strong>What did the accused physically do, or fail to do?</strong>
+
+</div>
+
+<p>
+For many criminal offences, the prosecution must establish both the required physical element and the required mental element before a person can be convicted.
+</p>
+
+<p>
+The precise requirements of actus reus depend on the definition of the particular offence and the applicable legal system.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · ELEMENT OF A CRIME
+</div>
+
+<h2>Actus Reus as an Element of a Crime</h2>
+
+<p>
+A criminal offence generally consists of particular elements that the prosecution must prove.
+</p>
+
+<p>
+Actus reus is concerned with the physical or external element of the offence.
+</p>
+
+<p>
+For example, an offence may require the prosecution to establish that the accused:
+</p>
+
+<ul>
+
+<li>Took property belonging to another person.</li>
+
+<li>Caused physical injury.</li>
+
+<li>Entered a building without permission.</li>
+
+<li>Possessed a prohibited item.</li>
+
+<li>Drove a vehicle in a prohibited manner.</li>
+
+<li>Failed to perform a legally required duty.</li>
+
+</ul>
+
+<p>
+The prosecution must establish the relevant physical elements according to the applicable standard of proof.
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · CONDUCT
+</div>
+
+<h2>Actus Reus and Conduct</h2>
+
+<p>
+The most straightforward form of actus reus is a voluntary physical act.
+</p>
+
+<p>
+For example, if a person intentionally strikes another individual and causes an injury, the physical act of striking may form part of the actus reus of an applicable offence.
+</p>
+
+<div class="definition">
+
+The actus reus of an offence is not always simply "doing something." The definition of the particular offence determines exactly what physical elements must be established.
+
+</div>
+
+<h3>Voluntary Conduct</h3>
+
+<p>
+Criminal liability generally requires conduct that is voluntary. A person is not normally criminally responsible for a physical movement that occurs completely outside their control.
+</p>
+
+<p>
+Possible examples of involuntary conduct include movements resulting from:
+</p>
+
+<ul>
+
+<li>Certain medical conditions.</li>
+
+<li>Reflex movements.</li>
+
+<li>External physical forces.</li>
+
+<li>Unconscious physical movements.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · OMISSIONS
+</div>
+
+<h2>Actus Reus and Omissions</h2>
+
+<p>
+Actus reus can sometimes consist of a failure to act, known as an <strong>omission</strong>.
+</p>
+
+<p>
+Criminal law does not generally impose criminal liability simply because a person failed to help another person.
+</p>
+
+<p>
+However, an omission may amount to actus reus where the law recognizes that the person had a legal duty to act.
+</p>
+
+<h3>Possible Legal Duties</h3>
+
+<ul>
+
+<li>A duty imposed by legislation.</li>
+
+<li>A contractual duty.</li>
+
+<li>A duty arising from a particular relationship.</li>
+
+<li>A duty voluntarily assumed by a person.</li>
+
+<li>A duty arising after a person creates a dangerous situation.</li>
+
+</ul>
+
+<div class="definition">
+
+Simply being aware that someone needs assistance does not automatically create criminal liability for failing to help.
+
+</div>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · LEGAL DUTIES
+</div>
+
+<h2>Actus Reus and Legal Duties</h2>
+
+<p>
+Where criminal liability is based on an omission, the prosecution generally needs to establish that:
+</p>
+
+<ol>
+
+<li>The accused failed to perform the required act.</li>
+
+<li>A legally recognized duty to act existed.</li>
+
+<li>The circumstances required the accused to perform that duty.</li>
+
+<li>The relevant requirements of the offence were satisfied.</li>
+
+</ol>
+
+<p>
+The exact circumstances that create a legal duty vary between legal systems.
+</p>
+
+<div class="definition">
+
+An omission becomes legally significant when the law recognizes a duty requiring the person to act.
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · CIRCUMSTANCES
+</div>
+
+<h2>Actus Reus and Circumstances</h2>
+
+<p>
+Some offences require particular circumstances to exist.
+</p>
+
+<p>
+In such cases, the actus reus may include not only the accused's conduct but also specific surrounding facts.
+</p>
+
+<p>
+For example, an offence may require:
+</p>
+
+<ul>
+
+<li>Property to belong to another person.</li>
+
+<li>A person to be in a particular protected category.</li>
+
+<li>The accused to be in a particular location.</li>
+
+<li>A particular legal status to exist.</li>
+
+<li>The conduct to occur without lawful authority.</li>
+
+</ul>
+
+<p>
+These circumstances form part of the physical or external elements that must be established for the offence.
+</p>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · CONSEQUENCES
+</div>
+
+<h2>Actus Reus and Consequences</h2>
+
+<p>
+Some offences require a particular result or consequence.
+</p>
+
+<p>
+For example, an offence may require proof that the accused's conduct:
+</p>
+
+<ul>
+
+<li>Caused death.</li>
+
+<li>Caused injury.</li>
+
+<li>Caused property damage.</li>
+
+<li>Caused a particular form of loss.</li>
+
+</ul>
+
+<p>
+In such offences, the prosecution must establish the required consequence as part of the actus reus.
+</p>
+
+<div class="definition">
+
+Proving that the accused performed the relevant act may not be sufficient by itself when the offence requires proof of a particular result.
+
+</div>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · CAUSATION
+</div>
+
+<h2>Actus Reus and Causation</h2>
+
+<p>
+Where an offence requires a particular result, the prosecution may need to establish <strong>causation</strong>.
+</p>
+
+<p>
+Causation asks whether the accused's conduct legally caused the prohibited result.
+</p>
+
+<h3>Factual Causation</h3>
+
+<p>
+Factual causation examines whether the accused's conduct was a necessary cause of the result.
+</p>
+
+<div class="definition">
+
+<strong>Would the result have occurred without the accused's conduct?</strong>
+
+</div>
+
+<h3>Legal Causation</h3>
+
+<p>
+Legal causation considers whether the accused's conduct is sufficiently connected to the prohibited result to justify criminal liability.
+</p>
+
+<p>
+The exact tests for causation vary between legal systems and offences.
+</p>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · POSSESSION & OFFENCE TYPES
+</div>
+
+<h2>Possession and Types of Offences</h2>
+
+<h3>Possession</h3>
+
+<p>
+Possession offences are another important area of actus reus.
+</p>
+
+<p>
+Possession does not necessarily mean physically holding something at a particular moment.
+</p>
+
+<p>
+Depending on the legal system, possession may involve:
+</p>
+
+<ul>
+
+<li>Physical control.</li>
+
+<li>Knowledge or awareness of the item.</li>
+
+<li>The ability to exercise control over it.</li>
+
+</ul>
+
+<h3>Result Crimes</h3>
+
+<p>
+Result crimes require proof of a particular consequence, such as death, physical injury, or property damage.
+</p>
+
+<h3>Conduct Crimes</h3>
+
+<p>
+Conduct crimes focus primarily on whether the prohibited conduct occurred. The prosecution may not need to prove a separate harmful result.
+</p>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · MENS REA & LIABILITY
+</div>
+
+<h2>Actus Reus and Criminal Liability</h2>
+
+<h3>Actus Reus and Mens Rea</h3>
+
+<div class="definition">
+
+<strong>Actus reus = the physical element of the offence.</strong>
+
+<br><br>
+
+<strong>Mens rea = the required mental element of the offence.</strong>
+
+</div>
+
+<p>
+A criminal offence may require the prosecution to establish both.
+</p>
+
+<h3>Coincidence</h3>
+
+<p>
+In offences requiring both physical and mental elements, the required mental element generally must exist at the relevant time in relation to the actus reus.
+</p>
+
+<p>
+This is sometimes called the principle of concurrence or coincidence.
+</p>
+
+<h3>Strict Liability</h3>
+
+<p>
+In certain strict liability offences, the prosecution may not need to prove a particular mental element for one or more elements of the offence.
+</p>
+
+<p>
+However, actus reus remains important because the prosecution must still establish the physical elements required by the offence.
+</p>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · CRIMINAL RESPONSIBILITY
+</div>
+
+<h2>Actus Reus and Criminal Responsibility</h2>
+
+<p>
+The existence of a physical act does not automatically mean that a person is criminally liable.
+</p>
+
+<p>
+The prosecution must prove the elements required by the relevant offence.
+</p>
+
+<p>
+These may include:
+</p>
+
+<ul>
+
+<li>The prohibited conduct.</li>
+
+<li>Required circumstances.</li>
+
+<li>A prohibited consequence.</li>
+
+<li>Causation, where necessary.</li>
+
+<li>A legally relevant omission, where applicable.</li>
+
+</ul>
+
+<p>
+Other legal issues, such as available defences, may also affect criminal responsibility.
+</p>
+
+<h3>Example</h3>
+
+<p>
+Imagine that a person is charged with an offence requiring proof that they caused another person physical injury.
+</p>
+
+<ol>
+
+<li>The accused performed the relevant physical act.</li>
+
+<li>The victim suffered the required injury.</li>
+
+<li>The accused's conduct caused the injury.</li>
+
+<li>Any required circumstances of the offence existed.</li>
+
+</ol>
+
+<p>
+These physical elements together form the relevant actus reus.
+</p>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · PROOF & EVIDENCE
+</div>
+
+<h2>Actus Reus and Evidence</h2>
+
+<p>
+In criminal proceedings, the prosecution generally carries the burden of proving the elements of the offence, including the relevant actus reus.
+</p>
+
+<p>
+Evidence used to establish physical elements may include:
+</p>
+
+<ul>
+
+<li>Witness testimony.</li>
+
+<li>Documents.</li>
+
+<li>Photographs.</li>
+
+<li>Video recordings.</li>
+
+<li>Physical objects.</li>
+
+<li>Medical evidence.</li>
+
+<li>Digital records.</li>
+
+<li>Forensic evidence.</li>
+
+</ul>
+
+<p>
+If the prosecution fails to prove an essential element of actus reus, the offence has not been established.
+</p>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · DEFENCES & APPEALS
+</div>
+
+<h2>Actus Reus, Defences and Appeals</h2>
+
+<h3>Defences</h3>
+
+<p>
+Even where the prosecution establishes the physical elements of an offence, a defendant may rely on a legally recognized defence where its requirements are satisfied.
+</p>
+
+<p>
+Depending on the legal system, these may include:
+</p>
+
+<ul>
+
+<li>Self-defence.</li>
+
+<li>Duress.</li>
+
+<li>Necessity.</li>
+
+<li>Insanity or mental disorder doctrines.</li>
+
+<li>Automatism or involuntary conduct.</li>
+
+</ul>
+
+<h3>Appeals</h3>
+
+<p>
+An appellate court may consider whether the trial court correctly identified and applied the physical elements of the offence.
+</p>
+
+<p>
+An appeal may argue that the prosecution failed to prove an essential physical element, that causation was incorrectly applied, or that an omission was treated as criminal despite the absence of a legal duty.
+</p>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · LEGAL SYSTEMS
+</div>
+
+<h2>Different Legal Systems</h2>
+
+<p>
+The concept of actus reus is particularly associated with common law criminal law.
+</p>
+
+<p>
+Different legal systems may use different terminology or organize the elements of criminal offences differently.
+</p>
+
+<p>
+Some legal systems may describe criminal liability in terms of:
+</p>
+
+<ul>
+
+<li>Material elements.</li>
+
+<li>Objective elements.</li>
+
+<li>Physical elements.</li>
+
+<li>Conduct and consequences.</li>
+
+</ul>
+
+<p>
+Although terminology differs, many criminal law systems distinguish between the external or objective elements of an offence and the required mental state.
+</p>
+
+<div class="definition">
+
+The exact rules concerning actus reus must therefore be understood within the relevant jurisdiction.
+
+</div>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · WHY IT MATTERS
+</div>
+
+<h2>Why Actus Reus Matters</h2>
+
+<p>
+Actus reus helps:
+</p>
+
+<ul>
+
+<li>Identify the physical elements of a criminal offence.</li>
+
+<li>Prevent punishment based solely on thoughts or intentions.</li>
+
+<li>Establish what conduct the prosecution must prove.</li>
+
+<li>Clarify when omissions may create criminal liability.</li>
+
+<li>Identify when causation must be established.</li>
+
+<li>Provide structure for analyzing criminal responsibility.</li>
+
+<li>Protect individuals from criminal conviction without proof of the required conduct.</li>
+
+</ul>
+
+<div class="definition">
+
+Actus reus is fundamental because criminal liability generally requires more than simply having a thought or intention. The law must identify and prove the physical elements that make up the particular offence.
+
+</div>
+
+</div>
+
+
+<!-- CARD 16 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 16 · KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+<strong>Actus reus is the physical or external element of a criminal offence.</strong>
+
+</div>
+
+<p>
+It may involve:
+</p>
+
+<ul>
+
+<li>A voluntary act.</li>
+
+<li>An omission where a legal duty to act exists.</li>
+
+<li>Particular circumstances.</li>
+
+<li>A prohibited consequence.</li>
+
+<li>A causal connection between conduct and result.</li>
+
+</ul>
+
+<p>
+A simple way to remember the concept is:
+</p>
+
+<div class="definition">
+
+<strong>Actus Reus = What was physically done or legally omitted?</strong>
+
+</div>
+
+<p>
+For offences that require both physical and mental elements, the prosecution generally must establish the required actus reus as well as the applicable mental element.
+</p>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Cornell Law School Legal Information Institute, materials on Actus Reus and criminal law.</li>
+
+<li>Encyclopaedia Britannica, materials on criminal law and criminal responsibility.</li>
+
+<li>Crown Prosecution Service, materials on the elements of criminal offences.</li>
+
+<li>Legal Information Institute, materials on causation, omissions, and criminal responsibility.</li>
+
+<li>United Nations, International Covenant on Civil and Political Rights, particularly Article 14 on criminal proceedings and fair trial rights.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Actus Reus</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+
+/* NEXT CARD */
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+
+/* PREVIOUS CARD */
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What does the Latin term 'actus reus' mean?",
+options:[
+"Guilty mind",
+"Guilty act",
+"Criminal intention",
+"Legal duty"
+],
+answer:1
+},
+
+{
+question:"What does actus reus primarily refer to?",
+options:[
+"The mental state of the accused",
+"The physical or external element of a criminal offence",
+"The punishment imposed by a court",
+"The burden of proof"
+],
+answer:1
+},
+
+{
+question:"When can an omission potentially form part of the actus reus?",
+options:[
+"Whenever someone sees another person in difficulty",
+"When the law recognizes that the person had a legal duty to act",
+"Whenever a person feels morally responsible",
+"Only when the accused admits responsibility"
+],
+answer:1
+},
+
+{
+question:"What question does factual causation ask?",
+options:[
+"Was the accused's conduct morally wrong?",
+"Would the result have occurred without the accused's conduct?",
+"Did the accused intend the result?",
+"Was the sentence appropriate?"
+],
+answer:1
+},
+
+{
+question:"Which statement best describes the relationship between actus reus and mens rea?",
+options:[
+"Actus reus is the mental element and mens rea is the physical element",
+"They are both names for the same concept",
+"Actus reus concerns the physical element while mens rea concerns the required mental element",
+"Neither is relevant to criminal responsibility"
+],
+answer:2
+}
+
+];
+
+let currentQuestion = 0;
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+
+/* QUIZ RESULT */
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Actus Reus</strong> quiz.
+</p>
+
+<p>
+You can now return to the Criminal Law section and explore another topic.
+</p>
+
+<a href="criminal-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Criminal Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
