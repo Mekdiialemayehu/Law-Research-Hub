@@ -263,8 +263,11 @@ background:#a88312;
 /* QUIZ START */
 
 .quiz-start{
+display:none;
 text-align:center;
-padding-top:25px;
+max-width:850px;
+margin:0 auto 50px;
+padding:0 20px;
 }
 
 .quiz-start h2{
@@ -356,6 +359,10 @@ background:#edf7ef;
 .quiz-option.wrong{
 border-color:#b84a4a;
 background:#fbeded;
+}
+
+.quiz-option:disabled{
+cursor:default;
 }
 
 .quiz-feedback{
@@ -481,13 +488,14 @@ Courts & Legal Process · Interactive Legal Note
 
 <div class="progress-area" id="progressArea">
 
-<div class="progress-title">
+<div class="progress-title" id="progressTitle">
 ACCESS TO JUSTICE
 </div>
 
 <div class="progress-dots" id="progressDots">
 
 <span class="active">●</span>
+<span>●</span>
 <span>●</span>
 <span>●</span>
 <span>●</span>
@@ -1349,7 +1357,7 @@ Next →
 
 <!-- QUIZ INTRO -->
 
-<div class="quiz-start" id="quizStart" style="display:none;">
+<div class="quiz-start" id="quizStart">
 
 <h2>🎓 Note Complete!</h2>
 
@@ -1416,43 +1424,64 @@ An independent educational project dedicated to making legal knowledge accessibl
 let currentCard = 0;
 
 const cards = document.querySelectorAll(".note-card");
-const dots = document.querySelectorAll(".progress-dots span");
 
-const prevButton = document.getElementById("prevButton");
-const nextButton = document.getElementById("nextButton");
+const dots =
+document.querySelectorAll(".progress-dots span");
+
+const prevButton =
+document.getElementById("prevButton");
+
+const nextButton =
+document.getElementById("nextButton");
+
+const quizStart =
+document.getElementById("quizStart");
+
 
 function showCard(index){
 
 cards.forEach(card => {
+
 card.classList.remove("active");
+
 });
 
 dots.forEach(dot => {
+
 dot.classList.remove("active");
+
 });
 
 cards[index].classList.add("active");
+
 dots[index].classList.add("active");
 
 prevButton.disabled = index === 0;
+
+
+/*
+When the final card is reached,
+hide Next and show the quiz intro.
+*/
 
 if(index === cards.length - 1){
 
 nextButton.style.display = "none";
 
-document.getElementById("quizStart").style.display = "block";
+quizStart.style.display = "block";
 
 }else{
 
 nextButton.style.display = "inline-block";
 
-document.getElementById("quizStart").style.display = "none";
+quizStart.style.display = "none";
 
 }
 
 currentCard = index;
 
 }
+
 
 function nextCard(){
 
@@ -1463,6 +1492,7 @@ showCard(currentCard + 1);
 }
 
 }
+
 
 function previousCard(){
 
@@ -1481,48 +1511,80 @@ showCard(currentCard - 1);
 
 let touchStartX = 0;
 let touchStartY = 0;
+
 let touchEndX = 0;
 let touchEndY = 0;
 
-const swipeArea = document.querySelector(".card-wrapper");
+const swipeArea =
+document.querySelector(".card-wrapper");
 
-swipeArea.addEventListener("touchstart", function(event){
 
-touchStartX = event.changedTouches[0].screenX;
-touchStartY = event.changedTouches[0].screenY;
+swipeArea.addEventListener(
+"touchstart",
+function(event){
 
-});
+touchStartX =
+event.changedTouches[0].screenX;
 
-swipeArea.addEventListener("touchend", function(event){
+touchStartY =
+event.changedTouches[0].screenY;
 
-touchEndX = event.changedTouches[0].screenX;
-touchEndY = event.changedTouches[0].screenY;
+},
+{passive:true}
+);
+
+
+swipeArea.addEventListener(
+"touchend",
+function(event){
+
+touchEndX =
+event.changedTouches[0].screenX;
+
+touchEndY =
+event.changedTouches[0].screenY;
 
 handleSwipe();
 
-});
+},
+{passive:true}
+);
+
 
 function handleSwipe(){
 
-const differenceX = touchStartX - touchEndX;
-const differenceY = touchStartY - touchEndY;
+const differenceX =
+touchStartX - touchEndX;
+
+const differenceY =
+touchStartY - touchEndY;
+
 
 if(Math.abs(differenceX) < 70){
+
 return;
+
 }
+
 
 if(Math.abs(differenceX) <= Math.abs(differenceY)){
+
 return;
+
 }
 
-/* Swipe left = next card
-   Swipe right = previous card */
+
+/* Swipe left = next card */
 
 if(differenceX > 0){
 
 nextCard();
 
-}else{
+}
+
+/* Swipe right = previous card */
+
+else{
 
 previousCard();
 
@@ -1539,113 +1601,191 @@ const questions = [
 
 {
 question:"What does access to justice primarily mean?",
+
 options:[
 "Winning every legal case",
 "Having a realistic opportunity to use legal institutions and obtain fair and effective remedies",
 "Avoiding all court proceedings",
 "Only having access to a lawyer"
 ],
+
 answer:1
 },
 
 {
 question:"Which of the following can be a barrier to access to justice?",
+
 options:[
 "Clear legal procedures",
 "High legal costs",
 "Independent courts",
 "Effective remedies"
 ],
+
 answer:1
 },
 
 {
 question:"Why is legal aid important?",
+
 options:[
 "It guarantees that every person wins their case",
 "It can help people who cannot afford private legal services participate in legal proceedings",
 "It eliminates all court procedures",
 "It replaces judicial independence"
 ],
+
 answer:1
 },
 
 {
 question:"How is access to justice connected to the Rule of Law?",
+
 options:[
 "Legal rights are meaningful only when people have practical ways to enforce and protect them",
 "Access to justice gives government unlimited power",
 "The Rule of Law prevents people from using courts",
 "Access to justice applies only to criminal cases"
 ],
+
 answer:0
 },
 
 {
 question:"Which statement best describes effective access to justice?",
+
 options:[
 "Courts must guarantee that every person wins",
 "Having courts formally available is always sufficient",
 "People should be able to realistically understand, participate in, and obtain meaningful outcomes from legal processes",
 "Only wealthy individuals should have access to legal remedies"
 ],
+
 answer:2
 }
 
 ];
 
+
 let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+/* =========================
+   START QUIZ
+========================= */
 
 function startQuiz(){
 
-document.getElementById("notesSection").style.display = "none";
-document.getElementById("noteNavigation").style.display = "none";
-document.getElementById("quizStart").style.display = "none";
+currentQuestion = 0;
+
+score = 0;
+
+answered = false;
+
+
+document.getElementById("notesSection").style.display =
+"none";
+
+document.getElementById("noteNavigation").style.display =
+"none";
+
+document.getElementById("quizStart").style.display =
+"none";
+
 
 document.getElementById("progressArea").innerHTML = `
-<div class="progress-title">QUIZ</div>
-<div class="progress-dots">
-● ● ● ● ●
+
+<div class="progress-title">
+QUIZ
 </div>
+
+<div class="progress-dots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
 `;
 
-document.getElementById("quizSection").classList.add("active");
+
+document.getElementById("quizSection")
+.classList.add("active");
+
 
 loadQuestion();
 
+
 window.scrollTo({
+
 top:0,
+
 behavior:"smooth"
+
 });
 
 }
 
+
+/* =========================
+   LOAD QUESTION
+========================= */
+
 function loadQuestion(){
 
-const question = questions[currentQuestion];
+const question =
+questions[currentQuestion];
 
-document.getElementById("questionNumber").textContent =
+
+document.getElementById("questionNumber")
+.textContent =
 currentQuestion + 1;
 
-document.getElementById("questionText").textContent =
+
+document.getElementById("questionText")
+.textContent =
 question.question;
+
 
 const optionsContainer =
 document.getElementById("options");
 
+
 optionsContainer.innerHTML = "";
 
-document.getElementById("feedback").textContent = "";
 
-document.getElementById("quizNext").style.display = "none";
+document.getElementById("feedback")
+.textContent = "";
+
+
+document.getElementById("quizNext")
+.style.display =
+"none";
+
+
+answered = false;
+
 
 question.options.forEach((option,index)=>{
 
-const button = document.createElement("button");
+const button =
+document.createElement("button");
 
-button.className = "quiz-option";
 
-button.textContent = option;
+button.className =
+"quiz-option";
+
+
+button.textContent =
+option;
+
 
 button.onclick = function(){
 
@@ -1653,45 +1793,80 @@ checkAnswer(index,button);
 
 };
 
+
 optionsContainer.appendChild(button);
 
 });
 
 }
 
+
+/* =========================
+   CHECK ANSWER
+========================= */
+
 function checkAnswer(selected,button){
 
-const question = questions[currentQuestion];
+if(answered){
+
+return;
+
+}
+
+answered = true;
+
+
+const question =
+questions[currentQuestion];
+
 
 const allOptions =
 document.querySelectorAll(".quiz-option");
 
+
 allOptions.forEach(option=>{
+
 option.disabled = true;
+
 });
+
 
 if(selected === question.answer){
 
 button.classList.add("correct");
 
-document.getElementById("feedback").textContent =
+score++;
+
+
+document.getElementById("feedback")
+.textContent =
 "✓ Correct!";
 
 }else{
 
 button.classList.add("wrong");
 
-allOptions[question.answer].classList.add("correct");
+allOptions[question.answer]
+.classList.add("correct");
 
-document.getElementById("feedback").textContent =
+
+document.getElementById("feedback")
+.textContent =
 "✗ Not quite. The correct answer is highlighted.";
 
 }
 
-document.getElementById("quizNext").style.display =
+
+document.getElementById("quizNext")
+.style.display =
 "inline-block";
 
 }
+
+
+/* =========================
+   NEXT QUESTION
+========================= */
 
 function nextQuestion(){
 
@@ -1701,6 +1876,15 @@ currentQuestion++;
 
 loadQuestion();
 
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
 }else{
 
 showQuizResult();
@@ -1709,22 +1893,59 @@ showQuizResult();
 
 }
 
+
+/* =========================
+   QUIZ RESULT
+========================= */
+
 function showQuizResult(){
 
-document.querySelector(".quiz-card").innerHTML = `
+const percentage =
+Math.round(
+(score / questions.length) * 100
+);
+
+
+let message;
+
+
+if(score === 5){
+
+message =
+"Excellent work! You demonstrated a very strong understanding of access to justice.";
+
+}else if(score >= 3){
+
+message =
+"Good work! You understand the main principles of access to justice.";
+
+}else{
+
+message =
+"Keep studying! Review the note again, especially the barriers to access to justice, legal aid, fair trial rights, and effective remedies.";
+
+}
+
+
+document.querySelector(".quiz-card")
+.innerHTML = `
 
 <div class="quiz-label">
 QUIZ COMPLETE
 </div>
 
-<h2>🎉 Well Done!</h2>
+<h2>🎉 Quiz Complete!</h2>
 
 <p>
 You've completed the <strong>Access to Justice</strong> quiz.
 </p>
 
 <p>
-You can now return to the Courts & Legal Process section and explore another legal concept.
+<strong>Your score: ${score}/5 (${percentage}%)</strong>
+</p>
+
+<p>
+${message}
 </p>
 
 <a href="courts-and-legal-process.html"
@@ -1747,4 +1968,4 @@ showCard(0);
 </script>
 
 </body>
-  </html>
+   </html>
