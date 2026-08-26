@@ -101,7 +101,7 @@ color:#c9a227;
 }
 
 /* =========================
-   SWIPE AREA
+   NOTE CARDS
 ========================= */
 
 .swipe-container{
@@ -272,9 +272,11 @@ background:#a88312;
 ========================= */
 
 .quiz-start{
+display:none;
 text-align:center;
-padding-top:25px;
-margin-bottom:50px;
+max-width:850px;
+margin:0 auto 50px;
+padding:0 20px;
 }
 
 .quiz-start h2{
@@ -340,7 +342,7 @@ margin-bottom:10px;
 .quiz-card h2{
 color:#0b1f3a;
 margin-bottom:20px;
-line-height:1.4;
+line-height:1.5;
 }
 
 .quiz-option{
@@ -378,11 +380,10 @@ background:#fbeded;
 
 .quiz-feedback{
 margin-top:18px;
-padding:14px;
+padding:15px;
 background:#f5f7fa;
 border-radius:8px;
-font-weight:bold;
-line-height:1.6;
+line-height:1.7;
 display:none;
 }
 
@@ -404,16 +405,16 @@ background:#173b69;
 }
 
 /* =========================
-   SCORE
+   QUIZ SCORE
 ========================= */
 
 .score-box{
 text-align:center;
-padding:20px 0;
+padding:10px 0;
 }
 
 .score-number{
-font-size:48px;
+font-size:52px;
 font-weight:bold;
 color:#c9a227;
 margin:20px 0;
@@ -499,9 +500,11 @@ padding:28px 22px;
 }
 
 </style>
+
 </head>
 
 <body>
+
 
 <!-- =========================
      NAVIGATION
@@ -1194,13 +1197,13 @@ Next →
      QUIZ INTRO
 ========================= -->
 
-<div class="quiz-start" id="quizStart" style="display:none;">
+<div class="quiz-start" id="quizStart">
 
 <h2>🎓 Note Complete!</h2>
 
 <p>
 You've finished the legal note on <strong>Judicial Review</strong>.
-Now test your understanding with a more challenging quiz.
+Now test your understanding with an 8-question quiz.
 </p>
 
 <button class="quiz-button" onclick="startQuiz()">
@@ -1219,7 +1222,9 @@ Start Quiz →
 <div class="quiz-card">
 
 <div class="quiz-label">
+
 QUESTION <span id="questionNumber">1</span> OF 8
+
 </div>
 
 <h2 id="questionText"></h2>
@@ -1229,7 +1234,9 @@ QUESTION <span id="questionNumber">1</span> OF 8
 <div class="quiz-feedback" id="feedback"></div>
 
 <button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+
 Next Question →
+
 </button>
 
 </div>
@@ -1265,48 +1272,58 @@ An independent educational project dedicated to making legal knowledge accessibl
 let currentCard = 0;
 
 const cards = document.querySelectorAll(".note-card");
-const dots = document.querySelectorAll(".progress-dots span");
 
-const prevButton = document.getElementById("prevButton");
-const nextButton = document.getElementById("nextButton");
+const dots =
+document.querySelectorAll(".progress-dots span");
+
+const prevButton =
+document.getElementById("prevButton");
+
+const nextButton =
+document.getElementById("nextButton");
+
 
 function showCard(index){
 
 cards.forEach(card => {
+
 card.classList.remove("active");
+
 });
 
 dots.forEach(dot => {
+
 dot.classList.remove("active");
+
 });
 
 cards[index].classList.add("active");
+
 dots[index].classList.add("active");
 
 prevButton.disabled = index === 0;
+
 
 if(index === cards.length - 1){
 
 nextButton.style.display = "none";
 
-document.getElementById("quizStart").style.display = "block";
+document.getElementById("quizStart").style.display =
+"block";
 
 }else{
 
 nextButton.style.display = "inline-block";
 
-document.getElementById("quizStart").style.display = "none";
+document.getElementById("quizStart").style.display =
+"none";
 
 }
 
 currentCard = index;
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
 }
+
 
 function nextCard(){
 
@@ -1317,6 +1334,7 @@ showCard(currentCard + 1);
 }
 
 }
+
 
 function previousCard(){
 
@@ -1334,46 +1352,64 @@ showCard(currentCard - 1);
 ========================= */
 
 let touchStartX = 0;
+
 let touchStartY = 0;
+
 let touchEndX = 0;
+
 let touchEndY = 0;
 
-const swipeArea = document.querySelector(".card-wrapper");
+
+const swipeArea =
+document.querySelector(".card-wrapper");
+
 
 swipeArea.addEventListener("touchstart", function(event){
 
-touchStartX = event.changedTouches[0].screenX;
-touchStartY = event.changedTouches[0].screenY;
+touchStartX =
+event.changedTouches[0].screenX;
+
+touchStartY =
+event.changedTouches[0].screenY;
 
 });
 
+
 swipeArea.addEventListener("touchend", function(event){
 
-touchEndX = event.changedTouches[0].screenX;
-touchEndY = event.changedTouches[0].screenY;
+touchEndX =
+event.changedTouches[0].screenX;
+
+touchEndY =
+event.changedTouches[0].screenY;
 
 handleSwipe();
 
 });
 
+
 function handleSwipe(){
 
-const differenceX = touchStartX - touchEndX;
-const differenceY = touchStartY - touchEndY;
+const differenceX =
+touchStartX - touchEndX;
 
-/*
-Only recognize a swipe when horizontal
-movement is clearly greater than vertical
-movement.
-*/
+const differenceY =
+touchStartY - touchEndY;
+
 
 if(Math.abs(differenceX) < 70){
+
 return;
+
 }
 
+
 if(Math.abs(differenceX) <= Math.abs(differenceY)){
+
 return;
+
 }
+
 
 /*
 Swipe left = next card
@@ -1394,111 +1430,209 @@ previousCard();
 
 
 /* =========================
-   QUIZ SYSTEM
+   QUIZ QUESTIONS
 ========================= */
 
 const questions = [
 
 {
-question:"What is the primary purpose of judicial review?",
+question:
+"What is the primary purpose of judicial review?",
+
 options:[
+
 "To allow judges to replace every government policy with their preferred policy",
+
 "To determine whether public power has been exercised lawfully",
+
 "To allow courts to create government departments",
+
 "To punish every person affected by a government decision"
+
 ],
+
 answer:1,
-explanation:"Judicial review primarily concerns the legality of public action. It does not normally mean that judges simply substitute their preferred policy for that of the public authority."
+
+explanation:
+"Judicial review primarily concerns the legality of public action. It does not normally mean that judges simply substitute their preferred policy for that of the public authority."
+
 },
 
+
 {
-question:"A government official makes a decision even though the law gives that official no power to make that decision. Which ground of judicial review is most directly relevant?",
+question:
+"A government official makes a decision even though the law gives that official no power to make that decision. Which ground of judicial review is most directly relevant?",
+
 options:[
+
 "Illegality",
+
 "Proportionality",
+
 "Appeal",
+
 "Separation of powers"
+
 ],
+
 answer:0,
-explanation:"Illegality concerns whether a public authority has acted within the powers given to it by law. Acting beyond those powers may make the decision unlawful."
+
+explanation:
+"Illegality concerns whether a public authority has acted within the powers given to it by law. Acting beyond those powers may make the decision unlawful."
+
 },
 
+
 {
-question:"What does the term 'ultra vires' mean?",
+question:
+"What does the term 'ultra vires' mean?",
+
 options:[
+
 "Against the constitution",
+
 "Beyond the powers",
+
 "According to precedent",
+
 "Without a hearing"
+
 ],
+
 answer:1,
-explanation:"Ultra vires is a Latin expression meaning 'beyond the powers.' In public law, it can describe action taken outside the legal authority given to a public body."
+
+explanation:
+"Ultra vires is a Latin expression meaning 'beyond the powers.' In public law, it can describe action taken outside the legal authority given to a public body."
+
 },
 
+
 {
-question:"A public authority has legal power to make a decision but fails to follow a legally required procedure. Which issue could this raise?",
+question:
+"A public authority has legal power to make a decision but fails to follow a legally required procedure. Which issue could this raise?",
+
 options:[
+
 "Procedural unfairness or procedural illegality",
+
 "Criminal liability automatically",
+
 "Private property ownership",
+
 "Parliamentary sovereignty only"
+
 ],
+
 answer:0,
-explanation:"Judicial review can examine whether a public authority followed required legal procedures. A failure to follow an important procedural requirement may make a decision unlawful."
+
+explanation:
+"Judicial review can examine whether a public authority followed required legal procedures. A failure to follow an important procedural requirement may make a decision unlawful."
+
 },
 
+
 {
-question:"Which situation best illustrates the difference between judicial review and an appeal?",
+question:
+"Which situation best illustrates the difference between judicial review and an appeal?",
+
 options:[
+
 "A judge personally dislikes a government policy and replaces it with another policy",
+
 "A higher court considers whether a lower court made an error, while a judicial review examines the legality of public action",
+
 "A government department asks Parliament to create a new law",
+
 "A person negotiates a private contract"
+
 ],
+
 answer:1,
-explanation:"An appeal commonly asks a higher court to reconsider a lower court's decision. Judicial review commonly examines whether a public authority acted lawfully."
+
+explanation:
+"An appeal commonly asks a higher court to reconsider a lower court's decision. Judicial review commonly examines whether a public authority acted lawfully."
+
 },
 
+
 {
-question:"Why does judicial review support the Rule of Law?",
+question:
+"Why does judicial review support the Rule of Law?",
+
 options:[
+
 "It gives judges unlimited political authority",
+
 "It ensures public authorities are not above the law and must act within legal limits",
+
 "It prevents governments from making any decisions",
+
 "It means every government decision must be approved by a court beforehand"
+
 ],
+
 answer:1,
-explanation:"The Rule of Law requires public power to operate within the framework of law. Judicial review provides a mechanism for challenging certain unlawful exercises of public power."
+
+explanation:
+"The Rule of Law requires public power to operate within the framework of law. Judicial review provides a mechanism for challenging certain unlawful exercises of public power."
+
 },
 
+
 {
-question:"A court is reviewing whether a government restriction on a fundamental right is proportionate. Which question is most relevant?",
+question:
+"A court is reviewing whether a government restriction on a fundamental right is proportionate. Which question is most relevant?",
+
 options:[
+
 "Did the judge personally prefer the government's policy?",
+
 "Was the measure connected to a legitimate objective and justified in light of its impact on the right?",
+
 "Did the government official have the highest salary?",
+
 "Was the decision popular with the public?"
+
 ],
+
 answer:1,
-explanation:"Proportionality can involve examining the legitimate objective of a measure, its suitability, whether less restrictive alternatives were available, and whether its impact was justified."
+
+explanation:
+"Proportionality can involve examining the legitimate objective of a measure, its suitability, whether less restrictive alternatives were available, and whether its impact was justified."
+
 },
 
+
 {
-question:"Which statement best explains why courts should be cautious about replacing the merits of a government decision with their own judgment?",
+question:
+"Which statement best explains why courts should be cautious about replacing the merits of a government decision with their own judgment?",
+
 options:[
+
 "Courts are never allowed to review government action",
+
 "Public authorities may have responsibilities and expertise that belong to the executive, while courts focus on applying the law",
+
 "Government decisions can never be challenged",
+
 "Judges cannot interpret legal rules"
+
 ],
+
 answer:1,
-explanation:"Judicial review generally focuses on legality rather than simply choosing the policy a judge considers best. This helps respect the different institutional roles of courts and public authorities."
+
+explanation:
+"Judicial review generally focuses on legality rather than simply choosing the policy a judge considers best. This helps respect the different institutional roles of courts and public authorities."
+
 }
 
 ];
 
+
 let currentQuestion = 0;
+
 let score = 0;
+
 let answered = false;
 
 
@@ -1509,29 +1643,48 @@ let answered = false;
 function startQuiz(){
 
 currentQuestion = 0;
+
 score = 0;
+
 answered = false;
 
-document.getElementById("notesSection").style.display = "none";
 
-document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("notesSection").style.display =
+"none";
 
-document.getElementById("quizStart").style.display = "none";
+document.getElementById("noteNavigation").style.display =
+"none";
+
+document.getElementById("quizStart").style.display =
+"none";
+
 
 document.getElementById("progressArea").innerHTML = `
-<div class="progress-title">JUDICIAL REVIEW QUIZ</div>
+
+<div class="progress-title">
+JUDICIAL REVIEW QUIZ
+</div>
+
 <div class="progress-dots">
 ● ● ● ● ● ● ● ●
 </div>
+
 `;
 
-document.getElementById("quizSection").classList.add("active");
+
+document.getElementById("quizSection")
+.classList.add("active");
+
 
 loadQuestion();
 
+
 window.scrollTo({
+
 top:0,
+
 behavior:"smooth"
+
 });
 
 }
@@ -1543,43 +1696,63 @@ behavior:"smooth"
 
 function loadQuestion(){
 
-const question = questions[currentQuestion];
+const question =
+questions[currentQuestion];
 
-document.getElementById("questionNumber").textContent =
+
+document.getElementById("questionNumber")
+.textContent =
 currentQuestion + 1;
 
-document.getElementById("questionText").textContent =
+
+document.getElementById("questionText")
+.textContent =
 question.question;
+
 
 const optionsContainer =
 document.getElementById("options");
 
+
 optionsContainer.innerHTML = "";
+
 
 const feedback =
 document.getElementById("feedback");
+
 
 feedback.textContent = "";
 
 feedback.style.display = "none";
 
-document.getElementById("quizNext").style.display = "none";
+
+document.getElementById("quizNext")
+.style.display = "none";
+
 
 answered = false;
 
+
 question.options.forEach((option,index)=>{
 
-const button = document.createElement("button");
+const button =
+document.createElement("button");
 
-button.className = "quiz-option";
 
-button.textContent = option;
+button.className =
+"quiz-option";
+
+
+button.textContent =
+option;
+
 
 button.onclick = function(){
 
 checkAnswer(index,button);
 
 };
+
 
 optionsContainer.appendChild(button);
 
@@ -1595,22 +1768,33 @@ optionsContainer.appendChild(button);
 function checkAnswer(selected,button){
 
 if(answered){
+
 return;
+
 }
+
 
 answered = true;
 
-const question = questions[currentQuestion];
+
+const question =
+questions[currentQuestion];
+
 
 const allOptions =
 document.querySelectorAll(".quiz-option");
 
+
 allOptions.forEach(option=>{
+
 option.disabled = true;
+
 });
+
 
 const feedback =
 document.getElementById("feedback");
+
 
 if(selected === question.answer){
 
@@ -1618,23 +1802,33 @@ score++;
 
 button.classList.add("correct");
 
+
 feedback.innerHTML =
-"✓ Correct!<br><br>" + question.explanation;
+"✓ Correct!<br><br>" +
+question.explanation;
+
 
 }else{
 
 button.classList.add("wrong");
 
-allOptions[question.answer].classList.add("correct");
+
+allOptions[question.answer]
+.classList.add("correct");
+
 
 feedback.innerHTML =
-"✗ Not quite.<br><br>" + question.explanation;
+"✗ Not quite.<br><br>" +
+question.explanation;
 
 }
 
+
 feedback.style.display = "block";
 
-document.getElementById("quizNext").style.display =
+
+document.getElementById("quizNext")
+.style.display =
 "inline-block";
 
 }
@@ -1652,9 +1846,13 @@ currentQuestion++;
 
 loadQuestion();
 
+
 window.scrollTo({
+
 top:0,
+
 behavior:"smooth"
+
 });
 
 }else{
@@ -1673,9 +1871,13 @@ showQuizResult();
 function showQuizResult(){
 
 const percentage =
-Math.round((score / questions.length) * 100);
+Math.round(
+(score / questions.length) * 100
+);
+
 
 let message = "";
+
 
 if(percentage === 100){
 
@@ -1690,14 +1892,15 @@ message =
 }else if(percentage >= 50){
 
 message =
-"Good effort! You understand the main ideas, but reviewing the grounds and limits of judicial review would strengthen your knowledge.";
+"Good effort! You understand the main ideas, but reviewing the grounds, remedies, and limits of judicial review would strengthen your knowledge.";
 
 }else{
 
 message =
-"Keep studying! Review the note again, especially the grounds of judicial review, remedies, and the distinction between judicial review and appeal.";
+"Keep studying! Review the note again, especially the grounds of judicial review, remedies, proportionality, and the distinction between judicial review and appeal.";
 
 }
+
 
 document.querySelector(".quiz-card").innerHTML = `
 
@@ -1714,15 +1917,22 @@ ${score}/${questions.length}
 </div>
 
 <p class="score-message">
+
 <strong>${percentage}%</strong>
+
 <br><br>
+
 ${message}
+
 </p>
+
 
 <a href="courts-and-legal-process.html"
 class="quiz-button"
 style="text-decoration:none;">
+
 Back to Courts & Legal Process
+
 </a>
 
 </div>
