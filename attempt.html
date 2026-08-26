@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -264,6 +265,7 @@ background:#a88312;
 .quiz-start{
 text-align:center;
 padding-top:25px;
+display:none;
 }
 
 .quiz-start h2{
@@ -355,6 +357,10 @@ background:#edf7ef;
 .quiz-option.wrong{
 border-color:#b84a4a;
 background:#fbeded;
+}
+
+.quiz-option:disabled{
+cursor:default;
 }
 
 .quiz-feedback{
@@ -492,6 +498,9 @@ ATTEMPT
 <div class="progress-dots" id="progressDots">
 
 <span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
 <span>●</span>
 <span>●</span>
 <span>●</span>
@@ -1557,7 +1566,7 @@ Next →
 
 <!-- QUIZ INTRO -->
 
-<div class="quiz-start" id="quizStart" style="display:none;">
+<div class="quiz-start" id="quizStart">
 
 <h2>🎓 Note Complete!</h2>
 
@@ -1624,37 +1633,56 @@ An independent educational project dedicated to making legal knowledge accessibl
 let currentCard = 0;
 
 const cards = document.querySelectorAll(".note-card");
-const dots = document.querySelectorAll(".progress-dots span");
 
-const prevButton = document.getElementById("prevButton");
-const nextButton = document.getElementById("nextButton");
+const dots =
+document.querySelectorAll(".progress-dots span");
+
+const prevButton =
+document.getElementById("prevButton");
+
+const nextButton =
+document.getElementById("nextButton");
+
+const quizStart =
+document.getElementById("quizStart");
+
 
 function showCard(index){
 
 cards.forEach(card => {
+
 card.classList.remove("active");
+
 });
 
 dots.forEach(dot => {
+
 dot.classList.remove("active");
+
 });
 
 cards[index].classList.add("active");
+
 dots[index].classList.add("active");
 
 prevButton.disabled = index === 0;
+
+
+/*
+Show quiz after the final card.
+*/
 
 if(index === cards.length - 1){
 
 nextButton.style.display = "none";
 
-document.getElementById("quizStart").style.display = "block";
+quizStart.style.display = "block";
 
 }else{
 
 nextButton.style.display = "inline-block";
 
-document.getElementById("quizStart").style.display = "none";
+quizStart.style.display = "none";
 
 }
 
@@ -1694,46 +1722,75 @@ showCard(currentCard - 1);
 ========================= */
 
 let touchStartX = 0;
+
 let touchStartY = 0;
+
 let touchEndX = 0;
+
 let touchEndY = 0;
 
-const swipeArea = document.querySelector(".card-wrapper");
+const swipeArea =
+document.querySelector(".card-wrapper");
+
 
 swipeArea.addEventListener("touchstart", function(event){
 
-touchStartX = event.changedTouches[0].screenX;
-touchStartY = event.changedTouches[0].screenY;
+touchStartX =
+event.changedTouches[0].screenX;
+
+touchStartY =
+event.changedTouches[0].screenY;
 
 });
 
+
 swipeArea.addEventListener("touchend", function(event){
 
-touchEndX = event.changedTouches[0].screenX;
-touchEndY = event.changedTouches[0].screenY;
+touchEndX =
+event.changedTouches[0].screenX;
+
+touchEndY =
+event.changedTouches[0].screenY;
 
 handleSwipe();
 
 });
 
+
 function handleSwipe(){
 
-const differenceX = touchStartX - touchEndX;
-const differenceY = touchStartY - touchEndY;
+const differenceX =
+touchStartX - touchEndX;
+
+const differenceY =
+touchStartY - touchEndY;
+
 
 if(Math.abs(differenceX) < 70){
+
 return;
+
 }
 
+
 if(Math.abs(differenceX) <= Math.abs(differenceY)){
+
 return;
+
 }
+
+
+/* Swipe left = next */
 
 if(differenceX > 0){
 
 nextCard();
 
-}else{
+}
+
+/* Swipe right = previous */
+
+else{
 
 previousCard();
 
@@ -1750,125 +1807,198 @@ const questions = [
 
 {
 question:"What is an attempt in criminal law?",
+
 options:[
 "A completed criminal offence",
 "An inchoate offence involving conduct directed toward an offence that is not completed",
 "A civil dispute",
 "A type of criminal sentence"
 ],
+
 answer:1
 },
 
 {
 question:"Which two elements commonly form the basis of an attempt?",
+
 options:[
 "Negligence and causation",
 "Intention and conduct beyond mere preparation",
 "Punishment and appeal",
 "Knowledge and sentencing"
 ],
+
 answer:1
 },
 
 {
 question:"Why is mere preparation generally not enough for attempt liability?",
+
 options:[
 "Because criminal law does not usually punish thoughts or ordinary preparation alone",
 "Because preparation is always a complete offence",
 "Because preparation cannot involve intention",
 "Because preparation automatically proves innocence"
 ],
+
 answer:0
 },
 
 {
 question:"What does an impossible attempt involve?",
+
 options:[
 "A completed offence",
 "An intended offence that cannot be completed because of certain circumstances",
 "An offence that was fully successful",
 "A case in which the accused had no intention"
 ],
+
 answer:1
 },
 
 {
 question:"Which statement best describes the key takeaway for attempt?",
+
 options:[
 "Attempt requires only a criminal thought",
 "Attempt = criminal intention + conduct beyond mere preparation",
 "Attempt requires the completed offence",
 "Attempt is identical to negligence"
 ],
+
 answer:1
 }
 
 ];
 
+
 let currentQuestion = 0;
 
+let score = 0;
 
-/* START QUIZ */
+let answered = false;
+
+
+/* =========================
+   START QUIZ
+========================= */
 
 function startQuiz(){
 
-document.getElementById("notesSection").style.display = "none";
-document.getElementById("noteNavigation").style.display = "none";
-document.getElementById("quizStart").style.display = "none";
+currentQuestion = 0;
+
+score = 0;
+
+answered = false;
+
+
+document.getElementById("notesSection").style.display =
+"none";
+
+document.getElementById("noteNavigation").style.display =
+"none";
+
+document.getElementById("quizStart").style.display =
+"none";
+
 
 document.getElementById("progressArea").innerHTML = `
-<div class="progress-title">QUIZ</div>
-<div class="progress-dots">
-● ● ● ● ●
+
+<div class="progress-title">
+QUIZ
 </div>
+
+<div class="progress-dots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
 `;
 
-document.getElementById("quizSection").classList.add("active");
+
+document.getElementById("quizSection")
+.classList.add("active");
+
 
 loadQuestion();
 
+
 window.scrollTo({
+
 top:0,
+
 behavior:"smooth"
+
 });
 
 }
 
 
-/* LOAD QUESTION */
+/* =========================
+   LOAD QUESTION
+========================= */
 
 function loadQuestion(){
 
-const question = questions[currentQuestion];
+const question =
+questions[currentQuestion];
 
-document.getElementById("questionNumber").textContent =
+
+document.getElementById("questionNumber")
+.textContent =
 currentQuestion + 1;
 
-document.getElementById("questionText").textContent =
+
+document.getElementById("questionText")
+.textContent =
 question.question;
+
 
 const optionsContainer =
 document.getElementById("options");
 
+
 optionsContainer.innerHTML = "";
 
-document.getElementById("feedback").textContent = "";
 
-document.getElementById("quizNext").style.display = "none";
+document.getElementById("feedback")
+.textContent = "";
+
+
+document.getElementById("quizNext")
+.style.display =
+"none";
+
+
+answered = false;
+
 
 question.options.forEach((option,index)=>{
 
-const button = document.createElement("button");
+const button =
+document.createElement("button");
 
-button.className = "quiz-option";
 
-button.textContent = option;
+button.className =
+"quiz-option";
+
+
+button.textContent =
+option;
+
 
 button.onclick = function(){
 
 checkAnswer(index,button);
 
 };
+
 
 optionsContainer.appendChild(button);
 
@@ -1877,44 +2007,70 @@ optionsContainer.appendChild(button);
 }
 
 
-/* CHECK ANSWER */
+/* =========================
+   CHECK ANSWER
+========================= */
 
 function checkAnswer(selected,button){
 
-const question = questions[currentQuestion];
+if(answered){
+
+return;
+
+}
+
+answered = true;
+
+
+const question =
+questions[currentQuestion];
+
 
 const allOptions =
 document.querySelectorAll(".quiz-option");
 
+
 allOptions.forEach(option=>{
+
 option.disabled = true;
+
 });
+
 
 if(selected === question.answer){
 
+score++;
+
 button.classList.add("correct");
 
-document.getElementById("feedback").textContent =
+document.getElementById("feedback")
+.textContent =
 "✓ Correct!";
 
 }else{
 
 button.classList.add("wrong");
 
-allOptions[question.answer].classList.add("correct");
+allOptions[question.answer]
+.classList.add("correct");
 
-document.getElementById("feedback").textContent =
+document.getElementById("feedback")
+.textContent =
 "✗ Not quite. The correct answer is highlighted.";
 
 }
 
-document.getElementById("quizNext").style.display =
+
+document.getElementById("quizNext")
+.style.display =
 "inline-block";
 
 }
 
 
-/* NEXT QUESTION */
+/* =========================
+   NEXT QUESTION
+========================= */
 
 function nextQuestion(){
 
@@ -1933,11 +2089,41 @@ showQuizResult();
 }
 
 
-/* QUIZ RESULT */
+/* =========================
+   QUIZ RESULT
+========================= */
 
 function showQuizResult(){
 
-document.querySelector(".quiz-card").innerHTML = `
+const percentage =
+Math.round(
+(score / questions.length) * 100
+);
+
+
+let message;
+
+
+if(score === 5){
+
+message =
+"Excellent work! You demonstrated a very strong understanding of attempt.";
+
+}else if(score >= 3){
+
+message =
+"Good work! You understand the main principles of attempt.";
+
+}else{
+
+message =
+"Keep studying! Review the note again, especially preparation versus attempt, mens rea, impossibility, abandonment, and the physical element of attempt.";
+
+}
+
+
+document.querySelector(".quiz-card")
+.innerHTML = `
 
 <div class="quiz-label">
 QUIZ COMPLETE
@@ -1947,6 +2133,14 @@ QUIZ COMPLETE
 
 <p>
 You've completed the <strong>Attempt</strong> quiz.
+</p>
+
+<p>
+<strong>Your score: ${score}/5 (${percentage}%)</strong>
+</p>
+
+<p>
+${message}
 </p>
 
 <p>
@@ -1973,4 +2167,4 @@ showCard(0);
 </script>
 
 </body>
-  </html>
+   </html>
