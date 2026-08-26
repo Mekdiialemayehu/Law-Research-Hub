@@ -187,6 +187,7 @@ border-left:5px solid #c9a227;
 padding:20px;
 margin:20px 0;
 font-size:18px;
+line-height:1.7;
 }
 
 /* COMPARISON */
@@ -253,8 +254,11 @@ background:#a88312;
 /* QUIZ START */
 
 .quiz-start{
+display:none;
 text-align:center;
-padding-top:25px;
+max-width:850px;
+margin:0 auto 50px;
+padding:0 20px;
 }
 
 .quiz-start h2{
@@ -266,6 +270,7 @@ margin-bottom:15px;
 .quiz-start p{
 max-width:600px;
 margin:0 auto 25px;
+line-height:1.7;
 }
 
 .quiz-button{
@@ -280,6 +285,7 @@ font-size:16px;
 font-weight:bold;
 cursor:pointer;
 transition:.3s;
+text-decoration:none;
 }
 
 .quiz-button:hover{
@@ -317,6 +323,7 @@ margin-bottom:10px;
 .quiz-card h2{
 color:#0b1f3a;
 margin-bottom:20px;
+line-height:1.5;
 }
 
 .quiz-option{
@@ -338,6 +345,10 @@ transition:.3s;
 border-color:#c9a227;
 }
 
+.quiz-option:disabled{
+cursor:default;
+}
+
 .quiz-option.correct{
 border-color:#4a8f5c;
 background:#edf7ef;
@@ -351,6 +362,7 @@ background:#fbeded;
 .quiz-feedback{
 margin-top:15px;
 font-weight:bold;
+line-height:1.6;
 }
 
 .quiz-next{
@@ -364,6 +376,29 @@ font-family:Georgia, serif;
 font-weight:bold;
 cursor:pointer;
 display:none;
+}
+
+.quiz-next:hover{
+background:#173b69;
+}
+
+/* SCORE */
+
+.score-box{
+text-align:center;
+padding:15px 0;
+}
+
+.score-number{
+font-size:48px;
+color:#c9a227;
+font-weight:bold;
+margin:20px 0;
+}
+
+.score-message{
+line-height:1.7;
+margin-bottom:25px;
 }
 
 /* SOURCES */
@@ -391,6 +426,7 @@ margin-top:40px;
 
 footer p{
 margin:6px 0;
+line-height:1.6;
 }
 
 /* MOBILE */
@@ -425,6 +461,10 @@ padding:11px 17px;
 
 .comparison{
 grid-template-columns:1fr;
+}
+
+.quiz-card{
+padding:28px 22px;
 }
 
 }
@@ -471,13 +511,14 @@ Courts & Legal Process · Interactive Legal Note
 
 <div class="progress-area" id="progressArea">
 
-<div class="progress-title">
+<div class="progress-title" id="progressTitle">
 STANDARD OF PROOF
 </div>
 
 <div class="progress-dots" id="progressDots">
 
 <span class="active">●</span>
+<span>●</span>
 <span>●</span>
 <span>●</span>
 <span>●</span>
@@ -1149,9 +1190,9 @@ Next →
 </div>
 
 
-<!-- QUIZ INTRO -->
+<!-- QUIZ START -->
 
-<div class="quiz-start" id="quizStart" style="display:none;">
+<div class="quiz-start" id="quizStart">
 
 <h2>🎓 Note Complete!</h2>
 
@@ -1218,10 +1259,18 @@ An independent educational project dedicated to making legal knowledge accessibl
 let currentCard = 0;
 
 const cards = document.querySelectorAll(".note-card");
+
 const dots = document.querySelectorAll(".progress-dots span");
 
-const prevButton = document.getElementById("prevButton");
-const nextButton = document.getElementById("nextButton");
+const prevButton =
+document.getElementById("prevButton");
+
+const nextButton =
+document.getElementById("nextButton");
+
+const quizStart =
+document.getElementById("quizStart");
+
 
 function showCard(index){
 
@@ -1234,27 +1283,35 @@ dot.classList.remove("active");
 });
 
 cards[index].classList.add("active");
+
 dots[index].classList.add("active");
 
 prevButton.disabled = index === 0;
+
+
+/*
+When Card 14 is reached,
+hide Next and show the quiz.
+*/
 
 if(index === cards.length - 1){
 
 nextButton.style.display = "none";
 
-document.getElementById("quizStart").style.display = "block";
+quizStart.style.display = "block";
 
 }else{
 
 nextButton.style.display = "inline-block";
 
-document.getElementById("quizStart").style.display = "none";
+quizStart.style.display = "none";
 
 }
 
 currentCard = index;
 
 }
+
 
 function nextCard(){
 
@@ -1265,6 +1322,7 @@ showCard(currentCard + 1);
 }
 
 }
+
 
 function previousCard(){
 
@@ -1282,49 +1340,80 @@ showCard(currentCard - 1);
 ========================= */
 
 let touchStartX = 0;
+
 let touchStartY = 0;
+
 let touchEndX = 0;
+
 let touchEndY = 0;
 
-const swipeArea = document.querySelector(".card-wrapper");
 
-swipeArea.addEventListener("touchstart", function(event){
+const swipeArea =
+document.querySelector(".card-wrapper");
 
-touchStartX = event.changedTouches[0].screenX;
-touchStartY = event.changedTouches[0].screenY;
 
-});
+swipeArea.addEventListener(
+"touchstart",
+function(event){
 
-swipeArea.addEventListener("touchend", function(event){
+touchStartX =
+event.changedTouches[0].screenX;
 
-touchEndX = event.changedTouches[0].screenX;
-touchEndY = event.changedTouches[0].screenY;
+touchStartY =
+event.changedTouches[0].screenY;
+
+},
+{passive:true}
+);
+
+
+swipeArea.addEventListener(
+"touchend",
+function(event){
+
+touchEndX =
+event.changedTouches[0].screenX;
+
+touchEndY =
+event.changedTouches[0].screenY;
 
 handleSwipe();
 
-});
+},
+{passive:true}
+);
+
 
 function handleSwipe(){
 
-const differenceX = touchStartX - touchEndX;
-const differenceY = touchStartY - touchEndY;
+const differenceX =
+touchStartX - touchEndX;
+
+const differenceY =
+touchStartY - touchEndY;
+
 
 if(Math.abs(differenceX) < 70){
 return;
 }
 
+
 if(Math.abs(differenceX) <= Math.abs(differenceY)){
 return;
 }
 
-/* Swipe left = next card
-   Swipe right = previous card */
+
+/* Swipe left = next card */
 
 if(differenceX > 0){
 
 nextCard();
 
-}else{
+}
+
+/* Swipe right = previous card */
+
+else{
 
 previousCard();
 
@@ -1341,113 +1430,224 @@ const questions = [
 
 {
 question:"What does the standard of proof determine?",
+
 options:[
+
 "Who the judge is",
+
 "How convincing the evidence must be",
+
 "Which court hears the case",
+
 "Whether an appeal is allowed"
+
 ],
+
 answer:1
 },
+
 
 {
 question:"Which standard is commonly associated with criminal cases in many common law systems?",
+
 options:[
+
 "Balance of probabilities",
+
 "Beyond a reasonable doubt",
+
 "Reasonable possibility",
+
 "Absolute certainty"
+
 ],
+
 answer:1
 },
 
+
 {
 question:"What does the balance of probabilities generally ask?",
+
 options:[
+
 "Whether a fact is more likely than not to be true",
+
 "Whether a fact is mathematically certain",
+
 "Whether an accused person can prove their innocence",
+
 "Whether every possible doubt has been removed"
+
 ],
+
 answer:0
 },
+
 
 {
 question:"What is the difference between burden of proof and standard of proof?",
+
 options:[
+
 "Burden concerns who must prove an issue, while standard concerns how convincing the evidence must be",
+
 "Burden concerns only civil cases, while standard concerns only criminal cases",
+
 "They are exactly the same",
+
 "Standard identifies the party responsible for presenting the case"
+
 ],
+
 answer:0
 },
 
+
 {
 question:"Why do criminal proceedings commonly use a higher standard of proof?",
+
 options:[
+
 "Because criminal convictions can have serious consequences imposed by the State",
+
 "Because civil cases never involve evidence",
+
 "Because criminal courts do not hear witnesses",
+
 "Because every criminal case is automatically appealed"
+
 ],
+
 answer:0
 }
 
 ];
 
+
 let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+/* =========================
+   START QUIZ
+========================= */
 
 function startQuiz(){
 
-document.getElementById("notesSection").style.display = "none";
-document.getElementById("noteNavigation").style.display = "none";
-document.getElementById("quizStart").style.display = "none";
+currentQuestion = 0;
+
+score = 0;
+
+answered = false;
+
+
+document.getElementById("notesSection").style.display =
+"none";
+
+document.getElementById("noteNavigation").style.display =
+"none";
+
+document.getElementById("quizStart").style.display =
+"none";
+
 
 document.getElementById("progressArea").innerHTML = `
-<div class="progress-title">QUIZ</div>
-<div class="progress-dots">
-● ● ● ● ●
+
+<div class="progress-title">
+QUIZ
 </div>
+
+<div class="progress-dots">
+
+<span class="active">●</span>
+
+<span>●</span>
+
+<span>●</span>
+
+<span>●</span>
+
+<span>●</span>
+
+</div>
+
 `;
 
-document.getElementById("quizSection").classList.add("active");
+
+document.getElementById("quizSection")
+.classList.add("active");
+
 
 loadQuestion();
 
+
 window.scrollTo({
+
 top:0,
+
 behavior:"smooth"
+
 });
 
 }
 
+
+/* =========================
+   LOAD QUESTION
+========================= */
+
 function loadQuestion(){
 
-const question = questions[currentQuestion];
+const question =
+questions[currentQuestion];
 
-document.getElementById("questionNumber").textContent =
+
+document.getElementById("questionNumber")
+.textContent =
 currentQuestion + 1;
 
-document.getElementById("questionText").textContent =
+
+document.getElementById("questionText")
+.textContent =
 question.question;
+
 
 const optionsContainer =
 document.getElementById("options");
 
+
 optionsContainer.innerHTML = "";
 
-document.getElementById("feedback").textContent = "";
 
-document.getElementById("quizNext").style.display = "none";
+document.getElementById("feedback")
+.textContent = "";
+
+
+document.getElementById("quizNext")
+.style.display =
+"none";
+
+
+answered = false;
+
 
 question.options.forEach((option,index)=>{
 
-const button = document.createElement("button");
+const button =
+document.createElement("button");
 
-button.className = "quiz-option";
 
-button.textContent = option;
+button.className =
+"quiz-option";
+
+
+button.textContent =
+option;
+
 
 button.onclick = function(){
 
@@ -1455,45 +1655,78 @@ checkAnswer(index,button);
 
 };
 
+
 optionsContainer.appendChild(button);
 
 });
 
 }
 
+
+/* =========================
+   CHECK ANSWER
+========================= */
+
 function checkAnswer(selected,button){
 
-const question = questions[currentQuestion];
+if(answered){
+
+return;
+
+}
+
+answered = true;
+
+
+const question =
+questions[currentQuestion];
+
 
 const allOptions =
 document.querySelectorAll(".quiz-option");
 
+
 allOptions.forEach(option=>{
+
 option.disabled = true;
+
 });
+
 
 if(selected === question.answer){
 
+score++;
+
 button.classList.add("correct");
 
-document.getElementById("feedback").textContent =
+document.getElementById("feedback")
+.innerHTML =
 "✓ Correct!";
 
 }else{
 
 button.classList.add("wrong");
 
-allOptions[question.answer].classList.add("correct");
+allOptions[question.answer]
+.classList.add("correct");
 
-document.getElementById("feedback").textContent =
+document.getElementById("feedback")
+.innerHTML =
 "✗ Not quite. The correct answer is highlighted.";
 
 }
 
-document.getElementById("quizNext").style.display =
+
+document.getElementById("quizNext")
+.style.display =
 "inline-block";
 
 }
+
+
+/* =========================
+   NEXT QUESTION
+========================= */
 
 function nextQuestion(){
 
@@ -1503,6 +1736,15 @@ currentQuestion++;
 
 loadQuestion();
 
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
 }else{
 
 showQuizResult();
@@ -1511,29 +1753,74 @@ showQuizResult();
 
 }
 
+
+/* =========================
+   QUIZ RESULT
+========================= */
+
 function showQuizResult(){
 
-document.querySelector(".quiz-card").innerHTML = `
+const percentage =
+Math.round(
+(score / questions.length) * 100
+);
+
+
+let message;
+
+
+if(score === 5){
+
+message =
+"Excellent work! You demonstrated a very strong understanding of the standard of proof.";
+
+}else if(score >= 3){
+
+message =
+"Good work! You understand the main principles of the standard of proof.";
+
+}else{
+
+message =
+"Keep studying! Review the note again, especially the difference between the burden of proof and the standard of proof.";
+
+}
+
+
+document.querySelector(".quiz-card")
+.innerHTML = `
+
+<div class="score-box">
 
 <div class="quiz-label">
 QUIZ COMPLETE
 </div>
 
-<h2>🎉 Well Done!</h2>
+<h2>🎉 Quiz Complete!</h2>
 
-<p>
-You've completed the <strong>Standard of Proof</strong> quiz.
+<div class="score-number">
+${score}/5
+</div>
+
+<p class="score-message">
+
+<strong>Your score: ${percentage}%</strong>
+
+<br><br>
+
+${message}
+
 </p>
 
-<p>
-You can now return to the Courts & Legal Process section and explore another legal concept.
-</p>
 
 <a href="courts-and-legal-process.html"
-class="quiz-button"
-style="text-decoration:none;">
+class="quiz-button">
+
 Back to Courts & Legal Process
+
 </a>
+
+</div>
 
 `;
 
@@ -1549,4 +1836,4 @@ showCard(0);
 </script>
 
 </body>
-  </html>
+   </html>
