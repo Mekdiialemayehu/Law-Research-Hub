@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -259,8 +260,10 @@ background:#a88312;
 /* QUIZ START */
 
 .quiz-start{
+display:none;
 text-align:center;
 padding-top:25px;
+margin-bottom:50px;
 }
 
 .quiz-start h2{
@@ -352,6 +355,10 @@ background:#edf7ef;
 .quiz-option.wrong{
 border-color:#b84a4a;
 background:#fbeded;
+}
+
+.quiz-option:disabled{
+cursor:default;
 }
 
 .quiz-feedback{
@@ -488,7 +495,13 @@ CAUSATION
 
 <div class="progress-dots" id="progressDots">
 
+<!-- 22 dots for 22 cards -->
+
 <span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
 <span>●</span>
 <span>●</span>
 <span>●</span>
@@ -1507,7 +1520,7 @@ Next →
 
 <!-- QUIZ INTRO -->
 
-<div class="quiz-start" id="quizStart" style="display:none;">
+<div class="quiz-start" id="quizStart">
 
 <h2>🎓 Note Complete!</h2>
 
@@ -1574,37 +1587,54 @@ An independent educational project dedicated to making legal knowledge accessibl
 let currentCard = 0;
 
 const cards = document.querySelectorAll(".note-card");
-const dots = document.querySelectorAll(".progress-dots span");
 
-const prevButton = document.getElementById("prevButton");
-const nextButton = document.getElementById("nextButton");
+const dots =
+document.querySelectorAll(".progress-dots span");
+
+const prevButton =
+document.getElementById("prevButton");
+
+const nextButton =
+document.getElementById("nextButton");
+
+const quizStart =
+document.getElementById("quizStart");
+
 
 function showCard(index){
 
 cards.forEach(card => {
+
 card.classList.remove("active");
+
 });
 
 dots.forEach(dot => {
+
 dot.classList.remove("active");
+
 });
 
 cards[index].classList.add("active");
+
 dots[index].classList.add("active");
 
 prevButton.disabled = index === 0;
+
+
+/* Show quiz after the final card */
 
 if(index === cards.length - 1){
 
 nextButton.style.display = "none";
 
-document.getElementById("quizStart").style.display = "block";
+quizStart.style.display = "block";
 
 }else{
 
 nextButton.style.display = "inline-block";
 
-document.getElementById("quizStart").style.display = "none";
+quizStart.style.display = "none";
 
 }
 
@@ -1612,8 +1642,6 @@ currentCard = index;
 
 }
 
-
-/* NEXT CARD */
 
 function nextCard(){
 
@@ -1625,8 +1653,6 @@ showCard(currentCard + 1);
 
 }
 
-
-/* PREVIOUS CARD */
 
 function previousCard(){
 
@@ -1645,39 +1671,68 @@ showCard(currentCard - 1);
 
 let touchStartX = 0;
 let touchStartY = 0;
+
 let touchEndX = 0;
 let touchEndY = 0;
 
-const swipeArea = document.querySelector(".card-wrapper");
+const swipeArea =
+document.querySelector(".card-wrapper");
 
-swipeArea.addEventListener("touchstart", function(event){
 
-touchStartX = event.changedTouches[0].screenX;
-touchStartY = event.changedTouches[0].screenY;
+swipeArea.addEventListener(
+"touchstart",
+function(event){
 
-});
+touchStartX =
+event.changedTouches[0].screenX;
 
-swipeArea.addEventListener("touchend", function(event){
+touchStartY =
+event.changedTouches[0].screenY;
 
-touchEndX = event.changedTouches[0].screenX;
-touchEndY = event.changedTouches[0].screenY;
+},
+{passive:true}
+);
+
+
+swipeArea.addEventListener(
+"touchend",
+function(event){
+
+touchEndX =
+event.changedTouches[0].screenX;
+
+touchEndY =
+event.changedTouches[0].screenY;
 
 handleSwipe();
 
-});
+},
+{passive:true}
+);
+
 
 function handleSwipe(){
 
-const differenceX = touchStartX - touchEndX;
-const differenceY = touchStartY - touchEndY;
+const differenceX =
+touchStartX - touchEndX;
+
+const differenceY =
+touchStartY - touchEndY;
+
 
 if(Math.abs(differenceX) < 70){
+
 return;
+
 }
 
+
 if(Math.abs(differenceX) <= Math.abs(differenceY)){
+
 return;
+
 }
+
 
 if(differenceX > 0){
 
@@ -1700,125 +1755,198 @@ const questions = [
 
 {
 question:"What does causation refer to in criminal law?",
+
 options:[
 "The punishment imposed by a court",
 "The legal connection between conduct and a prohibited result",
 "The mental state of the accused",
 "The procedure used to appeal a case"
 ],
+
 answer:1
 },
 
 {
 question:"What question does factual causation commonly ask?",
+
 options:[
 "Was the accused's conduct morally wrong?",
 "Would the result have occurred but for the accused's conduct?",
 "Was the result foreseeable to everyone?",
 "Did the accused admit responsibility?"
 ],
+
 answer:1
 },
 
 {
 question:"What does legal causation primarily consider?",
+
 options:[
 "Whether the accused had a motive",
 "Whether the conduct is sufficiently connected to the result for legal responsibility",
 "Whether the victim was injured",
 "Whether the accused was arrested"
 ],
+
 answer:1
 },
 
 {
 question:"What is an intervening act?",
+
 options:[
 "An event that occurs after the accused's conduct and may affect causation",
 "The accused's original intention",
 "The sentence imposed after conviction",
 "The first act performed by the victim"
 ],
+
 answer:0
 },
 
 {
 question:"Which statement best describes causation in a result-based offence?",
+
 options:[
 "Only the accused's mental state matters",
 "The prosecution may need to prove that the accused's conduct legally caused the required result",
 "Causation is never relevant",
 "Any later event automatically breaks causation"
 ],
+
 answer:1
 }
 
 ];
 
+
 let currentQuestion = 0;
 
+let score = 0;
 
-/* START QUIZ */
+let answered = false;
+
+
+/* =========================
+   START QUIZ
+========================= */
 
 function startQuiz(){
 
-document.getElementById("notesSection").style.display = "none";
-document.getElementById("noteNavigation").style.display = "none";
-document.getElementById("quizStart").style.display = "none";
+currentQuestion = 0;
+
+score = 0;
+
+answered = false;
+
+
+document.getElementById("notesSection").style.display =
+"none";
+
+document.getElementById("noteNavigation").style.display =
+"none";
+
+document.getElementById("quizStart").style.display =
+"none";
+
 
 document.getElementById("progressArea").innerHTML = `
-<div class="progress-title">QUIZ</div>
-<div class="progress-dots">
-● ● ● ● ●
+
+<div class="progress-title">
+QUIZ
 </div>
+
+<div class="progress-dots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
 `;
 
-document.getElementById("quizSection").classList.add("active");
+
+document.getElementById("quizSection")
+.classList.add("active");
+
 
 loadQuestion();
 
+
 window.scrollTo({
+
 top:0,
+
 behavior:"smooth"
+
 });
 
 }
 
 
-/* LOAD QUESTION */
+/* =========================
+   LOAD QUESTION
+========================= */
 
 function loadQuestion(){
 
-const question = questions[currentQuestion];
+const question =
+questions[currentQuestion];
 
-document.getElementById("questionNumber").textContent =
+
+document.getElementById("questionNumber")
+.textContent =
 currentQuestion + 1;
 
-document.getElementById("questionText").textContent =
+
+document.getElementById("questionText")
+.textContent =
 question.question;
+
 
 const optionsContainer =
 document.getElementById("options");
 
+
 optionsContainer.innerHTML = "";
 
-document.getElementById("feedback").textContent = "";
 
-document.getElementById("quizNext").style.display = "none";
+document.getElementById("feedback")
+.textContent = "";
+
+
+document.getElementById("quizNext")
+.style.display =
+"none";
+
+
+answered = false;
+
 
 question.options.forEach((option,index)=>{
 
-const button = document.createElement("button");
+const button =
+document.createElement("button");
 
-button.className = "quiz-option";
 
-button.textContent = option;
+button.className =
+"quiz-option";
+
+
+button.textContent =
+option;
+
 
 button.onclick = function(){
 
 checkAnswer(index,button);
 
 };
+
 
 optionsContainer.appendChild(button);
 
@@ -1827,44 +1955,70 @@ optionsContainer.appendChild(button);
 }
 
 
-/* CHECK ANSWER */
+/* =========================
+   CHECK ANSWER
+========================= */
 
 function checkAnswer(selected,button){
 
-const question = questions[currentQuestion];
+if(answered){
+
+return;
+
+}
+
+answered = true;
+
+
+const question =
+questions[currentQuestion];
+
 
 const allOptions =
 document.querySelectorAll(".quiz-option");
 
+
 allOptions.forEach(option=>{
+
 option.disabled = true;
+
 });
+
 
 if(selected === question.answer){
 
+score++;
+
 button.classList.add("correct");
 
-document.getElementById("feedback").textContent =
+document.getElementById("feedback")
+.textContent =
 "✓ Correct!";
 
 }else{
 
 button.classList.add("wrong");
 
-allOptions[question.answer].classList.add("correct");
+allOptions[question.answer]
+.classList.add("correct");
 
-document.getElementById("feedback").textContent =
+document.getElementById("feedback")
+.textContent =
 "✗ Not quite. The correct answer is highlighted.";
 
 }
 
-document.getElementById("quizNext").style.display =
+
+document.getElementById("quizNext")
+.style.display =
 "inline-block";
 
 }
 
 
-/* NEXT QUESTION */
+/* =========================
+   NEXT QUESTION
+========================= */
 
 function nextQuestion(){
 
@@ -1873,6 +2027,15 @@ if(currentQuestion < questions.length - 1){
 currentQuestion++;
 
 loadQuestion();
+
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
 
 }else{
 
@@ -1883,11 +2046,41 @@ showQuizResult();
 }
 
 
-/* QUIZ RESULT */
+/* =========================
+   QUIZ RESULT
+========================= */
 
 function showQuizResult(){
 
-document.querySelector(".quiz-card").innerHTML = `
+const percentage =
+Math.round(
+(score / questions.length) * 100
+);
+
+
+let message;
+
+
+if(score === 5){
+
+message =
+"Excellent work! You demonstrated a very strong understanding of causation.";
+
+}else if(score >= 3){
+
+message =
+"Good work! You understand the main principles of causation.";
+
+}else{
+
+message =
+"Keep studying! Review factual causation, legal causation, intervening acts, and causation in result-based offences.";
+
+}
+
+
+document.querySelector(".quiz-card")
+.innerHTML = `
 
 <div class="quiz-label">
 QUIZ COMPLETE
@@ -1897,6 +2090,14 @@ QUIZ COMPLETE
 
 <p>
 You've completed the <strong>Causation</strong> quiz.
+</p>
+
+<p>
+<strong>Your score: ${score}/5 (${percentage}%)</strong>
+</p>
+
+<p>
+${message}
 </p>
 
 <p>
@@ -1923,4 +2124,4 @@ showCard(0);
 </script>
 
 </body>
-         </html>
+   </html>
