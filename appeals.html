@@ -11,6 +11,10 @@
 
 <style>
 
+/* =========================
+   GENERAL
+========================= */
+
 *{
 margin:0;
 padding:0;
@@ -24,7 +28,10 @@ color:#222;
 min-height:100vh;
 }
 
-/* NAVIGATION */
+
+/* =========================
+   NAVIGATION
+========================= */
 
 nav{
 background:#0b1f3a;
@@ -49,7 +56,10 @@ nav a:hover{
 color:#c9a227;
 }
 
-/* HEADER */
+
+/* =========================
+   HEADER
+========================= */
 
 header{
 background:#0b1f3a;
@@ -69,7 +79,10 @@ max-width:700px;
 margin:auto;
 }
 
-/* PROGRESS */
+
+/* =========================
+   PROGRESS
+========================= */
 
 .progress-area{
 text-align:center;
@@ -85,16 +98,27 @@ margin-bottom:10px;
 }
 
 .progress-dots{
-font-size:18px;
-letter-spacing:5px;
-color:#d5d5d5;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:8px;
+flex-wrap:wrap;
 }
 
-.progress-dots .active{
+.progress-dots span{
+font-size:17px;
+color:#d5d5d5;
+transition:.3s;
+}
+
+.progress-dots span.active{
 color:#c9a227;
 }
 
-/* SWIPE AREA */
+
+/* =========================
+   SWIPE AREA
+========================= */
 
 .swipe-container{
 max-width:850px;
@@ -136,7 +160,10 @@ transform:translateX(0);
 
 }
 
-/* CARD CONTENT */
+
+/* =========================
+   CARD CONTENT
+========================= */
 
 .card-number{
 color:#c9a227;
@@ -179,7 +206,10 @@ margin:10px 0 20px 25px;
 margin-bottom:12px;
 }
 
-/* QUOTE / DEFINITION */
+
+/* =========================
+   DEFINITION BOX
+========================= */
 
 .definition{
 background:#f5f7fa;
@@ -187,9 +217,13 @@ border-left:5px solid #c9a227;
 padding:20px;
 margin:20px 0;
 font-size:18px;
+line-height:1.7;
 }
 
-/* HIERARCHY */
+
+/* =========================
+   HIERARCHY
+========================= */
 
 .hierarchy{
 background:#f5f7fa;
@@ -203,7 +237,10 @@ color:#0b1f3a;
 line-height:2;
 }
 
-/* COMPARISON */
+
+/* =========================
+   COMPARISON
+========================= */
 
 .comparison{
 display:grid;
@@ -222,7 +259,10 @@ border-radius:10px;
 margin-top:0;
 }
 
-/* NAVIGATION BUTTONS */
+
+/* =========================
+   NAVIGATION BUTTONS
+========================= */
 
 .navigation{
 display:flex;
@@ -264,60 +304,18 @@ background:#c9a227;
 background:#a88312;
 }
 
-/* QUIZ START */
 
-.quiz-start{
-text-align:center;
-padding-top:25px;
-}
-
-.quiz-start h2{
-color:#0b1f3a;
-font-size:30px;
-margin-bottom:15px;
-}
-
-.quiz-start p{
-max-width:600px;
-margin:0 auto 25px;
-}
-
-.quiz-button{
-display:inline-block;
-padding:14px 30px;
-background:#c9a227;
-color:white;
-border:none;
-border-radius:8px;
-font-family:Georgia, serif;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-transition:.3s;
-}
-
-.quiz-button:hover{
-background:#a88312;
-}
-
-/* QUIZ */
-
-.quiz-section{
-display:none;
-max-width:850px;
-margin:30px auto 60px;
-padding:0 20px;
-}
-
-.quiz-section.active{
-display:block;
-}
+/* =========================
+   QUIZ CARD
+========================= */
 
 .quiz-card{
 background:white;
 border-radius:16px;
 padding:40px;
+min-height:500px;
 box-shadow:0 5px 20px rgba(0,0,0,.1);
+animation:fadeIn .3s ease;
 }
 
 .quiz-label{
@@ -325,19 +323,45 @@ color:#c9a227;
 font-weight:bold;
 font-size:14px;
 letter-spacing:1px;
-margin-bottom:10px;
+margin-bottom:12px;
 }
 
 .quiz-card h2{
 color:#0b1f3a;
+font-size:30px;
 margin-bottom:20px;
 }
+
+.quiz-card p{
+line-height:1.8;
+margin-bottom:18px;
+}
+
+.quiz-intro{
+text-align:center;
+padding-top:35px;
+}
+
+.quiz-intro h2{
+font-size:32px;
+margin-bottom:15px;
+}
+
+.quiz-intro p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+
+/* =========================
+   QUIZ OPTIONS
+========================= */
 
 .quiz-option{
 display:block;
 width:100%;
 text-align:left;
-padding:14px 16px;
+padding:15px 16px;
 margin:10px 0;
 background:#f5f7fa;
 border:2px solid #e0e0e0;
@@ -352,6 +376,10 @@ transition:.3s;
 border-color:#c9a227;
 }
 
+.quiz-option:disabled{
+cursor:default;
+}
+
 .quiz-option.correct{
 border-color:#4a8f5c;
 background:#edf7ef;
@@ -362,9 +390,15 @@ border-color:#b84a4a;
 background:#fbeded;
 }
 
+
+/* =========================
+   QUIZ FEEDBACK
+========================= */
+
 .quiz-feedback{
-margin-top:15px;
+margin-top:18px;
 font-weight:bold;
+line-height:1.6;
 }
 
 .quiz-next{
@@ -378,9 +412,61 @@ font-family:Georgia, serif;
 font-weight:bold;
 cursor:pointer;
 display:none;
+transition:.3s;
 }
 
-/* SOURCES */
+.quiz-next:hover{
+background:#173b69;
+}
+
+
+/* =========================
+   QUIZ BUTTON
+========================= */
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+text-decoration:none;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+
+/* =========================
+   SCORE
+========================= */
+
+.score-box{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:25px 0;
+text-align:center;
+border-radius:8px;
+}
+
+.score-box h3{
+color:#0b1f3a;
+font-size:26px;
+margin-bottom:8px;
+}
+
+
+/* =========================
+   SOURCES
+========================= */
 
 .sources{
 font-size:14px;
@@ -393,7 +479,10 @@ border-top:1px solid #ddd;
 margin-bottom:7px;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
 background:#0b1f3a;
@@ -405,9 +494,13 @@ margin-top:40px;
 
 footer p{
 margin:6px 0;
+line-height:1.6;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
@@ -420,12 +513,14 @@ header h1{
 font-size:34px;
 }
 
-.note-card{
+.note-card,
+.quiz-card{
 padding:28px 22px;
 min-height:520px;
 }
 
-.note-card h2{
+.note-card h2,
+.quiz-card h2{
 font-size:26px;
 }
 
@@ -441,15 +536,26 @@ padding:11px 17px;
 grid-template-columns:1fr;
 }
 
+.progress-dots{
+gap:5px;
+}
+
+.progress-dots span{
+font-size:14px;
+}
+
 }
 
 </style>
 </head>
 
+
 <body>
 
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
@@ -468,7 +574,9 @@ grid-template-columns:1fr;
 </nav>
 
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -481,35 +589,25 @@ Courts & Legal Process · Interactive Legal Note
 </header>
 
 
-<!-- PROGRESS -->
+<!-- =========================
+     PROGRESS
+========================= -->
 
 <div class="progress-area" id="progressArea">
 
-<div class="progress-title">
+<div class="progress-title" id="progressTitle">
 APPEALS
 </div>
 
 <div class="progress-dots" id="progressDots">
-
-<span class="active">●</span>
-<span>●</span>
-<span>●</span>
-<span>●</span>
-<span>●</span>
-<span>●</span>
-<span>●</span>
-<span>●</span>
-<span>●</span>
-<span>●</span>
-<span>●</span>
-<span>●</span>
-
 </div>
 
 </div>
 
 
-<!-- NOTE CARDS -->
+<!-- =========================
+     NOTE CARDS
+========================= -->
 
 <div class="swipe-container" id="notesSection">
 
@@ -703,7 +801,7 @@ An appeal is generally heard by a higher court, known as an appellate court.
 
 <div class="hierarchy">
 
-Highest Court
+Trial Court
 
 <br>
 ↓
@@ -717,7 +815,7 @@ Court of Appeal
 
 <br>
 
-Trial Court
+Highest Court
 
 </div>
 
@@ -726,7 +824,7 @@ The exact structure differs between countries.
 </p>
 
 <p>
-Higher courts may hear appeals from lower courts and may establish legal principles that lower courts must follow.
+Higher courts may hear appeals from lower courts and may establish legal principles that lower courts must follow, depending on the legal system.
 </p>
 
 </div>
@@ -1060,7 +1158,7 @@ Not every appeal is automatically allowed. In some circumstances, a party must o
 <div class="note-card">
 
 <div class="card-number">
-CARD 14 · FINALITY & KEY TAKEAWAY
+CARD 14 · FINAL TAKEAWAY
 </div>
 
 <h2>Why Appeals Matter</h2>
@@ -1097,12 +1195,12 @@ For this reason, legal systems commonly establish time limits, permission requir
 
 <div class="definition">
 
-Appeal = Asking a higher court to review a lower court's decision.
+<strong>Appeal</strong> = Asking a higher court to review a lower court's decision.
 
 </div>
 
 <p>
-Appeals provide an important safeguard within the justice system by allowing certain legal or procedural errors to be examined by a higher court. They also help develop consistent interpretations of the law through decisions made by appellate courts.
+Appeals provide an important safeguard within the justice system by allowing certain legal or procedural errors to be examined by a higher court.
 </p>
 
 <h3>Related Legal Concepts</h3>
@@ -1131,6 +1229,7 @@ Appeals provide an important safeguard within the justice system by allowing cer
 
 </ul>
 
+
 <div class="sources">
 
 <h3>Sources</h3>
@@ -1152,12 +1251,43 @@ Appeals provide an important safeguard within the justice system by allowing cer
 </div>
 
 
+<!-- QUIZ CARD -->
+
+<div class="note-card quiz-card" id="quizCard">
+
+<div class="quiz-intro">
+
+<div class="card-number">
+CARD 15 · QUIZ
+</div>
+
+<h2>🎓 Test Your Knowledge</h2>
+
+<p>
+You've finished the Appeals legal note.
+</p>
+
+<p>
+Now test what you've learned with a short five-question quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
 </div>
 
 </div>
 
 
-<!-- NOTE NAVIGATION -->
+</div>
+
+</div>
+
+
+<!-- =========================
+     NOTE / QUIZ NAVIGATION
+========================= -->
 
 <div class="navigation" id="noteNavigation">
 
@@ -1172,27 +1302,13 @@ Next →
 </div>
 
 
-<!-- QUIZ INTRO -->
+<!-- =========================
+     QUIZ AREA
+========================= -->
 
-<div class="quiz-start" id="quizStart" style="display:none;">
+<div class="swipe-container" id="quizSection" style="display:none;">
 
-<h2>🎓 Note Complete!</h2>
-
-<p>
-You've finished the legal note on <strong>Appeals</strong>.
-Now test your understanding with a short quiz.
-</p>
-
-<button class="quiz-button" onclick="startQuiz()">
-Start Quiz →
-</button>
-
-</div>
-
-
-<!-- QUIZ -->
-
-<div class="quiz-section" id="quizSection">
+<div class="card-wrapper">
 
 <div class="quiz-card">
 
@@ -1214,8 +1330,12 @@ Next Question →
 
 </div>
 
+</div>
 
-<!-- FOOTER -->
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -1241,18 +1361,51 @@ An independent educational project dedicated to making legal knowledge accessibl
 let currentCard = 0;
 
 const cards = document.querySelectorAll(".note-card");
-const dots = document.querySelectorAll(".progress-dots span");
 
-const prevButton = document.getElementById("prevButton");
-const nextButton = document.getElementById("nextButton");
+const progressDots = document.getElementById("progressDots");
+
+const prevButton =
+document.getElementById("prevButton");
+
+const nextButton =
+document.getElementById("nextButton");
+
+const progressTitle =
+document.getElementById("progressTitle");
+
+
+/* CREATE ONE DOT FOR EVERY CARD */
+
+cards.forEach((card,index)=>{
+
+const dot = document.createElement("span");
+
+dot.textContent = "●";
+
+dot.dataset.index = index;
+
+progressDots.appendChild(dot);
+
+});
+
+
+const dots =
+document.querySelectorAll("#progressDots span");
+
+
+/* SHOW CARD */
 
 function showCard(index){
 
-cards.forEach(card => {
+if(index < 0 || index >= cards.length){
+return;
+}
+
+cards.forEach(card=>{
 card.classList.remove("active");
 });
 
-dots.forEach(dot => {
+dots.forEach(dot=>{
 dot.classList.remove("active");
 });
 
@@ -1261,23 +1414,40 @@ dots[index].classList.add("active");
 
 prevButton.disabled = index === 0;
 
+
+/* LAST CARD = QUIZ INTRO */
+
 if(index === cards.length - 1){
 
-nextButton.style.display = "none";
-
-document.getElementById("quizStart").style.display = "block";
+nextButton.textContent = "Start Quiz →";
+nextButton.classList.add("next-button");
 
 }else{
 
-nextButton.style.display = "inline-block";
-
-document.getElementById("quizStart").style.display = "none";
+nextButton.textContent = "Next →";
+nextButton.classList.add("next-button");
 
 }
 
 currentCard = index;
 
+
+/* UPDATE TITLE */
+
+if(index === cards.length - 1){
+
+progressTitle.textContent = "QUIZ INTRO";
+
+}else{
+
+progressTitle.textContent = "APPEALS";
+
 }
+
+}
+
+
+/* NEXT */
 
 function nextCard(){
 
@@ -1285,9 +1455,16 @@ if(currentCard < cards.length - 1){
 
 showCard(currentCard + 1);
 
+}else{
+
+startQuiz();
+
 }
 
 }
+
+
+/* PREVIOUS */
 
 function previousCard(){
 
@@ -1306,48 +1483,81 @@ showCard(currentCard - 1);
 
 let touchStartX = 0;
 let touchStartY = 0;
+
 let touchEndX = 0;
 let touchEndY = 0;
 
-const swipeArea = document.querySelector(".card-wrapper");
+const swipeArea =
+document.querySelector(".card-wrapper");
 
-swipeArea.addEventListener("touchstart", function(event){
 
-touchStartX = event.changedTouches[0].screenX;
-touchStartY = event.changedTouches[0].screenY;
+swipeArea.addEventListener(
+"touchstart",
+function(event){
 
-});
+touchStartX =
+event.changedTouches[0].screenX;
 
-swipeArea.addEventListener("touchend", function(event){
+touchStartY =
+event.changedTouches[0].screenY;
 
-touchEndX = event.changedTouches[0].screenX;
-touchEndY = event.changedTouches[0].screenY;
+},
+{passive:true}
+);
+
+
+swipeArea.addEventListener(
+"touchend",
+function(event){
+
+touchEndX =
+event.changedTouches[0].screenX;
+
+touchEndY =
+event.changedTouches[0].screenY;
 
 handleSwipe();
 
-});
+},
+{passive:true}
+);
+
 
 function handleSwipe(){
 
-const differenceX = touchStartX - touchEndX;
-const differenceY = touchStartY - touchEndY;
+const differenceX =
+touchStartX - touchEndX;
+
+const differenceY =
+touchStartY - touchEndY;
+
+
+/* Ignore small movements */
 
 if(Math.abs(differenceX) < 70){
 return;
 }
 
+
+/* Ignore mostly vertical swipes */
+
 if(Math.abs(differenceX) <= Math.abs(differenceY)){
 return;
 }
 
-/* Swipe left = next card
-   Swipe right = previous card */
+
+/* LEFT = NEXT */
 
 if(differenceX > 0){
 
 nextCard();
 
-}else{
+}
+
+
+/* RIGHT = PREVIOUS */
+
+else{
 
 previousCard();
 
@@ -1357,7 +1567,7 @@ previousCard();
 
 
 /* =========================
-   QUIZ SYSTEM
+   QUIZ
 ========================= */
 
 const questions = [
@@ -1419,24 +1629,65 @@ answer:1
 
 ];
 
+
 let currentQuestion = 0;
+let score = 0;
+
+
+/* =========================
+   START QUIZ
+========================= */
 
 function startQuiz(){
 
-document.getElementById("notesSection").style.display = "none";
-document.getElementById("noteNavigation").style.display = "none";
-document.getElementById("quizStart").style.display = "none";
+currentQuestion = 0;
+score = 0;
 
-document.getElementById("progressArea").innerHTML = `
-<div class="progress-title">QUIZ</div>
-<div class="progress-dots">
-● ● ● ● ●
-</div>
-`;
 
-document.getElementById("quizSection").classList.add("active");
+/* Hide note system */
+
+document.getElementById("notesSection").style.display =
+"none";
+
+document.getElementById("noteNavigation").style.display =
+"none";
+
+
+/* Show quiz */
+
+document.getElementById("quizSection").style.display =
+"block";
+
+
+/* Change progress */
+
+progressTitle.textContent = "APPEALS QUIZ";
+
+
+progressDots.innerHTML = "";
+
+
+/* Create five quiz dots */
+
+questions.forEach((question,index)=>{
+
+const dot = document.createElement("span");
+
+dot.textContent = "●";
+
+if(index === 0){
+
+dot.classList.add("active");
+
+}
+
+progressDots.appendChild(dot);
+
+});
+
 
 loadQuestion();
+
 
 window.scrollTo({
 top:0,
@@ -1445,32 +1696,67 @@ behavior:"smooth"
 
 }
 
+
+/* =========================
+   LOAD QUESTION
+========================= */
+
 function loadQuestion(){
 
-const question = questions[currentQuestion];
+const question =
+questions[currentQuestion];
+
 
 document.getElementById("questionNumber").textContent =
 currentQuestion + 1;
 
+
 document.getElementById("questionText").textContent =
 question.question;
+
 
 const optionsContainer =
 document.getElementById("options");
 
 optionsContainer.innerHTML = "";
 
-document.getElementById("feedback").textContent = "";
 
-document.getElementById("quizNext").style.display = "none";
+document.getElementById("feedback").textContent =
+"";
+
+
+document.getElementById("quizNext").style.display =
+"none";
+
+
+/* Update quiz dots */
+
+const quizDots =
+document.querySelectorAll("#progressDots span");
+
+
+quizDots.forEach((dot,index)=>{
+
+dot.classList.toggle(
+"active",
+index === currentQuestion
+);
+
+});
+
+
+/* Create answer buttons */
 
 question.options.forEach((option,index)=>{
 
-const button = document.createElement("button");
+const button =
+document.createElement("button");
 
-button.className = "quiz-option";
+button.className =
+"quiz-option";
 
-button.textContent = option;
+button.textContent =
+option;
 
 button.onclick = function(){
 
@@ -1484,39 +1770,79 @@ optionsContainer.appendChild(button);
 
 }
 
+
+/* =========================
+   CHECK ANSWER
+========================= */
+
 function checkAnswer(selected,button){
 
-const question = questions[currentQuestion];
+const question =
+questions[currentQuestion];
+
 
 const allOptions =
 document.querySelectorAll(".quiz-option");
+
+
+/* Prevent multiple answers */
 
 allOptions.forEach(option=>{
 option.disabled = true;
 });
 
+
 if(selected === question.answer){
 
 button.classList.add("correct");
 
+score++;
+
+
 document.getElementById("feedback").textContent =
-"✓ Correct!";
+"✓ Correct! Great job.";
 
 }else{
 
 button.classList.add("wrong");
 
-allOptions[question.answer].classList.add("correct");
+allOptions[question.answer]
+.classList.add("correct");
 
 document.getElementById("feedback").textContent =
 "✗ Not quite. The correct answer is highlighted.";
 
 }
 
-document.getElementById("quizNext").style.display =
+
+/* Show next button */
+
+const nextQuizButton =
+document.getElementById("quizNext");
+
+
+nextQuizButton.style.display =
 "inline-block";
 
+
+if(currentQuestion === questions.length - 1){
+
+nextQuizButton.textContent =
+"See My Results →";
+
+}else{
+
+nextQuizButton.textContent =
+"Next Question →";
+
 }
+
+}
+
+
+/* =========================
+   NEXT QUESTION
+========================= */
 
 function nextQuestion(){
 
@@ -1526,6 +1852,11 @@ currentQuestion++;
 
 loadQuestion();
 
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
 }else{
 
 showQuizResult();
@@ -1534,31 +1865,163 @@ showQuizResult();
 
 }
 
+
+/* =========================
+   QUIZ RESULT
+========================= */
+
 function showQuizResult(){
 
-document.querySelector(".quiz-card").innerHTML = `
+/* Complete all dots */
+
+const quizDots =
+document.querySelectorAll("#progressDots span");
+
+quizDots.forEach(dot=>{
+dot.classList.add("active");
+});
+
+
+const percentage =
+Math.round(
+(score / questions.length) * 100
+);
+
+
+let message = "";
+
+
+if(score === 5){
+
+message =
+"Excellent work! You have a very strong understanding of appeals.";
+
+}else if(score >= 3){
+
+message =
+"Good work! You understand the main principles of appeals.";
+
+}else{
+
+message =
+"Good effort! Consider reviewing the note and trying the quiz again.";
+
+}
+
+
+/* Replace quiz card */
+
+document.querySelector("#quizSection .quiz-card")
+.innerHTML = `
+
+<div class="quiz-intro">
 
 <div class="quiz-label">
 QUIZ COMPLETE
 </div>
 
-<h2>🎉 Well Done!</h2>
+<h2>🎉 Quiz Complete!</h2>
 
 <p>
 You've completed the <strong>Appeals</strong> quiz.
 </p>
 
+<div class="score-box">
+
+<h3>${score} / ${questions.length}</h3>
+
 <p>
-You can now return to the Courts & Legal Process section and explore another legal concept.
+Your score: <strong>${percentage}%</strong>
 </p>
+
+</div>
+
+<p>
+${message}
+</p>
+
+<button class="quiz-button"
+onclick="restartQuiz()">
+Try Again →
+</button>
 
 <a href="courts-and-legal-process.html"
 class="quiz-button"
-style="text-decoration:none;">
+style="margin-left:10px;">
 Back to Courts & Legal Process
 </a>
 
+</div>
+
 `;
+
+}
+
+
+/* =========================
+   RESTART QUIZ
+========================= */
+
+function restartQuiz(){
+
+document.querySelector("#quizSection .quiz-card")
+.innerHTML = `
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next"
+id="quizNext"
+onclick="nextQuestion()">
+Next Question →
+</button>
+
+`;
+
+
+/* Reset */
+
+currentQuestion = 0;
+score = 0;
+
+
+/* Recreate quiz dots */
+
+progressDots.innerHTML = "";
+
+
+questions.forEach((question,index)=>{
+
+const dot =
+document.createElement("span");
+
+dot.textContent = "●";
+
+if(index === 0){
+
+dot.classList.add("active");
+
+}
+
+progressDots.appendChild(dot);
+
+});
+
+
+loadQuestion();
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
@@ -1571,5 +2034,6 @@ showCard(0);
 
 </script>
 
+
 </body>
-                        </html>
+   </html>
