@@ -23,8 +23,6 @@ color:#222;
 min-height:100vh;
 }
 
-/* NAVIGATION */
-
 nav{
 background:#0b1f3a;
 padding:18px 5%;
@@ -48,8 +46,6 @@ nav a:hover{
 color:#c9a227;
 }
 
-/* HEADER */
-
 header{
 background:#0b1f3a;
 color:white;
@@ -67,8 +63,6 @@ font-size:17px;
 max-width:700px;
 margin:auto;
 }
-
-/* PROGRESS */
 
 .progress-area{
 text-align:center;
@@ -95,8 +89,6 @@ line-height:1.8;
 .progress-dots .active{
 color:#c9a227;
 }
-
-/* SWIPE AREA */
 
 .swipe-container{
 max-width:850px;
@@ -137,8 +129,6 @@ transform:translateX(0);
 }
 
 }
-
-/* CARD CONTENT */
 
 .card-number{
 color:#c9a227;
@@ -181,8 +171,6 @@ margin:10px 0 20px 25px;
 margin-bottom:12px;
 }
 
-/* DEFINITION */
-
 .definition{
 background:#f5f7fa;
 border-left:5px solid #c9a227;
@@ -190,8 +178,6 @@ padding:20px;
 margin:20px 0;
 font-size:18px;
 }
-
-/* COMPARISON TABLE */
 
 .comparison{
 width:100%;
@@ -216,8 +202,6 @@ color:white;
 .comparison tr:nth-child(even){
 background:#f8f9fb;
 }
-
-/* NAVIGATION BUTTONS */
 
 .navigation{
 display:flex;
@@ -259,11 +243,10 @@ background:#c9a227;
 background:#a88312;
 }
 
-/* QUIZ START */
-
 .quiz-start{
 text-align:center;
 padding-top:25px;
+display:none;
 }
 
 .quiz-start h2{
@@ -294,8 +277,6 @@ transition:.3s;
 .quiz-button:hover{
 background:#a88312;
 }
-
-/* QUIZ */
 
 .quiz-section{
 display:none;
@@ -357,6 +338,10 @@ border-color:#b84a4a;
 background:#fbeded;
 }
 
+.quiz-option:disabled{
+cursor:default;
+}
+
 .quiz-feedback{
 margin-top:15px;
 font-weight:bold;
@@ -375,8 +360,6 @@ cursor:pointer;
 display:none;
 }
 
-/* SOURCES */
-
 .sources{
 font-size:14px;
 margin-top:25px;
@@ -387,8 +370,6 @@ border-top:1px solid #ddd;
 .sources li{
 margin-bottom:7px;
 }
-
-/* FOOTER */
 
 footer{
 background:#0b1f3a;
@@ -401,8 +382,6 @@ margin-top:40px;
 footer p{
 margin:6px 0;
 }
-
-/* MOBILE */
 
 @media(max-width:700px){
 
@@ -448,27 +427,16 @@ padding:10px;
 
 <body>
 
-
-<!-- NAVIGATION -->
-
 <nav>
 
 <a href="index.html">Home</a>
-
 <a href="case-studies.html">Case Studies</a>
-
 <a href="notes.html">Notes</a>
-
 <a href="quiz.html">Quizzes</a>
-
 <a href="about.html">About Me</a>
-
 <a href="contact.html">Contact</a>
 
 </nav>
-
-
-<!-- HEADER -->
 
 <header>
 
@@ -481,7 +449,7 @@ Criminal Law · Interactive Legal Note
 </header>
 
 
-<!-- PROGRESS -->
+<!-- PROGRESS: 45 DOTS FOR 45 CARDS -->
 
 <div class="progress-area" id="progressArea">
 
@@ -492,6 +460,16 @@ PRESUMPTION OF INNOCENCE
 <div class="progress-dots" id="progressDots">
 
 <span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
 <span>●</span>
 <span>●</span>
 <span>●</span>
@@ -543,9 +521,7 @@ PRESUMPTION OF INNOCENCE
 
 <div class="note-card active">
 
-<div class="card-number">
-CARD 1 · DEFINITION
-</div>
+<div class="card-number">CARD 1 · DEFINITION</div>
 
 <h2>What Is the Presumption of Innocence?</h2>
 
@@ -560,9 +536,7 @@ It reflects the principle that an accusation is not the same as proof.
 </p>
 
 <div class="definition">
-
 <strong>Who must prove that the accused is guilty?</strong>
-
 </div>
 
 <p>
@@ -584,9 +558,7 @@ The presumption of innocence is recognized in many legal systems and is closely 
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 2 · PURPOSE
-</div>
+<div class="card-number">CARD 2 · PURPOSE</div>
 
 <h2>Purpose of the Presumption of Innocence</h2>
 
@@ -599,21 +571,15 @@ The presumption of innocence protects individuals from being treated as criminal
 <ul>
 
 <li>Protecting individuals against wrongful conviction.</li>
-
 <li>Requiring the prosecution to prove criminal responsibility.</li>
-
 <li>Preventing guilt from being assumed before trial.</li>
-
 <li>Supporting impartial and fair criminal proceedings.</li>
-
 <li>Limiting the power of the state to punish individuals without sufficient proof.</li>
 
 </ul>
 
 <div class="definition">
-
 Criminal punishment should follow proof of guilt rather than simply an allegation.
-
 </div>
 
 </div>
@@ -623,9 +589,7 @@ Criminal punishment should follow proof of guilt rather than simply an allegatio
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 3 · BURDEN OF PROOF
-</div>
+<div class="card-number">CARD 3 · BURDEN OF PROOF</div>
 
 <h2>Presumption of Innocence and Burden of Proof</h2>
 
@@ -642,9 +606,7 @@ The prosecution must establish the elements of the offence according to the appl
 </p>
 
 <div class="definition">
-
 In many common law systems, the criminal standard is described as <strong>beyond reasonable doubt</strong>.
-
 </div>
 
 <p>
@@ -658,9 +620,7 @@ The accused generally does not have to prove that they did not commit the offenc
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 4 · STANDARD OF PROOF
-</div>
+<div class="card-number">CARD 4 · STANDARD OF PROOF</div>
 
 <h2>Presumption of Innocence and Standard of Proof</h2>
 
@@ -689,9 +649,7 @@ The precise wording and application of the standard vary between legal systems.
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 5 · ACCUSATION
-</div>
+<div class="card-number">CARD 5 · ACCUSATION</div>
 
 <h2>Accusation Is Not Proof</h2>
 
@@ -708,9 +666,7 @@ Criminal courts must determine guilt based on admissible evidence and the applic
 </p>
 
 <div class="definition">
-
 The presumption of innocence prevents the criminal justice system from treating an allegation as an established fact.
-
 </div>
 
 </div>
@@ -720,9 +676,7 @@ The presumption of innocence prevents the criminal justice system from treating 
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 6 · BEFORE TRIAL
-</div>
+<div class="card-number">CARD 6 · BEFORE TRIAL</div>
 
 <h2>Presumption of Innocence Before Trial</h2>
 
@@ -741,15 +695,10 @@ This principle may affect:
 <ul>
 
 <li>Public statements by authorities.</li>
-
 <li>Treatment of the accused.</li>
-
 <li>Judicial decisions.</li>
-
 <li>Bail proceedings.</li>
-
 <li>Pre-trial procedures.</li>
-
 <li>The presentation of information about the case.</li>
 
 </ul>
@@ -761,9 +710,7 @@ This principle may affect:
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 7 · DURING TRIAL
-</div>
+<div class="card-number">CARD 7 · DURING TRIAL</div>
 
 <h2>Presumption of Innocence During Trial</h2>
 
@@ -780,9 +727,7 @@ Instead, the prosecution must establish the required elements through evidence.
 </p>
 
 <div class="definition">
-
 The fact that a person has been charged does not itself satisfy the burden of proof.
-
 </div>
 
 </div>
@@ -792,9 +737,7 @@ The fact that a person has been charged does not itself satisfy the burden of pr
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 8 · PROSECUTION
-</div>
+<div class="card-number">CARD 8 · PROSECUTION</div>
 
 <h2>Presumption of Innocence and the Prosecution</h2>
 
@@ -809,19 +752,14 @@ Depending on the offence, the elements may include:
 <ul>
 
 <li>Actus reus.</li>
-
 <li>Mens rea.</li>
-
 <li>Causation.</li>
-
 <li>Particular factual circumstances.</li>
 
 </ul>
 
 <div class="definition">
-
 If the prosecution fails to prove an essential element, the accused should not be convicted of that offence.
-
 </div>
 
 </div>
@@ -831,9 +769,7 @@ If the prosecution fails to prove an essential element, the accused should not b
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 9 · THE ACCUSED
-</div>
+<div class="card-number">CARD 9 · THE ACCUSED</div>
 
 <h2>Presumption of Innocence and the Accused</h2>
 
@@ -848,23 +784,16 @@ The accused may:
 <ul>
 
 <li>Challenge the prosecution's evidence.</li>
-
 <li>Remain silent where the law provides a right to silence.</li>
-
 <li>Present evidence.</li>
-
 <li>Call witnesses.</li>
-
 <li>Raise legal defences.</li>
-
 <li>Challenge the admissibility or reliability of evidence.</li>
 
 </ul>
 
 <div class="definition">
-
 The accused does not normally have to prove that they are innocent.
-
 </div>
 
 </div>
@@ -874,9 +803,7 @@ The accused does not normally have to prove that they are innocent.
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 10 · RIGHT TO SILENCE
-</div>
+<div class="card-number">CARD 10 · RIGHT TO SILENCE</div>
 
 <h2>Presumption of Innocence and Right to Silence</h2>
 
@@ -889,9 +816,7 @@ If the prosecution has the burden of proving guilt, an accused person should not
 </p>
 
 <div class="definition">
-
 The right to silence protects the accused against being compelled to contribute to the prosecution's case, subject to the specific rules of the jurisdiction.
-
 </div>
 
 <p>
@@ -905,9 +830,7 @@ The relationship between the right to silence and the presumption of innocence v
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 11 · CRIMINAL DEFENCES
-</div>
+<div class="card-number">CARD 11 · CRIMINAL DEFENCES</div>
 
 <h2>Presumption of Innocence and Criminal Defences</h2>
 
@@ -928,9 +851,7 @@ Other defences, such as self-defence or duress, may operate according to separat
 </p>
 
 <div class="definition">
-
 The exact allocation depends on the legal system and the particular defence.
-
 </div>
 
 </div>
@@ -940,9 +861,7 @@ The exact allocation depends on the legal system and the particular defence.
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 12 · MENS REA
-</div>
+<div class="card-number">CARD 12 · MENS REA</div>
 
 <h2>Presumption of Innocence and Mens Rea</h2>
 
@@ -959,9 +878,7 @@ For example, if an offence requires intention, the prosecution must establish th
 </p>
 
 <div class="definition">
-
 The accused should not simply be assumed to have possessed the required mental state. The prosecution must prove it where the law requires it.
-
 </div>
 
 </div>
@@ -971,9 +888,7 @@ The accused should not simply be assumed to have possessed the required mental s
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 13 · ACTUS REUS
-</div>
+<div class="card-number">CARD 13 · ACTUS REUS</div>
 
 <h2>Presumption of Innocence and Actus Reus</h2>
 
@@ -986,9 +901,7 @@ The prosecution generally must establish that the accused committed the legally 
 </p>
 
 <div class="definition">
-
 The accused is not automatically assumed to have performed the prohibited act. The prosecution must establish the relevant physical elements through evidence.
-
 </div>
 
 </div>
@@ -998,9 +911,7 @@ The accused is not automatically assumed to have performed the prohibited act. T
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 14 · CIRCUMSTANTIAL EVIDENCE
-</div>
+<div class="card-number">CARD 14 · CIRCUMSTANTIAL EVIDENCE</div>
 
 <h2>Presumption of Innocence and Circumstantial Evidence</h2>
 
@@ -1015,13 +926,9 @@ This may include evidence concerning:
 <ul>
 
 <li>Location.</li>
-
 <li>Communications.</li>
-
 <li>Financial records.</li>
-
 <li>Physical evidence.</li>
-
 <li>Conduct before or after an event.</li>
 
 </ul>
@@ -1031,9 +938,7 @@ Circumstantial evidence may support an inference about what happened.
 </p>
 
 <div class="definition">
-
 The court must assess such evidence carefully rather than assuming guilt because the circumstances appear suspicious.
-
 </div>
 
 </div>
@@ -1043,9 +948,7 @@ The court must assess such evidence carefully rather than assuming guilt because
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 15 · WITNESS EVIDENCE
-</div>
+<div class="card-number">CARD 15 · WITNESS EVIDENCE</div>
 
 <h2>Presumption of Innocence and Witness Evidence</h2>
 
@@ -1060,23 +963,16 @@ The court may need to assess:
 <ul>
 
 <li>The witness's reliability.</li>
-
 <li>Consistency.</li>
-
 <li>Opportunity to observe events.</li>
-
 <li>Possible bias.</li>
-
 <li>Accuracy of recollection.</li>
-
 <li>Whether the testimony is supported by other evidence.</li>
 
 </ul>
 
 <div class="definition">
-
 The existence of an accusation or witness statement does not automatically establish guilt.
-
 </div>
 
 </div>
@@ -1086,9 +982,7 @@ The existence of an accusation or witness statement does not automatically estab
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 16 · EVIDENCE
-</div>
+<div class="card-number">CARD 16 · EVIDENCE</div>
 
 <h2>Presumption of Innocence and Evidence</h2>
 
@@ -1103,25 +997,17 @@ The prosecution may present:
 <ul>
 
 <li>Witness testimony.</li>
-
 <li>Documents.</li>
-
 <li>Physical evidence.</li>
-
 <li>Digital evidence.</li>
-
 <li>Expert evidence.</li>
-
 <li>Video or photographic material.</li>
-
 <li>Statements made by the accused where legally admissible.</li>
 
 </ul>
 
 <div class="definition">
-
 The court must determine whether the evidence is sufficient to establish guilt.
-
 </div>
 
 </div>
@@ -1131,9 +1017,7 @@ The court must determine whether the evidence is sufficient to establish guilt.
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 17 · ADMISSIBILITY
-</div>
+<div class="card-number">CARD 17 · ADMISSIBILITY</div>
 
 <h2>Admissibility of Evidence</h2>
 
@@ -1148,21 +1032,15 @@ Rules of evidence may restrict material that is:
 <ul>
 
 <li>Irrelevant.</li>
-
 <li>Unreliable.</li>
-
 <li>Unfairly prejudicial.</li>
-
 <li>Obtained in violation of specific legal requirements.</li>
-
 <li>Protected by a legal privilege.</li>
 
 </ul>
 
 <div class="definition">
-
 The presumption of innocence reinforces the need for convictions to be based on legally usable evidence rather than mere suspicion.
-
 </div>
 
 </div>
@@ -1172,9 +1050,7 @@ The presumption of innocence reinforces the need for convictions to be based on 
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 18 · IMPARTIALITY
-</div>
+<div class="card-number">CARD 18 · IMPARTIALITY</div>
 
 <h2>Judicial Impartiality</h2>
 
@@ -1187,9 +1063,7 @@ A judge should not assume that the accused is guilty simply because charges have
 </p>
 
 <div class="definition">
-
 Judicial impartiality helps protect the presumption of innocence by ensuring that the case is decided according to evidence and law.
-
 </div>
 
 <p>
@@ -1203,9 +1077,7 @@ Judges may also be required to explain the burden and standard of proof to jurie
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 19 · JURY
-</div>
+<div class="card-number">CARD 19 · JURY</div>
 
 <h2>Presumption of Innocence and the Jury</h2>
 
@@ -1224,19 +1096,14 @@ A jury should not convict because:
 <ul>
 
 <li>The accused appears suspicious.</li>
-
 <li>The jury dislikes the accused.</li>
-
 <li>The accused has failed to prove innocence.</li>
-
 <li>A mere allegation exists.</li>
 
 </ul>
 
 <div class="definition">
-
 The jury should convict only if the prosecution has proved the case according to the applicable standard.
-
 </div>
 
 </div>
@@ -1246,9 +1113,7 @@ The jury should convict only if the prosecution has proved the case according to
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 20 · PRE-TRIAL DETENTION
-</div>
+<div class="card-number">CARD 20 · PRE-TRIAL DETENTION</div>
 
 <h2>Pre-Trial Detention</h2>
 
@@ -1257,9 +1122,7 @@ A person may sometimes be detained before trial.
 </p>
 
 <div class="definition">
-
 Pre-trial detention does not necessarily mean that the person has been found guilty.
-
 </div>
 
 <p>
@@ -1269,11 +1132,8 @@ Courts may impose pre-trial detention for legally recognized reasons such as:
 <ul>
 
 <li>Risk of flight.</li>
-
 <li>Risk of interference with witnesses.</li>
-
 <li>Risk of further serious offending.</li>
-
 <li>Other legally recognized grounds.</li>
 
 </ul>
@@ -1285,9 +1145,7 @@ Courts may impose pre-trial detention for legally recognized reasons such as:
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 21 · BAIL
-</div>
+<div class="card-number">CARD 21 · BAIL</div>
 
 <h2>Presumption of Innocence and Bail</h2>
 
@@ -1300,9 +1158,7 @@ The existence of bail systems is closely connected to the principle that an accu
 </p>
 
 <div class="definition">
-
 A decision to deny or grant bail is not necessarily a determination of guilt.
-
 </div>
 
 <p>
@@ -1316,9 +1172,7 @@ The applicable legal standards vary between jurisdictions.
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 22 · PUBLICITY
-</div>
+<div class="card-number">CARD 22 · PUBLICITY</div>
 
 <h2>Pre-Trial Publicity</h2>
 
@@ -1337,23 +1191,16 @@ Legal systems may respond through rules concerning:
 <ul>
 
 <li>Contempt of court.</li>
-
 <li>Publication restrictions.</li>
-
 <li>Reporting of ongoing proceedings.</li>
-
 <li>Protection of juror impartiality.</li>
-
 <li>Defamation.</li>
-
 <li>Fair trial rights.</li>
 
 </ul>
 
 <div class="definition">
-
 The balance between freedom of expression and fair trial rights varies between jurisdictions.
-
 </div>
 
 </div>
@@ -1363,9 +1210,7 @@ The balance between freedom of expression and fair trial rights varies between j
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 23 · PUBLIC STATEMENTS
-</div>
+<div class="card-number">CARD 23 · PUBLIC STATEMENTS</div>
 
 <h2>Presumption of Innocence and Public Statements</h2>
 
@@ -1380,19 +1225,14 @@ Authorities should generally distinguish between:
 <ul>
 
 <li>An allegation.</li>
-
 <li>Evidence.</li>
-
 <li>A charge.</li>
-
 <li>A conviction.</li>
 
 </ul>
 
 <div class="definition">
-
 Treating an accused person as though guilt has already been established can undermine the presumption of innocence.
-
 </div>
 
 </div>
@@ -1402,9 +1242,7 @@ Treating an accused person as though guilt has already been established can unde
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 24 · PREVIOUS CONVICTIONS
-</div>
+<div class="card-number">CARD 24 · PREVIOUS CONVICTIONS</div>
 
 <h2>Previous Convictions and Character Evidence</h2>
 
@@ -1427,9 +1265,7 @@ Character evidence concerns a person's general behavior, reputation, or previous
 </p>
 
 <div class="definition">
-
 The presumption of innocence supports careful limits on reasoning that a person should be convicted because they appear to be a "bad person."
-
 </div>
 
 </div>
@@ -1439,9 +1275,7 @@ The presumption of innocence supports careful limits on reasoning that a person 
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 25 · BURDENS ON ACCUSED
-</div>
+<div class="card-number">CARD 25 · BURDENS ON ACCUSED</div>
 
 <h2>Burdens on the Accused</h2>
 
@@ -1454,9 +1288,7 @@ These may arise in relation to particular statutory defences or exceptions.
 </p>
 
 <div class="definition">
-
 Human-rights law in some jurisdictions places limits on reverse burdens because they can affect the presumption of innocence.
-
 </div>
 
 <p>
@@ -1470,9 +1302,7 @@ The validity and scope of such burdens depend on the legal system.
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 26 · EVIDENTIAL & PERSUASIVE
-</div>
+<div class="card-number">CARD 26 · EVIDENTIAL & PERSUASIVE</div>
 
 <h2>Evidential and Persuasive Burdens</h2>
 
@@ -1493,9 +1323,7 @@ The responsibility of convincing the court of a particular proposition according
 </p>
 
 <div class="definition">
-
 An accused person may have an evidential burden without having the final persuasive burden.
-
 </div>
 
 </div>
@@ -1505,9 +1333,7 @@ An accused person may have an evidential burden without having the final persuas
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 27 · REVERSE BURDENS
-</div>
+<div class="card-number">CARD 27 · REVERSE BURDENS</div>
 
 <h2>Presumption of Innocence and Reverse Burdens</h2>
 
@@ -1526,11 +1352,8 @@ Courts in some jurisdictions therefore distinguish between:
 <ul>
 
 <li>Evidential burdens.</li>
-
 <li>Persuasive burdens.</li>
-
 <li>Provisions compatible with the presumption of innocence.</li>
-
 <li>Provisions that place excessive pressure on the accused.</li>
 
 </ul>
@@ -1542,9 +1365,7 @@ Courts in some jurisdictions therefore distinguish between:
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 28 · HUMAN RIGHTS
-</div>
+<div class="card-number">CARD 28 · HUMAN RIGHTS</div>
 
 <h2>Presumption of Innocence and Human Rights</h2>
 
@@ -1573,9 +1394,7 @@ These provisions demonstrate that the presumption of innocence is not merely a p
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 29 · FAIR TRIAL
-</div>
+<div class="card-number">CARD 29 · FAIR TRIAL</div>
 
 <h2>Presumption of Innocence and Fair Trial</h2>
 
@@ -1588,21 +1407,15 @@ The presumption of innocence forms part of the broader right to a fair trial.
 <ul>
 
 <li>An impartial decision-maker.</li>
-
 <li>A meaningful opportunity to challenge the prosecution's case.</li>
-
 <li>Adequate procedural safeguards.</li>
-
 <li>Proper application of the burden and standard of proof.</li>
-
 <li>Protection against arbitrary punishment.</li>
 
 </ul>
 
 <div class="definition">
-
 The presumption of innocence helps ensure that criminal proceedings focus on proving guilt rather than requiring the accused to prove innocence.
-
 </div>
 
 </div>
@@ -1612,9 +1425,7 @@ The presumption of innocence helps ensure that criminal proceedings focus on pro
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 30 · EQUALITY
-</div>
+<div class="card-number">CARD 30 · EQUALITY</div>
 
 <h2>Equality Before the Law</h2>
 
@@ -1629,25 +1440,17 @@ A person should not be presumed guilty because of:
 <ul>
 
 <li>Wealth or poverty.</li>
-
 <li>Social position.</li>
-
 <li>Reputation.</li>
-
 <li>Occupation.</li>
-
 <li>Nationality.</li>
-
 <li>Previous allegations.</li>
-
 <li>Public attention surrounding the case.</li>
 
 </ul>
 
 <div class="definition">
-
 The prosecution must prove the case according to the same applicable legal standards.
-
 </div>
 
 </div>
@@ -1657,9 +1460,7 @@ The prosecution must prove the case according to the same applicable legal stand
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 31 · DISCRIMINATION
-</div>
+<div class="card-number">CARD 31 · DISCRIMINATION</div>
 
 <h2>Presumption of Innocence and Discrimination</h2>
 
@@ -1672,9 +1473,7 @@ A court should not assume that an accused person is guilty because of stereotype
 </p>
 
 <div class="definition">
-
 Evidence should be evaluated objectively and according to the applicable law.
-
 </div>
 
 <p>
@@ -1688,9 +1487,7 @@ Discriminatory assumptions may undermine both the presumption of innocence and t
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 32 · GUILTY PLEAS
-</div>
+<div class="card-number">CARD 32 · GUILTY PLEAS</div>
 
 <h2>Guilty Pleas and Confessions</h2>
 
@@ -1717,11 +1514,8 @@ The legal system may regulate:
 <ul>
 
 <li>How the confession was obtained.</li>
-
 <li>Whether it was voluntary.</li>
-
 <li>Whether the accused understood their rights.</li>
-
 <li>Whether the confession is reliable.</li>
 
 </ul>
@@ -1733,9 +1527,7 @@ The legal system may regulate:
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 33 · SILENCE
-</div>
+<div class="card-number">CARD 33 · SILENCE</div>
 
 <h2>Presumption of Innocence and Silence at Trial</h2>
 
@@ -1748,9 +1540,7 @@ In many legal systems, the prosecution cannot simply rely on the accused's silen
 </p>
 
 <div class="definition">
-
 The relationship between silence and the presumption of innocence depends on the applicable law.
-
 </div>
 
 <p>
@@ -1764,9 +1554,7 @@ Some jurisdictions permit limited legal consequences from silence in particular 
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 34 · STRICT LIABILITY
-</div>
+<div class="card-number">CARD 34 · STRICT LIABILITY</div>
 
 <h2>Presumption of Innocence and Strict Liability</h2>
 
@@ -1779,9 +1567,7 @@ In a strict liability offence, the prosecution may not need to prove mens rea fo
 </p>
 
 <div class="definition">
-
 Strict liability does not mean that an accused person is automatically presumed guilty.
-
 </div>
 
 <p>
@@ -1799,9 +1585,7 @@ Strict liability changes what the prosecution must prove by removing a particula
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 35 · APPEALS
-</div>
+<div class="card-number">CARD 35 · APPEALS</div>
 
 <h2>Presumption of Innocence and Appeals</h2>
 
@@ -1816,15 +1600,10 @@ An appeal may challenge:
 <ul>
 
 <li>Whether the trial court correctly applied the burden of proof.</li>
-
 <li>Whether the correct standard of proof was used.</li>
-
 <li>Whether the judge properly directed the jury.</li>
-
 <li>Whether evidence was improperly admitted.</li>
-
 <li>Whether a legal rule unfairly affected the accused.</li>
-
 <li>Whether the conviction was supported by sufficient evidence.</li>
 
 </ul>
@@ -1836,9 +1615,7 @@ An appeal may challenge:
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 36 · WRONGFUL CONVICTIONS
-</div>
+<div class="card-number">CARD 36 · WRONGFUL CONVICTIONS</div>
 
 <h2>Presumption of Innocence and Wrongful Convictions</h2>
 
@@ -1853,21 +1630,15 @@ Requiring the prosecution to prove guilt creates a safeguard against conviction 
 <ul>
 
 <li>Suspicion.</li>
-
 <li>Rumor.</li>
-
 <li>Prejudice.</li>
-
 <li>Unsupported allegations.</li>
-
 <li>Insufficient evidence.</li>
 
 </ul>
 
 <div class="definition">
-
 No legal system can eliminate all possibility of wrongful conviction, but procedural protections aim to reduce that risk.
-
 </div>
 
 </div>
@@ -1877,9 +1648,7 @@ No legal system can eliminate all possibility of wrongful conviction, but proced
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 37 · REASONABLE DOUBT
-</div>
+<div class="card-number">CARD 37 · REASONABLE DOUBT</div>
 
 <h2>Presumption of Innocence and Reasonable Doubt</h2>
 
@@ -1892,9 +1661,7 @@ Where the prosecution has failed to establish guilt to the required level, the a
 </p>
 
 <div class="definition">
-
 The principle is not that every possible doubt requires acquittal. Instead, the court applies the legal standard established by the relevant jurisdiction.
-
 </div>
 
 </div>
@@ -1904,9 +1671,7 @@ The principle is not that every possible doubt requires acquittal. Instead, the 
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 38 · EXAMPLE
-</div>
+<div class="card-number">CARD 38 · EXAMPLE</div>
 
 <h2>Example of the Presumption of Innocence</h2>
 
@@ -1927,9 +1692,7 @@ The prosecution must prove the elements of the theft offence, including any requ
 </p>
 
 <div class="definition">
-
 If the evidence is insufficient to establish guilt according to the required criminal standard, the accused should not be convicted.
-
 </div>
 
 <p>
@@ -1943,9 +1706,7 @@ The presumption of innocence therefore requires the court to begin from the posi
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 39 · DIFFERENT SYSTEMS
-</div>
+<div class="card-number">CARD 39 · DIFFERENT SYSTEMS</div>
 
 <h2>Presumption of Innocence in Different Legal Systems</h2>
 
@@ -1958,11 +1719,8 @@ The presumption of innocence is recognized in many legal traditions, although it
 <ul>
 
 <li>The prosecution's burden of proof.</li>
-
 <li>The criminal standard of proof.</li>
-
 <li>The right to silence.</li>
-
 <li>Trial by an impartial court or jury.</li>
 
 </ul>
@@ -1974,9 +1732,7 @@ Civil law systems also recognize the principle, although procedural structures a
 </p>
 
 <div class="definition">
-
 International human-rights instruments provide additional protections that influence many national legal systems.
-
 </div>
 
 </div>
@@ -1986,9 +1742,7 @@ International human-rights instruments provide additional protections that influ
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 40 · STATUTORY INTERPRETATION
-</div>
+<div class="card-number">CARD 40 · STATUTORY INTERPRETATION</div>
 
 <h2>Presumption of Innocence and Statutory Interpretation</h2>
 
@@ -2003,21 +1757,15 @@ Questions may arise where legislation:
 <ul>
 
 <li>Places a burden on the accused.</li>
-
 <li>Creates evidential presumptions.</li>
-
 <li>Limits particular defences.</li>
-
 <li>Establishes strict liability.</li>
-
 <li>Alters ordinary criminal procedure.</li>
 
 </ul>
 
 <div class="definition">
-
 Courts may interpret such provisions carefully to determine their effect on the accused's procedural rights.
-
 </div>
 
 </div>
@@ -2027,9 +1775,7 @@ Courts may interpret such provisions carefully to determine their effect on the 
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 41 · CRIMINAL PROCEDURE
-</div>
+<div class="card-number">CARD 41 · CRIMINAL PROCEDURE</div>
 
 <h2>Presumption of Innocence and Criminal Procedure</h2>
 
@@ -2040,27 +1786,18 @@ The principle influences many stages of criminal procedure, including:
 <ul>
 
 <li>Investigation.</li>
-
 <li>Charging.</li>
-
 <li>Bail.</li>
-
 <li>Disclosure.</li>
-
 <li>Trial.</li>
-
 <li>Jury directions.</li>
-
 <li>Sentencing.</li>
-
 <li>Appeals.</li>
 
 </ul>
 
 <div class="definition">
-
 At each stage, the legal system must distinguish between an allegation and established criminal guilt.
-
 </div>
 
 <p>
@@ -2074,9 +1811,7 @@ A person may be investigated, arrested, charged, or tried without having been co
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 42 · SENTENCING
-</div>
+<div class="card-number">CARD 42 · SENTENCING</div>
 
 <h2>Presumption of Innocence and Sentencing</h2>
 
@@ -2091,17 +1826,13 @@ The presumption of innocence therefore continues to distinguish between:
 <ul>
 
 <li>Alleged conduct.</li>
-
 <li>Proven criminal conduct.</li>
-
 <li>Conduct relevant to sentencing under the applicable law.</li>
 
 </ul>
 
 <div class="definition">
-
 The precise rules concerning unproved allegations and disputed conduct at sentencing vary between jurisdictions.
-
 </div>
 
 </div>
@@ -2111,9 +1842,7 @@ The precise rules concerning unproved allegations and disputed conduct at senten
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 43 · CRIMINAL RECORDS
-</div>
+<div class="card-number">CARD 43 · CRIMINAL RECORDS</div>
 
 <h2>Presumption of Innocence and Criminal Records</h2>
 
@@ -2122,9 +1851,7 @@ A criminal record generally reflects convictions established through the crimina
 </p>
 
 <div class="definition">
-
 An allegation, investigation, or charge is not necessarily equivalent to a conviction.
-
 </div>
 
 <p>
@@ -2142,9 +1869,7 @@ The legal treatment of arrest records, charges, and other information varies bet
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 44 · WHY IT MATTERS
-</div>
+<div class="card-number">CARD 44 · WHY IT MATTERS</div>
 
 <h2>Why the Presumption of Innocence Matters</h2>
 
@@ -2155,27 +1880,18 @@ The presumption of innocence helps:
 <ul>
 
 <li>Protect individuals from wrongful conviction.</li>
-
 <li>Place the primary burden of proving guilt on the prosecution.</li>
-
 <li>Support fair criminal trials.</li>
-
 <li>Prevent accusations from being treated as established facts.</li>
-
 <li>Protect the right to a fair hearing.</li>
-
 <li>Reinforce the criminal standard of proof.</li>
-
 <li>Limit arbitrary use of state power.</li>
-
 <li>Support public confidence in the justice system.</li>
 
 </ul>
 
 <div class="definition">
-
 It is therefore one of the most important principles in criminal procedure.
-
 </div>
 
 </div>
@@ -2185,9 +1901,7 @@ It is therefore one of the most important principles in criminal procedure.
 
 <div class="note-card">
 
-<div class="card-number">
-CARD 45 · KEY TAKEAWAY
-</div>
+<div class="card-number">CARD 45 · KEY TAKEAWAY</div>
 
 <h2>Key Takeaway</h2>
 
@@ -2202,9 +1916,7 @@ It places the primary burden of proving criminal responsibility on the prosecuti
 </p>
 
 <div class="definition">
-
 <strong>Presumption of Innocence = An accused person is not guilty merely because they have been accused.</strong>
-
 </div>
 
 <h3>The Prosecution Generally Must Prove</h3>
@@ -2212,11 +1924,8 @@ It places the primary burden of proving criminal responsibility on the prosecuti
 <ul>
 
 <li>The required actus reus.</li>
-
 <li>The required mens rea.</li>
-
 <li>Any other elements of the offence.</li>
-
 <li>The case to the applicable criminal standard of proof.</li>
 
 </ul>
@@ -2255,9 +1964,7 @@ It is fundamental because criminal justice should punish only where guilt has be
 
 </div>
 
-
 </div>
-
 </div>
 
 
@@ -2278,7 +1985,7 @@ Next →
 
 <!-- QUIZ INTRO -->
 
-<div class="quiz-start" id="quizStart" style="display:none;">
+<div class="quiz-start" id="quizStart">
 
 <h2>🎓 Note Complete!</h2>
 
@@ -2344,11 +2051,21 @@ An independent educational project dedicated to making legal knowledge accessibl
 
 let currentCard = 0;
 
-const cards = document.querySelectorAll(".note-card");
-const dots = document.querySelectorAll(".progress-dots span");
+const cards =
+document.querySelectorAll(".note-card");
 
-const prevButton = document.getElementById("prevButton");
-const nextButton = document.getElementById("nextButton");
+const dots =
+document.querySelectorAll(".progress-dots span");
+
+const prevButton =
+document.getElementById("prevButton");
+
+const nextButton =
+document.getElementById("nextButton");
+
+const quizStart =
+document.getElementById("quizStart");
+
 
 function showCard(index){
 
@@ -2361,21 +2078,25 @@ dot.classList.remove("active");
 });
 
 cards[index].classList.add("active");
+
 dots[index].classList.add("active");
 
 prevButton.disabled = index === 0;
+
+
+/* Final card */
 
 if(index === cards.length - 1){
 
 nextButton.style.display = "none";
 
-document.getElementById("quizStart").style.display = "block";
+quizStart.style.display = "block";
 
 }else{
 
 nextButton.style.display = "inline-block";
 
-document.getElementById("quizStart").style.display = "none";
+quizStart.style.display = "none";
 
 }
 
@@ -2383,8 +2104,6 @@ currentCard = index;
 
 }
 
-
-/* NEXT CARD */
 
 function nextCard(){
 
@@ -2396,8 +2115,6 @@ showCard(currentCard + 1);
 
 }
 
-
-/* PREVIOUS CARD */
 
 function previousCard(){
 
@@ -2419,28 +2136,42 @@ let touchStartY = 0;
 let touchEndX = 0;
 let touchEndY = 0;
 
-const swipeArea = document.querySelector(".card-wrapper");
+const swipeArea =
+document.querySelector(".card-wrapper");
+
 
 swipeArea.addEventListener("touchstart", function(event){
 
-touchStartX = event.changedTouches[0].screenX;
-touchStartY = event.changedTouches[0].screenY;
+touchStartX =
+event.changedTouches[0].screenX;
+
+touchStartY =
+event.changedTouches[0].screenY;
 
 });
 
+
 swipeArea.addEventListener("touchend", function(event){
 
-touchEndX = event.changedTouches[0].screenX;
-touchEndY = event.changedTouches[0].screenY;
+touchEndX =
+event.changedTouches[0].screenX;
+
+touchEndY =
+event.changedTouches[0].screenY;
 
 handleSwipe();
 
 });
 
+
 function handleSwipe(){
 
-const differenceX = touchStartX - touchEndX;
-const differenceY = touchStartY - touchEndY;
+const differenceX =
+touchStartX - touchEndX;
+
+const differenceY =
+touchStartY - touchEndY;
+
 
 if(Math.abs(differenceX) < 70){
 return;
@@ -2526,16 +2257,34 @@ answer:0
 
 ];
 
+
 let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
 
 
 /* START QUIZ */
 
 function startQuiz(){
 
-document.getElementById("notesSection").style.display = "none";
-document.getElementById("noteNavigation").style.display = "none";
-document.getElementById("quizStart").style.display = "none";
+currentQuestion = 0;
+
+score = 0;
+
+answered = false;
+
+
+document.getElementById("notesSection").style.display =
+"none";
+
+document.getElementById("noteNavigation").style.display =
+"none";
+
+document.getElementById("quizStart").style.display =
+"none";
+
 
 document.getElementById("progressArea").innerHTML = `
 <div class="progress-title">QUIZ</div>
@@ -2544,9 +2293,13 @@ document.getElementById("progressArea").innerHTML = `
 </div>
 `;
 
-document.getElementById("quizSection").classList.add("active");
+
+document.getElementById("quizSection")
+.classList.add("active");
+
 
 loadQuestion();
+
 
 window.scrollTo({
 top:0,
@@ -2560,36 +2313,59 @@ behavior:"smooth"
 
 function loadQuestion(){
 
-const question = questions[currentQuestion];
+const question =
+questions[currentQuestion];
 
-document.getElementById("questionNumber").textContent =
+
+document.getElementById("questionNumber")
+.textContent =
 currentQuestion + 1;
 
-document.getElementById("questionText").textContent =
+
+document.getElementById("questionText")
+.textContent =
 question.question;
+
 
 const optionsContainer =
 document.getElementById("options");
 
+
 optionsContainer.innerHTML = "";
 
-document.getElementById("feedback").textContent = "";
 
-document.getElementById("quizNext").style.display = "none";
+document.getElementById("feedback")
+.textContent = "";
+
+
+document.getElementById("quizNext")
+.style.display =
+"none";
+
+
+answered = false;
+
 
 question.options.forEach((option,index)=>{
 
-const button = document.createElement("button");
+const button =
+document.createElement("button");
 
-button.className = "quiz-option";
 
-button.textContent = option;
+button.className =
+"quiz-option";
+
+
+button.textContent =
+option;
+
 
 button.onclick = function(){
 
 checkAnswer(index,button);
 
 };
+
 
 optionsContainer.appendChild(button);
 
@@ -2602,34 +2378,52 @@ optionsContainer.appendChild(button);
 
 function checkAnswer(selected,button){
 
-const question = questions[currentQuestion];
+if(answered){
+return;
+}
+
+answered = true;
+
+
+const question =
+questions[currentQuestion];
+
 
 const allOptions =
 document.querySelectorAll(".quiz-option");
+
 
 allOptions.forEach(option=>{
 option.disabled = true;
 });
 
+
 if(selected === question.answer){
+
+score++;
 
 button.classList.add("correct");
 
-document.getElementById("feedback").textContent =
+document.getElementById("feedback")
+.textContent =
 "✓ Correct!";
 
 }else{
 
 button.classList.add("wrong");
 
-allOptions[question.answer].classList.add("correct");
+allOptions[question.answer]
+.classList.add("correct");
 
-document.getElementById("feedback").textContent =
+document.getElementById("feedback")
+.textContent =
 "✗ Not quite. The correct answer is highlighted.";
 
 }
 
-document.getElementById("quizNext").style.display =
+
+document.getElementById("quizNext")
+.style.display =
 "inline-block";
 
 }
@@ -2658,7 +2452,35 @@ showQuizResult();
 
 function showQuizResult(){
 
-document.querySelector(".quiz-card").innerHTML = `
+const percentage =
+Math.round(
+(score / questions.length) * 100
+);
+
+
+let message;
+
+
+if(score === 5){
+
+message =
+"Excellent work! You demonstrated a very strong understanding of the presumption of innocence.";
+
+}else if(score >= 3){
+
+message =
+"Good work! You understand the main principles of the presumption of innocence.";
+
+}else{
+
+message =
+"Keep studying! Review the burden of proof, standard of proof, fair trial rights, and the difference between an accusation and proof.";
+
+}
+
+
+document.querySelector(".quiz-card")
+.innerHTML = `
 
 <div class="quiz-label">
 QUIZ COMPLETE
@@ -2668,6 +2490,14 @@ QUIZ COMPLETE
 
 <p>
 You've completed the <strong>Presumption of Innocence</strong> quiz.
+</p>
+
+<p>
+<strong>Your score: ${score}/5 (${percentage}%)</strong>
+</p>
+
+<p>
+${message}
 </p>
 
 <p>
@@ -2694,4 +2524,4 @@ showCard(0);
 </script>
 
 </body>
-  </html>
+   </html>
