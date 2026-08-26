@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -264,6 +265,7 @@ background:#a88312;
 .quiz-start{
 text-align:center;
 padding-top:25px;
+display:none;
 }
 
 .quiz-start h2{
@@ -491,7 +493,20 @@ SENTENCING
 
 <div class="progress-dots" id="progressDots">
 
+<!-- 56 dots for 56 cards -->
+
 <span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
 <span>●</span>
 <span>●</span>
 <span>●</span>
@@ -2802,7 +2817,7 @@ Next →
 
 <!-- QUIZ INTRO -->
 
-<div class="quiz-start" id="quizStart" style="display:none;">
+<div class="quiz-start" id="quizStart">
 
 <h2>🎓 Note Complete!</h2>
 
@@ -2889,6 +2904,8 @@ dots[index].classList.add("active");
 
 prevButton.disabled = index === 0;
 
+/* Show quiz ONLY after the final card */
+
 if(index === cards.length - 1){
 
 nextButton.style.display = "none";
@@ -2974,11 +2991,17 @@ if(Math.abs(differenceX) <= Math.abs(differenceY)){
 return;
 }
 
+/* Swipe left = next card */
+
 if(differenceX > 0){
 
 nextCard();
 
-}else{
+}
+
+/* Swipe right = previous card */
+
+else{
 
 previousCard();
 
@@ -3052,14 +3075,29 @@ answer:0
 
 let currentQuestion = 0;
 
+let score = 0;
+
+let answered = false;
+
 
 /* START QUIZ */
 
 function startQuiz(){
 
-document.getElementById("notesSection").style.display = "none";
-document.getElementById("noteNavigation").style.display = "none";
-document.getElementById("quizStart").style.display = "none";
+currentQuestion = 0;
+
+score = 0;
+
+answered = false;
+
+document.getElementById("notesSection").style.display =
+"none";
+
+document.getElementById("noteNavigation").style.display =
+"none";
+
+document.getElementById("quizStart").style.display =
+"none";
 
 document.getElementById("progressArea").innerHTML = `
 <div class="progress-title">QUIZ</div>
@@ -3099,7 +3137,10 @@ optionsContainer.innerHTML = "";
 
 document.getElementById("feedback").textContent = "";
 
-document.getElementById("quizNext").style.display = "none";
+document.getElementById("quizNext").style.display =
+"none";
+
+answered = false;
 
 question.options.forEach((option,index)=>{
 
@@ -3126,6 +3167,12 @@ optionsContainer.appendChild(button);
 
 function checkAnswer(selected,button){
 
+if(answered){
+return;
+}
+
+answered = true;
+
 const question = questions[currentQuestion];
 
 const allOptions =
@@ -3136,6 +3183,8 @@ option.disabled = true;
 });
 
 if(selected === question.answer){
+
+score++;
 
 button.classList.add("correct");
 
@@ -3182,6 +3231,28 @@ showQuizResult();
 
 function showQuizResult(){
 
+const percentage =
+Math.round((score / questions.length) * 100);
+
+let message;
+
+if(score === 5){
+
+message =
+"Excellent work! You demonstrated a very strong understanding of sentencing.";
+
+}else if(score >= 3){
+
+message =
+"Good work! You understand the main principles of sentencing.";
+
+}else{
+
+message =
+"Keep studying! Review sentencing purposes, proportionality, aggravating and mitigating factors, and different types of sentences.";
+
+}
+
 document.querySelector(".quiz-card").innerHTML = `
 
 <div class="quiz-label">
@@ -3192,6 +3263,14 @@ QUIZ COMPLETE
 
 <p>
 You've completed the <strong>Sentencing</strong> quiz.
+</p>
+
+<p>
+<strong>Your score: ${score}/5 (${percentage}%)</strong>
+</p>
+
+<p>
+${message}
 </p>
 
 <p>
@@ -3218,4 +3297,4 @@ showCard(0);
 </script>
 
 </body>
-</html>
+   </html>
