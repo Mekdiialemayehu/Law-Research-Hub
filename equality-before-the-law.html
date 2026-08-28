@@ -1,0 +1,1511 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Interactive legal notes explaining Equality Before the Law, including the rule of law, formal and substantive equality, discrimination, equal protection, access to justice, judicial review, and international human-rights protections."><title>Equality Before the Law | Law Research Hub</title><style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f8;
+    color:#1f2937;
+    line-height:1.7;
+}
+
+/* HEADER */
+
+header{
+    background:linear-gradient(135deg,#111827,#1f3a5f);
+    color:white;
+    padding:45px 20px;
+    text-align:center;
+}
+
+header h1{
+    font-size:2.5rem;
+    margin-bottom:10px;
+}
+
+header p{
+    font-size:1.05rem;
+    opacity:0.9;
+    max-width:850px;
+    margin:auto;
+}
+
+/* PAGE */
+
+.container{
+    max-width:1100px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+/* INTRO */
+
+.intro{
+    background:white;
+    border-radius:18px;
+    padding:30px;
+    margin-bottom:30px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.intro h2{
+    color:#1f3a5f;
+    margin-bottom:15px;
+}
+
+.intro strong{
+    color:#111827;
+}
+
+/* PROGRESS */
+
+.progress-container{
+    margin:25px 0 30px;
+    text-align:center;
+}
+
+.dots{
+    display:flex;
+    justify-content:center;
+    gap:9px;
+    flex-wrap:wrap;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    background:#cbd5e1;
+    border-radius:50%;
+    transition:0.3s;
+}
+
+.dot.active{
+    background:#1f3a5f;
+    transform:scale(1.25);
+}
+
+/* CARDS */
+
+.card{
+    display:none;
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.09);
+    animation:fadeIn 0.4s ease;
+}
+
+.card.active{
+    display:block;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.card-number{
+    color:#64748b;
+    font-size:0.9rem;
+    font-weight:bold;
+    margin-bottom:8px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.card h2{
+    color:#1f3a5f;
+    margin-bottom:18px;
+    font-size:1.8rem;
+}
+
+.card h3{
+    color:#334155;
+    margin:20px 0 10px;
+}
+
+.card p{
+    margin-bottom:15px;
+}
+
+.card ul,
+.card ol{
+    margin:12px 0 18px 25px;
+}
+
+.card li{
+    margin-bottom:8px;
+}
+
+.highlight{
+    background:#eef4fb;
+    border-left:5px solid #1f3a5f;
+    padding:18px;
+    border-radius:10px;
+    margin:20px 0;
+}
+
+.warning{
+    background:#fff7ed;
+    border-left:5px solid #c2410c;
+    padding:18px;
+    border-radius:10px;
+    margin:20px 0;
+}
+
+.example{
+    background:#f0fdf4;
+    border-left:5px solid #15803d;
+    padding:18px;
+    border-radius:10px;
+    margin:20px 0;
+}
+
+/* TABLE */
+
+.table-wrapper{
+    overflow-x:auto;
+    margin:20px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:650px;
+}
+
+th,td{
+    padding:14px;
+    border:1px solid #dbe2ea;
+    text-align:left;
+}
+
+th{
+    background:#1f3a5f;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f8fafc;
+}
+
+/* BUTTONS */
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:25px;
+    gap:15px;
+}
+
+.nav-btn{
+    background:#1f3a5f;
+    color:white;
+    border:none;
+    padding:12px 24px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.nav-btn:hover{
+    background:#162c46;
+    transform:translateY(-2px);
+}
+
+.nav-btn:disabled{
+    background:#cbd5e1;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.counter{
+    font-weight:bold;
+    color:#475569;
+}
+
+/* QUIZ */
+
+.quiz{
+    display:none;
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-top:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.09);
+}
+
+.quiz.active{
+    display:block;
+}
+
+.quiz h2{
+    color:#1f3a5f;
+    margin-bottom:10px;
+}
+
+.question{
+    margin:25px 0;
+    padding:20px;
+    background:#f8fafc;
+    border-radius:12px;
+}
+
+.question p{
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.option{
+    display:block;
+    margin:10px 0;
+}
+
+.option input{
+    margin-right:8px;
+}
+
+.submit-btn{
+    background:#15803d;
+    color:white;
+    border:none;
+    padding:13px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:bold;
+}
+
+.submit-btn:hover{
+    background:#166534;
+}
+
+#quizResult{
+    margin-top:20px;
+    font-weight:bold;
+    font-size:1.1rem;
+}
+
+/* SOURCES */
+
+.sources{
+    background:white;
+    margin-top:30px;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.sources h2{
+    color:#1f3a5f;
+    margin-bottom:15px;
+}
+
+.sources ul{
+    margin-left:25px;
+}
+
+.sources li{
+    margin-bottom:10px;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:30px 20px;
+    color:#64748b;
+    font-size:0.9rem;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    header h1{
+        font-size:2rem;
+    }
+
+    .card,
+    .quiz,
+    .intro,
+    .sources{
+        padding:22px;
+    }
+
+    .card h2{
+        font-size:1.5rem;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .nav-btn{
+        width:100%;
+    }
+
+    .counter{
+        order:-1;
+    }
+
+}
+
+</style></head><body><header><h1>Equality Before the Law</h1>
+
+<p>
+    Understanding equality, non-discrimination, equal protection,
+    access to justice, and the relationship between equality and the rule of law.
+</p>
+
+</header><div class="container"><!-- INTRO -->
+
+<div class="intro">
+
+    <h2>What Is Equality Before the Law?</h2>
+
+    <p>
+        Equality before the law is a fundamental principle of
+        <strong>human rights</strong> and the <strong>rule of law</strong>.
+    </p>
+
+    <p>
+        It means that people are entitled to equal treatment under the law
+        and should not be subjected to arbitrary or unjustified differences
+        in legal treatment.
+    </p>
+
+    <div class="highlight">
+
+        <strong>Key Question:</strong><br>
+
+        Does the law treat people equally and fairly, without
+        unjustified discrimination?
+
+    </div>
+
+    <p>
+        Equality does not always mean identical treatment.
+        Different treatment may sometimes be lawful where there is
+        an objective and reasonable justification.
+    </p>
+
+</div>
+
+
+<!-- PROGRESS DOTS -->
+
+<div class="progress-container">
+
+    <div class="dots">
+
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+
+    </div>
+
+</div>
+
+
+<!-- CARD 1 -->
+
+<section class="card active">
+
+    <div class="card-number">Card 1 of 15</div>
+
+    <h2>Equality and the Rule of Law</h2>
+
+    <p>
+        Equality before the law is closely connected to the
+        <strong>rule of law</strong>.
+    </p>
+
+    <p>
+        The rule of law requires public authorities to exercise
+        power according to law rather than personal preference
+        or arbitrary decisions.
+    </p>
+
+    <h3>Equality helps ensure that:</h3>
+
+    <ul>
+
+        <li>Government officials are accountable.</li>
+
+        <li>Courts apply legal rules consistently.</li>
+
+        <li>Individuals receive fair treatment.</li>
+
+        <li>Public authorities cannot act arbitrarily.</li>
+
+        <li>Legal rights are protected regardless of status.</li>
+
+    </ul>
+
+    <div class="highlight">
+
+        If laws are applied differently to people without lawful
+        justification, the rule of law is weakened.
+
+    </div>
+
+</section>
+
+
+<!-- CARD 2 -->
+
+<section class="card">
+
+    <div class="card-number">Card 2 of 15</div>
+
+    <h2>Equality Does Not Always Mean Identical Treatment</h2>
+
+    <p>
+        Equality before the law does not necessarily require
+        everyone to receive exactly the same treatment in every situation.
+    </p>
+
+    <p>
+        People may be in different circumstances, and the law may
+        sometimes recognize those differences.
+    </p>
+
+    <h3>Examples of special protection may include:</h3>
+
+    <ul>
+
+        <li>Children.</li>
+
+        <li>Persons with disabilities.</li>
+
+        <li>Victims of discrimination.</li>
+
+        <li>People in vulnerable situations.</li>
+
+    </ul>
+
+    <div class="highlight">
+
+        <strong>Key Principle:</strong><br><br>
+
+        Equality does not always mean treating everyone identically.
+        It means avoiding unjustified or discriminatory differences
+        in treatment.
+
+    </div>
+
+</section>
+
+
+<!-- CARD 3 -->
+
+<section class="card">
+
+    <div class="card-number">Card 3 of 15</div>
+
+    <h2>Formal and Substantive Equality</h2>
+
+    <h3>Formal Equality</h3>
+
+    <p>
+        Formal equality focuses on equal treatment under legal rules.
+        People in comparable circumstances should generally receive
+        equal legal rights and obligations.
+    </p>
+
+    <h3>Substantive Equality</h3>
+
+    <p>
+        Substantive equality looks beyond whether rules appear equal
+        on their face.
+    </p>
+
+    <p>
+        It considers the practical effects of laws and policies and
+        whether they create unjustified disadvantage.
+    </p>
+
+    <div class="highlight">
+
+        Two people may receive identical treatment but experience
+        very different consequences. Substantive equality therefore
+        asks whether people can genuinely enjoy equal protection
+        and opportunity.
+
+    </div>
+
+</section>
+
+
+<!-- CARD 4 -->
+
+<section class="card">
+
+    <div class="card-number">Card 4 of 15</div>
+
+    <h2>Non-Discrimination</h2>
+
+    <p>
+        Equality before the law is closely connected to
+        <strong>non-discrimination</strong>.
+    </p>
+
+    <p>
+        Depending on the legal framework, prohibited grounds of
+        discrimination may include:
+    </p>
+
+    <ul>
+
+        <li>Race.</li>
+
+        <li>Sex.</li>
+
+        <li>Religion.</li>
+
+        <li>National origin.</li>
+
+        <li>Disability.</li>
+
+        <li>Political opinion.</li>
+
+        <li>Social origin.</li>
+
+        <li>Other legally protected characteristics.</li>
+
+    </ul>
+
+    <div class="warning">
+
+        The exact protected grounds differ between legal systems.
+        The applicable law determines which forms of discrimination
+        are prohibited.
+
+    </div>
+
+</section>
+
+
+<!-- CARD 5 -->
+
+<section class="card">
+
+    <div class="card-number">Card 5 of 15</div>
+
+    <h2>Direct and Indirect Discrimination</h2>
+
+    <h3>Direct Discrimination</h3>
+
+    <p>
+        Direct discrimination occurs when a person is treated less
+        favourably because of a protected characteristic.
+    </p>
+
+    <div class="example">
+
+        <strong>Example:</strong>
+
+        A law that expressly denies a legal benefit to people solely
+        because of their sex could raise an issue of direct discrimination.
+
+    </div>
+
+    <h3>Indirect Discrimination</h3>
+
+    <p>
+        Indirect discrimination can occur when a rule appears neutral
+        but has a particularly harmful effect on a protected group.
+    </p>
+
+    <p>
+        Courts may consider whether the measure has an objective,
+        reasonable, and proportionate justification.
+
+    </p>
+
+</section>
+
+
+<!-- CARD 6 -->
+
+<section class="card">
+
+    <div class="card-number">Card 6 of 15</div>
+
+    <h2>Equality Before the Law and Courts</h2>
+
+    <p>
+        Courts play an important role in ensuring equality before the law.
+    </p>
+
+    <h3>Judges should apply legal rules:</h3>
+
+    <ul>
+
+        <li>Independently.</li>
+
+        <li>Impartially.</li>
+
+        <li>Consistently.</li>
+
+        <li>Without unlawful discrimination.</li>
+
+        <li>According to the applicable legal framework.</li>
+
+    </ul>
+
+    <p>
+        A person should not receive better or worse treatment in court
+        because of wealth, status, political influence, or another
+        irrelevant characteristic.
+    </p>
+
+    <div class="highlight">
+
+        Equality before the law supports confidence in the
+        fairness and independence of the justice system.
+
+    </div>
+
+</section>
+
+
+<!-- CARD 7 -->
+
+<section class="card">
+
+    <div class="card-number">Card 7 of 15</div>
+
+    <h2>Police, Government Officials, and Equality</h2>
+
+    <h3>Police and Law Enforcement</h3>
+
+    <p>
+        Police authorities should not arbitrarily target people because
+        of protected characteristics.
+    </p>
+
+    <ul>
+
+        <li>Selective enforcement.</li>
+
+        <li>Discriminatory searches.</li>
+
+        <li>Unequal treatment of suspects.</li>
+
+        <li>Refusal to provide protection because of identity.</li>
+
+    </ul>
+
+    <h3>Government Officials</h3>
+
+    <p>
+        Public officials should not provide different legal treatment
+        based on personal relationships, wealth, political influence,
+        favouritism, or prejudice.
+    </p>
+
+    <div class="warning">
+
+        Public power should be exercised according to objective
+        legal standards rather than personal preference.
+
+    </div>
+
+</section>
+
+
+<!-- CARD 8 -->
+
+<section class="card">
+
+    <div class="card-number">Card 8 of 15</div>
+
+    <h2>Equality, Fair Trial, and Equality of Arms</h2>
+
+    <p>
+        Equality before the law is closely connected with the right
+        to a fair trial.
+    </p>
+
+    <h3>Fair-trial protection may involve:</h3>
+
+    <ul>
+
+        <li>An independent and impartial tribunal.</li>
+
+        <li>Equal application of procedural rules.</li>
+
+        <li>The opportunity to present a case.</li>
+
+        <li>Protection against arbitrary treatment.</li>
+
+        <li>Judicial independence.</li>
+
+    </ul>
+
+    <h3>Equality of Arms</h3>
+
+    <p>
+        Equality of arms means that each party should have a reasonable
+        opportunity to present their case without being placed at a
+        substantial disadvantage compared with the opposing party.
+    </p>
+
+    <div class="highlight">
+
+        Procedural rules should not unfairly favour one side in
+        legal proceedings.
+
+    </div>
+
+</section>
+
+
+<!-- CARD 9 -->
+
+<section class="card">
+
+    <div class="card-number">Card 9 of 15</div>
+
+    <h2>Access to Justice and Legal Aid</h2>
+
+    <p>
+        Equality before the law is meaningful only when people can
+        actually access legal institutions.
+    </p>
+
+    <h3>Access to justice may require:</h3>
+
+    <ul>
+
+        <li>Accessible courts.</li>
+
+        <li>Fair legal procedures.</li>
+
+        <li>Legal assistance in appropriate circumstances.</li>
+
+        <li>Effective remedies.</li>
+
+        <li>Protection against discrimination.</li>
+
+    </ul>
+
+    <h3>Legal Aid</h3>
+
+    <p>
+        Legal aid can help reduce disadvantages caused by differences
+        in financial resources.
+    </p>
+
+    <div class="highlight">
+
+        Without meaningful access to justice, formal equality may
+        provide little practical protection.
+
+    </div>
+
+</section>
+
+
+<!-- CARD 10 -->
+
+<section class="card">
+
+    <div class="card-number">Card 10 of 15</div>
+
+    <h2>Equality and Vulnerable Groups</h2>
+
+    <p>
+        Human-rights law often pays particular attention to people
+        who may face increased barriers to legal protection.
+    </p>
+
+    <h3>Examples include:</h3>
+
+    <ul>
+
+        <li>Children.</li>
+
+        <li>Persons with disabilities.</li>
+
+        <li>Migrants.</li>
+
+        <li>Minority groups.</li>
+
+        <li>Persons living in poverty.</li>
+
+        <li>Victims of serious abuse.</li>
+
+    </ul>
+
+    <p>
+        Special protective measures do not necessarily violate equality.
+        In some circumstances, different treatment may be necessary
+        to achieve genuine equality.
+    </p>
+
+    <div class="example">
+
+        <strong>Example:</strong>
+
+        Providing accessibility measures for a person with a disability
+        may promote substantive equality rather than violate it.
+
+    </div>
+
+</section>
+
+
+<!-- CARD 11 -->
+
+<section class="card">
+
+    <div class="card-number">Card 11 of 15</div>
+
+    <h2>Equality and Gender, Children, and Disability</h2>
+
+    <h3>Gender Equality</h3>
+
+    <p>
+        Legal rights should not be denied or restricted through
+        unjustified gender discrimination.
+    </p>
+
+    <p>
+        Equality between women and men can be relevant to education,
+        employment, political participation, family life, property,
+        and access to justice.
+    </p>
+
+    <h3>Children</h3>
+
+    <p>
+        Children may receive special legal protections because of
+        their age and circumstances, including special procedures,
+        child-protection laws, and different criminal responsibility rules.
+    </p>
+
+    <h3>Disability</h3>
+
+    <p>
+        Genuine equality may sometimes require reasonable accommodation
+        or accessibility measures so that people with disabilities can
+        participate effectively in legal and public life.
+    </p>
+
+</section>
+
+
+<!-- CARD 12 -->
+
+<section class="card">
+
+    <div class="card-number">Card 12 of 15</div>
+
+    <h2>Equality and Positive Measures</h2>
+
+    <p>
+        Governments may sometimes take positive measures to address
+        existing disadvantage.
+    </p>
+
+    <h3>Examples include:</h3>
+
+    <ul>
+
+        <li>Anti-discrimination legislation.</li>
+
+        <li>Accessibility requirements.</li>
+
+        <li>Special educational support.</li>
+
+        <li>Protective measures for vulnerable groups.</li>
+
+        <li>Programs designed to increase equal participation.</li>
+
+    </ul>
+
+    <p>
+        Depending on the legal system, these measures may be described
+        as special measures or affirmative action.
+    </p>
+
+    <div class="highlight">
+
+        Their legality depends on the applicable law, purpose,
+        design, and proportionality of the measure.
+
+    </div>
+
+</section>
+
+
+<!-- CARD 13 -->
+
+<section class="card">
+
+    <div class="card-number">Card 13 of 15</div>
+
+    <h2>Equality and Proportionality</h2>
+
+    <p>
+        Equality before the law is closely connected to
+        <strong>proportionality</strong>.
+    </p>
+
+    <p>
+        When a government treats two groups differently, a court
+        may ask whether the distinction has sufficient justification.
+    </p>
+
+    <h3>The court may consider:</h3>
+
+    <ol>
+
+        <li>What is the purpose of the distinction?</li>
+
+        <li>Is the objective legitimate?</li>
+
+        <li>Is there a reasonable connection between the distinction and the objective?</li>
+
+        <li>Is the difference in treatment proportionate?</li>
+
+    </ol>
+
+    <div class="highlight">
+
+        A difference in treatment is not automatically unlawful.
+        The key issue is whether it has an objective and reasonable
+        justification under the applicable legal framework.
+
+    </div>
+
+</section>
+
+
+<!-- CARD 14 -->
+
+<section class="card">
+
+    <div class="card-number">Card 14 of 15</div>
+
+    <h2>Equality, Human Rights, and International Law</h2>
+
+    <h3>Universal Declaration of Human Rights</h3>
+
+    <p>
+        The UDHR recognizes equality before the law and the right
+        to equal protection of the law.
+    </p>
+
+    <h3>International Covenant on Civil and Political Rights</h3>
+
+    <p>
+        The ICCPR contains several important equality protections,
+        including provisions concerning non-discrimination, equality
+        between men and women, equality before courts and tribunals,
+        political participation, and equal protection of the law.
+    </p>
+
+    <h3>European Convention on Human Rights</h3>
+
+    <p>
+        Article 14 prohibits discrimination in the enjoyment of
+        Convention rights. European human-rights jurisprudence also
+        addresses equality and non-discrimination in many contexts.
+    </p>
+
+    <div class="warning">
+
+        The exact scope of equality protections depends on the
+        applicable treaty, constitution, legislation, and case law.
+
+    </div>
+
+</section>
+
+
+<!-- CARD 15 -->
+
+<section class="card">
+
+    <div class="card-number">Card 15 of 15</div>
+
+    <h2>Equality Before the Law: The Complete Framework</h2>
+
+    <div class="highlight">
+
+        <strong>Equality Before the Law</strong><br>
+
+        People are entitled to equal legal protection and fair
+        treatment without unjustified discrimination.
+
+    </div>
+
+    <div class="highlight">
+
+        <strong>Formal Equality</strong><br>
+
+        Comparable people should generally receive equal treatment
+        under the law.
+
+    </div>
+
+    <div class="highlight">
+
+        <strong>Substantive Equality</strong><br>
+
+        The practical effects of laws and policies should not create
+        unjustified disadvantage.
+
+    </div>
+
+    <div class="highlight">
+
+        <strong>Non-Discrimination</strong><br>
+
+        Differences in treatment must not be based on prohibited
+        or unjustified grounds.
+
+    </div>
+
+    <div class="highlight">
+
+        <strong>Objective and Reasonable Justification</strong><br>
+
+        Different treatment may sometimes be lawful when it pursues
+        a legitimate purpose and is appropriately justified.
+
+    </div>
+
+    <div class="example">
+
+        <strong>Key Takeaway:</strong><br><br>
+
+        Equality Before the Law does not necessarily mean
+        identical treatment.
+
+        It means that the law must protect people fairly and
+        must not treat comparable people differently without
+        sufficient legal justification.
+
+    </div>
+
+    <p>
+        The key question in an equality case is therefore not simply:
+    </p>
+
+    <div class="highlight">
+
+        <strong>"Were two people treated differently?"</strong><br><br>
+
+        It is:
+
+        <strong>"Was the difference in treatment lawful, relevant,
+        justified, and proportionate?"</strong>
+
+    </div>
+
+</section>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+    <button class="nav-btn" id="prevBtn" onclick="changeCard(-1)">
+        ← Previous
+    </button>
+
+    <div class="counter" id="counter">
+        Card 1 of 15
+    </div>
+
+    <button class="nav-btn" id="nextBtn" onclick="changeCard(1)">
+        Next →
+    </button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<section class="quiz" id="quiz">
+
+    <h2>Test Your Knowledge</h2>
+
+    <p>
+        Complete the questions below to test your understanding
+        of equality before the law.
+    </p>
+
+
+    <div class="question">
+
+        <p>1. What is the central idea of equality before the law?</p>
+
+        <label class="option">
+            <input type="radio" name="q1" value="a">
+            Everyone must always receive identical treatment
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q1" value="b">
+            People are entitled to equal legal protection without unjustified discrimination
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q1" value="c">
+            Government officials may choose which laws apply
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q1" value="d">
+            Only wealthy people are entitled to legal protection
+        </label>
+
+    </div>
+
+
+    <div class="question">
+
+        <p>2. What is formal equality?</p>
+
+        <label class="option">
+            <input type="radio" name="q2" value="a">
+            Equal treatment under legal rules
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q2" value="b">
+            Giving everyone completely different legal rights
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q2" value="c">
+            Ignoring all legal differences
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q2" value="d">
+            Allowing discrimination whenever convenient
+        </label>
+
+    </div>
+
+
+    <div class="question">
+
+        <p>3. What does substantive equality focus on?</p>
+
+        <label class="option">
+            <input type="radio" name="q3" value="a">
+            Only the wording of a law
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q3" value="b">
+            The practical effects of laws and policies
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q3" value="c">
+            Political popularity
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q3" value="d">
+            The personal preferences of judges
+        </label>
+
+    </div>
+
+
+    <div class="question">
+
+        <p>4. Is every difference in treatment automatically unlawful?</p>
+
+        <label class="option">
+            <input type="radio" name="q4" value="a">
+            Yes, all differences are unlawful
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q4" value="b">
+            No, some differences may have an objective and reasonable justification
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q4" value="c">
+            Yes, unless a court approves every decision
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q4" value="d">
+            No, because equality has no legal meaning
+        </label>
+
+    </div>
+
+
+    <div class="question">
+
+        <p>5. Which principle is closely connected to equality analysis?</p>
+
+        <label class="option">
+            <input type="radio" name="q5" value="a">
+            Proportionality
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q5" value="b">
+            Political influence
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q5" value="c">
+            Personal preference
+        </label>
+
+        <label class="option">
+            <input type="radio" name="q5" value="d">
+            Arbitrary decision-making
+        </label>
+
+    </div>
+
+
+    <button class="submit-btn" onclick="checkQuiz()">
+        Submit Quiz
+    </button>
+
+    <div id="quizResult"></div>
+
+</section>
+
+
+<!-- SOURCES -->
+
+<section class="sources">
+
+    <h2>Sources</h2>
+
+    <ul>
+
+        <li>
+            United Nations, Universal Declaration of Human Rights,
+            particularly Articles 1, 2, 7, and 10.
+        </li>
+
+        <li>
+            United Nations, International Covenant on Civil and Political Rights,
+            particularly Articles 2, 3, 14, 25, and 26.
+        </li>
+
+        <li>
+            United Nations, Convention on the Elimination of All Forms
+            of Discrimination Against Women.
+        </li>
+
+        <li>
+            United Nations, Convention on the Rights of Persons with Disabilities.
+        </li>
+
+        <li>
+            Council of Europe, European Convention on Human Rights,
+            particularly Article 14 and Protocol No. 12.
+        </li>
+
+        <li>
+            European Court of Human Rights, materials concerning equality,
+            non-discrimination, and the application of Article 14.
+        </li>
+
+        <li>
+            Office of the United Nations High Commissioner for Human Rights
+            (OHCHR), materials concerning equality and non-discrimination.
+        </li>
+
+        <li>
+            Cornell Law School Legal Information Institute, materials
+            concerning equal protection, equality, and constitutional law.
+        </li>
+
+    </ul>
+
+</section>
+
+</div><footer>
+    © 2026 Law Research Hub · Human Rights Notes
+</footer><script>
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".card");
+const dots = document.querySelectorAll(".dot");
+
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+const counter = document.getElementById("counter");
+const quiz = document.getElementById("quiz");
+
+
+function showCard(index){
+
+    cards.forEach((card, i) => {
+
+        card.classList.toggle("active", i === index);
+
+    });
+
+
+    dots.forEach((dot, i) => {
+
+        dot.classList.toggle("active", i === index);
+
+    });
+
+
+    counter.textContent =
+        "Card " + (index + 1) + " of " + cards.length;
+
+
+    prevBtn.disabled = index === 0;
+
+
+    if(index === cards.length - 1){
+
+        nextBtn.style.display = "none";
+
+        quiz.classList.add("active");
+
+    }else{
+
+        nextBtn.style.display = "block";
+
+        quiz.classList.remove("active");
+
+    }
+
+
+    window.scrollTo({
+
+        top:0,
+        behavior:"smooth"
+
+    });
+
+}
+
+
+function changeCard(direction){
+
+    const newIndex = currentCard + direction;
+
+
+    if(newIndex >= 0 && newIndex < cards.length){
+
+        currentCard = newIndex;
+
+        showCard(currentCard);
+
+    }
+
+}
+
+
+function checkQuiz(){
+
+    const answers = {
+
+        q1:"b",
+        q2:"a",
+        q3:"b",
+        q4:"b",
+        q5:"a"
+
+    };
+
+
+    let score = 0;
+
+
+    for(let question in answers){
+
+        const selected = document.querySelector(
+            'input[name="' + question + '"]:checked'
+        );
+
+
+        if(selected && selected.value === answers[question]){
+
+            score++;
+
+        }
+
+    }
+
+
+    const result = document.getElementById("quizResult");
+
+
+    if(score === 5){
+
+        result.textContent =
+        "Excellent! You scored 5/5. You have a strong understanding of equality before the law.";
+
+    }else if(score >= 3){
+
+        result.textContent =
+        "Good work! You scored " + score +
+        "/5. Review the cards and try again to strengthen your understanding.";
+
+    }else{
+
+        result.textContent =
+        "You scored " + score +
+        "/5. Review the notes above and try the quiz again.";
+
+    }
+
+}
+
+
+/* INITIALIZE */
+
+showCard(0);
+
+</script></body>
+  </html>
