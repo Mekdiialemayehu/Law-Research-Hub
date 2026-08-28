@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal notes explaining Absolute and Qualified Human Rights, including proportionality, legality, legitimate aims, derogation, state obligations, judicial review, and examples from international human-rights law.">
+
+<title>Absolute vs. Qualified Rights | Law Research Hub</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f8;
+    color:#1f2937;
+    line-height:1.7;
+}
+
+/* HEADER */
+
+header{
+    background:linear-gradient(135deg,#111827,#1f3a5f);
+    color:white;
+    padding:45px 20px;
+    text-align:center;
+}
+
+header h1{
+    font-size:2.5rem;
+    margin-bottom:10px;
+}
+
+header p{
+    font-size:1.05rem;
+    opacity:0.9;
+    max-width:850px;
+    margin:auto;
+}
+
+/* PAGE */
+
+.container{
+    max-width:1100px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+/* INTRO */
+
+.intro{
+    background:white;
+    border-radius:18px;
+    padding:30px;
+    margin-bottom:30px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.intro h2{
+    color:#1f3a5f;
+    margin-bottom:15px;
+}
+
+.intro strong{
+    color:#111827;
+}
+
+/* PROGRESS */
+
+.progress-container{
+    margin:25px 0 30px;
+    text-align:center;
+}
+
+.dots{
+    display:flex;
+    justify-content:center;
+    gap:9px;
+    flex-wrap:wrap;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    background:#cbd5e1;
+    border-radius:50%;
+    transition:0.3s;
+}
+
+.dot.active{
+    background:#1f3a5f;
+    transform:scale(1.25);
+}
+
+/* CARDS */
+
+.card{
+    display:none;
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.09);
+    animation:fadeIn 0.4s ease;
+}
+
+.card.active{
+    display:block;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.card-number{
+    color:#64748b;
+    font-size:0.9rem;
+    font-weight:bold;
+    margin-bottom:8px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.card h2{
+    color:#1f3a5f;
+    margin-bottom:18px;
+    font-size:1.8rem;
+}
+
+.card h3{
+    color:#334155;
+    margin:20px 0 10px;
+}
+
+.card p{
+    margin-bottom:15px;
+}
+
+.card ul{
+    margin:12px 0 18px 25px;
+}
+
+.card li{
+    margin-bottom:8px;
+}
+
+.highlight{
+    background:#eef4fb;
+    border-left:5px solid #1f3a5f;
+    padding:18px;
+    border-radius:10px;
+    margin:20px 0;
+}
+
+.warning{
+    background:#fff7ed;
+    border-left:5px solid #c2410c;
+    padding:18px;
+    border-radius:10px;
+    margin:20px 0;
+}
+
+.example{
+    background:#f0fdf4;
+    border-left:5px solid #15803d;
+    padding:18px;
+    border-radius:10px;
+    margin:20px 0;
+}
+
+/* TABLE */
+
+.table-wrapper{
+    overflow-x:auto;
+    margin:20px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:650px;
+}
+
+th,td{
+    padding:14px;
+    border:1px solid #dbe2ea;
+    text-align:left;
+}
+
+th{
+    background:#1f3a5f;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f8fafc;
+}
+
+/* BUTTONS */
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:25px;
+    gap:15px;
+}
+
+.nav-btn{
+    background:#1f3a5f;
+    color:white;
+    border:none;
+    padding:12px 24px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.nav-btn:hover{
+    background:#162c46;
+    transform:translateY(-2px);
+}
+
+.nav-btn:disabled{
+    background:#cbd5e1;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.counter{
+    font-weight:bold;
+    color:#475569;
+}
+
+/* QUIZ */
+
+.quiz{
+    display:none;
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-top:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.09);
+}
+
+.quiz.active{
+    display:block;
+}
+
+.quiz h2{
+    color:#1f3a5f;
+    margin-bottom:10px;
+}
+
+.question{
+    margin:25px 0;
+    padding:20px;
+    background:#f8fafc;
+    border-radius:12px;
+}
+
+.question p{
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.option{
+    display:block;
+    margin:10px 0;
+}
+
+.option input{
+    margin-right:8px;
+}
+
+.submit-btn{
+    background:#15803d;
+    color:white;
+    border:none;
+    padding:13px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:bold;
+}
+
+.submit-btn:hover{
+    background:#166534;
+}
+
+#quizResult{
+    margin-top:20px;
+    font-weight:bold;
+    font-size:1.1rem;
+}
+
+/* SOURCES */
+
+.sources{
+    background:white;
+    margin-top:30px;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.sources h2{
+    color:#1f3a5f;
+    margin-bottom:15px;
+}
+
+.sources ul{
+    margin-left:25px;
+}
+
+.sources li{
+    margin-bottom:10px;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:30px 20px;
+    color:#64748b;
+    font-size:0.9rem;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    header h1{
+        font-size:2rem;
+    }
+
+    .card,
+    .quiz,
+    .intro,
+    .sources{
+        padding:22px;
+    }
+
+    .card h2{
+        font-size:1.5rem;
+    }
+
+    .navigation{
+        flex-direction:column;
+    }
+
+    .nav-btn{
+        width:100%;
+    }
+
+    .counter{
+        order:-1;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Absolute vs. Qualified Rights</h1>
+    <p>
+        Understanding the different levels of protection given to human rights
+        and the legal principles governing restrictions on qualified rights.
+    </p>
+</header>
+
+<div class="container">
+
+    <div class="intro">
+        <h2>Human Rights and Different Levels of Protection</h2>
+
+        <p>
+            Human rights are fundamental rights and freedoms that belong to
+            individuals because they are human.
+        </p>
+
+        <p>
+            Human-rights law does not treat every right in exactly the same way.
+            Some rights are <strong>absolute</strong>, while others are
+            <strong>qualified</strong>.
+        </p>
+
+        <div class="highlight">
+            <strong>Key Question:</strong>
+            Can the government lawfully limit this right, and if so,
+            under what conditions?
+        </div>
+
+        <p>
+            The exact classification of rights can vary between legal systems,
+            constitutions, and international human-rights instruments.
+        </p>
+    </div>
+
+
+    <!-- PROGRESS DOTS -->
+
+    <div class="progress-container">
+        <div class="dots">
+
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+
+        </div>
+    </div>
+
+
+    <!-- CARD 1 -->
+
+    <section class="card active">
+
+        <div class="card-number">Card 1 of 15</div>
+
+        <h2>What Are Absolute and Qualified Rights?</h2>
+
+        <p>
+            An <strong>absolute right</strong> is a human right that cannot
+            ordinarily be restricted or balanced against competing interests.
+        </p>
+
+        <p>
+            A <strong>qualified right</strong> may be restricted in certain
+            circumstances, provided that the government satisfies the legal
+            requirements established by the relevant human-rights framework.
+        </p>
+
+        <div class="highlight">
+            <strong>Simple distinction:</strong><br>
+            Absolute right = the state cannot ordinarily justify violating it.<br>
+            Qualified right = the state may restrict it when the law permits
+            the restriction and the required conditions are satisfied.
+        </div>
+
+        <p>
+            This distinction is important because it determines how much
+            freedom governments have when responding to competing public
+            interests.
+        </p>
+
+    </section>
+
+
+    <!-- CARD 2 -->
+
+    <section class="card">
+
+        <div class="card-number">Card 2 of 15</div>
+
+        <h2>Absolute Rights</h2>
+
+        <p>
+            Absolute rights receive particularly strong protection.
+            A government cannot normally justify violating them by arguing
+            that the violation would benefit society.
+        </p>
+
+        <h3>Common examples include:</h3>
+
+        <ul>
+            <li>The prohibition of torture.</li>
+            <li>The prohibition of slavery and servitude.</li>
+            <li>The protection against retroactive criminal punishment in its protected form.</li>
+        </ul>
+
+        <p>
+            The exact scope of an absolute right depends on the legal instrument
+            being applied.
+        </p>
+
+        <div class="warning">
+            A government's claim that a violation is necessary for national
+            security, public safety, or political necessity does not normally
+            make an otherwise prohibited violation lawful.
+        </div>
+
+    </section>
+
+
+    <!-- CARD 3 -->
+
+    <section class="card">
+
+        <div class="card-number">Card 3 of 15</div>
+
+        <h2>Qualified Rights</h2>
+
+        <p>
+            Qualified rights are protected rights that may be restricted in
+            defined circumstances.
+        </p>
+
+        <h3>Common examples include:</h3>
+
+        <ul>
+            <li>Freedom of expression.</li>
+            <li>Freedom of assembly.</li>
+            <li>Freedom of association.</li>
+            <li>Respect for private and family life.</li>
+            <li>Freedom of movement in relevant legal frameworks.</li>
+        </ul>
+
+        <p>
+            A qualified right does <strong>not</strong> mean that the government
+            has unlimited power.
+        </p>
+
+        <div class="highlight">
+            Restrictions normally need to satisfy requirements such as
+            <strong>legality, legitimate aim, necessity, and proportionality.</strong>
+        </div>
+
+    </section>
+
+
+    <!-- CARD 4 -->
+
+    <section class="card">
+
+        <div class="card-number">Card 4 of 15</div>
+
+        <h2>Legal Basis and Legitimate Aim</h2>
+
+        <h3>Legal Basis</h3>
+
+        <p>
+            A restriction should have a legal basis rather than being imposed
+            arbitrarily by government officials.
+        </p>
+
+        <p>
+            This promotes predictability, transparency, accountability, and
+            protection against arbitrary state action.
+        </p>
+
+        <h3>Legitimate Aim</h3>
+
+        <p>
+            The restriction must normally pursue an objective recognized by
+            the applicable human-rights framework.
+        </p>
+
+        <ul>
+            <li>National security.</li>
+            <li>Public safety.</li>
+            <li>Prevention of crime.</li>
+            <li>Protection of public health.</li>
+            <li>Protection of the rights of others.</li>
+        </ul>
+
+        <div class="warning">
+            Not every government objective automatically qualifies as a
+            legitimate aim. The applicable legal instrument determines
+            which objectives are permitted.
+        </div>
+
+    </section>
+
+
+    <!-- CARD 5 -->
+
+    <section class="card">
+
+        <div class="card-number">Card 5 of 15</div>
+
+        <h2>Necessity</h2>
+
+        <p>
+            A restriction must generally be necessary for achieving the
+            legitimate aim.
+        </p>
+
+        <p>
+            The government should demonstrate a genuine need for the
+            interference rather than relying only on convenience or preference.
+        </p>
+
+        <h3>A court may consider:</h3>
+
+        <ul>
+            <li>Whether there was a genuine need for the restriction.</li>
+            <li>Whether the restriction was connected to the objective.</li>
+            <li>Whether a less restrictive measure could have achieved the same purpose.</li>
+        </ul>
+
+        <div class="highlight">
+            Necessity asks whether the government really needed to interfere
+            with the right in the way that it did.
+        </div>
+
+    </section>
+
+
+    <!-- CARD 6 -->
+
+    <section class="card">
+
+        <div class="card-number">Card 6 of 15</div>
+
+        <h2>Proportionality</h2>
+
+        <p>
+            Proportionality is one of the most important principles governing
+            restrictions on qualified rights.
+        </p>
+
+        <p>
+            It requires consideration of the relationship between the
+            individual's right and the government's legitimate objective.
+        </p>
+
+        <h3>A proportionate restriction should:</h3>
+
+        <ul>
+            <li>Serve a legitimate objective.</li>
+            <li>Be connected to that objective.</li>
+            <li>Be necessary.</li>
+            <li>Not impose an excessive burden on the individual.</li>
+        </ul>
+
+        <div class="example">
+            <strong>Example:</strong>
+            If public safety can be protected through a less restrictive
+            measure, imposing a much more severe restriction may be
+            disproportionate.
+        </div>
+
+    </section>
+
+
+    <!-- CARD 7 -->
+
+    <section class="card">
+
+        <div class="card-number">Card 7 of 15</div>
+
+        <h2>The Proportionality Test</h2>
+
+        <p>
+            When reviewing a restriction on a qualified right, a court may ask:
+        </p>
+
+        <ol>
+            <li>Is there a legal basis for the restriction?</li>
+            <li>Is there a legitimate aim?</li>
+            <li>Is the restriction connected to that aim?</li>
+            <li>Is the restriction necessary?</li>
+            <li>Does it place an excessive burden on the individual?</li>
+        </ol>
+
+        <div class="highlight">
+            The precise formulation of the proportionality test differs
+            between legal systems and courts.
+        </div>
+
+        <p>
+            The central idea is that government interference should not go
+            further than the law legitimately permits.
+        </p>
+
+    </section>
+
+
+    <!-- CARD 8 -->
+
+    <section class="card">
+
+        <div class="card-number">Card 8 of 15</div>
+
+        <h2>Examples of Qualified Rights</h2>
+
+        <h3>Freedom of Expression</h3>
+
+        <p>
+            People generally have the right to express opinions, political
+            views, information, criticism of government, and artistic or
+            academic ideas.
+        </p>
+
+        <p>
+            However, expression may sometimes be restricted to protect
+            interests such as national security, public safety, or the
+            rights and reputation of others.
+        </p>
+
+        <h3>Freedom of Assembly</h3>
+
+        <p>
+            Individuals may gather for lawful purposes, including demonstrations,
+            peaceful protests, meetings, and community activities.
+        </p>
+
+        <h3>Freedom of Association</h3>
+
+        <p>
+            Individuals may form or join organizations such as civil-society
+            groups, professional organizations, political organizations,
+            trade unions, and community groups.
+        </p>
+
+    </section>
+
+
+    <!-- CARD 9 -->
+
+    <section class="card">
+
+        <div class="card-number">Card 9 of 15</div>
+
+        <h2>Privacy, Religion, and Freedom of Movement</h2>
+
+        <h3>Private and Family Life</h3>
+
+        <p>
+            The right to respect for private and family life can cover
+            privacy, family relationships, home life, correspondence,
+            and aspects of personal autonomy.
+        </p>
+
+        <h3>Religion and Belief</h3>
+
+        <p>
+            Human-rights law can distinguish between the internal freedom
+            to hold a belief and the external manifestation of that belief.
+        </p>
+
+        <p>
+            The internal freedom of thought and conscience receives particularly
+            strong protection, while manifestation may be subject to lawful
+            restrictions under certain legal frameworks.
+        </p>
+
+        <h3>Freedom of Movement</h3>
+
+        <p>
+            Freedom of movement may protect a person's ability to move within
+            a country or leave a country, subject to limitations recognized by
+            the relevant legal system.
+        </p>
+
+    </section>
+
+
+    <!-- CARD 10 -->
+
+    <section class="card">
+
+        <div class="card-number">Card 10 of 15</div>
+
+        <h2>Absolute Rights: Important Examples</h2>
+
+        <h3>Prohibition of Torture</h3>
+
+        <p>
+            The prohibition of torture is one of the clearest examples of
+            an absolute human-rights protection.
+        </p>
+
+        <p>
+            Torture cannot ordinarily be justified by arguing that it is
+            necessary to obtain information or protect national security.
+        </p>
+
+        <h3>Prohibition of Slavery</h3>
+
+        <p>
+            Human-rights law protects individuals from being treated as
+            property and prohibits slavery and the slave trade.
+        </p>
+
+        <h3>Freedom from Retroactive Criminal Punishment</h3>
+
+        <p>
+            The principle of legality protects individuals from being punished
+            for conduct that was not criminal when it occurred and generally
+            protects against a heavier criminal penalty than the one applicable
+            at the relevant time.
+        </p>
+
+    </section>
+
+
+    <!-- CARD 11 -->
+
+    <section class="card">
+
+        <div class="card-number">Card 11 of 15</div>
+
+        <h2>Emergencies and Derogation</h2>
+
+        <p>
+            Emergencies can create difficult questions concerning human rights.
+            Governments may have special powers during war or serious threats
+            to the life of a nation.
+        </p>
+
+        <h3>Derogation</h3>
+
+        <p>
+            Derogation refers to a temporary suspension or modification of
+            certain treaty obligations during a qualifying emergency.
+        </p>
+
+        <p>
+            Derogation is different from an ordinary restriction on a
+            qualified right.
+        </p>
+
+        <div class="warning">
+            Not every right can be derogated from. International human-rights
+            treaties protect certain fundamental rights even during emergencies.
+        </div>
+
+        <p>
+            For example, the ICCPR identifies certain rights that are
+            non-derogable during a qualifying public emergency.
+        </p>
+
+    </section>
+
+
+    <!-- CARD 12 -->
+
+    <section class="card">
+
+        <div class="card-number">Card 12 of 15</div>
+
+        <h2>State Power and Human-Rights Obligations</h2>
+
+        <p>
+            Human-rights law imposes both <strong>negative</strong> and
+            <strong>positive</strong> obligations on states.
+        </p>
+
+        <h3>Negative Obligations</h3>
+
+        <p>
+            The state must refrain from unjustifiably interfering with
+            protected rights.
+        </p>
+
+        <h3>Positive Obligations</h3>
+
+        <p>
+            The state may also be required to take reasonable measures to
+            protect individuals and make rights effective.
+        </p>
+
+        <div class="example">
+            Protecting individuals from torture may require more than simply
+            banning torture. States may also need effective laws, investigations,
+            accountability, and safeguards against abuse.
+        </div>
+
+    </section>
+
+
+    <!-- CARD 13 -->
+
+    <section class="card">
+
+        <div class="card-number">Card 13 of 15</div>
+
+        <h2>Human Rights, National Security, and Public Interests</h2>
+
+        <p>
+            Governments sometimes rely on national security, public safety,
+            public health, or the rights of others to justify restrictions
+            on qualified rights.
+        </p>
+
+        <p>
+            These objectives can sometimes constitute legitimate aims,
+            but they do not automatically make every restriction lawful.
+        </p>
+
+        <h3>The court may ask:</h3>
+
+        <ul>
+            <li>Was the restriction authorized by law?</li>
+            <li>Was the objective legitimate?</li>
+            <li>Was the restriction necessary?</li>
+            <li>Was it proportionate?</li>
+            <li>Were procedural safeguards followed?</li>
+        </ul>
+
+        <div class="highlight">
+            Public interest arguments must still operate inside the
+            human-rights framework.
+        </div>
+
+    </section>
+
+
+    <!-- CARD 14 -->
+
+    <section class="card">
+
+        <div class="card-number">Card 14 of 15</div>
+
+        <h2>Judicial Review and Margin of Appreciation</h2>
+
+        <h3>Judicial Review</h3>
+
+        <p>
+            Courts can review government restrictions on qualified rights.
+            They may determine whether the restriction satisfies the relevant
+            legal standards.
+        </p>
+
+        <h3>Margin of Appreciation</h3>
+
+        <p>
+            In European human-rights jurisprudence, the
+            <strong>margin of appreciation</strong> recognizes that national
+            authorities may have some discretion when balancing rights and
+            legitimate public interests.
+        </p>
+
+        <p>
+            The extent of that discretion can depend on the nature of the
+            right, the seriousness of the interference, and the circumstances
+            of the case.
+        </p>
+
+        <div class="warning">
+            A margin of appreciation does not give governments unlimited
+            freedom to restrict human rights.
+        </div>
+
+    </section>
+
+
+    <!-- CARD 15 -->
+
+    <section class="card">
+
+        <div class="card-number">Card 15 of 15</div>
+
+        <h2>Absolute vs. Qualified Rights</h2>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Absolute Rights</th>
+                        <th>Qualified Rights</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Cannot ordinarily be restricted.</td>
+                        <td>May be restricted in certain circumstances.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Receive especially strong protection.</td>
+                        <td>Restrictions are subject to defined legal requirements.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Cannot normally be balanced away by public interest arguments.</td>
+                        <td>May involve balancing competing interests.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Example: prohibition of torture.</td>
+                        <td>Example: freedom of expression.</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="highlight">
+            <strong>Key Takeaway:</strong>
+            Absolute rights generally cannot be justified away through
+            ordinary proportionality balancing, while qualified rights
+            may be restricted where the applicable legal requirements
+            are satisfied.
+        </div>
+
+        <p>
+            Always examine the exact wording of the relevant constitution,
+            statute, or human-rights instrument because the classification
+            and scope of rights can vary between legal systems.
+        </p>
+
+        <div class="example">
+            <strong>Remember:</strong><br><br>
+            Absolute Right → The state cannot ordinarily justify violating it
+            through ordinary balancing.<br><br>
+            Qualified Right → The state may restrict it when the restriction
+            is lawful, pursues a legitimate aim, is necessary, and is
+            proportionate.
+        </div>
+
+    </section>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="navigation">
+
+        <button class="nav-btn" id="prevBtn" onclick="changeCard(-1)">
+            ← Previous
+        </button>
+
+        <div class="counter" id="counter">
+            Card 1 of 15
+        </div>
+
+        <button class="nav-btn" id="nextBtn" onclick="changeCard(1)">
+            Next →
+        </button>
+
+    </div>
+
+
+    <!-- QUIZ AFTER LAST CARD -->
+
+    <section class="quiz" id="quiz">
+
+        <h2>Test Your Knowledge</h2>
+
+        <p>
+            Complete the questions below to test your understanding
+            of absolute and qualified human rights.
+        </p>
+
+
+        <div class="question">
+
+            <p>1. What is an absolute right?</p>
+
+            <label class="option">
+                <input type="radio" name="q1" value="a">
+                A right that the government may restrict whenever it wishes
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="b">
+                A right that cannot ordinarily be restricted
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="c">
+                A political privilege
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="d">
+                A right available only during emergencies
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <p>2. Which is an example of a qualified right?</p>
+
+            <label class="option">
+                <input type="radio" name="q2" value="a">
+                Freedom of expression
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="b">
+                Prohibition of torture
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="c">
+                Prohibition of slavery
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="d">
+                Freedom from retroactive criminal punishment
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <p>3. Which principle is especially important when restricting a qualified right?</p>
+
+            <label class="option">
+                <input type="radio" name="q3" value="a">
+                Political popularity
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="b">
+                Proportionality
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="c">
+                Government preference
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="d">
+                Public opinion alone
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <p>4. What does "legitimate aim" refer to?</p>
+
+            <label class="option">
+                <input type="radio" name="q4" value="a">
+                Any reason given by a government
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="b">
+                An objective recognized by the applicable legal framework
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="c">
+                A personal political preference
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="d">
+                A reason that never needs evidence
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <p>5. Which statement best describes proportionality?</p>
+
+            <label class="option">
+                <input type="radio" name="q5" value="a">
+                The government may always impose the strongest restriction
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="b">
+                A restriction should not normally go further than necessary
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="c">
+                Courts cannot review government restrictions
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="d">
+                Absolute rights must always be balanced
+            </label>
+
+        </div>
+
+
+        <button class="submit-btn" onclick="checkQuiz()">
+            Submit Quiz
+        </button>
+
+        <div id="quizResult"></div>
+
+    </section>
+
+
+    <!-- SOURCES -->
+
+    <section class="sources">
+
+        <h2>Sources</h2>
+
+        <ul>
+
+            <li>
+                United Nations, International Covenant on Civil and Political Rights,
+                particularly Articles 4, 7, 8, 15, 17, 18, 19, 21 and 22.
+            </li>
+
+            <li>
+                Council of Europe, European Convention on Human Rights,
+                particularly Articles 2, 3, 4, 8, 9, 10 and 11.
+            </li>
+
+            <li>
+                United Nations, Universal Declaration of Human Rights.
+            </li>
+
+            <li>
+                Office of the United Nations High Commissioner for Human Rights
+                (OHCHR), materials on international human-rights law and treaty protections.
+            </li>
+
+            <li>
+                European Court of Human Rights, materials concerning proportionality,
+                limitations on rights, and the margin of appreciation.
+            </li>
+
+            <li>
+                Cornell Law School Legal Information Institute, materials concerning
+                constitutional rights, proportionality, and human-rights law.
+            </li>
+
+        </ul>
+
+    </section>
+
+</div>
+
+
+<footer>
+    © 2026 Law Research Hub · Human Rights Notes
+</footer>
+
+
+<script>
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".card");
+const dots = document.querySelectorAll(".dot");
+
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+const counter = document.getElementById("counter");
+const quiz = document.getElementById("quiz");
+
+
+function showCard(index){
+
+    cards.forEach((card, i) => {
+        card.classList.toggle("active", i === index);
+    });
+
+    dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+    });
+
+    counter.textContent = "Card " + (index + 1) + " of " + cards.length;
+
+    prevBtn.disabled = index === 0;
+
+    if(index === cards.length - 1){
+
+        nextBtn.style.display = "none";
+        quiz.classList.add("active");
+
+    }else{
+
+        nextBtn.style.display = "block";
+        quiz.classList.remove("active");
+
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+function changeCard(direction){
+
+    const newIndex = currentCard + direction;
+
+    if(newIndex >= 0 && newIndex < cards.length){
+
+        currentCard = newIndex;
+        showCard(currentCard);
+
+    }
+
+}
+
+
+function checkQuiz(){
+
+    const answers = {
+        q1:"b",
+        q2:"a",
+        q3:"b",
+        q4:"b",
+        q5:"b"
+    };
+
+    let score = 0;
+
+    for(let question in answers){
+
+        const selected = document.querySelector(
+            'input[name="' + question + '"]:checked'
+        );
+
+        if(selected && selected.value === answers[question]){
+            score++;
+        }
+
+    }
+
+    const result = document.getElementById("quizResult");
+
+    if(score === 5){
+
+        result.textContent =
+        "Excellent! You scored 5/5. You have a strong understanding of absolute and qualified rights.";
+
+    }else if(score >= 3){
+
+        result.textContent =
+        "Good work! You scored " + score + "/5. Review the cards and try again to strengthen your understanding.";
+
+    }else{
+
+        result.textContent =
+        "You scored " + score + "/5. Review the notes above and try the quiz again.";
+
+    }
+
+}
+
+
+/* INITIALIZE */
+
+showCard(0);
+
+</script>
+
+</body>
+          </html>
