@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining state sovereignty, sovereign equality, territorial sovereignty, non-intervention, jurisdiction, treaties, human rights, and state responsibility.">
+
+<title>State Sovereignty | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+line-height:1.7;
+}
+
+/* COMPARISON */
+
+.comparison{
+width:100%;
+border-collapse:collapse;
+margin:20px 0;
+font-size:14px;
+}
+
+.comparison th,
+.comparison td{
+border:1px solid #ddd;
+padding:12px;
+text-align:left;
+vertical-align:top;
+}
+
+.comparison th{
+background:#0b1f3a;
+color:white;
+}
+
+.comparison tr:nth-child(even){
+background:#f5f7fa;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+.comparison{
+font-size:12px;
+}
+
+.comparison th,
+.comparison td{
+padding:8px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ State Sovereignty</h1>
+
+<p>
+International Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+STATE SOVEREIGNTY
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is State Sovereignty?</h2>
+
+<div class="definition">
+
+State sovereignty is the principle that a state possesses supreme legal authority within its territory and legal independence in its relations with other states.
+
+</div>
+
+<p>
+Sovereignty is one of the foundational principles of international law. It gives states authority to govern themselves while placing them within an international legal system.
+</p>
+
+<p>
+A sovereign state generally has authority to govern its territory, make and enforce laws, choose its political and economic systems, conduct foreign relations, and exercise jurisdiction within its legal authority.
+</p>
+
+<div class="definition">
+
+<strong>Key idea:</strong> Sovereignty means legal independence and authority — not unlimited freedom.
+
+</div>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · SOVEREIGN EQUALITY
+</div>
+
+<h2>Sovereign Equality</h2>
+
+<p>
+International law is based on a system of legally equal states.
+</p>
+
+<p>
+The United Nations Charter recognizes the principle of the sovereign equality of its members.
+</p>
+
+<p>
+States may differ enormously in their practical power, but those differences do not automatically create differences in their basic legal status.
+</p>
+
+<ul>
+
+<li>Population may differ.</li>
+
+<li>Economic strength may differ.</li>
+
+<li>Military power may differ.</li>
+
+<li>Territory may differ.</li>
+
+<li>Political influence may differ.</li>
+
+</ul>
+
+<div class="definition">
+
+<strong>Political power ≠ Legal equality</strong>
+
+<br><br>
+
+A small state can possess the same basic sovereign status under international law as a major world power.
+
+</div>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · TERRITORIAL SOVEREIGNTY
+</div>
+
+<h2>Territorial Sovereignty</h2>
+
+<p>
+Territorial sovereignty refers to a state's authority over its territory.
+</p>
+
+<p>
+Within its territory, a state generally has authority to:
+</p>
+
+<ul>
+
+<li>Make and enforce laws.</li>
+
+<li>Administer government.</li>
+
+<li>Regulate public institutions.</li>
+
+<li>Exercise jurisdiction.</li>
+
+<li>Manage public resources.</li>
+
+<li>Maintain internal order.</li>
+
+</ul>
+
+<p>
+Other states generally cannot exercise governmental authority within another state's territory without a lawful basis.
+</p>
+
+<div class="definition">
+
+Territorial sovereignty is closely connected to <strong>territorial integrity</strong> and <strong>political independence</strong>.
+
+</div>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · INTERNAL & EXTERNAL SOVEREIGNTY
+</div>
+
+<h2>Internal and External Sovereignty</h2>
+
+<h3>Internal Sovereignty</h3>
+
+<p>
+Internal sovereignty concerns a state's authority within its own territory.
+</p>
+
+<ul>
+
+<li>Create and enforce laws.</li>
+
+<li>Operate courts.</li>
+
+<li>Maintain public institutions.</li>
+
+<li>Regulate economic activity.</li>
+
+<li>Administer public services.</li>
+
+</ul>
+
+<h3>External Sovereignty</h3>
+
+<p>
+External sovereignty concerns a state's independence from other states.
+</p>
+
+<ul>
+
+<li>Conduct diplomatic relations.</li>
+
+<li>Enter international treaties.</li>
+
+<li>Join international organizations.</li>
+
+<li>Participate in international disputes.</li>
+
+<li>Determine foreign policy.</li>
+
+</ul>
+
+<div class="definition">
+
+<strong>Internal sovereignty = authority within the state.</strong><br><br>
+
+<strong>External sovereignty = independence from other states.</strong>
+
+</div>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · POLITICAL INDEPENDENCE
+</div>
+
+<h2>Political Independence</h2>
+
+<p>
+Political independence means that a state is generally free to determine its own political system and governmental structure without unlawful external control.
+</p>
+
+<p>
+A state may ordinarily determine its:
+</p>
+
+<ul>
+
+<li>Government.</li>
+
+<li>Constitutional structure.</li>
+
+<li>Political institutions.</li>
+
+<li>Economic system.</li>
+
+<li>Social policies.</li>
+
+</ul>
+
+<p>
+The UN Charter protects the political independence of states and prohibits certain threats or uses of force against it.
+</p>
+
+<div class="definition">
+
+Political independence protects a state's freedom to govern itself without unlawful external control.
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · NON-INTERVENTION
+</div>
+
+<h2>Sovereignty and Non-Intervention</h2>
+
+<p>
+A major consequence of sovereignty is the principle of non-intervention.
+</p>
+
+<p>
+Non-intervention means that one state should not unlawfully interfere with another state's sovereign affairs.
+</p>
+
+<p>
+Interference can concern:
+</p>
+
+<ul>
+
+<li>Political systems.</li>
+
+<li>Governmental institutions.</li>
+
+<li>Economic choices.</li>
+
+<li>Social systems.</li>
+
+<li>Cultural affairs.</li>
+
+<li>Internal political conflicts.</li>
+
+</ul>
+
+<p>
+The UN Charter protects matters essentially within domestic jurisdiction while also preserving the UN's authority to take enforcement measures under Chapter VII.
+</p>
+
+<div class="definition">
+
+<strong>Sovereignty protects independence from unlawful external interference.</strong>
+
+</div>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · USE OF FORCE
+</div>
+
+<h2>Sovereignty and Use of Force</h2>
+
+<p>
+State sovereignty is closely connected to the prohibition on the unlawful use of force.
+</p>
+
+<p>
+Article 2(4) of the UN Charter requires UN members to refrain from the threat or use of force against the territorial integrity or political independence of states, or in other ways inconsistent with the purposes of the United Nations.
+</p>
+
+<h3>Territorial Integrity</h3>
+
+<p>
+Territorial integrity means that a state's territory should not be unlawfully violated, seized, or divided through external force.
+</p>
+
+<p>
+This principle is particularly important in matters involving:
+</p>
+
+<ul>
+
+<li>Armed conflict.</li>
+
+<li>Occupation.</li>
+
+<li>Borders.</li>
+
+<li>Territorial disputes.</li>
+
+<li>Secession.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · SELF-DETERMINATION
+</div>
+
+<h2>Sovereignty and Self-Determination</h2>
+
+<p>
+Sovereignty is closely connected to the principle of self-determination of peoples.
+</p>
+
+<p>
+The UN Charter recognizes respect for equal rights and self-determination of peoples as one of the purposes of the United Nations.
+</p>
+
+<p>
+Self-determination generally concerns the right of peoples to determine their political status and pursue their economic, social, and cultural development.
+</p>
+
+<p>
+The relationship between sovereignty and self-determination can become particularly important in situations involving:
+</p>
+
+<ul>
+
+<li>Colonial rule.</li>
+
+<li>Foreign occupation.</li>
+
+<li>Independence movements.</li>
+
+<li>Secession disputes.</li>
+
+</ul>
+
+<div class="definition">
+
+The legal position depends heavily on the circumstances. Sovereignty and self-determination can sometimes raise competing legal considerations.
+
+</div>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · JURISDICTION
+</div>
+
+<h2>Sovereignty and Jurisdiction</h2>
+
+<p>
+Jurisdiction refers to a state's legal authority to regulate and adjudicate matters.
+</p>
+
+<p>
+Sovereignty provides an important foundation for jurisdiction.
+</p>
+
+<h3>Territorial Jurisdiction</h3>
+
+<p>
+A state generally has strong jurisdictional authority over conduct occurring within its territory.
+</p>
+
+<h3>Nationality Jurisdiction</h3>
+
+<p>
+A state may also exercise jurisdiction over its nationals in certain circumstances, including certain conduct committed abroad.
+</p>
+
+<h3>Other Bases</h3>
+
+<p>
+International law can recognize other jurisdictional bases, including effects of conduct and protective interests.
+</p>
+
+<div class="definition">
+
+The extent of a state's jurisdiction is limited by international law.
+
+</div>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · TREATIES
+</div>
+
+<h2>Sovereignty and International Treaties</h2>
+
+<p>
+Sovereignty allows states to decide whether to enter international treaties, subject to relevant international and domestic legal processes.
+</p>
+
+<p>
+Once a state validly consents to a treaty, however, it becomes bound by its international obligations according to the treaty and applicable international law.
+</p>
+
+<div class="definition">
+
+<strong>Sovereignty</strong><br>
+State can consent to international obligations.
+
+<br><br>
+
+↓
+
+<br><br>
+
+<strong>Treaty obligation</strong><br>
+State must perform those obligations in good faith.
+
+</div>
+
+<p>
+The Vienna Convention on the Law of Treaties expresses this through the principle of <em>pacta sunt servanda</em>: treaties in force are binding on their parties and must be performed in good faith.
+</p>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · LIMITS
+</div>
+
+<h2>Sovereignty Does Not Mean Unlimited Power</h2>
+
+<p>
+Sovereignty is not the same as unlimited authority.
+</p>
+
+<p>
+A sovereign state remains subject to applicable international law.
+</p>
+
+<ul>
+
+<li>International treaties.</li>
+
+<li>Customary international law.</li>
+
+<li>Rules concerning the use of force.</li>
+
+<li>Binding human-rights obligations.</li>
+
+<li>Other applicable international obligations.</li>
+
+</ul>
+
+<p>
+For example, if a state accepts a binding human-rights treaty, it cannot simply invoke sovereignty as an excuse for failing to comply with that treaty.
+</p>
+
+<div class="definition">
+
+<strong>Sovereignty = legal independence, not unlimited freedom.</strong>
+
+</div>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · HUMAN RIGHTS
+</div>
+
+<h2>Sovereignty and Human Rights</h2>
+
+<p>
+Modern international law does not treat sovereignty as an unlimited justification for violating human rights.
+</p>
+
+<p>
+States may accept international human-rights obligations through treaties. Once bound, they must comply with those obligations.
+</p>
+
+<p>
+The UN Charter also identifies respect for human rights and fundamental freedoms as one of the purposes of the United Nations.
+</p>
+
+<div class="definition">
+
+A state can remain sovereign while simultaneously being bound by international human-rights obligations.
+
+</div>
+
+<h3>Example</h3>
+
+<p>
+Imagine that State A joins a human-rights treaty protecting a particular right. If State A later claims that the treaty cannot apply because the matter is "domestic," sovereignty would not automatically remove the treaty obligation.
+</p>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · STATE RESPONSIBILITY
+</div>
+
+<h2>Sovereignty and State Responsibility</h2>
+
+<p>
+Sovereignty does not prevent a state from incurring international responsibility.
+</p>
+
+<p>
+If a state breaches an international obligation, international law may hold that state responsible.
+</p>
+
+<div class="definition">
+
+A state may have sovereign authority over its territory, but if its authorities breach a binding international obligation, sovereignty does not automatically excuse the breach.
+
+</div>
+
+<h3>The Relationship</h3>
+
+<p>
+The connection can be understood as:
+</p>
+
+<div class="definition">
+
+Sovereignty
+
+↓
+
+State possesses international legal personality
+
+↓
+
+State accepts international obligations
+
+↓
+
+State must comply with those obligations
+
+↓
+
+Breach can create state responsibility
+
+</div>
+
+<p>
+Therefore, sovereignty and accountability are not opposites.
+</p>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · RELATED PRINCIPLES
+</div>
+
+<h2>Related Legal Principles</h2>
+
+<table class="comparison">
+
+<tr>
+<th>Concept</th>
+<th>Connection to Sovereignty</th>
+</tr>
+
+<tr>
+<td><strong>Sovereign Equality</strong></td>
+<td>States have equal legal status even when their practical power differs.</td>
+</tr>
+
+<tr>
+<td><strong>Territorial Integrity</strong></td>
+<td>Protects the territorial unity of states from unlawful external force.</td>
+</tr>
+
+<tr>
+<td><strong>Political Independence</strong></td>
+<td>Protects a state's freedom to determine its political affairs.</td>
+</tr>
+
+<tr>
+<td><strong>Non-Intervention</strong></td>
+<td>Restricts unlawful interference in another state's sovereign affairs.</td>
+</tr>
+
+<tr>
+<td><strong>Self-Determination</strong></td>
+<td>Concerns the right of peoples to determine their political status in recognized circumstances.</td>
+</tr>
+
+<tr>
+<td><strong>State Responsibility</strong></td>
+<td>Allows responsibility to arise when a state breaches an international obligation.</td>
+</tr>
+
+<tr>
+<td><strong>Sovereign Immunity</strong></td>
+<td>Concerns when a state may be protected from foreign court jurisdiction or enforcement.</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+State sovereignty is the principle that a state possesses legal independence and authority over its territory and internal affairs while having equal legal status with other states.
+
+</div>
+
+<p>
+Sovereignty includes:
+</p>
+
+<ul>
+
+<li>Internal authority.</li>
+
+<li>External independence.</li>
+
+<li>Territorial jurisdiction.</li>
+
+<li>Political independence.</li>
+
+<li>Sovereign equality.</li>
+
+</ul>
+
+<p>
+However, sovereignty operates within international law. States remain bound by applicable treaties, customary international law, rules concerning the use of force, and other international obligations.
+</p>
+
+<div class="definition">
+
+<strong>State Sovereignty = A state's legal independence and authority, exercised within the limits of international law.</strong>
+
+</div>
+
+<h3>Questions to Ask in a Sovereignty Case</h3>
+
+<ol>
+
+<li>Does the state have jurisdiction over the matter?</li>
+
+<li>Is another state interfering with its sovereign affairs?</li>
+
+<li>Is the state's territorial or political independence affected?</li>
+
+<li>Has the state accepted international obligations relevant to the issue?</li>
+
+<li>Does international law permit the conduct in question?</li>
+
+</ol>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>United Nations, <em>Charter of the United Nations</em>, particularly Articles 1 and 2.</li>
+
+<li>United Nations General Assembly, <em>Declaration on Principles of International Law concerning Friendly Relations and Cooperation among States</em>.</li>
+
+<li>United Nations, <em>Declaration on the Inadmissibility of Intervention in the Domestic Affairs of States and the Protection of Their Independence and Sovereignty</em>.</li>
+
+<li>United Nations, materials concerning the UN Charter, sovereign equality, territorial integrity, political independence, and international rule of law.</li>
+
+<li>Organization of American States, <em>Charter of the Organization of American States</em>, Article 10.</li>
+
+<li>Vienna Convention on the Law of Treaties, Article 26, concerning <em>pacta sunt servanda</em>.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>State Sovereignty</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+/* Swipe left = next card */
+/* Swipe right = previous card */
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What does state sovereignty primarily mean?",
+options:[
+"That states can ignore all international law",
+"That a state possesses legal independence and authority within its territory",
+"That powerful states have greater legal rights",
+"That states cannot enter international treaties"
+],
+answer:1
+},
+
+{
+question:"What does sovereign equality mean?",
+options:[
+"All states have the same population",
+"All states have identical military power",
+"States have equal legal status despite differences in practical power",
+"All states have identical economic systems"
+],
+answer:2
+},
+
+{
+question:"What does territorial sovereignty primarily concern?",
+options:[
+"A state's authority over its territory",
+"Only a state's foreign policy",
+"Only international organizations",
+"The personal rights of diplomats"
+],
+answer:0
+},
+
+{
+question:"What is the principle of non-intervention?",
+options:[
+"States must never communicate with each other",
+"States should not unlawfully interfere in another state's sovereign affairs",
+"States cannot participate in international organizations",
+"States cannot enter treaties"
+],
+answer:1
+},
+
+{
+question:"Which statement best describes the relationship between sovereignty and international law?",
+options:[
+"Sovereignty allows states to ignore international obligations",
+"Sovereignty means international law does not apply to states",
+"Sovereignty provides independence, but states remain bound by applicable international obligations",
+"Only powerful states are bound by international law"
+],
+answer:2
+}
+
+];
+
+let currentQuestion = 0;
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>State Sovereignty</strong> quiz.
+</p>
+
+<p>
+You can now return to the International Law section and explore another legal concept.
+</p>
+
+<a href="international-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to International Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
