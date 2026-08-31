@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining treaties, treaty formation, consent, reservations, interpretation, termination, jus cogens, and treaty obligations under international law.">
+
+<title>Treaties | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:3px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* COMPARISON */
+
+.comparison{
+width:100%;
+border-collapse:collapse;
+margin:20px 0;
+font-size:15px;
+}
+
+.comparison th{
+background:#0b1f3a;
+color:white;
+padding:12px;
+text-align:left;
+}
+
+.comparison td{
+padding:12px;
+border:1px solid #ddd;
+vertical-align:top;
+}
+
+.comparison tr:nth-child(even){
+background:#f8f9fb;
+}
+
+/* FORMULA */
+
+.formula{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-weight:bold;
+text-align:center;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+.comparison{
+font-size:13px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>🌍 Treaties</h1>
+
+<p>
+International Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+TREATIES
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is a Treaty?</h2>
+
+<div class="definition">
+
+A treaty is a formal international agreement concluded between states or, where legally permitted, between states and international organizations, and governed by international law.
+
+</div>
+
+<p>
+Treaties are one of the most important sources of international legal obligations.
+</p>
+
+<p>
+They allow states to create formal commitments concerning matters such as human rights, trade, peace and security, diplomatic relations, environmental protection, international cooperation, borders, criminal justice, and international organizations.
+</p>
+
+<div class="formula">
+
+Treaty → Consent → Legal Obligation → Performance
+
+</div>
+
+<p>
+The central question of treaty law is:
+<strong>How do states create binding legal obligations between themselves under international law?</strong>
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · TREATY LAW
+</div>
+
+<h2>Sources of Treaty Law</h2>
+
+<p>
+The principal international framework governing treaties between states is the <strong>Vienna Convention on the Law of Treaties (VCLT) 1969</strong>.
+</p>
+
+<p>
+The Convention establishes rules concerning:
+</p>
+
+<ul>
+
+<li>Treaty formation.</li>
+
+<li>Consent to be bound.</li>
+
+<li>Reservations.</li>
+
+<li>Treaty interpretation.</li>
+
+<li>Amendment and modification.</li>
+
+<li>Invalidity.</li>
+
+<li>Termination.</li>
+
+<li>Withdrawal.</li>
+
+</ul>
+
+<p>
+Many rules contained in the VCLT also reflect customary international law.
+</p>
+
+<div class="definition">
+
+Treaty law is therefore based on both treaty rules and relevant rules of customary international law.
+
+</div>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · TYPES OF AGREEMENTS
+</div>
+
+<h2>Treaty vs. Ordinary Agreement</h2>
+
+<p>
+Not every international document is necessarily a treaty.
+</p>
+
+<table class="comparison">
+
+<tr>
+<th>Treaty</th>
+<th>Ordinary / Non-Binding Agreement</th>
+</tr>
+
+<tr>
+<td>
+Intended to create legal obligations governed by international law.
+</td>
+
+<td>
+May express political intentions or cooperation without creating the same type of international legal obligations.
+</td>
+</tr>
+
+<tr>
+<td>
+Governed by international law.
+</td>
+
+<td>
+May include political declarations, joint statements, or certain memoranda of understanding.
+</td>
+</tr>
+
+</table>
+
+<p>
+The legal effect of an international document depends on the intention of the parties and the applicable international law.
+</p>
+
+<div class="definition">
+
+The label given to an agreement is not necessarily decisive. Its substance and legal intention matter.
+
+</div>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · PARTIES
+</div>
+
+<h2>Who Can Become a Party?</h2>
+
+<p>
+States are the principal participants in treaty-making.
+</p>
+
+<p>
+International organizations may also conclude treaties where they possess the necessary legal capacity.
+</p>
+
+<div class="formula">
+
+State ↔ State
+
+<br><br>
+
+State ↔ International Organization
+
+</div>
+
+<p>
+The legal rules applicable to treaties involving international organizations can differ from those governing treaties exclusively between states.
+</p>
+
+<h3>International Organizations</h3>
+
+<p>
+International organizations can participate in treaty-making, facilitate negotiations, monitor implementation, or perform administrative functions such as acting as depositaries.
+</p>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · FORMATION
+</div>
+
+<h2>Treaty-Making Process</h2>
+
+<p>
+Treaty-making can involve several stages. The exact procedure depends on the treaty and the constitutional rules of the participating states.
+</p>
+
+<ol>
+
+<li>Negotiation.</li>
+
+<li>Adoption of the text.</li>
+
+<li>Authentication of the text.</li>
+
+<li>Signature.</li>
+
+<li>Ratification or another form of consent.</li>
+
+<li>Entry into force.</li>
+
+<li>Implementation and performance.</li>
+
+</ol>
+
+<div class="definition">
+
+Not every treaty follows exactly the same sequence. The treaty itself and applicable international law determine the precise requirements.
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · CONSENT
+</div>
+
+<h2>Consent to Be Bound</h2>
+
+<p>
+A central requirement of treaty law is the state's consent to be bound.
+</p>
+
+<p>
+A state does not ordinarily become a treaty party simply because another state signs the treaty.
+</p>
+
+<p>
+Consent may be expressed through:
+</p>
+
+<ul>
+
+<li>Signature.</li>
+
+<li>Exchange of instruments.</li>
+
+<li>Ratification.</li>
+
+<li>Acceptance.</li>
+
+<li>Approval.</li>
+
+<li>Accession.</li>
+
+<li>Another agreed method.</li>
+
+</ul>
+
+<p>
+The treaty and applicable international law determine which method is required.
+</p>
+
+<div class="definition">
+
+Consent is fundamental because treaties generally create international obligations through the agreement of the parties.
+
+</div>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · SIGNATURE & RATIFICATION
+</div>
+
+<h2>Signature, Ratification & Accession</h2>
+
+<h3>Signature</h3>
+
+<p>
+Signature may indicate participation in the treaty-making process and can have certain legal effects. However, signature does not always mean that the state is fully bound by the treaty.
+</p>
+
+<h3>Ratification</h3>
+
+<p>
+Ratification is the formal international act by which a state confirms its consent to be bound after signature where ratification is required.
+</p>
+
+<h3>Accession</h3>
+
+<p>
+Accession allows a state that did not sign the treaty during the original signing period to become a party where the treaty permits it.
+</p>
+
+<div class="definition">
+
+The precise legal effect of signature, ratification, and accession depends on the treaty and applicable international law.
+
+</div>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · ENTRY INTO FORCE
+</div>
+
+<h2>Entry Into Force</h2>
+
+<p>
+A treaty becomes legally operative according to its entry-into-force provisions.
+</p>
+
+<p>
+A treaty may specify:
+</p>
+
+<ul>
+
+<li>A particular date.</li>
+
+<li>A required number of ratifications.</li>
+
+<li>Specific conditions that must be satisfied.</li>
+
+<li>Another agreed mechanism.</li>
+
+</ul>
+
+<p>
+Before entry into force, the treaty may not yet impose its full substantive obligations on the parties.
+</p>
+
+<div class="formula">
+
+Consent + Required Conditions → Entry Into Force → Treaty Obligations
+
+</div>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · PACTA SUNT SERVANDA
+</div>
+
+<h2>Agreements Must Be Kept</h2>
+
+<div class="definition">
+
+<strong>Pacta sunt servanda</strong> means that agreements must be kept.
+
+</div>
+
+<p>
+Article 26 of the Vienna Convention on the Law of Treaties provides that every treaty in force is binding upon its parties and must be performed by them in good faith.
+</p>
+
+<h3>Good Faith</h3>
+
+<p>
+States should not deliberately manipulate treaty obligations or use bad-faith conduct to undermine their commitments.
+</p>
+
+<p>
+Good faith supports:
+</p>
+
+<ul>
+
+<li>Trust between states.</li>
+
+<li>Stability of international relations.</li>
+
+<li>Consistent treaty performance.</li>
+
+<li>Respect for international obligations.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · RESERVATIONS
+</div>
+
+<h2>Reservations</h2>
+
+<div class="definition">
+
+A reservation is a unilateral statement made by a state when expressing consent to be bound by a treaty that seeks to exclude or modify the legal effect of certain treaty provisions in their application to that state.
+
+</div>
+
+<p>
+Reservations are particularly important in multilateral treaties.
+</p>
+
+<h3>When Can a Reservation Be Invalid?</h3>
+
+<p>
+A reservation may be impermissible when:
+</p>
+
+<ul>
+
+<li>The treaty prohibits reservations.</li>
+
+<li>The treaty permits only specified reservations and the proposed reservation falls outside them.</li>
+
+<li>The reservation is incompatible with the object and purpose of the treaty.</li>
+
+</ul>
+
+<p>
+Other states may also object to reservations, which can affect the legal relationship between the states.
+</p>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · INTERPRETATION
+</div>
+
+<h2>Treaty Interpretation</h2>
+
+<p>
+Treaties must be interpreted to determine the meaning of their provisions.
+</p>
+
+<p>
+The Vienna Convention establishes important general rules of interpretation.
+</p>
+
+<h3>Ordinary Meaning</h3>
+
+<p>
+Terms are generally interpreted according to their ordinary meaning unless a special meaning was intended.
+</p>
+
+<h3>Context</h3>
+
+<p>
+Interpretation considers the context of the provision, including the treaty's text, preamble, annexes, and certain related agreements and instruments.
+</p>
+
+<h3>Object and Purpose</h3>
+
+<p>
+Treaties are interpreted in light of their object and purpose.
+</p>
+
+<div class="definition">
+
+Treaty interpretation is therefore more than examining one isolated word. Text, context, and object and purpose must be considered together.
+
+</div>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · INTERPRETATION
+</div>
+
+<h2>Further Interpretive Materials</h2>
+
+<p>
+Where appropriate, interpreters may consider supplementary means of interpretation.
+</p>
+
+<h3>Preparatory Work</h3>
+
+<p>
+The preparatory work of the treaty can help confirm a meaning or resolve ambiguity.
+</p>
+
+<h3>Circumstances of Conclusion</h3>
+
+<p>
+The circumstances in which the treaty was concluded may also provide relevant information.
+</p>
+
+<h3>Subsequent Agreement and Practice</h3>
+
+<p>
+Treaty interpretation can also take account of:
+</p>
+
+<ul>
+
+<li>Subsequent agreements between the parties.</li>
+
+<li>Subsequent practice establishing agreement concerning interpretation.</li>
+
+<li>Relevant rules of international law applicable between the parties.</li>
+
+</ul>
+
+<div class="formula">
+
+Text + Context + Object & Purpose + Relevant Subsequent Practice
+
+</div>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · AMENDMENT & TERMINATION
+</div>
+
+<h2>Changing or Ending Treaties</h2>
+
+<h3>Amendment</h3>
+
+<p>
+A treaty may be amended according to procedures established by the treaty or applicable international law.
+</p>
+
+<h3>Modification</h3>
+
+<p>
+Modification may allow some parties to alter the operation of a treaty among themselves where international law permits it.
+</p>
+
+<h3>Withdrawal</h3>
+
+<p>
+Some treaties allow a state to withdraw according to specified procedures, such as notice requirements or waiting periods.
+</p>
+
+<h3>Termination</h3>
+
+<p>
+A treaty may terminate in circumstances recognized by the treaty or international law, including agreement of the parties, expiration, or certain serious breaches.
+</p>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · INVALIDITY & JUS COGENS
+</div>
+
+<h2>Limits on Treaty-Making</h2>
+
+<p>
+Treaty-making power is not unlimited.
+</p>
+
+<h3>Invalidity</h3>
+
+<p>
+A treaty may be invalid in limited circumstances, including:
+</p>
+
+<ul>
+
+<li>Error.</li>
+
+<li>Fraud.</li>
+
+<li>Corruption of a state representative.</li>
+
+<li>Coercion of a representative.</li>
+
+<li>Coercion of a state by threat or use of force.</li>
+
+<li>Conflict with a peremptory norm of general international law.</li>
+
+</ul>
+
+<h3>Jus Cogens</h3>
+
+<div class="definition">
+
+Jus cogens refers to peremptory norms of general international law from which no derogation is permitted.
+
+</div>
+
+<p>
+Examples commonly associated with jus cogens include prohibitions against genocide, slavery, torture, and aggression.
+</p>
+
+<p>
+A treaty that conflicts with an existing peremptory norm is invalid according to the applicable rules of international law.
+</p>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · KEY TAKEAWAY
+</div>
+
+<h2>Why Treaties Matter</h2>
+
+<p>
+Treaties provide one of the central mechanisms through which states create formal international legal obligations.
+</p>
+
+<p>
+They can regulate:
+</p>
+
+<ul>
+
+<li>Human rights.</li>
+
+<li>Trade.</li>
+
+<li>Peace and security.</li>
+
+<li>Environmental protection.</li>
+
+<li>Diplomatic relations.</li>
+
+<li>International cooperation.</li>
+
+<li>International criminal justice.</li>
+
+<li>Refugee protection.</li>
+
+</ul>
+
+<div class="formula">
+
+Negotiation → Adoption → Signature → Consent → Entry Into Force → Performance
+
+</div>
+
+<h3>Key Principles</h3>
+
+<ul>
+
+<li><strong>Consent:</strong> States must validly consent to be bound.</li>
+
+<li><strong>Pacta sunt servanda:</strong> Treaties in force are binding and must be performed in good faith.</li>
+
+<li><strong>Interpretation:</strong> Treaties are interpreted according to international legal rules.</li>
+
+<li><strong>Reservations:</strong> Reservations are subject to international-law limits.</li>
+
+<li><strong>State responsibility:</strong> Breach of a treaty obligation can give rise to international responsibility.</li>
+
+<li><strong>Jus cogens:</strong> Treaty obligations cannot override applicable peremptory norms.</li>
+
+</ul>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>United Nations, Vienna Convention on the Law of Treaties, 1969.</li>
+
+<li>United Nations, Charter of the United Nations, particularly Article 102.</li>
+
+<li>United Nations Treaty Collection.</li>
+
+<li>International Court of Justice, materials and judgments concerning treaties and treaty interpretation.</li>
+
+<li>United Nations International Law Commission.</li>
+
+<li>Council of Europe, materials concerning international treaties and the European Convention on Human Rights.</li>
+
+<li>Constitution of the Federal Democratic Republic of Ethiopia, provisions concerning international agreements.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Treaties</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 7
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+
+/* NEXT CARD */
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+
+/* PREVIOUS CARD */
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is a treaty?",
+options:[
+"A political speech made by a government",
+"A formal international agreement governed by international law",
+"A domestic criminal statute",
+"A court judgment"
+],
+answer:1
+},
+
+{
+question:"Which instrument primarily governs treaties between states?",
+options:[
+"The Vienna Convention on the Law of Treaties",
+"The Universal Declaration of Human Rights",
+"The Geneva Declaration",
+"The Rome Statute only"
+],
+answer:0
+},
+
+{
+question:"Which of the following can express consent to be bound by a treaty?",
+options:[
+"Ratification",
+"Political disagreement",
+"Domestic debate alone",
+"Media publication"
+],
+answer:0
+},
+
+{
+question:"What does pacta sunt servanda mean?",
+options:[
+"States may ignore treaties whenever they wish",
+"Treaties must be interpreted only politically",
+"Agreements must be kept and treaties must be performed in good faith",
+"Treaties automatically expire after one year"
+],
+answer:2
+},
+
+{
+question:"What is a reservation?",
+options:[
+"A unilateral statement seeking to exclude or modify the legal effect of certain treaty provisions",
+"A court's final judgment",
+"A declaration of war",
+"A domestic constitutional amendment"
+],
+answer:0
+},
+
+{
+question:"Which of the following is relevant to treaty interpretation?",
+options:[
+"Only the personal opinion of one diplomat",
+"The ordinary meaning, context, and object and purpose of the treaty",
+"Only the treaty's title",
+"Only domestic political speeches"
+],
+answer:1
+},
+
+{
+question:"What does jus cogens refer to?",
+options:[
+"Optional political agreements",
+"Peremptory norms of general international law from which no derogation is permitted",
+"Domestic administrative rules",
+"Non-binding diplomatic statements"
+],
+answer:1
+}
+
+];
+
+let currentQuestion = 0;
+
+
+/* START QUIZ */
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+
+document.getElementById("noteNavigation").style.display = "none";
+
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+
+/* QUIZ RESULT */
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Treaties</strong> quiz.
+</p>
+
+<p>
+You can now return to the International Law section and explore another topic.
+</p>
+
+<a href="international-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to International Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
