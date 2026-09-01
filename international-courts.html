@@ -1,0 +1,1112 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Interactive legal note explaining international courts, jurisdiction, the ICJ, ICC, regional human-rights courts, ITLOS, arbitration, admissibility, evidence, remedies, and international judicial enforcement."><title>International Courts | Law Research Hub</title><style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:3px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* COMPARISON */
+
+.comparison{
+width:100%;
+border-collapse:collapse;
+margin:20px 0;
+font-size:15px;
+}
+
+.comparison th{
+background:#0b1f3a;
+color:white;
+padding:12px;
+text-align:left;
+}
+
+.comparison td{
+padding:12px;
+border:1px solid #ddd;
+vertical-align:top;
+}
+
+.comparison tr:nth-child(even){
+background:#f8f9fb;
+}
+
+/* FORMULA */
+
+.formula{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-weight:bold;
+text-align:center;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+.comparison{
+font-size:13px;
+}
+
+}
+
+</style></head><body><!-- NAVIGATION --><nav><a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav><!-- HEADER --><header><h1>⚖️ International Courts</h1><p>
+International Law · Interactive Legal Note
+</p></header><!-- PROGRESS --><div class="progress-area" id="progressArea"><div class="progress-title">
+INTERNATIONAL COURTS
+</div><div class="progress-dots" id="progressDots"><span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div></div><!-- NOTE CARDS --><div class="swipe-container" id="notesSection"><div class="card-wrapper"><!-- CARD 1 --><div class="note-card active"><div class="card-number">
+CARD 1 · DEFINITION
+</div><h2>What Are International Courts?</h2><div class="definition">International courts are judicial institutions established under international law to decide legal disputes, interpret international rules, determine responsibility, and, in some cases, protect individual rights.
+
+</div><p>
+Different international courts have different jurisdictions, legal mandates, parties, subject matters, procedures, and remedies.
+</p><p>
+Some primarily hear disputes between states. Others can hear cases involving individuals, international organizations, or other entities depending on their legal framework.
+</p><div class="formula">Which court has authority? → What can it decide? → What remedy is available?
+
+</div><p>
+This principle is fundamental to international litigation because there is no single international court with authority over every international dispute.
+</p></div><!-- CARD 2 --><div class="note-card"><div class="card-number">
+CARD 2 · IMPORTANCE
+</div><h2>Why International Courts Matter</h2><p>
+International courts help ensure that international law can be interpreted and applied through legal procedures rather than relying entirely on political negotiation.
+</p><p>
+They can:
+</p><ul><li>Resolve international disputes.</li><li>Interpret treaties.</li><li>Determine whether international obligations have been breached.</li><li>Develop international legal principles through judgments.</li><li>Protect human rights in certain regional systems.</li><li>Hold individuals criminally responsible under international criminal law.</li><li>Order or award certain remedies.</li></ul><div class="definition">International courts therefore contribute to the international rule of law by providing judicial mechanisms for resolving legal disputes.
+
+</div><h3>Courts vs. Domestic Courts</h3><p>
+A domestic court normally operates within the legal system of one state. An international court operates under an international legal instrument and exercises the jurisdiction provided by that instrument.
+</p></div><!-- CARD 3 --><div class="note-card"><div class="card-number">
+CARD 3 · JURISDICTION
+</div><h2>International Jurisdiction</h2><div class="definition">Jurisdiction means the legal authority of a court to hear and decide a case.
+
+</div><p>
+Before considering the merits of a dispute, an international court generally needs to determine whether it has jurisdiction.
+</p><p>
+Jurisdiction can concern:
+</p><ul><li>The parties.</li><li>The subject matter.</li><li>The relevant time period.</li><li>The territorial scope.</li><li>The legal basis for bringing the case.</li></ul><div class="formula">Who? + What? + When? + Where? + Why does this court have authority?
+
+</div><p>
+Jurisdiction is therefore one of the most important preliminary issues in international litigation.
+</p></div><!-- CARD 4 --><div class="note-card"><div class="card-number">
+CARD 4 · CONSENT
+</div><h2>Consent and International Jurisdiction</h2><p>
+Unlike domestic courts, international courts often depend significantly on state consent.
+</p><p>
+A state may consent to international jurisdiction through:
+</p><ul><li>A treaty.</li><li>A special agreement.</li><li>A declaration.</li><li>An optional clause.</li><li>A compromissory clause.</li><li>Membership in an international legal system, depending on its rules.</li></ul><div class="definition">A state cannot generally be assumed to have accepted the jurisdiction of every international court.
+
+</div><p>
+The exact basis of jurisdiction depends on the legal instrument establishing the particular court.
+</p><h3>Why Consent Matters</h3><p>
+Once jurisdiction has been validly accepted, the state may be bound by the court's governing legal framework.
+</p></div><!-- CARD 5 --><div class="note-card"><div class="card-number">
+CARD 5 · ICJ</div><h2>International Court of Justice</h2><p>
+The <strong>International Court of Justice (ICJ)</strong> is the principal judicial organ of the United Nations.
+</p><p>
+It was established by the UN Charter and operates under the Statute of the International Court of Justice.
+</p><p>
+The ICJ primarily deals with:
+</p><ul><li>Disputes between states.</li><li>Advisory opinions on legal questions referred to it by authorized United Nations organs and agencies.</li></ul><h3>Parties Before the ICJ</h3><p>
+Only states can be parties in contentious cases before the ICJ.
+</p><div class="formula">State A v. State B → Possible ICJ contentious case
+
+<br><br>
+
+Individual A v. State B → Not an ordinary ICJ contentious case
+
+</div><p>
+Individuals and private companies cannot directly bring ordinary contentious cases before the ICJ.
+</p></div><!-- CARD 6 --><div class="note-card"><div class="card-number">
+CARD 6 · ICJ PROCEDURE</div><h2>ICJ Cases and Advisory Opinions</h2><h3>Contentious Cases</h3><p>
+In a contentious case, the ICJ determines a legal dispute between states.
+</p><p>
+Cases may concern:
+</p><ul><li>Treaty interpretation.</li><li>State responsibility.</li><li>Territorial disputes.</li><li>Diplomatic relations.</li><li>Use of force.</li><li>Genocide.</li><li>Maritime boundaries.</li><li>Other questions of international law.</li></ul><h3>Advisory Opinions</h3><p>
+The ICJ can also issue advisory opinions on legal questions requested by the UN General Assembly, Security Council, and certain authorized UN agencies and organizations.
+</p><div class="definition">An advisory opinion is different from a contentious judgment between opposing states, although advisory opinions can have significant legal and interpretive importance.
+
+</div></div><!-- CARD 7 --><div class="note-card"><div class="card-number">
+CARD 7 · ICJ LAW</div><h2>ICJ Sources, Judgments & State Responsibility</h2><p>
+Under Article 38 of the ICJ Statute, the Court may consider:
+</p><ul><li>International conventions.</li><li>International custom.</li><li>General principles of law.</li><li>Judicial decisions and scholarly writings as subsidiary means for determining rules of law.</li></ul><h3>Judgments</h3><p>
+An ICJ judgment is legally binding on the parties to that particular case under the conditions established by the Court's Statute.
+</p><p>
+The ICJ does not operate under a strict doctrine of <strong>stare decisis</strong>. Previous decisions can nevertheless be highly persuasive when interpreting international law.
+</p><p>
+Article 59 of the ICJ Statute provides that the decision of the Court has binding force between the parties and in respect of that particular case.
+</p><h3>State Responsibility</h3><p>
+Where the Court has jurisdiction, it can determine whether a state has breached an international obligation and establish the appropriate legal consequences.
+</p></div><!-- CARD 8 --><div class="note-card"><div class="card-number">
+CARD 8 · ICC</div><h2>International Criminal Court</h2><p>
+The <strong>International Criminal Court (ICC)</strong> is different from the ICJ because it focuses on <strong>individual criminal responsibility</strong>, not primarily state responsibility.
+</p><p>
+Its jurisdiction operates within the framework of the Rome Statute and includes specified international crimes.
+</p><ul><li>Genocide.</li><li>Crimes against humanity.</li><li>War crimes.</li><li>The crime of aggression, subject to applicable jurisdictional rules.</li></ul><div class="comparison"><table class="comparison"><tr>
+<th>ICJ</th>
+<th>ICC</th>
+</tr><tr>
+<td>Mainly disputes between states.</td>
+<td>Individual criminal responsibility.</td>
+</tr><tr>
+<td>Principal judicial organ of the UN.</td>
+<td>Independent international criminal court created by the Rome Statute.</td>
+</tr><tr>
+<td>States are parties in contentious cases.</td>
+<td>Individuals may be prosecuted as accused persons.</td>
+</tr><tr>
+<td>Can address state responsibility.</td>
+<td>Determines individual criminal responsibility.</td>
+</tr></table></div><div class="formula">ICJ = State Responsibility
+
+<br><br>
+
+ICC = Individual Criminal Responsibility
+
+</div></div><!-- CARD 9 --><div class="note-card"><div class="card-number">
+CARD 9 · HUMAN RIGHTS</div><h2>Regional Human-Rights Courts</h2><p>
+Some international courts operate at the regional level and focus primarily on human-rights protection.
+</p><p>
+Important examples include:
+</p><ul><li><strong>European Court of Human Rights (ECtHR)</strong>.</li><li><strong>Inter-American Court of Human Rights</strong>.</li><li><strong>African Court on Human and Peoples' Rights</strong>.</li></ul><h3>European Court of Human Rights</h3><p>
+The ECtHR interprets and applies the European Convention on Human Rights.
+</p><p>
+It can hear:
+</p><ul><li>Individual applications.</li><li>Inter-State cases.</li></ul><div class="definition">Unlike the ICJ, the ECtHR can receive individual applications within the Convention system when the applicable procedural and admissibility requirements are satisfied.
+
+</div><h3>Individual Applications</h3><p>
+An individual who claims to be a victim of a Convention violation may apply if requirements such as victim status, exhaustion of domestic remedies, applicable time limits, and jurisdictional requirements are satisfied.
+</p></div><!-- CARD 10 --><div class="note-card"><div class="card-number">
+CARD 10 · REGIONAL COURTS</div><h2>Inter-American & African Courts</h2><h3>Inter-American Court of Human Rights</h3><p>
+The Inter-American Court operates within the Inter-American human-rights system and interprets and applies the American Convention on Human Rights and other applicable instruments within its jurisdiction.
+</p><p>
+Its work can concern:
+</p><ul><li>Right to life.</li><li>Freedom from torture.</li><li>Fair trial.</li><li>Freedom of expression.</li><li>Indigenous rights.</li><li>Disappearances.</li><li>State responsibility for human-rights violations.</li></ul><h3>African Court on Human and Peoples' Rights</h3><p>
+The African Court operates under the African human-rights system and interprets relevant African human-rights instruments.
+</p><p>
+It can address:
+</p><ul><li>Human rights.</li><li>Peoples' rights.</li><li>State obligations.</li><li>Remedies for violations.</li></ul><div class="definition">Access to regional courts depends on the specific treaty, jurisdictional rules, and procedural requirements of each system.
+
+</div></div><!-- CARD 11 --><div class="note-card"><div class="card-number">
+CARD 11 · ITLOS</div><h2>International Tribunal for the Law of the Sea</h2><p>
+The <strong>International Tribunal for the Law of the Sea (ITLOS)</strong> is a judicial body established under the United Nations Convention on the Law of the Sea (UNCLOS).
+</p><p>
+It deals with disputes concerning the law of the sea.
+</p><p>
+Its work can involve:
+</p><ul><li>Maritime boundaries.</li><li>Navigation.</li><li>Fisheries.</li><li>Marine environmental protection.</li><li>Seabed activities.</li><li>Detention of vessels in certain circumstances.</li></ul><h3>Maritime Disputes</h3><p>
+A disagreement between states may concern territorial seas, exclusive economic zones, or continental shelves.
+</p><p>
+Depending on the relevant agreements and jurisdictional requirements, a maritime dispute may potentially be considered by ITLOS or another appropriate international court or tribunal.
+</p><div class="formula">UNCLOS → Law of the Sea → Maritime Disputes → Appropriate Tribunal
+
+</div></div><!-- CARD 12 --><div class="note-card"><div class="card-number">
+CARD 12 · ARBITRATION</div><h2>International Arbitration</h2><p>
+Not every international dispute is decided by a permanent court. States may agree to submit disputes to arbitration.
+</p><p>
+International investment disputes can also be heard through arbitral mechanisms.
+</p><h3>Investment Disputes</h3><p>
+For example, <strong>ICSID</strong> provides a framework for resolving certain investment disputes between states and foreign investors.
+</p><div class="formula">Investor ↔ State
+
+<br><br>
+
+State ↔ State
+
+</div><h3>Courts vs. Arbitration</h3><table class="comparison"><tr>
+<th>International Courts</th>
+<th>International Arbitration</th>
+</tr><tr>
+<td>Usually permanent judicial institutions.</td>
+<td>Often created for a particular dispute.</td>
+</tr><tr>
+<td>Judges generally serve according to institutional rules.</td>
+<td>Arbitrators are selected according to the applicable agreement.</td>
+</tr><tr>
+<td>Fixed institutional procedures.</td>
+<td>More flexible procedures may be available.</td>
+</tr><tr>
+<td>Example: ICJ.</td>
+<td>Example: ad hoc interstate arbitral tribunal.</td>
+</tr></table></div><!-- CARD 13 --><div class="note-card"><div class="card-number">
+CARD 13 · ADMISSIBILITY</div><h2>Jurisdiction, Standing & Admissibility</h2><h3>Jurisdiction Ratione Personae</h3><p>
+<strong>Ratione personae</strong> concerns the persons or entities that may appear before a court.
+</p><ul><li>ICJ → states in contentious cases.</li><li>ICC → individuals.</li><li>ECtHR → individuals and states within its Convention system.</li><li>Investment arbitration → may involve investors and states.</li></ul><h3>Jurisdiction Ratione Materiae</h3><p>
+<strong>Ratione materiae</strong> concerns the subject matter over which a court has jurisdiction.
+</p><h3>Temporal & Territorial Jurisdiction</h3><p>
+A court may need to determine whether the alleged events occurred during the relevant period and within the territorial or jurisdictional scope of its legal instrument.
+</p><h3>Admissibility</h3><p>
+Even when a court has jurisdiction, a case may still be inadmissible because of procedural requirements such as failure to exhaust domestic remedies, late filing, lack of victim status, duplicate proceedings, or insufficient legal basis.
+</p><div class="definition">Jurisdiction asks: <strong>Does the court have legal authority?</strong>
+
+<br><br>
+
+Admissibility asks: <strong>Does this particular claim satisfy the requirements for consideration?</strong>
+
+</div></div><!-- CARD 14 --><div class="note-card"><div class="card-number">
+CARD 14 · PROCEDURE & REMEDIES</div><h2>International Court Procedure</h2><h3>Evidence</h3><p>
+International courts rely on evidence to establish facts. Evidence may include documents, official records, witness testimony, expert reports, photographs, maps, scientific evidence, digital material, and diplomatic communications.
+</p><h3>Written Proceedings</h3><p>
+International litigation often includes applications, memorials, counter-memorials, written observations, preliminary objections, and written responses.
+</p><h3>Oral Proceedings</h3><p>
+During hearings, lawyers present arguments, judges ask questions, parties respond to legal issues, and evidence or submissions may be clarified.
+</p><h3>Preliminary Objections</h3><p>
+A party may challenge jurisdiction or admissibility before the court considers the merits.
+</p><h3>Provisional Measures</h3><p>
+Some courts can order provisional measures to protect rights or preserve the situation while a case is pending and prevent serious or irreparable harm.
+</p><h3>Remedies</h3><p>
+Depending on the court, remedies may include:
+</p><ul><li>Compensation.</li><li>Restitution.</li><li>Declaration of a violation.</li><li>Orders to cease unlawful conduct.</li><li>Guarantees of non-repetition.</li><li>Other appropriate relief.</li></ul></div><!-- CARD 15 --><div class="note-card"><div class="card-number">
+CARD 15 · KEY TAKEAWAY</div><h2>International Courts: Key Principles</h2><p>
+International courts form a diverse system rather than a single hierarchy. Each institution has its own jurisdiction, parties, subject matter, procedures, remedies, and legal framework.
+</p><table class="comparison"><tr>
+<th>Court</th>
+<th>Main Focus</th>
+<th>Typical Parties</th>
+</tr><tr>
+<td>ICJ</td>
+<td>Interstate disputes and advisory opinions</td>
+<td>States</td>
+</tr><tr>
+<td>ICC</td>
+<td>International crimes</td>
+<td>Individuals accused of crimes</td>
+</tr><tr>
+<td>ECtHR</td>
+<td>European human rights</td>
+<td>Individuals and states within its system</td>
+</tr><tr>
+<td>Inter-American Court</td>
+<td>Inter-American human rights</td>
+<td>States and eligible applicants within its system</td>
+</tr><tr>
+<td>African Court</td>
+<td>African human and peoples' rights</td>
+<td>States and eligible applicants under its system</td>
+</tr><tr>
+<td>ITLOS</td>
+<td>Law of the sea</td>
+<td>States and other entities where permitted</td>
+</tr></table><div class="formula">Which court? → Who can bring the case? → What law applies? → Is it admissible? → What remedy is available?
+
+</div><h3>Key Takeaway</h3><ul><li><strong>ICJ:</strong> Interstate disputes and international law.</li><li><strong>ICC:</strong> Individual responsibility for specified international crimes.</li><li><strong>Regional human-rights courts:</strong> Protection and interpretation of regional human-rights treaties.</li><li><strong>ITLOS:</strong> Law of the sea.</li><li><strong>International arbitration:</strong> Disputes submitted to arbitrators according to an applicable agreement.</li></ul><p>
+International courts can determine state responsibility, individual criminal responsibility in appropriate cases, treaty interpretation, human-rights violations, and other legal questions within their jurisdiction.
+</p><div class="definition"><strong>Before asking whether a claim is legally justified, an international lawyer must first ask: "Which court has jurisdiction?"</strong>
+
+</div><div class="sources"><h3>Sources</h3><ul><li>United Nations, Charter of the United Nations, particularly Articles 33, 92, and 94.</li><li>International Court of Justice, Statute of the International Court of Justice, particularly Articles 34–38, 59, and 65.</li><li>International Criminal Court, Rome Statute of the International Criminal Court.</li><li>Council of Europe, European Convention on Human Rights, particularly Articles 19, 33, 34, 35, and 46.</li><li>Organization of American States, American Convention on Human Rights.</li><li>African Union, Protocol to the African Charter on Human and Peoples' Rights on the Establishment of an African Court.</li><li>United Nations, United Nations Convention on the Law of the Sea.</li><li>United Nations International Law Commission materials concerning international dispute settlement, state responsibility, and international judicial decisions.</li></ul></div></div></div></div><!-- NOTE NAVIGATION --><div class="navigation" id="noteNavigation"><button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button><button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button></div><!-- QUIZ INTRO --><div class="quiz-start" id="quizStart" style="display:none;"><h2>🎓 Note Complete!</h2><p>
+You've finished the legal note on <strong>International Courts</strong>.
+Now test your understanding with a short quiz.
+</p><button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button></div><!-- QUIZ --><div class="quiz-section" id="quizSection"><div class="quiz-card"><div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 7
+</div><h2 id="questionText"></h2><div id="options"></div><div class="quiz-feedback" id="feedback"></div><button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button></div></div><!-- FOOTER --><footer><p><strong>Law Research Hub</strong></p><p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p><p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p></footer><script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+
+/* NEXT CARD */
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+
+/* PREVIOUS CARD */
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is the primary function of an international court?",
+options:[
+"To create domestic criminal laws",
+"To decide legal disputes and interpret international law within its jurisdiction",
+"To replace every national court",
+"To conduct diplomatic negotiations"
+],
+answer:1
+},
+
+{
+question:"What does jurisdiction mean?",
+options:[
+"The political popularity of a court",
+"The legal authority of a court to hear and decide a case",
+"The punishment imposed after a judgment",
+"The evidence submitted by a party"
+],
+answer:1
+},
+
+{
+question:"Who can be parties in ordinary contentious cases before the ICJ?",
+options:[
+"Individuals only",
+"Private companies only",
+"States",
+"Any person in the world"
+],
+answer:2
+},
+
+{
+question:"What is the main distinction between the ICJ and ICC?",
+options:[
+"The ICJ deals mainly with interstate disputes, while the ICC focuses on individual criminal responsibility",
+"The ICJ prosecutes individuals, while the ICC resolves maritime boundaries",
+"They are the same institution",
+"The ICC only gives advisory opinions"
+],
+answer:0
+},
+
+{
+question:"Which court focuses primarily on European human-rights law?",
+options:[
+"International Court of Justice",
+"International Tribunal for the Law of the Sea",
+"European Court of Human Rights",
+"International Criminal Court"
+],
+answer:2
+},
+
+{
+question:"What does ratione materiae refer to?",
+options:[
+"The persons who may appear before a court",
+"The subject matter over which a court has jurisdiction",
+"The geographical location of a judge",
+"The length of a court hearing"
+],
+answer:1
+},
+
+{
+question:"What is one possible reason an international human-rights application may be inadmissible?",
+options:[
+"The applicant disagrees with the government",
+"Failure to satisfy a requirement such as exhaustion of available domestic remedies",
+"The case involves a legal question",
+"The applicant has legal evidence"
+],
+answer:1
+}
+
+];
+
+let currentQuestion = 0;
+
+
+/* START QUIZ */
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+
+document.getElementById("noteNavigation").style.display = "none";
+
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+
+/* QUIZ RESULT */
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>International Courts</strong> quiz.
+</p>
+
+<p>
+You can now return to the International Law section and explore another topic.
+</p>
+
+<a href="international-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to International Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script></body>
+                                                                                                                                              </html>
