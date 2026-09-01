@@ -1,0 +1,1084 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Interactive legal note explaining refugee law, the 1951 Refugee Convention, refugee status, persecution, non-refoulement, asylum, international protection, and refugee rights."><title>Refugee Law | Law Research Hub</title><style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:3px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* COMPARISON */
+
+.comparison{
+width:100%;
+border-collapse:collapse;
+margin:20px 0;
+font-size:15px;
+}
+
+.comparison th{
+background:#0b1f3a;
+color:white;
+padding:12px;
+text-align:left;
+}
+
+.comparison td{
+padding:12px;
+border:1px solid #ddd;
+vertical-align:top;
+}
+
+.comparison tr:nth-child(even){
+background:#f8f9fb;
+}
+
+/* FORMULA */
+
+.formula{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-weight:bold;
+text-align:center;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+.comparison{
+font-size:13px;
+}
+
+}
+
+</style></head><body><!-- NAVIGATION --><nav><a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav><!-- HEADER --><header><h1>🌍 Refugee Law</h1><p>
+International Law · Interactive Legal Note
+</p></header><!-- PROGRESS --><div class="progress-area" id="progressArea"><div class="progress-title">
+REFUGEE LAW
+</div><div class="progress-dots" id="progressDots"><span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div></div><!-- NOTE CARDS --><div class="swipe-container" id="notesSection"><div class="card-wrapper"><!-- CARD 1 --><div class="note-card active"><div class="card-number">
+CARD 1 · DEFINITION
+</div><h2>What Is Refugee Law?</h2><div class="definition">Refugee law is the branch of international law concerned with protecting people who have fled their countries because they face persecution or other serious threats and cannot safely rely on the protection of their country of origin.
+
+</div><p>
+The central international framework is the <strong>1951 Convention relating to the Status of Refugees</strong> and its <strong>1967 Protocol</strong>.
+</p><p>
+Refugee law addresses questions such as:
+</p><ul><li>Who qualifies as a refugee?</li><li>What protection must states provide?</li><li>Can a state return someone to a country where they face persecution or serious harm?</li><li>What rights do refugees have?</li><li>When can refugee protection be excluded or withdrawn?</li></ul><div class="formula">Refugee Law → Protection → Rights → Non-Refoulement
+
+</div></div><!-- CARD 2 --><div class="note-card"><div class="card-number">
+CARD 2 · REFUGEE CONVENTION
+</div><h2>The 1951 Refugee Convention</h2><p>
+The <strong>1951 Refugee Convention</strong> is the central international treaty concerning refugee protection.
+</p><p>
+It:
+</p><ul><li>Defines who qualifies as a refugee.</li><li>Establishes important rights and protections.</li><li>Creates obligations for states parties.</li><li>Places limits on certain forms of expulsion.</li><li>Establishes the principle of non-refoulement.</li></ul><h3>The 1967 Protocol</h3><p>
+The original Convention contained temporal and geographic limitations. The <strong>1967 Protocol</strong> removed these limitations and expanded the refugee framework so that it could apply much more broadly.
+</p><div class="definition">Together, the 1951 Convention and 1967 Protocol form the foundation of the modern international refugee-protection system.
+
+</div></div><!-- CARD 3 --><div class="note-card"><div class="card-number">
+CARD 3 · REFUGEE DEFINITION
+</div><h2>Who Is a Refugee?</h2><p>
+Article 1A(2) of the 1951 Convention provides the central refugee definition.
+</p><div class="definition">In general terms, a refugee is a person who is outside their country and has a well-founded fear of persecution for a Convention reason, and who is unable or unwilling to obtain the protection of that country because of that fear.
+
+</div><p>
+The five traditional Convention grounds are:
+</p><ul><li>Race.</li><li>Religion.</li><li>Nationality.</li><li>Membership of a particular social group.</li><li>Political opinion.</li></ul><div class="formula">Outside Country + Well-Founded Fear + Persecution + Convention Ground + Lack of State Protection
+
+</div><p>
+For a person without a nationality, the relevant reference is generally their former habitual residence.
+</p></div><!-- CARD 4 --><div class="note-card"><div class="card-number">
+CARD 4 · KEY ELEMENTS
+</div><h2>Elements of the Refugee Definition</h2><p>
+A refugee claim can be analyzed through several connected questions.
+</p><div class="formula">Outside the Country
+
+↓
+
+Well-Founded Fear
+
+↓
+
+Persecution
+
+↓
+
+Convention Reason
+
+↓
+
+Unable or Unwilling to Obtain State Protection
+
+</div><h3>Why Each Element Matters</h3><ul><li>The person generally must have crossed an international border.</li><li>The fear must be sufficiently supported by the circumstances.</li><li>The feared harm must amount to persecution or otherwise satisfy the applicable legal framework.</li><li>The persecution must generally be connected to a Convention ground.</li><li>The person must be unable or unwilling, because of the fear, to obtain protection from their country.</li></ul><div class="definition">The precise interpretation of each element depends on international and national refugee law.
+
+</div></div><!-- CARD 5 --><div class="note-card"><div class="card-number">
+CARD 5 · IDPs & ASYLUM-SEEKERS
+</div><h2>Refugees, IDPs & Asylum-Seekers</h2><table class="comparison"><tr>
+<th>Refugee</th>
+<th>Internally Displaced Person</th>
+</tr><tr>
+<td>
+Has crossed an international border and requires international protection.
+</td><td>
+Has been forced to leave home but remains within their own country.
+</td>
+</tr><tr>
+<td>
+May fall under international refugee law.
+</td><td>
+Remains under the jurisdiction of their own state.
+</td>
+</tr></table><h3>Asylum-Seeker</h3><p>
+An <strong>asylum-seeker</strong> is a person who has sought international protection but whose claim to refugee status has not yet been finally determined.
+</p><div class="definition"><strong>Asylum-seeker = Person seeking protection.</strong><br><br>
+
+<strong>Refugee = Person who meets the applicable refugee definition.</strong>
+
+</div><p>
+An asylum-seeker may ultimately be recognized as a refugee, receive another form of international protection, or have their claim rejected.
+</p></div><!-- CARD 6 --><div class="note-card"><div class="card-number">
+CARD 6 · WELL-FOUNDED FEAR
+</div><h2>Well-Founded Fear & Persecution</h2><h3>Well-Founded Fear</h3><p>
+The concept of <strong>well-founded fear</strong> generally contains both subjective and objective elements.
+</p><ul><li>The person's genuine fear is relevant.</li><li>The surrounding circumstances must objectively support that fear.</li><li>Evidence may include threats, past persecution, country conditions, laws, policies, and violence directed at particular groups.</li></ul><h3>Persecution</h3><p>
+Refugee protection is based on a fear of <strong>persecution</strong>, rather than simply any difficult or unpleasant circumstance.
+</p><p>
+Persecution generally involves sufficiently serious violations of fundamental rights or serious and sustained harm.
+</p><ul><li>Severe physical abuse.</li><li>Arbitrary detention in appropriate circumstances.</li><li>Serious discriminatory measures.</li><li>Religious persecution.</li><li>Political persecution.</li><li>Other grave violations of fundamental rights.</li></ul><div class="definition">Not every inconvenience, discrimination, or hardship amounts to persecution.
+
+</div></div><!-- CARD 7 --><div class="note-card"><div class="card-number">
+CARD 7 · CONVENTION GROUNDS
+</div><h2>The Five Convention Grounds</h2><p>
+The 1951 Convention identifies five principal grounds connecting persecution to refugee status.
+</p><ol><li><strong>Race</strong> — persecution connected to racial or ethnic identity.</li><li><strong>Religion</strong> — persecution connected to religious belief, identity, practice, or lack of belief.</li><li><strong>Nationality</strong> — persecution connected to national, ethnic, linguistic, or related identity in appropriate circumstances.</li><li><strong>Particular Social Group</strong> — certain groups defined by characteristics fundamental to identity or that members cannot reasonably be expected to change, among approaches recognized in refugee law.</li><li><strong>Political Opinion</strong> — persecution connected to actual or sometimes attributed political opinions.</li></ol><h3>Political Opinion</h3><p>
+Political persecution may involve opposition to government policies, political activism, participation in political organizations, or criticism of authorities.
+</p><div class="definition">A refugee claim generally requires a connection between the feared persecution and at least one Convention ground.
+
+</div></div><!-- CARD 8 --><div class="note-card"><div class="card-number">
+CARD 8 · STATE PROTECTION
+</div><h2>State Protection & Non-State Actors</h2><p>
+A central part of refugee law is whether the person can obtain effective protection from their country of origin.
+</p><p>
+Persecution does not always have to be committed directly by the government.
+</p><h3>Non-State Persecution</h3><p>
+Private individuals or organizations may be responsible for serious harm where the state is unable or unwilling to provide effective protection.
+</p><p>
+For example, a person may be targeted by a powerful private group because of their religion while the government is unable or unwilling to provide meaningful protection.
+</p><h3>Internal Protection or Relocation</h3><p>
+In some cases, decision-makers may consider whether the person could safely relocate to another part of their own country.
+</p><ul><li>Does a safe area exist?</li><li>Can the person reasonably reach it?</li><li>Is effective protection available there?</li><li>Would relocation be reasonable in the circumstances?</li></ul><div class="definition">The availability of state protection and internal relocation depends heavily on the individual case and applicable law.
+
+</div></div><!-- CARD 9 --><div class="note-card"><div class="card-number">
+CARD 9 · NON-REFOULEMENT
+</div><h2>Non-Refoulement</h2><div class="definition">Non-refoulement is the principle that protected persons should not be returned to a place where they would face prohibited persecution or other serious harm.
+
+</div><p>
+The principle is closely associated with <strong>Article 33 of the 1951 Refugee Convention</strong>.
+</p><p>
+It is one of the central principles of international refugee protection.
+</p><h3>Human-Rights Law</h3><p>
+Non-refoulement also interacts with broader international human-rights law.
+</p><p>
+Protection against return may apply where a person faces serious risks such as:
+</p><ul><li>Torture.</li><li>Persecution.</li><li>Other serious or irreparable harm.</li></ul><div class="formula">Protection → No Forced Return to Prohibited Danger
+
+</div><p>
+UNHCR recognizes non-refoulement as a core principle of refugee and human-rights protection and as part of customary international law.</p></div><!-- CARD 10 --><div class="note-card"><div class="card-number">
+CARD 10 · ASYLUM & EXPULSION
+</div><h2>Asylum, Expulsion & Return</h2><h3>Asylum vs. Non-Refoulement</h3><table class="comparison"><tr>
+<th>Asylum</th>
+<th>Non-Refoulement</th>
+</tr><tr>
+<td>
+Protection granted by a state to a person seeking safety.
+</td><td>
+Protection against returning a person to prohibited serious danger.
+</td>
+</tr><tr>
+<td>
+Concerns the granting of protection.
+</td><td>
+Concerns the prohibition against certain forms of return.
+</td>
+</tr></table><h3>Expulsion</h3><p>
+Article 32 of the Refugee Convention places limits on the expulsion of refugees.
+</p><p>
+Expulsion is permitted only under specified conditions and with important procedural protections.
+</p><h3>Important Distinction</h3><div class="formula">Expulsion Power ≠ Unlimited Power to Return a Person
+
+</div><p>
+A state may have authority to expel a person in certain circumstances, but international law can still prohibit returning that person to persecution, torture, or other serious harm.</p></div><!-- CARD 11 --><div class="note-card"><div class="card-number">
+CARD 11 · RIGHTS & DUTIES
+</div><h2>Rights and Duties of Refugees</h2><p>
+The Refugee Convention establishes important standards of treatment for refugees.
+</p><h3>Rights</h3><ul><li>Non-discrimination.</li><li>Religious freedom.</li><li>Access to courts.</li><li>Education.</li><li>Employment.</li><li>Housing.</li><li>Freedom of movement.</li><li>Identity documents.</li><li>Travel documents.</li><li>Social protection.</li></ul><h3>Duties</h3><p>
+Article 2 of the Refugee Convention provides that refugees must comply with the laws and regulations of the country in which they are present and with measures taken to maintain public order.
+</p><div class="definition">Refugee status provides international protection, but it does not remove the general obligation to respect the laws of the host state.
+
+</div></div><!-- CARD 12 --><div class="note-card"><div class="card-number">
+CARD 12 · RSD & EVIDENCE
+</div><h2>Refugee Status Determination</h2><p>
+<strong>Refugee Status Determination (RSD)</strong> is the process used to decide whether a person satisfies the applicable refugee definition.
+</p><p>
+A procedure may involve:
+</p><ol><li>Registration.</li><li>Interviews.</li><li>Evidence.</li><li>Country-of-origin information.</li><li>Legal analysis.</li><li>A decision on eligibility.</li><li>Review or appeal where available.</li></ol><h3>Evidence</h3><p>
+Evidence can include:
+</p><ul><li>Personal testimony.</li><li>Identity documents.</li><li>Police or court records.</li><li>Medical records.</li><li>Messages or correspondence.</li><li>Photographs.</li><li>Witness evidence.</li><li>Reliable country-of-origin information.</li></ul><div class="definition">A lack of documentary evidence does not automatically mean that a refugee claim is false, particularly where people fleeing persecution may be unable to bring documents with them.
+
+</div></div><!-- CARD 13 --><div class="note-card"><div class="card-number">
+CARD 13 · EXCLUSION & CESSATION
+</div><h2>Exclusion & Cessation</h2><h3>Exclusion</h3><p>
+The Refugee Convention excludes certain people from refugee protection.
+</p><p>
+This can include persons for whom there are serious reasons to consider that they:
+</p><ul><li>Committed a crime against peace, a war crime, or a crime against humanity.</li><li>Committed a serious non-political crime outside the country of refuge before admission as a refugee.</li><li>Are responsible for acts contrary to the purposes and principles of the United Nations.</li></ul><h3>Cessation</h3><p>
+Refugee protection may end in circumstances specified by the Convention.
+</p><p>
+Examples include where a person:
+</p><ul><li>Voluntarily re-avails themselves of their country's protection.</li><li>Voluntarily reacquires nationality.</li><li>Acquires a new nationality and enjoys its protection.</li><li>Voluntarily re-establishes themselves in the country they left.</li><li>No longer needs protection because circumstances fundamentally changed.</li></ul><div class="definition">Exclusion concerns whether a person should receive Convention protection; cessation concerns circumstances in which existing refugee protection ends.
+
+</div></div><!-- CARD 14 --><div class="note-card"><div class="card-number">
+CARD 14 · AFRICAN REFUGEE LAW
+</div><h2>Refugee Law in Africa</h2><p>
+African refugee law has developed an important regional framework through the <strong>1969 OAU Convention Governing the Specific Aspects of Refugee Problems in Africa</strong>.
+</p><p>
+The OAU Convention complements the 1951 Refugee Convention but adopts a broader refugee definition.
+</p><p>
+It includes people compelled to leave their usual residence because of circumstances such as:
+</p><ul><li>External aggression.</li><li>Occupation.</li><li>Foreign domination.</li><li>Events seriously disturbing public order.</li></ul><h3>Why It Matters</h3><p>
+The broader African definition recognizes that refugee movements can result not only from individualized persecution but also from armed conflict, foreign aggression, occupation, and serious disturbances of public order.
+</p><div class="formula">1951 Convention → Individualized Convention Grounds
+
+<br><br>
+
+1969 OAU Convention → Broader African Refugee Definition
+
+</div><p>
+This framework is particularly important in situations involving large-scale displacement and mass influx.</p></div><!-- CARD 15 --><div class="note-card"><div class="card-number">
+CARD 15 · KEY TAKEAWAY
+</div><h2>Why Refugee Law Matters</h2><p>
+Refugee law helps protect people who cannot safely rely on the protection of their own country.
+</p><p>
+It seeks to:
+</p><ul><li>Protect people fleeing persecution.</li><li>Prevent forced return to serious danger.</li><li>Establish minimum standards of treatment.</li><li>Protect human dignity.</li><li>Provide legal status and rights.</li><li>Promote international cooperation.</li><li>Limit arbitrary expulsion.</li><li>Support access to education and employment.</li><li>Provide access to justice.</li></ul><div class="formula">1951 Convention + 1967 Protocol + Regional Protection
+
+</div><h3>Key Legal Questions</h3><ul><li><strong>Refugee definition:</strong> Does the person satisfy the applicable legal definition?</li><li><strong>Persecution:</strong> What caused the person to flee, and does the harm amount to persecution?</li><li><strong>Convention ground:</strong> Is the persecution connected to race, religion, nationality, particular social group, or political opinion?</li><li><strong>State protection:</strong> Can the person safely obtain effective protection from their country?</li><li><strong>Exclusion:</strong> Does an exclusion clause apply?</li><li><strong>Non-refoulement:</strong> Would return expose the person to prohibited persecution or serious harm?</li></ul><h3>Durable Solutions</h3><p>
+The three traditional durable solutions are:
+</p><ol><li><strong>Voluntary repatriation</strong> — returning home voluntarily when it is safe and dignified.</li><li><strong>Local integration</strong> — establishing a lasting life in the country of asylum.</li><li><strong>Resettlement</strong> — moving to another country that agrees to admit the refugee.</li></ol><div class="definition"><strong>Key Takeaway:</strong> Refugee law is designed to ensure that people who cannot safely rely on the protection of their own country are not left without legal protection.
+
+</div><div class="sources"><h3>Sources</h3><ul><li>United Nations, Convention Relating to the Status of Refugees, 1951.</li><li>United Nations, Protocol Relating to the Status of Refugees, 1967.</li><li>United Nations High Commissioner for Refugees (UNHCR), materials concerning refugee status, international protection, asylum, and non-refoulement.</li><li>Organization of African Unity, 1969 Convention Governing the Specific Aspects of Refugee Problems in Africa.</li><li>United Nations, Convention Against Torture, particularly Article 3.</li><li>United Nations, International Covenant on Civil and Political Rights.</li><li>Relevant regional human-rights instruments and case law concerning non-refoulement, asylum, and international protection.</li></ul></div></div></div></div><!-- NOTE NAVIGATION --><div class="navigation" id="noteNavigation"><button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button><button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button></div><!-- QUIZ INTRO --><div class="quiz-start" id="quizStart" style="display:none;"><h2>🎓 Note Complete!</h2><p>
+You've finished the legal note on <strong>Refugee Law</strong>.
+Now test your understanding with a short quiz.
+</p><button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button></div><!-- QUIZ --><div class="quiz-section" id="quizSection"><div class="quiz-card"><div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 7
+</div><h2 id="questionText"></h2><div id="options"></div><div class="quiz-feedback" id="feedback"></div><button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button></div></div><!-- FOOTER --><footer><p><strong>Law Research Hub</strong></p><p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p><p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p></footer><script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+
+/* NEXT CARD */
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+
+/* PREVIOUS CARD */
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is the central international treaty concerning refugee protection?",
+options:[
+"The Vienna Convention on the Law of Treaties",
+"The 1951 Refugee Convention",
+"The Rome Statute",
+"The Paris Agreement"
+],
+answer:1
+},
+
+{
+question:"Which of the following is NOT one of the five traditional Convention grounds?",
+options:[
+"Religion",
+"Political opinion",
+"Economic hardship",
+"Nationality"
+],
+answer:2
+},
+
+{
+question:"What is an asylum-seeker?",
+options:[
+"A person whose refugee status has already been finally recognized",
+"A person seeking international protection whose claim has not yet been finally determined",
+"A person who has never crossed an international border",
+"A person who has voluntarily returned home"
+],
+answer:1
+},
+
+{
+question:"What does non-refoulement primarily protect against?",
+options:[
+"International trade restrictions",
+"Return to a place where a person would face prohibited persecution or serious harm",
+"Domestic taxation",
+"Loss of nationality"
+],
+answer:1
+},
+
+{
+question:"Can persecution by private individuals potentially support a refugee claim?",
+options:[
+"No, persecution must always be committed directly by a government",
+"Yes, where the state is unable or unwilling to provide effective protection",
+"Only when the private individual is a government employee",
+"Only when the person has no nationality"
+],
+answer:1
+},
+
+{
+question:"Which regional instrument provides a broader refugee definition particularly important in Africa?",
+options:[
+"The 1969 OAU Refugee Convention",
+"The Vienna Convention on the Law of Treaties",
+"The European Convention on Human Rights",
+"The Rome Statute"
+],
+answer:0
+},
+
+{
+question:"Which of the following is one of the three traditional durable solutions for refugees?",
+options:[
+"Forced repatriation",
+"Resettlement",
+"Automatic citizenship",
+"Permanent detention"
+],
+answer:1
+}
+
+];
+
+let currentQuestion = 0;
+
+
+/* START QUIZ */
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+
+document.getElementById("noteNavigation").style.display = "none";
+
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+
+/* QUIZ RESULT */
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Refugee Law</strong> quiz.
+</p>
+
+<p>
+You can now return to the International Law section and explore another topic.
+</p>
+
+<a href="international-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to International Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script></body>
+  </html>
