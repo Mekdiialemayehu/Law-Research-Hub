@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining customary international law, state practice, opinio juris, persistent objection, jus cogens, and the role of international courts.">
+
+<title>International Custom | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:3px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* COMPARISON */
+
+.comparison{
+width:100%;
+border-collapse:collapse;
+margin:20px 0;
+font-size:15px;
+}
+
+.comparison th{
+background:#0b1f3a;
+color:white;
+padding:12px;
+text-align:left;
+}
+
+.comparison td{
+padding:12px;
+border:1px solid #ddd;
+vertical-align:top;
+}
+
+.comparison tr:nth-child(even){
+background:#f8f9fb;
+}
+
+/* FORMULA */
+
+.formula{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-weight:bold;
+text-align:center;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+.comparison{
+font-size:13px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>🌍 International Custom</h1>
+
+<p>
+International Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+INTERNATIONAL CUSTOM
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is International Custom?</h2>
+
+<div class="definition">
+
+International custom, or customary international law, is a source of international law that develops from a general practice of states that is accepted by them as legally required.
+
+</div>
+
+<p>
+Unlike treaties, customary international law does not depend on a written agreement between states.
+</p>
+
+<p>
+The identification of customary international law generally depends on two fundamental elements:
+</p>
+
+<ul>
+
+<li><strong>State practice.</strong></li>
+
+<li><strong>Opinio juris.</strong></li>
+
+</ul>
+
+<div class="formula">
+
+State Practice + Opinio Juris → Customary International Law
+
+</div>
+
+<p>
+The central question is:
+<strong>How can a legally binding international rule develop without a written treaty?</strong>
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · TWO ELEMENTS
+</div>
+
+<h2>The Two Elements of Custom</h2>
+
+<p>
+For a customary rule to exist, both of the following elements generally need to be established.
+</p>
+
+<table class="comparison">
+
+<tr>
+<th>Element</th>
+<th>Meaning</th>
+</tr>
+
+<tr>
+<td>
+<strong>State Practice</strong>
+</td>
+
+<td>
+What states actually do through their governmental conduct.
+</td>
+</tr>
+
+<tr>
+<td>
+<strong>Opinio Juris</strong>
+</td>
+
+<td>
+The belief that the practice is followed because international law requires or permits it.
+</td>
+</tr>
+
+</table>
+
+<div class="definition">
+
+Neither element should simply be assumed from the existence of the other. Practice and opinio juris are assessed separately, although evidence may sometimes be relevant to both.
+
+</div>
+
+<p>
+A practice followed merely because it is convenient, traditional, or politically useful does not automatically become customary international law.
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · STATE PRACTICE
+</div>
+
+<h2>What Is State Practice?</h2>
+
+<p>
+State practice refers to the actual conduct of states.
+</p>
+
+<p>
+It can appear in many forms, including:
+</p>
+
+<ul>
+
+<li>Government actions.</li>
+
+<li>Diplomatic correspondence.</li>
+
+<li>National legislation.</li>
+
+<li>Executive decisions.</li>
+
+<li>Military practices.</li>
+
+<li>Statements by government officials.</li>
+
+<li>Diplomatic protests.</li>
+
+<li>National court decisions.</li>
+
+<li>Conduct during international negotiations.</li>
+
+<li>Positions taken before international organizations.</li>
+
+</ul>
+
+<div class="definition">
+
+State practice must generally be assessed as a whole rather than by focusing on one isolated action.
+
+</div>
+
+<p>
+Modern state practice is therefore much broader than traditional diplomatic behavior.
+</p>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · GENERAL PRACTICE
+</div>
+
+<h2>General and Representative Practice</h2>
+
+<p>
+State practice must generally be sufficiently general to support the existence of a customary rule.
+</p>
+
+<p>
+This does not necessarily mean that every state in the world must behave identically.
+</p>
+
+<p>
+International courts consider factors such as:
+</p>
+
+<ul>
+
+<li>The extent of the practice.</li>
+
+<li>Its consistency.</li>
+
+<li>Its significance.</li>
+
+<li>Whether the practice is widespread and representative.</li>
+
+</ul>
+
+<div class="formula">
+
+Widespread + Representative + Sufficiently Consistent Practice
+
+</div>
+
+<p>
+The International Court of Justice has emphasized that customary international law requires sufficiently widespread and representative practice together with opinio juris.
+</p>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · CONSISTENCY
+</div>
+
+<h2>Consistency of State Practice</h2>
+
+<p>
+State practice should generally demonstrate a sufficient degree of consistency.
+</p>
+
+<p>
+If states repeatedly behave in completely contradictory ways, it may be difficult to establish the existence of a customary rule.
+</p>
+
+<p>
+However, customary international law does not require perfect uniformity.
+</p>
+
+<h3>How Courts Assess It</h3>
+
+<p>
+Courts examine whether the practice, considered as a whole, is sufficiently consistent to support the claimed rule.
+</p>
+
+<div class="definition">
+
+The existence of some contrary conduct does not necessarily destroy a customary rule. The overall pattern and legal significance of the practice matter.
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · OPINIO JURIS
+</div>
+
+<h2>What Is Opinio Juris?</h2>
+
+<div class="definition">
+
+Opinio juris is the belief that a particular practice is followed because states consider themselves legally required, or legally entitled, to follow it.
+
+</div>
+
+<p>
+This is the second fundamental element of customary international law.
+</p>
+
+<p>
+The key distinction is:
+</p>
+
+<div class="formula">
+
+State Practice = What States Do
+
+<br><br>
+
+Opinio Juris = Why They Do It as a Matter of Law
+
+</div>
+
+<p>
+For example, states may regularly provide diplomatic privileges to foreign officials. The practice becomes relevant as customary international law when states follow it because they understand that international law requires or recognizes such treatment.
+</p>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · PRACTICE ALONE
+</div>
+
+<h2>Practice Alone Is Not Enough</h2>
+
+<p>
+Repeated conduct does not automatically create customary international law.
+</p>
+
+<p>
+States may follow a practice simply because it is:
+</p>
+
+<ul>
+
+<li>Convenient.</li>
+
+<li>Efficient.</li>
+
+<li>Politically useful.</li>
+
+<li>Based on courtesy or diplomatic tradition.</li>
+
+<li>Morally or politically desirable.</li>
+
+</ul>
+
+<div class="definition">
+
+The important question is not simply whether states behave in a particular way, but whether they regard that conduct as legally required or legally permitted under international law.
+
+</div>
+
+<p>
+This is why opinio juris is essential to identifying customary international law.
+</p>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · EVIDENCE
+</div>
+
+<h2>Evidence of Opinio Juris</h2>
+
+<p>
+Courts may examine many types of evidence when determining whether states believe a practice has legal significance.
+</p>
+
+<ul>
+
+<li>Official government statements.</li>
+
+<li>Diplomatic protests.</li>
+
+<li>Legal opinions of governments.</li>
+
+<li>Statements in international organizations.</li>
+
+<li>National legislation.</li>
+
+<li>National court decisions.</li>
+
+<li>Treaty negotiations and conduct surrounding treaties.</li>
+
+<li>Responses to alleged violations of a rule.</li>
+
+</ul>
+
+<div class="definition">
+
+No single piece of evidence automatically establishes opinio juris. Courts generally assess the evidence as a whole.
+
+</div>
+
+<h3>Government Statements</h3>
+
+<p>
+Statements by government officials can help demonstrate a state's legal position, especially when supported by the state's conduct and other evidence.
+</p>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · COURTS & INTERNATIONAL ORGANIZATIONS
+</div>
+
+<h2>Role of Courts and International Organizations</h2>
+
+<p>
+International courts help identify and apply customary international law.
+</p>
+
+<p>
+The <strong>International Court of Justice (ICJ)</strong> frequently examines state practice and opinio juris when determining whether a customary rule exists.
+</p>
+
+<p>
+The Court does not simply create a rule because it considers the rule desirable. It investigates whether the necessary elements of custom have been established.
+</p>
+
+<h3>International Organizations</h3>
+
+<p>
+International organizations can provide important evidence concerning state positions.
+</p>
+
+<p>
+For example, state statements and voting patterns within the United Nations may provide evidence relevant to opinio juris.
+</p>
+
+<div class="definition">
+
+A resolution adopted by an international organization does not automatically create customary international law. Its legal significance depends on the underlying evidence of practice and opinio juris.
+
+</div>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · NORTH SEA CASES
+</div>
+
+<h2>North Sea Continental Shelf Cases</h2>
+
+<p>
+The <strong>North Sea Continental Shelf cases (1969)</strong> are among the most important authorities concerning customary international law.
+</p>
+
+<p>
+The International Court of Justice considered whether a particular method of continental-shelf delimitation had become customary international law.
+</p>
+
+<p>
+The Court concluded that the relevant rule had not been established as customary international law on the evidence before it.
+</p>
+
+<h3>Why the Cases Matter</h3>
+
+<p>
+The cases are particularly important because they demonstrate the need to examine both:
+</p>
+
+<div class="formula">
+
+State Practice + Opinio Juris
+
+</div>
+
+<p>
+They illustrate that a treaty provision or repeated conduct does not automatically establish a customary rule.
+</p>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · TYPES OF CUSTOM
+</div>
+
+<h2>General, Particular & Regional Custom</h2>
+
+<h3>General Custom</h3>
+
+<p>
+General customary international law consists of customary rules that apply broadly across the international community.
+</p>
+
+<h3>Particular Custom</h3>
+
+<p>
+International law can also recognize particular customary rules that apply among a more limited group of states.
+</p>
+
+<h3>Regional Custom</h3>
+
+<p>
+A customary rule can potentially develop among states within a particular region where the relevant states consistently follow a practice and regard it as legally required.
+</p>
+
+<div class="definition">
+
+The existence of a particular or regional customary rule must be established through evidence of the relevant practice and opinio juris among the states concerned.
+
+</div>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · TREATIES & CUSTOM
+</div>
+
+<h2>Relationship Between Treaties and Custom</h2>
+
+<p>
+Treaties and customary international law are separate sources of international law, but they can interact.
+</p>
+
+<table class="comparison">
+
+<tr>
+<th>Treaty</th>
+<th>Custom</th>
+</tr>
+
+<tr>
+<td>
+Created through international agreement and consent.
+</td>
+
+<td>
+Develops through state practice and opinio juris.
+</td>
+</tr>
+
+<tr>
+<td>
+Generally binds states that become parties.
+</td>
+
+<td>
+May apply more broadly where the customary rule is established.
+</td>
+</tr>
+
+<tr>
+<td>
+Usually contained in a written instrument.
+</td>
+
+<td>
+Does not require a written treaty.
+</td>
+</tr>
+
+</table>
+
+<h3>Treaties Can Interact With Custom</h3>
+
+<ul>
+
+<li>A treaty may codify an existing customary rule.</li>
+
+<li>A treaty may contribute to the development of custom.</li>
+
+<li>A treaty provision may reflect a customary rule without automatically becoming customary itself.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · PERSISTENT OBJECTOR
+</div>
+
+<h2>The Persistent Objector Doctrine</h2>
+
+<div class="definition">
+
+A state that clearly and consistently objects to an emerging customary rule while that rule is developing may, under the applicable conditions, avoid being bound by that rule once it becomes established.
+
+</div>
+
+<h3>Requirements</h3>
+
+<p>
+The state generally must:
+</p>
+
+<ol>
+
+<li>Object while the rule is developing.</li>
+
+<li>Object clearly.</li>
+
+<li>Maintain its objection consistently.</li>
+
+</ol>
+
+<p>
+A state cannot normally wait until a customary rule has already become established and then simply announce that it rejects the rule.
+</p>
+
+<div class="definition">
+
+The persistent-objector doctrine is therefore narrowly applied.
+
+</div>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · JUS COGENS
+</div>
+
+<h2>Customary Law and Jus Cogens</h2>
+
+<div class="definition">
+
+Jus cogens refers to peremptory norms of general international law from which no derogation is permitted.
+
+</div>
+
+<p>
+Customary international law and jus cogens are closely connected, but they are not identical concepts.
+</p>
+
+<p>
+Examples commonly recognized or strongly associated with jus cogens include prohibitions against:
+</p>
+
+<ul>
+
+<li>Genocide.</li>
+
+<li>Slavery.</li>
+
+<li>Torture.</li>
+
+<li>Aggression.</li>
+
+</ul>
+
+<p>
+The persistent-objector doctrine does not provide a general escape from fundamental international legal rules having the status of peremptory norms.
+</p>
+
+<div class="formula">
+
+Jus Cogens → No Derogation Permitted
+
+</div>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · KEY TAKEAWAY
+</div>
+
+<h2>Why Customary International Law Matters</h2>
+
+<p>
+Customary international law is one of the central sources of international law because legally binding rules can develop without a written treaty.
+</p>
+
+<p>
+It can play an important role in areas including:
+</p>
+
+<ul>
+
+<li>Diplomatic relations.</li>
+
+<li>The law of the sea.</li>
+
+<li>International humanitarian law.</li>
+
+<li>Human rights.</li>
+
+<li>State responsibility.</li>
+
+<li>International relations and sovereignty.</li>
+
+</ul>
+
+<div class="formula">
+
+State Practice + Opinio Juris → Customary Rule → State Obligation → Possible State Responsibility
+
+</div>
+
+<h3>Key Principles</h3>
+
+<ul>
+
+<li><strong>State practice:</strong> The actual conduct of states.</li>
+
+<li><strong>Opinio juris:</strong> The belief that conduct is legally required or permitted.</li>
+
+<li><strong>General practice:</strong> Practice should be sufficiently widespread and representative.</li>
+
+<li><strong>Consistency:</strong> The overall practice should be sufficiently consistent.</li>
+
+<li><strong>Evidence:</strong> Courts assess governmental conduct, statements, protests, legislation, decisions, and other relevant materials.</li>
+
+<li><strong>Persistent objector:</strong> A state may, under the applicable conditions, avoid a developing customary rule through clear and consistent objection.</li>
+
+<li><strong>Jus cogens:</strong> Peremptory norms cannot be rejected through ordinary persistent objection.</li>
+
+</ul>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Statute of the International Court of Justice, Article 38(1)(b).</li>
+
+<li>International Court of Justice, North Sea Continental Shelf Cases, Judgment, 1969.</li>
+
+<li>United Nations International Law Commission, Conclusions on Identification of Customary International Law, 2018.</li>
+
+<li>United Nations International Law Commission, Draft Conclusions on Identification and Legal Consequences of Peremptory Norms of General International Law (Jus Cogens).</li>
+
+<li>International Court of Justice, judgments and materials concerning customary international law.</li>
+
+<li>United Nations Charter and materials concerning state practice and international organizations.</li>
+
+<li>Vienna Convention on the Law of Treaties, 1969, concerning the relationship between treaties and customary international law.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>International Custom</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 7
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+
+/* NEXT CARD */
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+
+/* PREVIOUS CARD */
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What are the two fundamental elements of customary international law?",
+options:[
+"Treaties and signatures",
+"State practice and opinio juris",
+"National laws and court judgments",
+"Political preference and tradition"
+],
+answer:1
+},
+
+{
+question:"What does state practice refer to?",
+options:[
+"The personal opinions of international judges",
+"The actual conduct of states",
+"Only written treaties",
+"Only United Nations resolutions"
+],
+answer:1
+},
+
+{
+question:"What is opinio juris?",
+options:[
+"A state's political preference",
+"The belief that a practice is followed because it is legally required or permitted",
+"A diplomatic tradition",
+"A national criminal law"
+],
+answer:1
+},
+
+{
+question:"Why is repeated practice alone not necessarily enough to establish customary international law?",
+options:[
+"Because states must always sign a treaty first",
+"Because practice must be accompanied by evidence of opinio juris",
+"Because courts cannot examine state conduct",
+"Because customary law cannot apply to states"
+],
+answer:1
+},
+
+{
+question:"Which case is a major authority concerning the formation of customary international law?",
+options:[
+"North Sea Continental Shelf Cases",
+"Brown v Board of Education",
+"R v G and Another",
+"Donoghue v Stevenson"
+],
+answer:0
+},
+
+{
+question:"What is the persistent objector doctrine?",
+options:[
+"A rule allowing states to withdraw from every treaty",
+"A doctrine allowing a state that clearly and consistently objects during the development of a custom to avoid the rule under applicable conditions",
+"A rule requiring every state to accept every new custom",
+"A principle concerning domestic court appeals"
+],
+answer:1
+},
+
+{
+question:"What does jus cogens refer to?",
+options:[
+"Political traditions between states",
+"Peremptory norms of general international law from which no derogation is permitted",
+"Optional diplomatic practices",
+"Non-binding international statements"
+],
+answer:1
+}
+
+];
+
+let currentQuestion = 0;
+
+
+/* START QUIZ */
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+
+document.getElementById("noteNavigation").style.display = "none";
+
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+
+/* QUIZ RESULT */
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>International Custom</strong> quiz.
+</p>
+
+<p>
+You can now return to the International Law section and explore another topic.
+</p>
+
+<a href="international-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to International Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
