@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining state responsibility, attribution, breach of international obligations, circumstances precluding wrongfulness, reparation, and international accountability.">
+
+<title>State Responsibility | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:3px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* COMPARISON */
+
+.comparison{
+width:100%;
+border-collapse:collapse;
+margin:20px 0;
+font-size:15px;
+}
+
+.comparison th{
+background:#0b1f3a;
+color:white;
+padding:12px;
+text-align:left;
+}
+
+.comparison td{
+padding:12px;
+border:1px solid #ddd;
+vertical-align:top;
+}
+
+.comparison tr:nth-child(even){
+background:#f8f9fb;
+}
+
+/* FORMULA */
+
+.formula{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-weight:bold;
+text-align:center;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+.comparison{
+font-size:13px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ State Responsibility</h1>
+
+<p>
+International Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+STATE RESPONSIBILITY
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is State Responsibility?</h2>
+
+<div class="definition">
+
+State responsibility is the principle of international law that a state is legally responsible when conduct attributable to it breaches an applicable international obligation.
+
+</div>
+
+<p>
+A state may become responsible through an act, an omission, the conduct of its organs or officials, or other conduct that international law attributes to the state.
+</p>
+
+<p>
+State responsibility is distinct from individual criminal responsibility, which concerns the personal responsibility of individuals.
+</p>
+
+<div class="formula">
+
+Attribution + Breach of an International Obligation = Internationally Wrongful Act
+
+</div>
+
+<p>
+The central question is:
+<strong>When is a state legally responsible for violating international law?</strong>
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · INTERNATIONALLY WRONGFUL ACT
+</div>
+
+<h2>The Internationally Wrongful Act</h2>
+
+<p>
+The central concept in state responsibility is the <strong>internationally wrongful act</strong>.
+</p>
+
+<p>
+Under the International Law Commission's Articles on Responsibility of States for Internationally Wrongful Acts, an internationally wrongful act generally exists when:
+</p>
+
+<ol>
+
+<li>The conduct is attributable to the state.</li>
+
+<li>The conduct constitutes a breach of an international obligation of that state.</li>
+
+</ol>
+
+<div class="formula">
+
+Conduct Attributable to State + Breach = Internationally Wrongful Act
+
+</div>
+
+<p>
+The conduct may consist of either an act or an omission.
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · ACT OR OMISSION
+</div>
+
+<h2>Acts and Omissions</h2>
+
+<p>
+State responsibility can arise from both positive conduct and failures to act.
+</p>
+
+<h3>Act</h3>
+
+<p>
+A state may incur responsibility because it does something prohibited by international law.
+</p>
+
+<p>
+For example, a state unlawfully uses force against another state.
+</p>
+
+<h3>Omission</h3>
+
+<p>
+A state may also incur responsibility because it fails to do something required by an international obligation.
+</p>
+
+<p>
+For example, a state may fail to take required protective measures under an applicable human-rights obligation.
+</p>
+
+<div class="definition">
+
+State responsibility can arise from action or failure to act.
+
+</div>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · ATTRIBUTION</div>
+
+<h2>Attribution</h2>
+
+<p>
+Attribution determines whether particular conduct is legally considered conduct of the state.
+</p>
+
+<p>
+Because states act through people and institutions, international law establishes rules for deciding when conduct is attributable to the state.
+</p>
+
+<p>
+Conduct may be attributable where it is performed by:
+</p>
+
+<ul>
+
+<li>State organs.</li>
+
+<li>Government officials.</li>
+
+<li>Entities exercising governmental authority.</li>
+
+<li>Certain persons or groups acting under state direction or control.</li>
+
+<li>Other persons whose conduct international law specifically attributes to the state.</li>
+
+</ul>
+
+<div class="definition">
+
+Attribution asks: <strong>Can this conduct legally be treated as conduct of the state?</strong>
+
+</div>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · STATE ORGANS
+</div>
+
+<h2>Conduct of State Organs</h2>
+
+<p>
+The conduct of a state organ is generally attributable to the state.
+</p>
+
+<p>
+State organs can include:
+</p>
+
+<ul>
+
+<li>Legislatures.</li>
+
+<li>Courts.</li>
+
+<li>Government ministries.</li>
+
+<li>Police.</li>
+
+<li>Military forces.</li>
+
+<li>Administrative agencies.</li>
+
+</ul>
+
+<p>
+The constitutional structure of the state does not normally prevent an institution from being considered a state organ for purposes of international responsibility.
+</p>
+
+<div class="formula">
+
+State Organ → Conduct → Attribution to the State
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · OFFICIAL CONDUCT
+</div>
+
+<h2>Legislative, Executive & Judicial Conduct</h2>
+
+<h3>Legislative Conduct</h3>
+
+<p>
+A state may incur responsibility if its legislature adopts legislation that breaches an international obligation.
+</p>
+
+<h3>Executive Conduct</h3>
+
+<p>
+The actions of ministers, officials, police, military personnel, and other executive authorities can be attributable to the state.
+</p>
+
+<h3>Judicial Conduct</h3>
+
+<p>
+Courts are also state organs. A state can therefore be responsible for judicial conduct that breaches an applicable international obligation.
+</p>
+
+<div class="definition">
+
+A state generally cannot avoid international responsibility simply by arguing that the violation came from a different branch of government.
+
+</div>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · EXCESS OF AUTHORITY & PRIVATE ACTORS
+</div>
+
+<h2>Officials Acting Beyond Authority</h2>
+
+<p>
+A state may remain responsible when one of its officials exceeds their authority or acts contrary to instructions.
+</p>
+
+<p>
+For example, a police officer may be prohibited by domestic law from using unlawful force but nevertheless act in an official capacity.
+</p>
+
+<p>
+The state may still incur international responsibility for the conduct.
+</p>
+
+<h3>Private Individuals</h3>
+
+<p>
+A state is not automatically responsible for every act committed by a private person.
+</p>
+
+<p>
+However, international law recognizes circumstances in which private conduct may become attributable to the state.
+</p>
+
+<div class="formula">
+
+Domestic Disobedience ≠ Automatic Escape from International Responsibility
+
+</div>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · GOVERNMENTAL AUTHORITY & CONTROL
+</div>
+
+<h2>Private Persons, Governmental Authority & Control</h2>
+
+<h3>Persons Exercising Governmental Authority</h3>
+
+<p>
+A state may entrust private entities or individuals with elements of governmental authority.
+</p>
+
+<p>
+Where such persons act in that governmental capacity, their conduct may be attributable to the state.
+</p>
+
+<h3>Direction and Control</h3>
+
+<p>
+Conduct of private persons or groups may, in certain circumstances, be attributable to a state where the state directed or controlled the conduct.
+</p>
+
+<p>
+This issue can be particularly important in situations involving:
+</p>
+
+<ul>
+
+<li>Armed groups.</li>
+
+<li>Military operations.</li>
+
+<li>Proxy forces.</li>
+
+<li>Other organized groups.</li>
+
+</ul>
+
+<div class="definition">
+
+Private conduct is not automatically state conduct. Attribution depends on the applicable international-law rules and circumstances.
+
+</div>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · BREACH OF AN OBLIGATION
+</div>
+
+<h2>Breach of an International Obligation</h2>
+
+<p>
+Attribution alone does not create state responsibility.
+</p>
+
+<p>
+The conduct must also breach an international obligation binding on the state.
+</p>
+
+<p>
+International obligations can arise from:
+</p>
+
+<ul>
+
+<li>Treaties.</li>
+
+<li>Customary international law.</li>
+
+<li>General principles of law.</li>
+
+<li>Other recognized sources of international law.</li>
+
+</ul>
+
+<h3>Timing</h3>
+
+<p>
+The relevant obligation must generally be binding on the state at the time of the conduct.
+</p>
+
+<div class="formula">
+
+Applicable International Obligation + Breach → Possible State Responsibility
+
+</div>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · CONTINUING & COMPOSITE ACTS
+</div>
+
+<h2>Continuing and Composite Breaches</h2>
+
+<h3>Continuing Breach</h3>
+
+<p>
+Some wrongful acts continue over a period of time.
+</p>
+
+<p>
+For example, if an unlawful situation remains in existence, the breach may continue for as long as that situation persists.
+</p>
+
+<h3>Composite Acts</h3>
+
+<p>
+Some international wrongs result from a series of acts or omissions rather than one isolated event.
+</p>
+
+<p>
+Where international law defines the violation as arising from a series of actions, responsibility may be assessed in relation to the conduct as a whole.
+</p>
+
+<div class="definition">
+
+A wrongful act may consist of one event, a continuing situation, or a series of conduct, depending on the applicable international obligation.
+
+</div>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · HUMAN RIGHTS & USE OF FORCE
+</div>
+
+<h2>State Responsibility in Practice</h2>
+
+<h3>Human Rights</h3>
+
+<p>
+State responsibility is especially important in international human-rights law.
+</p>
+
+<p>
+Responsibility may arise where authorities violate human rights or where the state fails to comply with applicable protective or investigative obligations.
+</p>
+
+<h3>Use of Force</h3>
+
+<p>
+International law places important restrictions on the use of force by states.
+</p>
+
+<p>
+An unlawful use of force may breach an international obligation and give rise to state responsibility, particularly under the UN Charter framework.
+</p>
+
+<h3>Territorial Integrity</h3>
+
+<p>
+Violations of another state's territorial integrity may also engage state responsibility where prohibited by international law.
+</p>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · CIRCUMSTANCES PRECLUDING WRONGFULNESS
+</div>
+
+<h2>When Wrongfulness May Be Precluded</h2>
+
+<p>
+International law recognizes limited circumstances in which conduct that would otherwise breach an obligation may not be considered wrongful.
+</p>
+
+<p>
+The International Law Commission's Articles include:
+</p>
+
+<ul>
+
+<li>Consent.</li>
+
+<li>Self-defence.</li>
+
+<li>Countermeasures.</li>
+
+<li>Force majeure.</li>
+
+<li>Distress.</li>
+
+<li>Necessity.</li>
+
+</ul>
+
+<div class="definition">
+
+These doctrines are narrow and subject to strict conditions. They are not general excuses for unlawful conduct.
+
+</div>
+
+<h3>Important Point</h3>
+
+<p>
+Each circumstance must be examined separately under the applicable rules of international law.
+</p>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · CONSEQUENCES & REPARATION
+</div>
+
+<h2>What Happens After Responsibility?</h2>
+
+<p>
+When a state is responsible for an internationally wrongful act, international law generally requires the state to:
+</p>
+
+<ul>
+
+<li>Cease the wrongful conduct where it is continuing.</li>
+
+<li>Make appropriate reparation.</li>
+
+<li>Provide assurances or guarantees of non-repetition where appropriate.</li>
+
+</ul>
+
+<h3>Forms of Reparation</h3>
+
+<table class="comparison">
+
+<tr>
+<th>Form</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td><strong>Restitution</strong></td>
+<td>Restore the situation that existed before the wrongful act where possible and appropriate.</td>
+</tr>
+
+<tr>
+<td><strong>Compensation</strong></td>
+<td>Provide monetary reparation for financially assessable damage.</td>
+</tr>
+
+<tr>
+<td><strong>Satisfaction</strong></td>
+<td>Provide appropriate non-monetary reparation, such as acknowledgment or an expression of regret.</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · ERGA OMNES & INTERNATIONAL CLAIMS
+</div>
+
+<h2>Invoking State Responsibility</h2>
+
+<h3>Injured State</h3>
+
+<p>
+The state directly affected by an internationally wrongful act may generally be considered the injured state.
+</p>
+
+<p>
+It may have legal rights to invoke the responsibility of the responsible state, subject to applicable international law.
+</p>
+
+<h3>Diplomatic Protection</h3>
+
+<p>
+A state may sometimes exercise diplomatic protection on behalf of one of its nationals who has suffered an internationally wrongful act by another state.
+</p>
+
+<h3>Erga Omnes Obligations</h3>
+
+<p>
+Some international obligations are owed to the international community as a whole.
+</p>
+
+<p>
+These are commonly described as <strong>obligations erga omnes</strong>.
+</p>
+
+<div class="definition">
+
+Because of their collective importance, breaches of erga omnes obligations may raise legal interests for states beyond the state directly injured.
+
+</div>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · KEY TAKEAWAY
+</div>
+
+<h2>Why State Responsibility Matters</h2>
+
+<p>
+State responsibility connects international obligations with legal accountability and remedies.
+</p>
+
+<p>
+It helps:
+</p>
+
+<ul>
+
+<li>Enforce international obligations.</li>
+
+<li>Hold states accountable.</li>
+
+<li>Protect treaty commitments.</li>
+
+<li>Protect customary international law.</li>
+
+<li>Provide legal consequences for wrongful conduct.</li>
+
+<li>Support peaceful dispute settlement.</li>
+
+<li>Provide reparation to injured parties.</li>
+
+<li>Strengthen human-rights protection.</li>
+
+<li>Reinforce the international rule of law.</li>
+
+</ul>
+
+<div class="formula">
+
+Attribution → Breach → Internationally Wrongful Act → Responsibility → Consequences
+
+</div>
+
+<h3>Simple State Responsibility Test</h3>
+
+<ol>
+
+<li><strong>Identify the obligation:</strong> What international rule binds the state?</li>
+
+<li><strong>Identify the conduct:</strong> What act or omission occurred?</li>
+
+<li><strong>Determine attribution:</strong> Is the conduct legally attributable to the state?</li>
+
+<li><strong>Determine breach:</strong> Does the conduct violate the international obligation?</li>
+
+<li><strong>Consider wrongfulness:</strong> Does a circumstance such as valid self-defence or necessity apply?</li>
+
+<li><strong>Determine consequences:</strong> What cessation or reparation is required?</li>
+
+</ol>
+
+<div class="definition">
+
+<strong>Key Takeaway:</strong> State responsibility means international accountability of a state for wrongful conduct attributable to it.
+
+</div>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>United Nations International Law Commission, Articles on Responsibility of States for Internationally Wrongful Acts, 2001.</li>
+
+<li>United Nations, Charter of the United Nations, particularly Articles 2(4) and 51.</li>
+
+<li>United Nations, Vienna Convention on the Law of Treaties, 1969.</li>
+
+<li>International Court of Justice, judgments and materials concerning state responsibility, attribution, use of force, and reparation.</li>
+
+<li>United Nations International Law Commission, materials concerning state responsibility, customary international law, and peremptory norms.</li>
+
+<li>European Court of Human Rights, judgments and materials concerning state obligations and remedies.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>State Responsibility</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 7
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+
+/* NEXT CARD */
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+
+/* PREVIOUS CARD */
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is state responsibility?",
+options:[
+"The criminal responsibility of individual citizens",
+"The legal responsibility of a state for conduct attributable to it that breaches an international obligation",
+"A state's domestic tax liability",
+"The responsibility of international organizations only"
+],
+answer:1
+},
+
+{
+question:"What are the two basic elements of an internationally wrongful act?",
+options:[
+"Nationality and territory",
+"Attribution and breach of an international obligation",
+"Treaty and diplomacy",
+"War and peace"
+],
+answer:1
+},
+
+{
+question:"Can state responsibility arise from an omission?",
+options:[
+"No, only positive acts can create responsibility",
+"Yes, a failure to act can breach an applicable international obligation",
+"Only when a court gives permission",
+"Only during armed conflict"
+],
+answer:1
+},
+
+{
+question:"Which of the following is generally considered a state organ?",
+options:[
+"A completely independent private individual",
+"A private company with no governmental function",
+"A government ministry",
+"A foreign journalist"
+],
+answer:2
+},
+
+{
+question:"Is a state automatically responsible for every act of a private individual?",
+options:[
+"Yes, always",
+"No, private conduct is not automatically attributable to the state",
+"Only when the person is a citizen",
+"Only when the act occurs outside the country"
+],
+answer:1
+},
+
+{
+question:"Which of the following is a form of reparation?",
+options:[
+"Restitution",
+"Political campaigning",
+"Military recruitment",
+"Domestic taxation"
+],
+answer:0
+},
+
+{
+question:"Which formula best summarizes state responsibility?",
+options:[
+"Sovereignty + Territory = Responsibility",
+"Nationality + Treaty = Responsibility",
+"Attribution + Breach = Internationally Wrongful Act",
+"War + Peace = International Law"
+],
+answer:2
+}
+
+];
+
+let currentQuestion = 0;
+
+
+/* START QUIZ */
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+
+document.getElementById("noteNavigation").style.display = "none";
+
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+
+/* QUIZ RESULT */
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>State Responsibility</strong> quiz.
+</p>
+
+<p>
+You can now return to the International Law section and explore another topic.
+</p>
+
+<a href="international-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to International Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
