@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining damages, their purpose, categories, causation, remoteness, mitigation, and remedies.">
+
+<title>Damages | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:16px;
+letter-spacing:3px;
+color:#d5d5d5;
+line-height:1.8;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* QUOTE / DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* TABLE */
+
+.comparison-table{
+width:100%;
+border-collapse:collapse;
+margin:20px 0;
+font-size:15px;
+}
+
+.comparison-table th,
+.comparison-table td{
+border:1px solid #ddd;
+padding:12px;
+text-align:left;
+vertical-align:top;
+}
+
+.comparison-table th{
+background:#0b1f3a;
+color:white;
+}
+
+.comparison-table tr:nth-child(even){
+background:#f5f7fa;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+.progress-dots{
+font-size:13px;
+letter-spacing:2px;
+}
+
+.comparison-table{
+font-size:13px;
+}
+
+.comparison-table th,
+.comparison-table td{
+padding:8px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Damages</h1>
+
+<p>
+Contract & Tort Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+DAMAGES
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Are Damages?</h2>
+
+<div class="definition">
+
+Damages are a monetary remedy awarded by a court to compensate a person who has suffered legally recognized loss because of another person's wrongful conduct.
+
+</div>
+
+<p>
+Damages can arise in several areas of private law, including contract law, tort law, negligence, and property law.
+</p>
+
+<p>
+The purpose of damages is generally to provide compensation rather than punishment.
+</p>
+
+<p>
+This principle answers the question:
+</p>
+
+<div class="definition">
+
+<strong>What financial compensation should the law provide for a person's legally recognized loss?</strong>
+
+</div>
+
+<p>
+The type and amount of damages depend on the legal claim, the nature of the loss, and the applicable legal system.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · CONTRACT & TORT
+</div>
+
+<h2>Damages in Contract and Tort</h2>
+
+<h3>Contract Law</h3>
+
+<p>
+In contract law, damages generally aim to compensate the innocent party for loss caused by the breach of contract.
+</p>
+
+<p>
+The central objective is often to place the claimant in approximately the position they would have been in if the contract had been properly performed.
+</p>
+
+<p>
+For example, A agrees to deliver goods worth $5,000 to B but breaches the contract. B may potentially recover legally recognized losses caused by the breach.
+</p>
+
+<h3>Tort Law</h3>
+
+<p>
+In tort law, damages generally aim to compensate the claimant for harm caused by the defendant's wrongful conduct.
+</p>
+
+<p>
+In negligence, damages may compensate for physical injury, property damage, medical expenses, lost income, and other legally recognized losses.
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · COMPENSATORY DAMAGES
+</div>
+
+<h2>Compensatory Damages</h2>
+
+<p>
+Compensatory damages are damages intended to compensate for legally recognized loss.
+</p>
+
+<p>
+They are the most common form of damages in civil law.
+</p>
+
+<p>
+They may compensate for:
+</p>
+
+<ul>
+
+<li>Financial losses.</li>
+
+<li>Physical injury.</li>
+
+<li>Property damage.</li>
+
+<li>Certain non-financial harms.</li>
+
+</ul>
+
+<div class="definition">
+
+The precise categories of compensable loss vary between jurisdictions.
+
+</div>
+
+<h3>Damages vs. Fines</h3>
+
+<p>
+Damages are generally awarded to compensate a claimant. Fines are generally imposed as a form of punishment by a public authority, often in criminal or regulatory proceedings.
+</p>
+
+<p>
+For example, a negligent driver may be ordered to pay damages to an injured person while separately receiving a fine for violating traffic law.
+</p>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · PERSONAL INJURY
+</div>
+
+<h2>Damages for Personal Injury</h2>
+
+<p>
+Where negligence causes physical injury, damages may compensate for various consequences of the injury.
+</p>
+
+<ul>
+
+<li>Medical expenses.</li>
+
+<li>Rehabilitation costs.</li>
+
+<li>Lost earnings.</li>
+
+<li>Reduced future earning capacity.</li>
+
+<li>Pain and suffering.</li>
+
+<li>Other legally recognized losses.</li>
+
+</ul>
+
+<p>
+The claimant generally must establish that the losses were caused by the defendant's wrongful conduct.
+</p>
+
+<h3>Medical Expenses</h3>
+
+<p>
+Recoverable medical costs may include reasonable expenses relating to emergency treatment, hospital care, medication, rehabilitation, and necessary future treatment, depending on the applicable law.
+</p>
+
+<h3>Lost Income</h3>
+
+<p>
+An injury may prevent a person from working. Damages may therefore compensate for income lost because of the defendant's conduct.
+</p>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · EARNING CAPACITY & PROPERTY
+</div>
+
+<h2>Loss of Earning Capacity & Property Damage</h2>
+
+<h3>Loss of Earning Capacity</h3>
+
+<p>
+A person may suffer a reduction in their ability to earn income even if they have not completely stopped working.
+</p>
+
+<p>
+For example, an injury may prevent someone from performing certain types of work. A court may therefore consider whether the person's future earning capacity has been reduced.
+</p>
+
+<h3>Property Damage</h3>
+
+<p>
+Damages can also compensate for damage to property.
+</p>
+
+<p>
+For example, if a negligent driver crashes into another person's car, the owner may potentially recover the reasonable cost of repair or, in appropriate circumstances, the value of the property.
+</p>
+
+<div class="definition">
+
+The precise measure of property damage depends on the circumstances and applicable law.
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · NON-ECONOMIC LOSS
+</div>
+
+<h2>Non-Economic Loss</h2>
+
+<p>
+Not all losses are financial. Some legal systems recognize damages for non-economic harm, particularly in personal-injury cases.
+</p>
+
+<p>
+Examples include:
+</p>
+
+<ul>
+
+<li>Pain and suffering.</li>
+
+<li>Loss of enjoyment of life.</li>
+
+<li>Emotional distress.</li>
+
+<li>Loss of function.</li>
+
+<li>Psychological injury where legally recognized.</li>
+
+</ul>
+
+<h3>Pain and Suffering</h3>
+
+<p>
+Courts may consider the severity of the injury, duration of symptoms, medical treatment, recovery period, long-term effects, and impact on daily life.
+</p>
+
+<h3>Loss of Enjoyment of Life</h3>
+
+<p>
+Depending on the legal system, damages may recognize a reduced ability to participate in activities previously enjoyed, such as sports, hobbies, travel, or ordinary activities.
+</p>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · SPECIAL CATEGORIES
+</div>
+
+<h2>Nominal, Aggravated & Punitive Damages</h2>
+
+<h3>Nominal Damages</h3>
+
+<p>
+Nominal damages are a small amount awarded where a legal right has been violated but the claimant has not established substantial financial or other compensable loss.
+</p>
+
+<p>
+They recognize that a legal wrong occurred and are more commonly associated with certain causes of action than with ordinary negligence claims.
+</p>
+
+<h3>Aggravated Damages</h3>
+
+<p>
+Some legal systems recognize aggravated damages where the defendant's conduct or the manner in which the wrongdoing was committed causes additional distress, humiliation, or injury to the claimant.
+</p>
+
+<p>
+These damages remain compensatory rather than primarily punitive.
+</p>
+
+<h3>Punitive or Exemplary Damages</h3>
+
+<p>
+Punitive damages, sometimes called exemplary damages, are intended partly to punish exceptionally wrongful conduct and deter similar conduct.
+</p>
+
+<p>
+They are generally exceptional and subject to specific legal requirements.
+</p>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · CONTRACT DAMAGES
+</div>
+
+<h2>Expectation, Reliance & Consequential Damages</h2>
+
+<h3>Expectation Damages</h3>
+
+<p>
+Expectation damages aim to give the claimant the benefit of the bargain. They generally seek to place the claimant in approximately the position they would have occupied if the contract had been performed.
+</p>
+
+<p>
+For example, A agrees to sell B goods for $1,000. A breaches, and B must purchase equivalent goods for $1,300. The $300 difference may potentially represent expectation loss.
+</p>
+
+<h3>Reliance Damages</h3>
+
+<p>
+Reliance damages compensate expenses or losses incurred because a person relied on the contract.
+</p>
+
+<p>
+For example, B spends $2,000 preparing to perform a contract, but A later breaches. Depending on the circumstances, B may seek recovery of legally recognized reliance losses.
+</p>
+
+<h3>Consequential Damages</h3>
+
+<p>
+A breach or tort can sometimes cause losses beyond the immediate harm. Recovery may depend on causation, foreseeability, remoteness, and mitigation.
+</p>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · CAUSATION
+</div>
+
+<h2>Causation and Damages</h2>
+
+<p>
+A claimant generally cannot recover damages for losses that were not caused by the defendant's wrongful conduct.
+</p>
+
+<div class="definition">
+
+<strong>Did the wrongful act cause the claimed loss?</strong>
+
+</div>
+
+<p>
+This is an important connection between causation and damages.
+</p>
+
+<p>
+For example, if an accident causes a broken arm, medical treatment associated with that injury may be connected to the accident.
+</p>
+
+<p>
+A completely unrelated expense would generally not be recoverable merely because it occurred after the accident.
+</p>
+
+<h3>Why Causation Matters</h3>
+
+<p>
+Causation prevents a defendant from being held responsible for losses that are unrelated to their wrongful conduct.
+</p>
+
+<div class="definition">
+
+A legally recognized loss normally needs to be sufficiently connected to the wrongful conduct before compensation can be awarded.
+
+</div>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · REMOTENESS & FORESEEABILITY
+</div>
+
+<h2>Remoteness and Foreseeability</h2>
+
+<h3>Remoteness</h3>
+
+<p>
+Even if a loss was caused by the defendant, the law may restrict recovery where the loss is too remote.
+</p>
+
+<p>
+The court may ask whether the type of loss was sufficiently foreseeable or legally connected to the wrongful conduct.
+</p>
+
+<h3>Foreseeability</h3>
+
+<p>
+Foreseeability can be important in determining whether certain losses are legally recoverable.
+</p>
+
+<p>
+A type of harm that could reasonably have been anticipated may be more likely to fall within the defendant's legal responsibility.
+</p>
+
+<p>
+Highly unusual consequences may be considered too remote under the applicable legal rules.
+</p>
+
+<div class="definition">
+
+<strong>Remoteness</strong> prevents liability from extending indefinitely to every consequence eventually connected to an event.
+
+</div>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · MITIGATION
+</div>
+
+<h2>Mitigation of Loss</h2>
+
+<p>
+A claimant generally has a duty to take reasonable steps to mitigate their losses.
+</p>
+
+<p>
+Mitigation means reducing or limiting the harm caused by the defendant's conduct.
+</p>
+
+<p>
+For example, following an accident, a claimant may be expected to obtain appropriate medical treatment where reasonable.
+</p>
+
+<p>
+The claimant does not normally have to take unreasonable or excessively burdensome measures.
+</p>
+
+<h3>Mitigation in Contract Law</h3>
+
+<p>
+A person whose contract has been breached should generally take reasonable steps to reduce their losses.
+</p>
+
+<p>
+For example, if a supplier fails to deliver goods, B may need to make reasonable efforts to obtain replacement goods rather than allowing losses to increase unnecessarily.
+</p>
+
+<div class="definition">
+
+Mitigation requires reasonable conduct, not perfection.
+
+</div>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · LIMITS ON RECOVERY
+</div>
+
+<h2>Remoteness, Mitigation & Certainty</h2>
+
+<h3>Remoteness vs. Mitigation</h3>
+
+<table class="comparison-table">
+
+<tr>
+
+<th>Principle</th>
+
+<th>Question</th>
+
+</tr>
+
+<tr>
+
+<td><strong>Remoteness</strong></td>
+
+<td>Which losses are sufficiently connected to be legally recoverable?</td>
+
+</tr>
+
+<tr>
+
+<td><strong>Mitigation</strong></td>
+
+<td>Which avoidable losses should not be recovered?</td>
+
+</tr>
+
+</table>
+
+<h3>Certainty of Loss</h3>
+
+<p>
+A claimant generally needs to provide sufficient evidence that a loss actually occurred or is reasonably measurable.
+</p>
+
+<p>
+Courts may be reluctant to award damages based entirely on speculation.
+</p>
+
+<h3>Future Loss</h3>
+
+<p>
+Courts may recognize future losses where they can be established with sufficient legal certainty.
+</p>
+
+<p>
+Examples include future medical treatment, future loss of earnings, long-term disability, and continuing care costs.
+</p>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · EVIDENCE & LIABILITY
+</div>
+
+<h2>Evidence, Burden of Proof & Multiple Defendants</h2>
+
+<h3>Evidence of Damages</h3>
+
+<p>
+Evidence is important in proving the amount of damages.
+</p>
+
+<ul>
+
+<li>Medical records.</li>
+
+<li>Receipts.</li>
+
+<li>Employment records.</li>
+
+<li>Repair estimates.</li>
+
+<li>Expert testimony.</li>
+
+<li>Financial documents.</li>
+
+<li>Photographs.</li>
+
+<li>Contracts and invoices.</li>
+
+</ul>
+
+<h3>Burden of Proof</h3>
+
+<p>
+In civil cases, the claimant generally bears the burden of establishing the facts necessary for the claim.
+</p>
+
+<p>
+In a negligence case, this may include establishing duty of care, breach, causation, and damage.
+</p>
+
+<p>
+In many common-law systems, the standard of proof in civil cases is the balance of probabilities.
+</p>
+
+<h3>Multiple Defendants</h3>
+
+<p>
+Where more than one person contributes to the claimant's loss, the legal system may determine whether both are liable, how responsibility is allocated, and whether one defendant can seek contribution from another.
+</p>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · OTHER REMEDIES
+</div>
+
+<h2>Damages and Other Legal Remedies</h2>
+
+<p>
+Damages are one of several remedies available in civil law.
+</p>
+
+<ul>
+
+<li>Specific performance.</li>
+
+<li>Injunctions.</li>
+
+<li>Restitution.</li>
+
+<li>Declaratory relief.</li>
+
+</ul>
+
+<h3>Restitution vs. Damages</h3>
+
+<div class="definition">
+
+<strong>Damages = Compensation for loss.</strong><br><br>
+
+<strong>Restitution = Restoration or reversal of an unjust benefit.</strong>
+
+</div>
+
+<h3>Specific Performance</h3>
+
+<p>
+Specific performance requires a party to perform a contractual obligation. Courts may consider it where damages are inadequate and the legal requirements for equitable relief are satisfied.
+</p>
+
+<h3>Injunctions</h3>
+
+<p>
+An injunction is a court order requiring a person to do something or refrain from doing something.
+</p>
+
+<p>
+Damages may compensate for a completed loss, while an injunction may prevent continuing or future wrongful conduct.
+</p>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+Damages are a monetary remedy designed primarily to compensate for legally recognized loss.
+
+</div>
+
+<p>
+In contract law, damages generally aim to protect the benefit of the bargain.
+</p>
+
+<p>
+In tort law, damages generally aim to compensate for harm caused by wrongful conduct.
+</p>
+
+<h3>Remember</h3>
+
+<ul>
+
+<li><strong>Causation</strong> = The loss must be connected to the wrongful conduct.</li>
+
+<li><strong>Remoteness</strong> = The loss must be sufficiently connected to be legally recoverable.</li>
+
+<li><strong>Mitigation</strong> = The claimant should take reasonable steps to limit avoidable loss.</li>
+
+</ul>
+
+<h3>Common Categories</h3>
+
+<ul>
+
+<li>Compensatory damages.</li>
+
+<li>Expectation damages.</li>
+
+<li>Reliance damages.</li>
+
+<li>Nominal damages.</li>
+
+<li>Consequential damages.</li>
+
+<li>Non-economic damages.</li>
+
+<li>Punitive or exemplary damages in exceptional cases.</li>
+
+</ul>
+
+<div class="definition">
+
+<strong>Damages = Money awarded to provide a legal remedy for compensable loss.</strong>
+
+</div>
+
+<p>
+The key question is not simply whether there was a legal wrong. It is also:
+</p>
+
+<div class="definition">
+
+<strong>What loss did the wrong cause, and what compensation does the law permit the claimant to recover?</strong>
+
+</div>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Restatement (Second) of Contracts, provisions concerning contract damages and remedies.</li>
+
+<li>Restatement (Third) of Torts, materials concerning damages and remedies for tortious harm.</li>
+
+<li>Cornell Law School Legal Information Institute, materials concerning damages, compensatory damages, punitive damages, and contractual remedies.</li>
+
+<li>United Nations International Law Commission, Articles on Responsibility of States for Internationally Wrongful Acts, particularly provisions concerning reparation, restitution, compensation, and satisfaction.</li>
+
+<li>Relevant domestic contract and tort legislation and case law concerning damages, causation, remoteness, mitigation, and civil remedies.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Damages</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is the primary purpose of damages?",
+options:[
+"To punish every defendant",
+"To compensate for legally recognized loss",
+"To replace criminal fines",
+"To eliminate all future disputes"
+],
+answer:1
+},
+
+{
+question:"What do expectation damages generally aim to protect?",
+options:[
+"The defendant's reputation",
+"The claimant's benefit of the bargain",
+"Only emotional interests",
+"The criminal justice system"
+],
+answer:1
+},
+
+{
+question:"Which principle asks whether the wrongful conduct caused the claimed loss?",
+options:[
+"Mitigation",
+"Causation",
+"Restitution",
+"Specific performance"
+],
+answer:1
+},
+
+{
+question:"What does mitigation generally require from a claimant?",
+options:[
+"Preventing every possible loss",
+"Taking reasonable steps to limit avoidable loss",
+"Accepting every possible alternative",
+"Taking unlimited financial risks"
+],
+answer:1
+},
+
+{
+question:"Which statement best describes punitive damages?",
+options:[
+"They are always available in negligence cases",
+"They are primarily designed to compensate medical expenses",
+"They may punish exceptionally wrongful conduct and deter similar conduct",
+"They are the same as restitution"
+],
+answer:2
+}
+
+];
+
+let currentQuestion = 0;
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Damages</strong> quiz.
+</p>
+
+<p>
+You can now return to the Contract & Tort Law section and explore another legal concept.
+</p>
+
+<a href="contract-tort-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Contract & Tort Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
