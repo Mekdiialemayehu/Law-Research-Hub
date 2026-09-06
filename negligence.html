@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining negligence, duty of care, breach, causation, damage, defences, and related concepts.">
+
+<title>Negligence | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* QUOTE / DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Negligence</h1>
+
+<p>
+Contract & Tort Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+NEGLIGENCE
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is Negligence?</h2>
+
+<div class="definition">
+
+Negligence is a tort involving a failure to exercise the level of care that the law reasonably expects in the circumstances, resulting in legally recognized harm to another person.
+
+</div>
+
+<p>
+Unlike contract law, negligence does not generally depend on a voluntary agreement between the parties.
+</p>
+
+<p>
+A negligence claim usually requires the claimant to establish:
+</p>
+
+<ol>
+
+<li>A duty of care.</li>
+
+<li>A breach of that duty.</li>
+
+<li>Causation of legally recognized harm.</li>
+
+<li>Harm that is not too remote.</li>
+
+</ol>
+
+<p>
+The exact requirements vary between legal systems.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · NEGLIGENCE AS A TORT
+</div>
+
+<h2>Negligence as a Tort</h2>
+
+<p>
+Negligence is part of tort law.
+</p>
+
+<p>
+Tort law generally concerns duties imposed by law rather than obligations voluntarily created by contract.
+</p>
+
+<h3>Examples</h3>
+
+<ul>
+
+<li>A driver owes duties of care to other road users.</li>
+
+<li>A doctor may owe duties of care to a patient.</li>
+
+<li>A property occupier may owe duties of care to lawful visitors.</li>
+
+<li>A manufacturer may owe duties to consumers in appropriate circumstances.</li>
+
+</ul>
+
+<div class="definition">
+
+These duties can exist even when the parties never entered into a contract.
+
+</div>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · ELEMENTS
+</div>
+
+<h2>The Elements of Negligence</h2>
+
+<p>
+A negligence claim commonly involves four main elements:
+</p>
+
+<div class="definition">
+
+<strong>Duty of Care</strong><br>
+↓<br>
+<strong>Breach of Duty</strong><br>
+↓<br>
+<strong>Causation</strong><br>
+↓<br>
+<strong>Damage</strong>
+
+</div>
+
+<p>
+A claimant generally must establish each required element.
+</p>
+
+<p>
+If one essential element is not established, the negligence claim may fail.
+</p>
+
+<h3>Key Question</h3>
+
+<p>
+Did the defendant fail to take reasonable care, causing legally recognized harm to the claimant?
+</p>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · DUTY OF CARE
+</div>
+
+<h2>Duty of Care</h2>
+
+<div class="definition">
+
+A duty of care is a legal obligation requiring a person to take reasonable care to avoid causing foreseeable harm to others.
+
+</div>
+
+<p>
+The existence of a duty depends on the relationship between the parties and the circumstances.
+</p>
+
+<h3>Examples</h3>
+
+<ul>
+
+<li>Drivers to other road users.</li>
+
+<li>Doctors to patients.</li>
+
+<li>Employers to employees.</li>
+
+<li>Manufacturers to consumers.</li>
+
+<li>Occupiers to certain visitors.</li>
+
+<li>Professionals to people who reasonably rely on their services.</li>
+
+</ul>
+
+<p>
+The precise test for duty varies between jurisdictions.
+</p>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · FORESEEABILITY & PROXIMITY
+</div>
+
+<h2>Foreseeability and Proximity</h2>
+
+<h3>Foreseeability</h3>
+
+<p>
+Foreseeability asks whether a reasonable person could reasonably have anticipated the possibility of harm.
+</p>
+
+<p>
+For example, a driver should reasonably foresee that driving at an excessive speed may endanger pedestrians or other road users.
+</p>
+
+<h3>Proximity</h3>
+
+<p>
+Some legal systems consider proximity when determining whether a duty of care exists.
+</p>
+
+<p>
+Proximity broadly refers to the closeness or relationship between the parties.
+</p>
+
+<ul>
+
+<li>Physical proximity.</li>
+
+<li>Legal relationships.</li>
+
+<li>Direct interactions.</li>
+
+<li>Reliance.</li>
+
+<li>Assumption of responsibility.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · BREACH
+</div>
+
+<h2>Breach of Duty</h2>
+
+<p>
+Once a duty of care is established, the claimant generally must show that the defendant breached that duty.
+</p>
+
+<div class="definition">
+
+A breach occurs when the defendant's conduct falls below the legally required standard of reasonable care.
+
+</div>
+
+<p>
+The law does not normally require people to eliminate every possible risk.
+</p>
+
+<p>
+Instead, it generally requires reasonable care in the circumstances.
+</p>
+
+<h3>Factors Considered</h3>
+
+<ul>
+
+<li>Likelihood of harm.</li>
+
+<li>Seriousness of potential harm.</li>
+
+<li>Cost or difficulty of precautions.</li>
+
+<li>Social value of the defendant's conduct.</li>
+
+<li>The defendant's role or expertise.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · STANDARD OF CARE
+</div>
+
+<h2>Standard of Care</h2>
+
+<div class="definition">
+
+The standard of care is the level of care expected from a reasonable person in the relevant circumstances.
+
+</div>
+
+<h3>The Reasonable Person</h3>
+
+<p>
+The reasonable-person standard is an objective legal standard.
+</p>
+
+<p>
+The court generally asks:
+</p>
+
+<div class="definition">
+
+"What would a reasonably careful person have done in the same circumstances?"
+
+</div>
+
+<p>
+The defendant's personal belief that they acted carefully is not necessarily decisive.
+</p>
+
+<p>
+The law focuses on the objective standard required by the circumstances.
+</p>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · SPECIAL STANDARDS
+</div>
+
+<h2>Special Standards of Care</h2>
+
+<h3>Professionals</h3>
+
+<p>
+Professionals may be judged according to the standard expected of a reasonably competent member of their profession.
+</p>
+
+<p>
+Examples include doctors, lawyers, engineers, accountants, and architects.
+</p>
+
+<h3>Children</h3>
+
+<p>
+Children may be judged according to a standard appropriate to their age and circumstances in legal systems that recognize a special standard for minors.
+</p>
+
+<h3>Physical Disability</h3>
+
+<p>
+Some legal systems take a defendant's physical disability into account when determining the appropriate standard.
+</p>
+
+<p>
+The precise approach depends on the jurisdiction.
+</p>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · CAUSATION
+</div>
+
+<h2>Causation</h2>
+
+<p>
+After establishing breach, the claimant generally must show that the defendant's breach caused the harm.
+</p>
+
+<div class="definition">
+
+"Did the defendant's breach actually cause the claimant's loss or injury?"
+
+</div>
+
+<h3>Factual Causation</h3>
+
+<p>
+A common test for factual causation is the "but for" test.
+</p>
+
+<div class="definition">
+
+"Would the harm have occurred but for the defendant's breach?"
+
+</div>
+
+<p>
+For example, if a driver negligently runs a red light and hits a pedestrian, the court may ask whether the injury would have occurred without the driver's negligent conduct.
+</p>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · MULTIPLE CAUSES & REMOTENESS
+</div>
+
+<h2>Multiple Causes and Remoteness</h2>
+
+<h3>Multiple Causes</h3>
+
+<p>
+Sometimes harm results from several contributing factors.
+</p>
+
+<ul>
+
+<li>Two people may independently contribute to an accident.</li>
+
+<li>A pre-existing condition may contribute to an injury.</li>
+
+<li>Several negligent acts may combine to cause harm.</li>
+
+</ul>
+
+<h3>Intervening Acts</h3>
+
+<p>
+An intervening event can sometimes break the chain of causation.
+</p>
+
+<p>
+It may involve another person's action, the claimant's conduct, or an independent natural event.
+</p>
+
+<h3>Remoteness</h3>
+
+<p>
+Even when a defendant's breach factually caused harm, the defendant may not be liable for every consequence.
+</p>
+
+<div class="definition">
+
+The law may limit liability to losses that are sufficiently connected to the breach.
+
+</div>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · DAMAGE
+</div>
+
+<h2>Damage in Negligence</h2>
+
+<p>
+A negligence claim generally requires legally recognized harm.
+</p>
+
+<h3>Possible Types of Damage</h3>
+
+<ul>
+
+<li>Physical injury.</li>
+
+<li>Property damage.</li>
+
+<li>Financial loss in appropriate circumstances.</li>
+
+<li>Psychological harm where recognized by law.</li>
+
+</ul>
+
+<h3>Pure Economic Loss</h3>
+
+<p>
+Pure economic loss refers to financial loss that does not result from physical injury or property damage.
+</p>
+
+<p>
+Many legal systems treat pure economic loss cautiously and apply special rules to determine when it is recoverable.
+</p>
+
+<h3>Personal Injury</h3>
+
+<p>
+Personal injury is one of the most common forms of damage in negligence claims.
+</p>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · DEFENCES
+</div>
+
+<h2>Defences to Negligence</h2>
+
+<p>
+A defendant may have legal defences to a negligence claim.
+</p>
+
+<h3>Contributory Negligence</h3>
+
+<p>
+This occurs when the claimant's own lack of reasonable care contributed to their harm.
+</p>
+
+<p>
+In many modern systems, contributory negligence reduces compensation rather than completely preventing recovery.
+</p>
+
+<h3>Voluntary Assumption of Risk</h3>
+
+<p>
+Voluntary assumption of risk, sometimes called <em>volenti</em>, may apply where the claimant knowingly and voluntarily accepted a particular risk.
+</p>
+
+<p>
+Simply knowing that an activity involves some risk does not automatically establish legal consent to all possible harm.
+</p>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · SPECIAL AREAS
+</div>
+
+<h2>Special Areas of Negligence</h2>
+
+<h3>Medical Negligence</h3>
+
+<p>
+Medical negligence occurs when a healthcare professional fails to meet the applicable standard of care and causes legally recognized harm.
+</p>
+
+<h3>Occupiers' Liability</h3>
+
+<p>
+An occupier of land or premises may owe duties to certain people who enter the property.
+</p>
+
+<h3>Product Liability</h3>
+
+<p>
+Manufacturers and suppliers may potentially be liable when defective products cause harm.
+</p>
+
+<h3>Professional Negligence</h3>
+
+<p>
+Professional negligence occurs when a professional fails to meet the required professional standard of care.
+</p>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · RELATED DOCTRINES
+</div>
+
+<h2>Related Negligence Doctrines</h2>
+
+<h3>Negligence Per Se</h3>
+
+<p>
+Some legal systems recognize negligence per se, where violation of a statute designed to protect a particular class from a particular type of harm may help establish negligence.
+</p>
+
+<h3>Res Ipsa Loquitur</h3>
+
+<p>
+<em>Res ipsa loquitur</em> means roughly "the thing speaks for itself."
+</p>
+
+<p>
+In certain circumstances, it can allow an inference of negligence from the nature of an accident.
+</p>
+
+<h3>Vicarious Liability</h3>
+
+<p>
+Employers may sometimes be legally responsible for negligent acts of employees performed in the course of employment.
+</p>
+
+<div class="definition">
+
+These doctrines do not automatically establish negligence. Their availability and effect vary between jurisdictions.
+
+</div>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · KEY TAKEAWAY
+</div>
+
+<h2>The Negligence Test</h2>
+
+<div class="definition">
+
+<strong>1. Duty of Care</strong><br>
+Did the defendant owe a duty to the claimant?<br><br>
+
+↓
+
+<br><br>
+
+<strong>2. Breach</strong><br>
+Did the defendant fail to meet the required standard of care?<br><br>
+
+↓
+
+<br><br>
+
+<strong>3. Causation</strong><br>
+Did the breach cause the harm?<br><br>
+
+↓
+
+<br><br>
+
+<strong>4. Remoteness</strong><br>
+Was the harm sufficiently connected to the breach?<br><br>
+
+↓
+
+<br><br>
+
+<strong>5. Damage</strong><br>
+Did the claimant suffer legally recognized loss or injury?
+
+</div>
+
+<p>
+A simple formula is:
+</p>
+
+<div class="definition">
+
+Negligence = Failure to take reasonable care + Legally recognized harm
+
+</div>
+
+<p>
+Negligence is therefore different from intentional wrongdoing and from breach of contract. It focuses on whether a person failed to take reasonable care in circumstances where the law required them to do so.
+</p>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Restatement (Third) of Torts, materials concerning negligence, duty, breach, causation, and damages.</li>
+
+<li>Cornell Law School Legal Information Institute, materials concerning negligence, duty of care, breach, causation, and damages.</li>
+
+<li>Relevant domestic tort legislation and case law concerning negligence and civil liability.</li>
+
+<li>Academic tort-law materials concerning reasonable care, foreseeability, causation, remoteness, contributory negligence, and professional negligence.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Negligence</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"Which of the following is a central element of a negligence claim?",
+options:[
+"Proof of a criminal offence",
+"A duty of care",
+"Proof of a written contract",
+"Proof that the defendant acted intentionally"
+],
+answer:1
+},
+
+{
+question:"What does the reasonable-person standard generally ask?",
+options:[
+"What the defendant personally believed was reasonable",
+"What a reasonably careful person would have done in the circumstances",
+"What the claimant wanted the defendant to do",
+"What the most careful person in society would have done"
+],
+answer:1
+},
+
+{
+question:"What does the 'but for' test examine?",
+options:[
+"Whether the defendant intended the harm",
+"Whether the claimant consented to the risk",
+"Whether the harm would have occurred without the defendant's breach",
+"Whether the defendant had insurance"
+],
+answer:2
+},
+
+{
+question:"What is contributory negligence?",
+options:[
+"When the claimant's own lack of reasonable care contributed to their harm",
+"When two defendants enter into a contract",
+"When a defendant intentionally causes harm",
+"When a court refuses to hear a case"
+],
+answer:0
+},
+
+{
+question:"Which sequence best represents the negligence analysis?",
+options:[
+"Contract → Offer → Acceptance → Consideration",
+"Duty → Breach → Causation → Damage",
+"Intent → Motive → Punishment → Appeal",
+"Statute → Election → Parliament → Court"
+],
+answer:1
+}
+
+];
+
+let currentQuestion = 0;
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Negligence</strong> quiz.
+</p>
+
+<p>
+You can now return to the Contract & Tort Law section and explore another legal concept.
+</p>
+
+<a href="contract-tort-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Contract & Tort Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
