@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining offer and acceptance, contract formation, counteroffers, revocation, unilateral contracts, electronic contracts, and related principles.">
+
+<title>Offer and Acceptance | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* QUOTE / DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Offer and Acceptance</h1>
+
+<p>
+Contract & Tort Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+OFFER AND ACCEPTANCE
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Are Offer and Acceptance?</h2>
+
+<div class="definition">
+
+Offer + Acceptance = Agreement
+
+</div>
+
+<p>
+Offer and acceptance are fundamental elements of contract formation.
+</p>
+
+<p>
+A contract is generally formed when one party makes an offer and the other party accepts that offer, provided that the other requirements for a valid contract are also satisfied.
+</p>
+
+<p>
+Agreement alone is not necessarily enough to create an enforceable contract. Depending on the legal system, consideration, intention to create legal relations, capacity, certainty, and legality may also be relevant.
+</p>
+
+<p>
+The central question is:
+<strong>Have the parties reached a legally binding agreement?</strong>
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · OFFER
+</div>
+
+<h2>What Is an Offer?</h2>
+
+<div class="definition">
+
+An offer is a clear statement showing willingness to enter into a contract on specified terms, with the intention that it will become binding if accepted.
+
+</div>
+
+<p>
+The person making the offer is called the <strong>offeror</strong>.
+</p>
+
+<p>
+The person receiving the offer is called the <strong>offeree</strong>.
+</p>
+
+<p>
+An offer should generally contain sufficiently clear terms so that the parties and a court can determine what agreement is being proposed.
+</p>
+
+<h3>Example</h3>
+
+<p>
+"I will sell you my bicycle for $200."
+</p>
+
+<p>
+This may constitute an offer because it identifies the subject matter and price and indicates willingness to be bound if accepted.
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · FEATURES OF AN OFFER
+</div>
+
+<h2>Essential Features of an Offer</h2>
+
+<p>
+An offer generally needs to demonstrate:
+</p>
+
+<ul>
+
+<li>A clear willingness to contract.</li>
+
+<li>Sufficiently certain terms.</li>
+
+<li>An intention that acceptance will create a binding agreement.</li>
+
+<li>Communication to the person or persons to whom it is made.</li>
+
+</ul>
+
+<h3>Intention to Be Bound</h3>
+
+<p>
+A statement made casually or socially may not constitute an offer.
+</p>
+
+<p>
+For example, "I might sell my bicycle for $200" is less likely to be an offer because the language suggests uncertainty.
+</p>
+
+<p>
+By contrast, "I will sell you my bicycle for $200" more clearly demonstrates an intention to contract.
+</p>
+
+<p>
+The precise legal requirements depend on the jurisdiction and circumstances.
+</p>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · CERTAINTY & COMMUNICATION
+</div>
+
+<h2>Certainty and Communication</h2>
+
+<h3>Certainty of Terms</h3>
+
+<p>
+An offer must normally be sufficiently certain. Important terms may include:
+</p>
+
+<ul>
+
+<li>Subject matter.</li>
+
+<li>Price.</li>
+
+<li>Quantity.</li>
+
+<li>Identity of the parties.</li>
+
+<li>Method of performance.</li>
+
+<li>Timing of performance.</li>
+
+</ul>
+
+<p>
+A court may refuse to enforce an alleged contract if its terms are too uncertain. However, courts in some legal systems may interpret or imply terms where appropriate.
+</p>
+
+<h3>Communication</h3>
+
+<p>
+An offer generally must be communicated to the offeree.
+</p>
+
+<div class="definition">
+
+A person cannot ordinarily accept an offer they did not know existed.
+
+</div>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · INVITATION TO TREAT
+</div>
+
+<h2>Offer vs. Invitation to Treat</h2>
+
+<p>
+An <strong>invitation to treat</strong> is generally an invitation for people to make offers rather than an offer itself.
+</p>
+
+<p>
+Common examples include:
+</p>
+
+<ul>
+
+<li>Goods displayed in shops.</li>
+
+<li>Advertisements.</li>
+
+<li>Catalogues.</li>
+
+<li>Menus.</li>
+
+<li>Auction advertisements.</li>
+
+</ul>
+
+<h3>Why Does It Matter?</h3>
+
+<p>
+The distinction determines who is actually making the offer and who has the power to accept it.
+</p>
+
+<div class="definition">
+
+Offer = Proposal capable of acceptance.
+
+<br><br>
+
+Invitation to Treat = Invitation for others to make offers.
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · SHOP DISPLAYS & ADVERTISEMENTS
+</div>
+
+<h2>Shop Displays & Advertisements</h2>
+
+<h3>Goods Displayed in Shops</h3>
+
+<p>
+In many common-law systems, displaying goods in a shop is generally treated as an invitation to treat rather than an offer.
+</p>
+
+<p>
+The customer may make the offer by presenting the item for purchase, while the seller may accept or reject it according to the applicable rules.
+</p>
+
+<h3>Advertisements</h3>
+
+<p>
+Advertisements are generally treated as invitations to treat.
+</p>
+
+<p>
+For example:
+</p>
+
+<div class="definition">
+
+"Laptop for sale — $500."
+
+</div>
+
+<p>
+This usually invites customers to make offers. However, an advertisement can sometimes constitute an offer when its wording clearly demonstrates an intention to be legally bound.
+</p>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · UNILATERAL & BILATERAL CONTRACTS
+</div>
+
+<h2>Unilateral and Bilateral Contracts</h2>
+
+<h3>Unilateral Contract</h3>
+
+<p>
+A unilateral offer involves a promise in exchange for the completion of an act.
+</p>
+
+<div class="definition">
+
+"I will pay you $100 if you find and return my missing phone."
+
+</div>
+
+<p>
+Acceptance occurs through performance of the requested act rather than through a traditional promise to perform.
+</p>
+
+<h3>Bilateral Contract</h3>
+
+<p>
+A bilateral contract involves an exchange of promises.
+</p>
+
+<p>
+For example, A promises to sell a computer to B for $800, while B promises to pay $800.
+</p>
+
+<p>
+Most ordinary commercial contracts are bilateral.
+</p>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · COUNTEROFFER & REJECTION
+</div>
+
+<h2>Counteroffer and Rejection</h2>
+
+<h3>Counteroffer</h3>
+
+<p>
+A counteroffer occurs when the offeree responds to an offer by proposing different terms.
+</p>
+
+<div class="definition">
+
+A: "I will sell you my bicycle for $500."
+
+<br><br>
+
+B: "I will buy it for $400."
+
+</div>
+
+<p>
+B has generally made a counteroffer rather than accepting A's original offer.
+</p>
+
+<h3>Rejection</h3>
+
+<p>
+An offer can generally be terminated by rejection.
+</p>
+
+<p>
+Once rejected, the offeree cannot normally later accept the original offer unless the offeror makes it available again.
+</p>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · ACCEPTANCE
+</div>
+
+<h2>What Is Acceptance?</h2>
+
+<div class="definition">
+
+Acceptance is the offeree's final and unqualified agreement to the terms of the offer.
+
+</div>
+
+<p>
+Acceptance generally requires:
+</p>
+
+<ul>
+
+<li>Agreement with the terms of the offer.</li>
+
+<li>An intention to accept.</li>
+
+<li>Communication or conduct recognised by law as acceptance.</li>
+
+<li>Compliance with any legally relevant prescribed method of acceptance.</li>
+
+</ul>
+
+<h3>Example</h3>
+
+<p>
+A: "I will sell you my bicycle for $300."
+</p>
+
+<p>
+B: "I accept."
+</p>
+
+<p>
+This normally demonstrates acceptance because B has agreed to the offer as made.
+</p>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · MIRROR IMAGE RULE
+</div>
+
+<h2>Acceptance Must Correspond With the Offer</h2>
+
+<p>
+Acceptance generally must be unqualified. The offeree must accept the offer as it stands.
+</p>
+
+<div class="definition">
+
+A: "I will sell you my laptop for $700."
+
+<br><br>
+
+B: "I accept for $600."
+
+<br><br>
+
+This is generally a counteroffer, not acceptance.
+
+</div>
+
+<h3>Mirror Image Rule</h3>
+
+<p>
+Traditional common-law contract law uses the <strong>mirror image rule</strong>, under which acceptance must correspond with the offer.
+</p>
+
+<p>
+An acceptance that introduces new or different terms may therefore be treated as a counteroffer.
+</p>
+
+<p>
+Modern legislation and case law may modify this principle in particular circumstances.
+</p>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · SILENCE & CONDUCT
+</div>
+
+<h2>Silence and Acceptance by Conduct</h2>
+
+<h3>Silence as Acceptance</h3>
+
+<p>
+As a general principle, silence alone does not normally constitute acceptance.
+</p>
+
+<div class="definition">
+
+"If I do not hear from you, I will assume you agree."
+
+</div>
+
+<p>
+A person cannot ordinarily create a contract simply by making such a statement.
+</p>
+
+<p>
+Exceptions may arise depending on previous dealings, agreement, conduct, custom, and applicable law.
+</p>
+
+<h3>Acceptance by Conduct</h3>
+
+<p>
+Acceptance does not always have to be expressed in words. Conduct may demonstrate acceptance where it objectively shows agreement to the offer.
+</p>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · REVOCATION & TERMINATION
+</div>
+
+<h2>Revocation and When an Offer Ends</h2>
+
+<h3>Revocation</h3>
+
+<p>
+Revocation is the withdrawal of an offer by the offeror.
+</p>
+
+<p>
+An offeror can generally revoke an offer before it is accepted, provided that the revocation is legally effective.
+</p>
+
+<h3>Communication of Revocation</h3>
+
+<p>
+Revocation generally must be communicated to the offeree. A secret decision to withdraw an offer will not normally be sufficient.
+</p>
+
+<h3>Other Ways an Offer May End</h3>
+
+<ul>
+
+<li>Acceptance.</li>
+
+<li>Rejection.</li>
+
+<li>Counteroffer.</li>
+
+<li>Revocation.</li>
+
+<li>Lapse of time.</li>
+
+<li>Failure of a condition.</li>
+
+<li>Death in certain circumstances.</li>
+
+<li>Other events recognised by law.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · LAPSE, OPTIONS & UNILATERAL OFFERS
+</div>
+
+<h2>Special Rules on Ending Offers</h2>
+
+<h3>Lapse of Time</h3>
+
+<p>
+An offer may expire after a specified deadline or after a reasonable period.
+</p>
+
+<p>
+What is reasonable can depend on the subject matter, market conditions, and circumstances.
+</p>
+
+<h3>Option Contracts</h3>
+
+<p>
+An option contract involves a separate commitment to keep an offer open for a specified period.
+</p>
+
+<p>
+Where the requirements for an enforceable option are satisfied, the offeror may be restricted from freely revoking the offer during that period.
+</p>
+
+<h3>Unilateral Offers</h3>
+
+<p>
+Where an offeree has begun performance of the requested act, some legal systems may restrict revocation in certain circumstances.
+</p>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · ELECTRONIC CONTRACTS
+</div>
+
+<h2>Electronic Acceptance</h2>
+
+<p>
+Modern contracts are frequently formed electronically.
+</p>
+
+<p>
+Acceptance may occur through:
+</p>
+
+<ul>
+
+<li>Email.</li>
+
+<li>Online forms.</li>
+
+<li>Electronic signatures.</li>
+
+<li>Clicking an "I agree" button.</li>
+
+<li>Other forms of digital communication.</li>
+
+</ul>
+
+<h3>Acceptance by Email</h3>
+
+<p>
+Where contracts are negotiated through email, questions may arise about when acceptance becomes effective.
+</p>
+
+<p>
+Relevant factors can include when the acceptance was sent, when it was received, the parties' agreement, the communication system, and applicable electronic-transactions legislation.
+</p>
+
+<h3>Clickwrap Agreements</h3>
+
+<p>
+A clickwrap agreement generally requires a user to actively indicate agreement to contractual terms.
+</p>
+
+<p>
+Courts may consider whether the terms were reasonably presented and whether the user had a meaningful opportunity to review them.
+</p>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+Offer = A definite proposal capable of acceptance.
+
+<br><br>
+
+Acceptance = Final agreement to the offer's terms.
+
+<br><br>
+
+Counteroffer = A new proposal with different terms.
+
+<br><br>
+
+Invitation to Treat = An invitation for others to make offers.
+
+<br><br>
+
+Revocation = Withdrawal of an offer before effective acceptance.
+
+</div>
+
+<p>
+Offer and acceptance help determine whether an agreement exists, when a contract was formed, and what terms were agreed.
+</p>
+
+<p>
+However, offer and acceptance alone may not establish an enforceable contract. Depending on the legal system, consideration, intention to create legal relations, capacity, certainty, and legality may also be required.
+</p>
+
+<p>
+The objective approach is important: courts commonly ask what a reasonable person would understand from the parties' words and conduct rather than relying solely on secret intentions.
+</p>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Restatement (Second) of Contracts, provisions concerning offer, acceptance, and formation of contracts.</li>
+
+<li>United Nations Commission on International Trade Law (UNCITRAL), materials concerning electronic commerce and electronic contracting.</li>
+
+<li>Cornell Law School Legal Information Institute, materials concerning offer, acceptance, consideration, and contract formation.</li>
+
+<li>Contract and commercial-law materials from common-law legal systems concerning invitation to treat, counteroffers, revocation, and acceptance.</li>
+
+<li>Relevant domestic contract legislation and case law governing contract formation in the applicable jurisdiction.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Offer and Acceptance</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is an offer?",
+options:[
+"A casual statement with no legal meaning",
+"A clear proposal capable of acceptance",
+"An automatic contract",
+"An invitation to negotiate only"
+],
+answer:1
+},
+
+{
+question:"What is an invitation to treat?",
+options:[
+"A final acceptance",
+"An invitation for others to make offers",
+"A counteroffer",
+"A completed contract"
+],
+answer:1
+},
+
+{
+question:"What usually happens when an offeree proposes different terms?",
+options:[
+"The original offer is automatically accepted",
+"The response is generally a counteroffer",
+"A contract is automatically created",
+"Nothing happens legally"
+],
+answer:1
+},
+
+{
+question:"Which statement best describes acceptance?",
+options:[
+"A request for more information",
+"Final and unqualified agreement to the offer",
+"A rejection of the offer",
+"A private intention to agree"
+],
+answer:1
+},
+
+{
+question:"Which statement is generally correct about silence?",
+options:[
+"Silence always constitutes acceptance",
+"Silence generally does not amount to acceptance by itself",
+"Silence automatically creates a counteroffer",
+"Silence revokes the offer"
+],
+answer:1
+}
+
+];
+
+let currentQuestion = 0;
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Offer and Acceptance</strong> quiz.
+</p>
+
+<p>
+You can now return to the Contract & Tort Law section and explore another legal concept.
+</p>
+
+<a href="contract-tort-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Contract & Tort Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+</html>
