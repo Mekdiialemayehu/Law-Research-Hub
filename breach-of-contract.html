@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining breach of contract, types of breach, termination, damages, remedies, and related contractual concepts.">
+
+<title>Breach of Contract | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* QUOTE / DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Breach of Contract</h1>
+
+<p>
+Contract & Tort Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+BREACH OF CONTRACT
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is Breach of Contract?</h2>
+
+<div class="definition">
+
+A breach of contract occurs when a party fails to perform a contractual obligation as required by the agreement.
+
+</div>
+
+<p>
+The failure may involve failing to perform a promised obligation, performing incorrectly, performing late, refusing to perform, or making it clear in advance that the party will not perform.
+</p>
+
+<p>
+A breach does not automatically mean that every contractual obligation disappears. The legal consequences depend on the seriousness and nature of the breach, the contract, and the applicable law.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · CONTRACTUAL OBLIGATIONS
+</div>
+
+<h2>Contractual Obligations</h2>
+
+<p>
+A contract creates legal obligations for the parties.
+</p>
+
+<p>
+For example, A agrees to sell a laptop to B for $800.
+</p>
+
+<h3>A may be required to:</h3>
+
+<ul>
+
+<li>Deliver the laptop.</li>
+
+<li>Deliver the agreed model.</li>
+
+<li>Deliver it by the agreed date.</li>
+
+</ul>
+
+<h3>B may be required to:</h3>
+
+<ul>
+
+<li>Pay $800.</li>
+
+<li>Pay according to the agreed payment terms.</li>
+
+<li>Complete any other agreed obligations.</li>
+
+</ul>
+
+<p>
+If either party fails to perform an obligation without lawful justification, a breach may occur.
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · PARTIES & TYPES
+</div>
+
+<h2>Who Is in Breach?</h2>
+
+<p>
+The party who fails to perform a contractual obligation is commonly called the:
+</p>
+
+<div class="definition">
+<strong>Breaching party</strong><br>
+or<br>
+<strong>Party in breach.</strong>
+</div>
+
+<p>
+The other party is often referred to as the:
+</p>
+
+<div class="definition">
+<strong>Innocent party</strong><br>
+or<br>
+<strong>Non-breaching party.</strong>
+</div>
+
+<h3>Important Types of Breach</h3>
+
+<ul>
+
+<li>Actual breach</li>
+
+<li>Anticipatory breach</li>
+
+<li>Breach of a condition</li>
+
+<li>Breach of a warranty</li>
+
+<li>Breach of an intermediate or innominate term</li>
+
+</ul>
+
+<p>
+The classification of the breach can affect the remedies available.
+</p>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · ACTUAL BREACH
+</div>
+
+<h2>Actual Breach</h2>
+
+<div class="definition">
+
+An actual breach occurs when the time for performance arrives and a party fails to perform as required.
+
+</div>
+
+<p>
+For example, A agrees to deliver 100 books to B on 1 September. A does not deliver the books on 1 September.
+</p>
+
+<p>
+A may have committed an actual breach.
+</p>
+
+<h3>Actual breach can involve:</h3>
+
+<ul>
+
+<li>Total non-performance.</li>
+
+<li>Late performance.</li>
+
+<li>Defective performance.</li>
+
+<li>Incomplete performance.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · FORMS OF ACTUAL BREACH
+</div>
+
+<h2>Late, Defective & Non-Performance</h2>
+
+<h3>Late Performance</h3>
+
+<p>
+A party may breach a contract by performing too late. Whether the innocent party can terminate depends on the importance of the deadline and the applicable legal rules.
+</p>
+
+<h3>Defective Performance</h3>
+
+<p>
+A party may perform but do so incorrectly. For example, A agrees to supply 500 black chairs but delivers 500 white chairs.
+</p>
+
+<h3>Non-Performance</h3>
+
+<p>
+A party can breach a contract by failing to perform at all. For example, A agrees to build a website for B by 1 October but does not begin the work.
+</p>
+
+<div class="definition">
+
+Performance must generally comply with the contractual obligation. Doing something is not necessarily the same as doing what the contract requires.
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · ANTICIPATORY BREACH
+</div>
+
+<h2>Anticipatory Breach</h2>
+
+<div class="definition">
+
+An anticipatory breach occurs when, before performance is due, one party indicates that they will not perform their contractual obligations.
+
+</div>
+
+<p>
+For example, A agrees to deliver goods on 1 December. On 1 November, A tells B that A will not deliver the goods.
+</p>
+
+<p>
+Depending on the applicable law, the innocent party may have choices such as accepting the repudiation, terminating the contract, seeking damages, or affirming the contract.
+</p>
+
+<p>
+The legal consequences depend on the circumstances and the applicable legal system.
+</p>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · CONTRACTUAL TERMS
+</div>
+
+<h2>Conditions, Warranties & Intermediate Terms</h2>
+
+<h3>Condition</h3>
+
+<p>
+A condition is generally an important contractual term. Breach of a condition may allow the innocent party to terminate the contract and claim damages.
+</p>
+
+<h3>Warranty</h3>
+
+<p>
+A warranty is generally a less important contractual term. Breach usually gives rise to damages but does not ordinarily allow termination.
+</p>
+
+<h3>Intermediate or Innominate Term</h3>
+
+<p>
+Some terms do not fit neatly into either category. The consequences depend on the seriousness of the actual consequences of the breach.
+</p>
+
+<div class="definition">
+
+The classification rules vary between jurisdictions and depend on the wording and nature of the contract.
+
+</div>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · SERIOUSNESS OF BREACH
+</div>
+
+<h2>Material, Minor & Fundamental Breach</h2>
+
+<h3>Material Breach</h3>
+
+<p>
+A material breach is a significant failure to perform an important contractual obligation.
+</p>
+
+<h3>Minor Breach</h3>
+
+<p>
+A minor breach is a less serious failure to perform a contractual obligation. It may give rise to damages without justifying termination.
+</p>
+
+<h3>Fundamental Breach</h3>
+
+<p>
+The term fundamental breach has been used in different ways. Traditionally, it could refer to a breach going to the very root of the contract.
+</p>
+
+<p>
+Modern contract law often focuses more closely on the classification of contractual terms and the actual consequences of the breach.
+</p>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · TERMINATION & ELECTION
+</div>
+
+<h2>Breach and Termination</h2>
+
+<p>
+A breach does not automatically terminate a contract.
+</p>
+
+<p>
+Where a breach is sufficiently serious and the law permits termination, the innocent party may choose to end the contract.
+</p>
+
+<h3>Election</h3>
+
+<p>
+Where a serious breach occurs, the innocent party may sometimes choose between:
+</p>
+
+<ul>
+
+<li>Affirming the contract.</li>
+
+<li>Terminating the contract.</li>
+
+</ul>
+
+<h3>Affirmation</h3>
+
+<p>
+Affirmation occurs when the innocent party chooses to continue with the contract despite a breach that could potentially justify termination.
+</p>
+
+<div class="definition">
+
+The legal consequences of termination and affirmation depend on the nature of the breach, the contract, and applicable law.
+
+</div>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · DAMAGES
+</div>
+
+<h2>Damages for Breach</h2>
+
+<p>
+Damages are one of the principal remedies for breach of contract.
+</p>
+
+<p>
+Their purpose is generally to compensate the innocent party for legally recognized loss caused by the breach, rather than to punish the breaching party.
+</p>
+
+<h3>Expectation Damages</h3>
+
+<p>
+Expectation damages aim to protect the benefit that the innocent party expected to receive from the contract.
+</p>
+
+<h3>Reliance Loss</h3>
+
+<p>
+Reliance damages may compensate certain expenses or losses incurred because the party relied on the contract.
+</p>
+
+<h3>Consequential Loss</h3>
+
+<p>
+Additional losses beyond the immediate value of the promised performance may sometimes be recoverable, depending on causation, remoteness, and contractual terms.
+</p>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · LIMITS ON DAMAGES
+</div>
+
+<h2>Causation, Remoteness & Mitigation</h2>
+
+<h3>Causation</h3>
+
+<p>
+A claimant generally must establish a sufficient connection between the breach and the loss claimed.
+</p>
+
+<h3>Remoteness</h3>
+
+<p>
+Even where the breach caused a loss, the loss may be too remote to recover. A classic common-law approach considers whether the type of loss arose naturally from the breach or was within the reasonable contemplation of the parties.
+</p>
+
+<h3>Mitigation</h3>
+
+<p>
+The innocent party generally has a duty to take reasonable steps to reduce its loss. The party does not normally have to take unreasonable or disproportionate measures.
+</p>
+
+<div class="definition">
+
+Causation asks whether the breach caused the loss. Remoteness asks whether the loss is legally too remote. Mitigation asks whether reasonable steps were taken to reduce the loss.
+
+</div>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · EQUITABLE REMEDIES
+</div>
+
+<h2>Specific Performance & Injunctions</h2>
+
+<h3>Specific Performance</h3>
+
+<p>
+Specific performance is a court order requiring a party to perform their contractual obligation.
+</p>
+
+<p>
+It is an equitable remedy and is not automatically available. Courts may consider it where damages would not provide an adequate remedy.
+</p>
+
+<h3>Injunctions</h3>
+
+<p>
+An injunction is a court order requiring a person to do something or refrain from doing something.
+</p>
+
+<p>
+In contractual disputes, an injunction may sometimes prevent conduct that would violate contractual obligations.
+</p>
+
+<h3>Rescission</h3>
+
+<p>
+Rescission is primarily associated with setting aside certain contracts affected by factors such as misrepresentation. It should not be treated as automatically interchangeable with contractual termination.
+</p>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · CONTRACTUAL CLAUSES
+</div>
+
+<h2>Liquidated Damages, Penalties & Liability Clauses</h2>
+
+<h3>Liquidated Damages</h3>
+
+<p>
+A contract may specify an amount payable if a breach occurs. Such a provision may be called a liquidated damages clause where it satisfies the applicable legal rules.
+</p>
+
+<h3>Penalty Clauses</h3>
+
+<p>
+A contractual clause imposing a financial consequence for breach may be challenged as an unenforceable penalty under some legal systems.
+</p>
+
+<h3>Limitation of Liability</h3>
+
+<p>
+Contracts may contain clauses limiting or excluding liability for certain losses. Such clauses can be subject to statutory restrictions and other legal requirements.
+</p>
+
+<h3>Exclusion Clauses</h3>
+
+<p>
+An exclusion clause attempts to exclude liability for particular types of loss or breach. Courts may examine whether it was incorporated into the contract and whether it is legally effective.
+</p>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · EVIDENCE & INTERPRETATION
+</div>
+
+<h2>Proving a Breach</h2>
+
+<h3>Burden of Proof</h3>
+
+<p>
+In a civil contractual dispute, the party alleging breach generally bears the burden of establishing the relevant facts, subject to the applicable legal system.
+</p>
+
+<h3>The claimant may need to establish:</h3>
+
+<ul>
+
+<li>A valid contract existed.</li>
+
+<li>The defendant had a contractual obligation.</li>
+
+<li>The obligation was breached.</li>
+
+<li>Legally recognized loss occurred, where damages are claimed.</li>
+
+</ul>
+
+<h3>Important Evidence</h3>
+
+<ul>
+
+<li>Written contracts.</li>
+
+<li>Emails and messages.</li>
+
+<li>Receipts and invoices.</li>
+
+<li>Delivery records.</li>
+
+<li>Witness testimony.</li>
+
+<li>Photographs and digital records.</li>
+
+</ul>
+
+<p>
+Courts may also need to interpret the contract to determine what the parties actually agreed to do.
+</p>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+Breach of Contract = Failure to perform a contractual obligation as required.
+
+</div>
+
+<p>
+A breach may involve non-performance, late performance, defective performance, or an anticipatory refusal to perform.
+</p>
+
+<p>
+Not every breach has the same legal consequences. The seriousness and nature of the breach can determine whether the innocent party may claim damages, terminate the contract, require performance, or seek another appropriate remedy.
+</p>
+
+<h3>Key Questions in a Breach Case</h3>
+
+<ol>
+
+<li>Was there a valid contract?</li>
+
+<li>What obligation did the contract create?</li>
+
+<li>Was that obligation breached?</li>
+
+<li>How serious was the breach?</li>
+
+<li>What remedy is available?</li>
+
+</ol>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Restatement (Second) of Contracts, provisions concerning breach, performance, and remedies.</li>
+
+<li>Cornell Law School Legal Information Institute, materials concerning breach of contract and contractual remedies.</li>
+
+<li>United Nations Convention on Contracts for the International Sale of Goods (CISG), particularly provisions concerning breach, damages, avoidance, and remedies, where applicable.</li>
+
+<li>Relevant domestic contract legislation and case law concerning breach, termination, damages, and specific performance.</li>
+
+<li>Academic contract-law materials concerning conditions, warranties, intermediate terms, anticipatory breach, causation, remoteness, and mitigation.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Breach of Contract</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is a breach of contract?",
+options:[
+"A criminal offence committed by a stranger",
+"A failure to perform a contractual obligation as required",
+"A new contract between two people",
+"A court judgment"
+],
+answer:1
+},
+
+{
+question:"What is an actual breach?",
+options:[
+"A breach occurring before the contract is created",
+"A breach occurring when the time for performance arrives",
+"A breach involving only criminal law",
+"A breach that can never lead to damages"
+],
+answer:1
+},
+
+{
+question:"What is an anticipatory breach?",
+options:[
+"When a party indicates before performance is due that they will not perform",
+"When a party performs early",
+"When a contract is automatically renewed",
+"When both parties perform correctly"
+],
+answer:0
+},
+
+{
+question:"Which type of contractual term will generally allow damages but not termination when breached?",
+options:[
+"Condition",
+"Warranty",
+"Intermediate term in every case",
+"None of them"
+],
+answer:1
+},
+
+{
+question:"What is the general purpose of damages for breach of contract?",
+options:[
+"To punish the breaching party",
+"To compensate the innocent party for legally recognized loss",
+"To cancel every contract automatically",
+"To create a criminal penalty"
+],
+answer:1
+}
+
+];
+
+let currentQuestion = 0;
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Breach of Contract</strong> quiz.
+</p>
+
+<p>
+You can now return to the Contract & Tort Law section and explore another legal concept.
+</p>
+
+<a href="contract-tort-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Contract & Tort Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
