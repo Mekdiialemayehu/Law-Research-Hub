@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining consideration in contract law, including sufficiency, adequacy, past consideration, existing duties, forbearance, promissory estoppel, and contractual variations.">
+
+<title>Consideration | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* QUOTE / DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Consideration</h1>
+
+<p>
+Contract Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+CONSIDERATION
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is Consideration?</h2>
+
+<div class="definition">
+
+Consideration is something of legal value exchanged between parties in support of a contractual promise.
+
+</div>
+
+<p>
+In traditional common-law contract law, a promise will generally not be enforceable as a simple contract unless it is supported by consideration, subject to important exceptions.
+</p>
+
+<p>
+Consideration asks:
+</p>
+
+<div class="definition">
+
+<strong>“What has each party given or promised in exchange for the other party's promise?”</strong>
+
+</div>
+
+<p>
+A simple way to remember it is:
+</p>
+
+<div class="definition">
+
+<strong>Consideration = the price paid for a promise.</strong>
+
+</div>
+
+<p>
+Consideration does not necessarily mean money. It can include promises, services, acts, or agreements to refrain from exercising a legal right.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · CONTRACT FORMATION
+</div>
+
+<h2>Consideration and Contract Formation</h2>
+
+<p>
+A traditional common-law contract may involve several requirements.
+</p>
+
+<ul>
+
+<li>Offer</li>
+
+<li>Acceptance</li>
+
+<li>Consideration</li>
+
+<li>Intention to create legal relations</li>
+
+<li>Capacity</li>
+
+<li>Certainty</li>
+
+<li>Legality</li>
+
+</ul>
+
+<div class="definition">
+
+<strong>Offer + Acceptance = Agreement</strong>
+<br><br>
+<strong>Agreement + Consideration + Other Requirements = Potentially Enforceable Contract</strong>
+
+</div>
+
+<p>
+Consideration helps distinguish an enforceable bargain from a purely voluntary promise.
+</p>
+
+<p>
+For example, if A promises to sell a bicycle to B for $300 and B promises to pay $300, the promises provide consideration for one another.
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · TYPES
+</div>
+
+<h2>Types of Consideration</h2>
+
+<h3>Executory Consideration</h3>
+
+<p>
+Executory consideration consists of promises to perform obligations in the future.
+</p>
+
+<p>
+For example, A promises to deliver a computer next month while B promises to pay $1,000 next month. Neither party has performed yet, but both have made legally relevant promises.
+</p>
+
+<h3>Executed Consideration</h3>
+
+<p>
+Executed consideration occurs when the required act has been performed in response to a promise.
+</p>
+
+<p>
+This is particularly relevant to unilateral contracts.
+</p>
+
+<div class="definition">
+
+<strong>Executory = promise to perform.</strong>
+<br><br>
+<strong>Executed = required act performed.</strong>
+
+</div>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · PAST CONSIDERATION
+</div>
+
+<h2>Past Consideration</h2>
+
+<div class="definition">
+
+<strong>Past consideration is an act performed before the promise for which consideration is said to support.</strong>
+
+</div>
+
+<p>
+The traditional common-law rule is:
+</p>
+
+<div class="definition">
+
+<strong>Past consideration is generally not good consideration.</strong>
+
+</div>
+
+<p>
+For example, B helps A move house without asking for payment. The next day, A promises to pay B $100 for the help.
+</p>
+
+<p>
+B may have difficulty enforcing the promise because the assistance was already completed before A made the promise.
+</p>
+
+<p>
+The act therefore occurred too early to form part of the bargain in the traditional analysis.
+</p>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · EXCEPTION
+</div>
+
+<h2>Exception to Past Consideration</h2>
+
+<p>
+The rule against past consideration is subject to an important exception in some common-law systems.
+</p>
+
+<p>
+A later promise may sometimes be enforceable where:
+</p>
+
+<ul>
+
+<li>The act was performed at the promisor's request.</li>
+
+<li>The parties understood that the act would be rewarded or paid for.</li>
+
+<li>The subsequent promise would have been enforceable if it had been made before the act was performed.</li>
+
+</ul>
+
+<p>
+The precise requirements depend on the applicable jurisdiction.
+</p>
+
+<div class="definition">
+
+Past consideration is generally invalid, but a previous act can sometimes support a later promise when the circumstances satisfy an established exception.
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · SUFFICIENCY
+</div>
+
+<h2>Sufficiency of Consideration</h2>
+
+<p>
+Consideration must generally have legal value.
+</p>
+
+<p>
+However, it does not necessarily need to have substantial financial value.
+</p>
+
+<div class="definition">
+
+<strong>Sufficient consideration = consideration that the law recognises as having legal value.</strong>
+
+</div>
+
+<p>
+For example, a promise to refrain from exercising a legal right can potentially constitute sufficient consideration even if no money changes hands.
+</p>
+
+<p>
+The key question is whether the law recognises the thing given or promised as having legal value.
+</p>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · ADEQUACY</div>
+
+<h2>Adequacy of Consideration</h2>
+
+<p>
+Adequacy asks whether the economic value exchanged by the parties is roughly equal.
+</p>
+
+<p>
+Traditional common-law courts generally do not require consideration to be economically adequate.
+</p>
+
+<p>
+For example, A may sell a valuable painting to B for $10. The fact that the painting is worth much more does not automatically mean that there is no consideration.
+</p>
+
+<div class="definition">
+
+<strong>Adequacy:</strong> Is the exchange economically equal?
+<br><br>
+<strong>Sufficiency:</strong> Does the thing given have legal value?
+
+</div>
+
+<p>
+Other doctrines, such as fraud, duress, undue influence, or unconscionability, may become relevant in particular circumstances.
+</p>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · FORBEARANCE
+</div>
+
+<h2>Forbearance as Consideration</h2>
+
+<p>
+Forbearance means refraining from doing something.
+</p>
+
+<p>
+An agreement not to exercise a legal right can sometimes constitute consideration.
+</p>
+
+<p>
+For example, A owes B $2,000. B agrees to delay bringing a genuine legal claim for six months if A follows a new payment schedule.
+</p>
+
+<div class="definition">
+
+B's agreement to delay enforcement may constitute consideration where the applicable legal requirements are satisfied.
+
+</div>
+
+<p>
+Forbearance can therefore have legal value even though it involves choosing not to take an action.
+</p>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · EXISTING DUTY
+</div>
+
+<h2>Performance of an Existing Duty</h2>
+
+<p>
+A difficult consideration issue arises when a person promises to do something they are already legally required to do.
+</p>
+
+<p>
+The traditional rule is that performance of an existing legal duty is generally not sufficient consideration for an additional promise.
+</p>
+
+<p>
+A similar problem can occur where a person is already contractually required to perform certain work.
+</p>
+
+<div class="definition">
+
+A party generally cannot automatically claim additional payment merely for doing exactly what they were already legally or contractually required to do.
+
+</div>
+
+<p>
+However, important exceptions and modern developments exist.
+</p>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · PRACTICAL BENEFIT
+</div>
+
+<h2>Practical Benefit</h2>
+
+<p>
+Some common-law cases recognise that performing an existing contractual obligation may, in certain circumstances, provide consideration where the other party receives a practical benefit.
+</p>
+
+<h3>Examples of Practical Benefits</h3>
+
+<ul>
+
+<li>Avoiding delay.</li>
+
+<li>Avoiding additional expense.</li>
+
+<li>Maintaining a commercial relationship.</li>
+
+<li>Receiving commercially useful performance.</li>
+
+</ul>
+
+<p>
+For example, a party may agree to pay more for an existing performance because doing so provides a practical commercial benefit.
+</p>
+
+<div class="definition">
+
+The practical-benefit approach is subject to limitations and does not automatically make every contractual variation enforceable.
+
+</div>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · THIRD PARTY DUTY
+</div>
+
+<h2>Existing Duty to a Third Party</h2>
+
+<p>
+The identity of the person to whom an existing duty is owed can matter.
+</p>
+
+<p>
+A promise to perform an existing duty owed to a third party can sometimes constitute valid consideration for a new promise.
+</p>
+
+<p>
+For example:
+</p>
+
+<div class="definition">
+
+A is contractually required to perform a service for B. C promises A $500 if A performs that service.
+
+</div>
+
+<p>
+A's performance of the existing duty owed to B may provide consideration for C's promise under traditional common-law principles.
+</p>
+
+<p>
+This demonstrates that an existing duty owed to someone else may be treated differently from an existing duty owed directly to the promisor.
+</p>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · UNILATERAL CONTRACTS
+</div>
+
+<h2>Consideration in Unilateral Contracts</h2>
+
+<p>
+Consideration operates differently in a unilateral contract.
+</p>
+
+<p>
+The offeror promises something in return for the performance of a specified act.
+</p>
+
+<div class="definition">
+
+<strong>Example:</strong>
+<br><br>
+“I will pay $500 to anyone who returns my lost phone.”
+
+</div>
+
+<p>
+The person who returns the phone does not necessarily make a return promise.
+</p>
+
+<p>
+Instead, the requested performance supplies the consideration.
+</p>
+
+<div class="definition">
+
+In a unilateral contract, performance of the requested act can constitute executed consideration.
+
+</div>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · ESTOPPEL
+</div>
+
+<h2>Promissory Estoppel</h2>
+
+<p>
+Promissory estoppel is an equitable doctrine that can sometimes operate where ordinary consideration is absent or where a party has relied on a promise.
+</p>
+
+<p>
+It may become relevant where:
+</p>
+
+<ul>
+
+<li>A clear promise was made.</li>
+
+<li>The other party relied on the promise.</li>
+
+<li>It would be inequitable or unfair to allow the promisor to act inconsistently with it.</li>
+
+</ul>
+
+<div class="definition">
+
+Promissory estoppel should not simply be treated as a complete replacement for consideration. Its requirements and effects depend on the legal system.
+
+</div>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · VARIATION & DEBT
+</div>
+
+<h2>Contract Variation and Part Payment of Debt</h2>
+
+<h3>Contract Variation</h3>
+
+<p>
+Consideration can become important when parties attempt to change an existing contract.
+</p>
+
+<p>
+For example, a builder agrees to complete work for $100,000 and later asks for another $10,000 to perform the same obligations.
+</p>
+
+<p>
+The question is whether new consideration supports the additional payment.
+</p>
+
+<h3>Part Payment of Debt</h3>
+
+<p>
+Traditional common-law rules can also create difficulties where a creditor agrees to accept less than the full amount of an existing debt.
+</p>
+
+<p>
+For example, A owes B $1,000 and B agrees to accept $700 in full settlement.
+</p>
+
+<div class="definition">
+
+Modern legislation, case law, and equitable doctrines can modify traditional rules, so the precise legal position depends on the jurisdiction.
+
+</div>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+<strong>Consideration = Something of legal value exchanged for a promise.</strong>
+
+</div>
+
+<p>
+Consideration can consist of:
+</p>
+
+<ul>
+
+<li>Money</li>
+
+<li>Goods</li>
+
+<li>Services</li>
+
+<li>Promises</li>
+
+<li>Forbearance</li>
+
+<li>Performance of an agreed act</li>
+
+</ul>
+
+<h3>Important Rules</h3>
+
+<ul>
+
+<li>Consideration must generally be sufficient, but it does not usually have to be economically adequate.</li>
+
+<li>Past consideration is generally not good consideration.</li>
+
+<li>Performance of an existing duty may not constitute fresh consideration, subject to exceptions.</li>
+
+<li>Forbearance can constitute consideration.</li>
+
+<li>A promise without consideration may be unenforceable as a simple contract, subject to exceptions.</li>
+
+</ul>
+
+<div class="definition">
+
+The key question is not simply “Did someone make a promise?”
+<br><br>
+It is:
+<br><br>
+<strong>“What, if anything, was given or promised in exchange for that promise?”</strong>
+
+</div>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Cornell Law School Legal Information Institute, materials concerning consideration and contract formation.</li>
+
+<li>Restatement (Second) of Contracts, provisions concerning consideration, promises, and contract formation.</li>
+
+<li>United Kingdom common-law principles concerning consideration, past consideration, existing duties, and contractual variations.</li>
+
+<li>Relevant domestic contract legislation and case law governing consideration in the applicable jurisdiction.</li>
+
+<li>Academic contract-law materials concerning executory consideration, executed consideration, sufficiency, adequacy, and promissory estoppel.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Consideration</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is consideration?",
+options:[
+"A criminal punishment",
+"Something of legal value exchanged for a promise",
+"A type of court",
+"A legal capacity requirement"
+],
+answer:1
+},
+
+{
+question:"Which statement about adequacy of consideration is generally correct?",
+options:[
+"Consideration must always have equal economic value",
+"Courts generally require both sides to receive the same financial value",
+"Consideration generally does not have to be economically adequate",
+"Only money can be adequate consideration"
+],
+answer:2
+},
+
+{
+question:"What is the traditional rule concerning past consideration?",
+options:[
+"It is always valid",
+"It is generally not good consideration",
+"It is required in every contract",
+"It automatically creates a gift"
+],
+answer:1
+},
+
+{
+question:"Which of the following can constitute consideration?",
+options:[
+"Forbearance",
+"Only cash",
+"Only property",
+"Only a written contract"
+],
+answer:0
+},
+
+{
+question:"What does sufficiency of consideration ask?",
+options:[
+"Whether the bargain was financially equal",
+"Whether the thing given has legal value",
+"Whether the contract was written in blue ink",
+"Whether both parties made a gift"
+],
+answer:1
+}
+
+];
+
+let currentQuestion = 0;
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Consideration</strong> quiz.
+</p>
+
+<p>
+You can now return to the Contract & Tort Law section and explore another legal concept.
+</p>
+
+<a href="contract-tort-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Contract & Tort Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
