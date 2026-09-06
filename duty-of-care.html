@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining duty of care, negligence, foreseeability, proximity, omissions, public authorities, and related legal principles.">
+
+<title>Duty of Care | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* QUOTE / DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Duty of Care</h1>
+
+<p>
+Contract & Tort Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+DUTY OF CARE
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is Duty of Care?</h2>
+
+<div class="definition">
+
+A duty of care is a legal obligation requiring a person to take reasonable care to avoid causing foreseeable harm to another person.
+
+</div>
+
+<p>
+Duty of care is a fundamental concept in negligence law.
+</p>
+
+<p>
+Before a person can generally be held liable for negligence, the claimant must establish that the defendant owed them a duty of care.
+</p>
+
+<p>
+The key question is:
+</p>
+
+<div class="definition">
+
+Did the defendant have a legal responsibility to take reasonable care toward the claimant?
+
+</div>
+
+<p>
+The existence and scope of a duty depend on the relationship between the parties, the nature of the risk, and the applicable legal system.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · NEGLIGENCE
+</div>
+
+<h2>Duty of Care and Negligence</h2>
+
+<p>
+Duty of care is the first major question in a negligence claim.
+</p>
+
+<p>
+A simplified negligence analysis is:
+</p>
+
+<div class="definition">
+
+Duty of Care<br>
+↓<br>
+Breach of Duty<br>
+↓<br>
+Causation<br>
+↓<br>
+Damage
+
+</div>
+
+<p>
+If no legally recognized duty of care exists, a negligence claim will generally fail even if the defendant's conduct was careless.
+</p>
+
+<h3>Why Does Duty Matter?</h3>
+
+<p>
+People are not automatically legally responsible for every harm that results from their actions.
+</p>
+
+<p>
+Duty of care helps determine when the law considers a person sufficiently connected to another person to owe them a legal responsibility to take reasonable care.
+</p>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · FORESEEABILITY
+</div>
+
+<h2>Foreseeability</h2>
+
+<p>
+Foreseeability is an important factor in determining whether a duty of care exists.
+</p>
+
+<div class="definition">
+
+Could a reasonable person have foreseen that the defendant's conduct might cause harm to the claimant?
+
+</div>
+
+<p>
+If harm was completely unforeseeable, it may be more difficult to establish a duty.
+</p>
+
+<h3>Example</h3>
+
+<p>
+Drivers can reasonably foresee that careless driving may injure pedestrians or other road users.
+</p>
+
+<p>
+The law generally focuses on foreseeable risks rather than every imaginable consequence of an action.
+</p>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · PROXIMITY</div>
+
+<h2>Proximity</h2>
+
+<p>
+Proximity refers broadly to the closeness of the relationship between the defendant and claimant.
+</p>
+
+<p>
+Proximity can involve:
+</p>
+
+<ul>
+
+<li>Physical closeness.</li>
+
+<li>Direct interaction.</li>
+
+<li>Legal relationships.</li>
+
+<li>Reliance.</li>
+
+<li>Assumption of responsibility.</li>
+
+<li>The nature of the parties' relationship.</li>
+
+</ul>
+
+<p>
+Foreseeability alone may not always be sufficient. A court may also ask whether the relationship between the parties was sufficiently close to justify imposing a duty.
+</p>
+
+<div class="definition">
+
+Proximity helps prevent negligence liability from becoming unlimited.
+
+</div>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · POLICY</div>
+
+<h2>Fairness and Policy</h2>
+
+<p>
+Some legal systems consider whether it is appropriate, fair, or reasonable to impose a duty of care in the circumstances.
+</p>
+
+<p>
+Courts may consider broader policy concerns such as:
+</p>
+
+<ul>
+
+<li>The potential scope of liability.</li>
+
+<li>The social consequences of recognizing a new duty.</li>
+
+<li>Whether other legal remedies exist.</li>
+
+<li>The nature of the relationship.</li>
+
+<li>The responsibilities of the parties.</li>
+
+<li>Whether recognizing the duty could create excessive or unlimited claims.</li>
+
+</ul>
+
+<p>
+The precise approach depends on the jurisdiction.
+</p>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · NEIGHBOR PRINCIPLE</div>
+
+<h2>The Neighbor Principle</h2>
+
+<p>
+One of the most influential ideas in common-law negligence is the neighbor principle.
+</p>
+
+<p>
+It emerged from <strong>Donoghue v Stevenson (1932)</strong>.
+</p>
+
+<div class="definition">
+
+People should take reasonable care to avoid acts or omissions that can reasonably be expected to cause harm to persons who are sufficiently closely and directly affected by their conduct.
+
+</div>
+
+<p>
+The principle was important because it helped establish the modern common-law concept of duty of care.
+</p>
+
+<p>
+It demonstrated that a legal duty could exist even where the claimant and defendant did not have a direct contractual relationship.
+</p>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · LANDMARK CASE</div>
+
+<h2>Donoghue v Stevenson</h2>
+
+<p>
+In <strong>Donoghue v Stevenson (1932)</strong>, a consumer became ill after consuming a drink that allegedly contained a decomposed snail.
+</p>
+
+<p>
+The consumer had not purchased the drink directly from the manufacturer and therefore did not have a contractual relationship with the manufacturer.
+</p>
+
+<h3>The Legal Question</h3>
+
+<div class="definition">
+
+Could the manufacturer owe a duty of care to the ultimate consumer despite there being no contract between them?
+
+</div>
+
+<p>
+The House of Lords recognized that a duty of care could exist.
+</p>
+
+<p>
+The case became a foundational authority in the development of modern negligence law.
+</p>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · COMMON RELATIONSHIPS</div>
+
+<h2>Recognized Duties of Care</h2>
+
+<p>
+Certain relationships commonly involve recognized duties of care, although the precise rules depend on the jurisdiction and circumstances.
+</p>
+
+<h3>Drivers and Road Users</h3>
+
+<p>
+Drivers generally owe duties of care to pedestrians, cyclists, motorcyclists, passengers, and other drivers.
+</p>
+
+<h3>Doctors and Patients</h3>
+
+<p>
+Doctors and healthcare professionals may owe duties concerning diagnosis, treatment, monitoring, advice, and medical procedures.
+</p>
+
+<h3>Employers and Employees</h3>
+
+<p>
+Employers may owe duties concerning workplace safety, equipment, training, working conditions, and supervision.
+</p>
+
+<h3>Schools and Students</h3>
+
+<p>
+Educational institutions may owe duties concerning reasonable measures for student safety and supervision.
+</p>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · OTHER RELATIONSHIPS</div>
+
+<h2>More Relationships and Duties</h2>
+
+<h3>Manufacturers and Consumers</h3>
+
+<p>
+Manufacturers may owe duties to consumers who could foreseeably be harmed by defective products, even without a direct contractual relationship.
+</p>
+
+<h3>Occupiers and Visitors</h3>
+
+<p>
+People who control or occupy premises may owe duties to people entering the property. This area is often called occupiers' liability.
+</p>
+
+<h3>Professionals and Clients</h3>
+
+<p>
+Professionals may owe duties where people reasonably rely on their expertise.
+</p>
+
+<ul>
+
+<li>Lawyers</li>
+<li>Accountants</li>
+<li>Engineers</li>
+<li>Architects</li>
+<li>Financial professionals</li>
+
+</ul>
+
+<p>
+The existence and scope of the duty depend on the professional relationship and applicable law.
+</p>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · OMISSIONS</div>
+
+<h2>Positive Acts and Omissions</h2>
+
+<p>
+A major distinction in negligence law is between positive acts and omissions.
+</p>
+
+<h3>Positive Acts</h3>
+
+<p>
+A positive act involves doing something that creates or increases a risk.
+</p>
+
+<p>
+For example, a driver who carelessly drives into a pedestrian crossing may create a direct risk of injury.
+</p>
+
+<h3>Omissions</h3>
+
+<p>
+An omission involves failing to act.
+</p>
+
+<p>
+The law is often more cautious about imposing liability for omissions.
+</p>
+
+<div class="definition">
+
+There is not necessarily a general legal duty to rescue another person merely because someone is in danger.
+
+</div>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · EXCEPTIONS</div>
+
+<h2>When Can an Omission Create a Duty?</h2>
+
+<p>
+A duty to act may arise in particular circumstances.
+</p>
+
+<ul>
+
+<li>The defendant created the danger.</li>
+
+<li>The defendant has a special relationship with the claimant.</li>
+
+<li>The defendant assumed responsibility.</li>
+
+<li>The defendant has control over a source of danger.</li>
+
+<li>A statute imposes a duty.</li>
+
+<li>Another recognized legal relationship exists.</li>
+
+</ul>
+
+<h3>Assumption of Responsibility</h3>
+
+<p>
+A person may owe a duty where they voluntarily assume responsibility for another person's safety or interests.
+</p>
+
+<p>
+For example, someone who undertakes to provide professional advice may assume responsibility toward a person who reasonably relies on that advice.
+</p>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · PUBLIC AUTHORITIES</div>
+
+<h2>Public Authorities and Emergency Services</h2>
+
+<p>
+Whether a public authority owes a duty of care can be more complicated.
+</p>
+
+<p>
+Public authorities may perform functions involving:
+</p>
+
+<ul>
+
+<li>Public safety.</li>
+
+<li>Healthcare.</li>
+
+<li>Education.</li>
+
+<li>Emergency services.</li>
+
+<li>Law enforcement.</li>
+
+</ul>
+
+<p>
+The fact that an authority could have prevented harm does not automatically mean that it owed a private-law duty of care.
+</p>
+
+<h3>Police</h3>
+
+<p>
+Police forces may have statutory responsibilities to protect the public, but this does not automatically mean that every individual member of the public is owed a private-law duty of care in every circumstance.
+</p>
+
+<p>
+The rules differ between jurisdictions.
+</p>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · ECONOMIC LOSS</div>
+
+<h2>Negligent Misstatement and Economic Loss</h2>
+
+<p>
+A duty of care concerning pure economic loss can be more difficult to establish than a duty concerning physical injury or property damage.
+</p>
+
+<p>
+Courts may consider:
+</p>
+
+<ul>
+
+<li>Proximity.</li>
+
+<li>Reliance.</li>
+
+<li>Assumption of responsibility.</li>
+
+<li>Foreseeability.</li>
+
+<li>Policy considerations.</li>
+
+</ul>
+
+<h3>Negligent Misstatement</h3>
+
+<p>
+Negligent misstatement concerns situations where a person provides information or advice carelessly and another person suffers legally recognized loss after reasonably relying on it.
+</p>
+
+<p>
+A sufficiently close relationship, assumption of responsibility, reasonable reliance, and foreseeable harm may be relevant.
+</p>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · DUTY VS BREACH</div>
+
+<h2>Duty, Standard, Breach and Causation</h2>
+
+<p>
+Duty of care and standard of care are different concepts.
+</p>
+
+<div class="definition">
+
+<strong>Duty of Care:</strong> Did the defendant owe a legal responsibility to the claimant?
+
+<br><br>
+
+<strong>Standard of Care:</strong> What level of care was legally required?
+
+<br><br>
+
+<strong>Breach:</strong> Did the defendant fall below the required standard?
+
+<br><br>
+
+<strong>Causation:</strong> Did the breach cause the legally recognized harm?
+
+<br><br>
+
+<strong>Damage:</strong> What legally recognized harm resulted?
+
+</div>
+
+<p>
+For example, a doctor may owe a patient a duty of care. The next question is whether the doctor acted according to the applicable professional standard.
+</p>
+
+<div class="definition">
+
+Duty exists ≠ Breach has occurred.
+
+</div>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · KEY TAKEAWAY</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+A duty of care is a legal obligation to take reasonable care to avoid causing foreseeable harm to another person.
+
+</div>
+
+<p>
+It is the first major question in a negligence claim.
+</p>
+
+<div class="definition">
+
+Duty → Breach → Causation → Damage
+
+</div>
+
+<p>
+Important factors may include:
+</p>
+
+<ul>
+
+<li>Foreseeability.</li>
+
+<li>Proximity.</li>
+
+<li>The relationship between the parties.</li>
+
+<li>Assumption of responsibility.</li>
+
+<li>Applicable legal principles.</li>
+
+<li>Policy considerations in some legal systems.</li>
+
+</ul>
+
+<p>
+The landmark case <strong>Donoghue v Stevenson (1932)</strong> played a major role in developing the modern common-law concept of duty of care.
+</p>
+
+<p>
+A duty of care does not automatically mean negligence has been established. The claimant must still prove the other required elements of the negligence claim.
+</p>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Donoghue v Stevenson [1932] AC 562, House of Lords.</li>
+
+<li>Restatement (Third) of Torts, materials concerning duty of care and negligence.</li>
+
+<li>Cornell Law School Legal Information Institute, materials concerning duty of care and negligence.</li>
+
+<li>Relevant domestic tort legislation and case law concerning duty, foreseeability, proximity, omissions, and public-authority liability.</li>
+
+<li>Academic tort-law materials concerning the neighbor principle, duty of care, standard of care, and negligence.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Duty of Care</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NOTE SYSTEM
+========================= */
+
+let currentCard = 0;
+
+const cards = document.querySelectorAll(".note-card");
+const dots = document.querySelectorAll(".progress-dots span");
+
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+function showCard(index){
+
+cards.forEach(card => {
+card.classList.remove("active");
+});
+
+dots.forEach(dot => {
+dot.classList.remove("active");
+});
+
+cards[index].classList.add("active");
+dots[index].classList.add("active");
+
+prevButton.disabled = index === 0;
+
+if(index === cards.length - 1){
+
+nextButton.style.display = "none";
+
+document.getElementById("quizStart").style.display = "block";
+
+}else{
+
+nextButton.style.display = "inline-block";
+
+document.getElementById("quizStart").style.display = "none";
+
+}
+
+currentCard = index;
+
+}
+
+function nextCard(){
+
+if(currentCard < cards.length - 1){
+
+showCard(currentCard + 1);
+
+}
+
+}
+
+function previousCard(){
+
+if(currentCard > 0){
+
+showCard(currentCard - 1);
+
+}
+
+}
+
+
+/* =========================
+   SWIPE SUPPORT
+========================= */
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+const swipeArea = document.querySelector(".card-wrapper");
+
+swipeArea.addEventListener("touchstart", function(event){
+
+touchStartX = event.changedTouches[0].screenX;
+touchStartY = event.changedTouches[0].screenY;
+
+});
+
+swipeArea.addEventListener("touchend", function(event){
+
+touchEndX = event.changedTouches[0].screenX;
+touchEndY = event.changedTouches[0].screenY;
+
+handleSwipe();
+
+});
+
+function handleSwipe(){
+
+const differenceX = touchStartX - touchEndX;
+const differenceY = touchStartY - touchEndY;
+
+if(Math.abs(differenceX) < 70){
+return;
+}
+
+if(Math.abs(differenceX) <= Math.abs(differenceY)){
+return;
+}
+
+if(differenceX > 0){
+
+nextCard();
+
+}else{
+
+previousCard();
+
+}
+
+}
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+const questions = [
+
+{
+question:"What is a duty of care?",
+options:[
+"A criminal punishment imposed by a court",
+"A legal obligation to take reasonable care to avoid foreseeable harm",
+"A contractual payment",
+"A type of criminal offence"
+],
+answer:1
+},
+
+{
+question:"Which of the following is usually the first major question in a negligence claim?",
+options:[
+"Was there a duty of care?",
+"How much compensation should be awarded?",
+"Was the defendant imprisoned?",
+"Was there a criminal conviction?"
+],
+answer:0
+},
+
+{
+question:"Which concept concerns the closeness of the relationship between the claimant and defendant?",
+options:[
+"Causation",
+"Damage",
+"Proximity",
+"Remoteness"
+],
+answer:2
+},
+
+{
+question:"Why is Donoghue v Stevenson important?",
+options:[
+"It abolished all negligence claims",
+"It established criminal liability for manufacturers",
+"It helped establish the modern common-law concept of duty of care",
+"It created contract law"
+],
+answer:2
+},
+
+{
+question:"Which statement is correct?",
+options:[
+"A duty of care automatically proves negligence",
+"Duty and breach are exactly the same thing",
+"A duty may exist even when a defendant has not breached it",
+"Duty of care only exists when there is a contract"
+],
+answer:2
+}
+
+];
+
+let currentQuestion = 0;
+
+function startQuiz(){
+
+document.getElementById("notesSection").style.display = "none";
+document.getElementById("noteNavigation").style.display = "none";
+document.getElementById("quizStart").style.display = "none";
+
+document.getElementById("progressArea").innerHTML = `
+<div class="progress-title">QUIZ</div>
+<div class="progress-dots">
+● ● ● ● ●
+</div>
+`;
+
+document.getElementById("quizSection").classList.add("active");
+
+loadQuestion();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function loadQuestion(){
+
+const question = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+currentQuestion + 1;
+
+document.getElementById("questionText").textContent =
+question.question;
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("quizNext").style.display = "none";
+
+question.options.forEach((option,index)=>{
+
+const button = document.createElement("button");
+
+button.className = "quiz-option";
+
+button.textContent = option;
+
+button.onclick = function(){
+
+checkAnswer(index,button);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+function checkAnswer(selected,button){
+
+const question = questions[currentQuestion];
+
+const allOptions =
+document.querySelectorAll(".quiz-option");
+
+allOptions.forEach(option=>{
+option.disabled = true;
+});
+
+if(selected === question.answer){
+
+button.classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✓ Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+allOptions[question.answer].classList.add("correct");
+
+document.getElementById("feedback").textContent =
+"✗ Not quite. The correct answer is highlighted.";
+
+}
+
+document.getElementById("quizNext").style.display =
+"inline-block";
+
+}
+
+function nextQuestion(){
+
+if(currentQuestion < questions.length - 1){
+
+currentQuestion++;
+
+loadQuestion();
+
+}else{
+
+showQuizResult();
+
+}
+
+}
+
+function showQuizResult(){
+
+document.querySelector(".quiz-card").innerHTML = `
+
+<div class="quiz-label">
+QUIZ COMPLETE
+</div>
+
+<h2>🎉 Well Done!</h2>
+
+<p>
+You've completed the <strong>Duty of Care</strong> quiz.
+</p>
+
+<p>
+You can now return to the Contract & Tort Law section and explore another legal concept.
+</p>
+
+<a href="contract-tort-law.html"
+class="quiz-button"
+style="text-decoration:none;">
+Back to Contract & Tort Law
+</a>
+
+`;
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+showCard(0);
+
+</script>
+
+</body>
+  </html>
