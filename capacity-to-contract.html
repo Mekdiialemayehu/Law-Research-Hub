@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Interactive legal note explaining capacity to contract, minors, mental capacity, intoxication, corporate capacity, agency, authority, and related contract law principles.">
+
+<title>Capacity to Contract | Law Research Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:#f5f7fa;
+color:#222;
+min-height:100vh;
+}
+
+/* NAVIGATION */
+
+nav{
+background:#0b1f3a;
+padding:18px 5%;
+display:flex;
+justify-content:center;
+gap:30px;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#c9a227;
+}
+
+/* HEADER */
+
+header{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:45px 20px 35px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
+}
+
+header p{
+font-size:17px;
+max-width:700px;
+margin:auto;
+}
+
+/* PROGRESS */
+
+.progress-area{
+text-align:center;
+padding:25px 20px 10px;
+}
+
+.progress-title{
+font-size:18px;
+font-weight:bold;
+letter-spacing:1px;
+color:#0b1f3a;
+margin-bottom:10px;
+}
+
+.progress-dots{
+font-size:18px;
+letter-spacing:5px;
+color:#d5d5d5;
+}
+
+.progress-dots .active{
+color:#c9a227;
+}
+
+/* SWIPE AREA */
+
+.swipe-container{
+max-width:850px;
+margin:20px auto;
+padding:0 20px;
+}
+
+.card-wrapper{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+}
+
+.note-card{
+background:white;
+border-radius:16px;
+padding:40px;
+min-height:500px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+display:none;
+animation:fadeIn .3s ease;
+}
+
+.note-card.active{
+display:block;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* CARD CONTENT */
+
+.card-number{
+color:#c9a227;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.note-card h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.note-card h3{
+color:#0b1f3a;
+font-size:21px;
+margin:22px 0 8px;
+}
+
+.note-card p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.note-card ul{
+margin:10px 0 20px 25px;
+}
+
+.note-card li{
+margin-bottom:10px;
+}
+
+.note-card ol{
+margin:10px 0 20px 25px;
+}
+
+.note-card ol li{
+margin-bottom:12px;
+}
+
+/* QUOTE / DEFINITION */
+
+.definition{
+background:#f5f7fa;
+border-left:5px solid #c9a227;
+padding:20px;
+margin:20px 0;
+font-size:18px;
+}
+
+/* NAVIGATION BUTTONS */
+
+.navigation{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:850px;
+margin:20px auto 50px;
+padding:0 20px;
+}
+
+.nav-button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+background:#0b1f3a;
+color:white;
+transition:.3s;
+}
+
+.nav-button:hover{
+background:#173b69;
+}
+
+.nav-button:disabled{
+background:#d0d0d0;
+color:#777;
+cursor:not-allowed;
+}
+
+.next-button{
+background:#c9a227;
+}
+
+.next-button:hover{
+background:#a88312;
+}
+
+/* QUIZ START */
+
+.quiz-start{
+text-align:center;
+padding-top:25px;
+}
+
+.quiz-start h2{
+color:#0b1f3a;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.quiz-start p{
+max-width:600px;
+margin:0 auto 25px;
+}
+
+.quiz-button{
+display:inline-block;
+padding:14px 30px;
+background:#c9a227;
+color:white;
+border:none;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-button:hover{
+background:#a88312;
+}
+
+/* QUIZ */
+
+.quiz-section{
+display:none;
+max-width:850px;
+margin:30px auto 60px;
+padding:0 20px;
+}
+
+.quiz-section.active{
+display:block;
+}
+
+.quiz-card{
+background:white;
+border-radius:16px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.quiz-label{
+color:#c9a227;
+font-weight:bold;
+font-size:14px;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.quiz-card h2{
+color:#0b1f3a;
+margin-bottom:20px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:10px 0;
+background:#f5f7fa;
+border:2px solid #e0e0e0;
+border-radius:8px;
+font-family:Georgia, serif;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quiz-option:hover{
+border-color:#c9a227;
+}
+
+.quiz-option.correct{
+border-color:#4a8f5c;
+background:#edf7ef;
+}
+
+.quiz-option.wrong{
+border-color:#b84a4a;
+background:#fbeded;
+}
+
+.quiz-feedback{
+margin-top:15px;
+font-weight:bold;
+}
+
+.quiz-next{
+margin-top:20px;
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#0b1f3a;
+color:white;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+display:none;
+}
+
+/* SOURCES */
+
+.sources{
+font-size:14px;
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid #ddd;
+}
+
+.sources li{
+margin-bottom:7px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0b1f3a;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer p{
+margin:6px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+nav{
+flex-wrap:wrap;
+gap:15px;
+}
+
+header h1{
+font-size:34px;
+}
+
+.note-card{
+padding:28px 22px;
+min-height:520px;
+}
+
+.note-card h2{
+font-size:26px;
+}
+
+.navigation{
+padding:0 15px;
+}
+
+.nav-button{
+padding:11px 17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="case-studies.html">Case Studies</a>
+
+<a href="notes.html">Notes</a>
+
+<a href="quiz.html">Quizzes</a>
+
+<a href="about.html">About Me</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header>
+
+<h1>⚖️ Capacity to Contract</h1>
+
+<p>
+Contract Law · Interactive Legal Note
+</p>
+
+</header>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-title">
+CAPACITY TO CONTRACT
+</div>
+
+<div class="progress-dots" id="progressDots">
+
+<span class="active">●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+<span>●</span>
+
+</div>
+
+</div>
+
+
+<!-- NOTE CARDS -->
+
+<div class="swipe-container" id="notesSection">
+
+<div class="card-wrapper">
+
+
+<!-- CARD 1 -->
+
+<div class="note-card active">
+
+<div class="card-number">
+CARD 1 · DEFINITION
+</div>
+
+<h2>What Is Capacity to Contract?</h2>
+
+<div class="definition">
+
+Capacity to contract refers to a person's legal ability to enter into a binding and enforceable contract.
+
+</div>
+
+<p>
+Contract law does not always treat every person as having unlimited contractual capacity.
+</p>
+
+<p>
+Certain individuals may receive special legal protection because they may be considered less able to understand contractual obligations or protect their own interests.
+</p>
+
+<p>
+Capacity therefore asks the question:
+</p>
+
+<div class="definition">
+
+<strong>Does this person have the legal ability to enter into this contract?</strong>
+
+</div>
+
+<p>
+The exact rules concerning contractual capacity vary between legal systems.
+</p>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 2 · IMPORTANCE
+</div>
+
+<h2>Why Capacity Matters</h2>
+
+<p>
+Capacity rules help protect individuals who may not be fully able to understand or evaluate contractual commitments.
+</p>
+
+<p>
+Without capacity rules, a person could potentially become legally bound by an agreement they did not properly understand.
+</p>
+
+<h3>Capacity Rules Balance:</h3>
+
+<ul>
+
+<li>Freedom of contract.</li>
+
+<li>Protection of vulnerable parties.</li>
+
+<li>Certainty in commercial transactions.</li>
+
+<li>Fairness.</li>
+
+</ul>
+
+<div class="definition">
+
+Capacity rules attempt to balance contractual freedom with protection against unfair exploitation.
+
+</div>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 3 · CATEGORIES
+</div>
+
+<h2>Categories of Capacity</h2>
+
+<p>
+Special rules may apply to contracts involving different categories of people and legal entities.
+</p>
+
+<ul>
+
+<li>Minors.</li>
+
+<li>People lacking sufficient mental capacity.</li>
+
+<li>Persons affected by certain forms of intoxication.</li>
+
+<li>Companies and other legal entities.</li>
+
+<li>Agents acting on behalf of others.</li>
+
+</ul>
+
+<p>
+The rules differ depending on the legal system and the type of contract involved.
+</p>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 4 · MINORS
+</div>
+
+<h2>Minors and Contractual Capacity</h2>
+
+<p>
+A minor is a person who has not reached the legal age of adulthood.
+</p>
+
+<p>
+The age of majority varies between jurisdictions.
+</p>
+
+<p>
+Because minors may have limited contractual capacity, the law often provides them with special protection.
+</p>
+
+<p>
+However, a minor is not necessarily incapable of entering into every contract.
+</p>
+
+<div class="definition">
+
+Certain contracts may be binding on a minor, while others may be unenforceable or subject to special rules.
+
+</div>
+
+<h3>Why Protection Exists</h3>
+
+<p>
+The purpose is to prevent minors from being unfairly bound by contractual commitments they may not have been able to properly evaluate.
+</p>
+
+</div>
+
+
+<!-- CARD 5 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 5 · NECESSARIES
+</div>
+
+<h2>Contracts for Necessaries</h2>
+
+<p>
+A major exception concerning minors involves contracts for necessaries.
+</p>
+
+<p>
+Necessaries are goods or services that are appropriate and reasonably necessary for the person's circumstances.
+</p>
+
+<h3>Examples</h3>
+
+<ul>
+
+<li>Food.</li>
+
+<li>Clothing.</li>
+
+<li>Basic accommodation.</li>
+
+<li>Essential educational materials.</li>
+
+<li>Necessary medical services.</li>
+
+</ul>
+
+<p>
+The exact definition depends on the applicable law.
+</p>
+
+<div class="definition">
+
+The purpose is to prevent minors from being unfairly deprived of essential goods and services simply because of their age.
+
+</div>
+
+</div>
+
+
+<!-- CARD 6 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 6 · BENEFICIAL CONTRACTS
+</div>
+
+<h2>Beneficial Contracts of Service</h2>
+
+<p>
+Some legal systems recognize contracts of service that are genuinely beneficial to a minor.
+</p>
+
+<p>
+For example, an agreement may involve:
+</p>
+
+<ul>
+
+<li>Education.</li>
+
+<li>Training.</li>
+
+<li>Employment.</li>
+
+<li>Professional development.</li>
+
+</ul>
+
+<p>
+Such contracts may receive different treatment if the agreement is considered beneficial to the minor.
+</p>
+
+<p>
+A court may examine the agreement as a whole rather than focusing on one isolated term.
+</p>
+
+<div class="definition">
+
+The central question is whether the contract provides a genuine benefit to the minor under the applicable law.
+
+</div>
+
+</div>
+
+
+<!-- CARD 7 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 7 · OTHER MINORS' CONTRACTS
+</div>
+
+<h2>Non-Necessaries and Ratification</h2>
+
+<h3>Contracts for Non-Necessaries</h3>
+
+<p>
+Contracts involving unnecessary or disadvantageous purchases may receive greater protection for minors.
+</p>
+
+<p>
+For example, a minor purchasing an expensive luxury item may not necessarily be treated in the same way as a minor purchasing essential clothing.
+</p>
+
+<p>
+The legal consequences depend on the applicable jurisdiction.
+</p>
+
+<h3>Ratification After Adulthood</h3>
+
+<p>
+In some legal systems, a person may confirm or ratify certain agreements after reaching the age of majority.
+</p>
+
+<div class="definition">
+
+Ratification means affirming an agreement that previously had limited or uncertain enforceability.
+
+</div>
+
+<p>
+The precise rules concerning ratification depend on the jurisdiction.
+</p>
+
+</div>
+
+
+<!-- CARD 8 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 8 · MENTAL CAPACITY
+</div>
+
+<h2>Mental Capacity</h2>
+
+<p>
+A person may have limited contractual capacity because they are unable to understand the nature or consequences of a transaction.
+</p>
+
+<p>
+Mental capacity rules vary considerably between legal systems.
+</p>
+
+<h3>The Central Questions</h3>
+
+<ul>
+
+<li>Could the person understand the nature of the transaction?</li>
+
+<li>Could the person understand its significant consequences?</li>
+
+<li>Could the person make a rational decision concerning the agreement?</li>
+
+</ul>
+
+<div class="definition">
+
+A person does not automatically lack contractual capacity merely because they have a mental impairment or condition.
+
+</div>
+
+</div>
+
+
+<!-- CARD 9 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 9 · TIME AND KNOWLEDGE
+</div>
+
+<h2>Mental Capacity and the Other Party</h2>
+
+<p>
+The relevant question is generally whether the person had sufficient understanding at the time the contract was made.
+</p>
+
+<p>
+Capacity is therefore usually assessed in relation to the particular transaction and circumstances.
+</p>
+
+<h3>Knowledge of the Other Party</h3>
+
+<p>
+In some legal systems, a contract made by a person lacking mental capacity may still have legal consequences if the other party had no reason to know about the lack of capacity.
+</p>
+
+<p>
+Courts may consider:</p>
+
+<ul>
+
+<li>The person's conduct.</li>
+
+<li>The nature of the transaction.</li>
+
+<li>Whether the other party knew or should have known about the incapacity.</li>
+
+<li>Whether the contract involved necessaries.</li>
+
+<li>Whether the transaction was fair.</li>
+
+</ul>
+
+</div>
+
+
+<!-- CARD 10 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 10 · INTOXICATION
+</div>
+
+<h2>Intoxication and Capacity</h2>
+
+<p>
+Intoxication can sometimes affect contractual capacity.
+</p>
+
+<p>
+A person may become so intoxicated that they are unable to understand the nature of a transaction.
+</p>
+
+<p>
+However, being intoxicated does not automatically make a contract invalid.
+</p>
+
+<h3>Possible Requirements</h3>
+
+<p>
+Depending on the legal system, there may need to be evidence that:
+</p>
+
+<ul>
+
+<li>The person was sufficiently intoxicated to lack understanding.</li>
+
+<li>The other party knew or should have known about the person's condition.</li>
+
+</ul>
+
+<div class="definition">
+
+The precise legal consequences of intoxication vary between legal systems.
+
+</div>
+
+</div>
+
+
+<!-- CARD 11 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 11 · COMPANIES
+</div>
+
+<h2>Companies and Corporate Capacity</h2>
+
+<p>
+Capacity is not limited to individuals. Companies and other legal entities can also raise questions concerning contractual capacity.
+</p>
+
+<p>
+A company acts through representatives such as:
+</p>
+
+<ul>
+
+<li>Directors.</li>
+
+<li>Officers.</li>
+
+<li>Employees.</li>
+
+<li>Agents.</li>
+
+<li>Other authorized representatives.</li>
+
+</ul>
+
+<h3>Corporate Capacity</h3>
+
+<p>
+A company's constitutional documents and applicable company law may determine the powers it possesses.
+</p>
+
+<p>
+Modern company legislation in many jurisdictions gives companies broad capacity to enter into contracts, although specific restrictions can still arise.
+</p>
+
+</div>
+
+
+<!-- CARD 12 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 12 · AGENCY AND AUTHORITY
+</div>
+
+<h2>Agency and Authority</h2>
+
+<p>
+An agent is a person authorized to act on behalf of another person or organization.
+</p>
+
+<p>
+For example, a company may authorize an employee to purchase office equipment on its behalf.
+</p>
+
+<p>
+The legal effect may depend on whether the employee had actual or apparent authority.
+</p>
+
+<div class="definition">
+
+<strong>Capacity = Legal ability to contract.</strong>
+<br><br>
+<strong>Authority = Legal power to contract on behalf of another person or entity.</strong>
+
+</div>
+
+<p>
+A person may personally have full legal capacity but lack authority to enter into a particular contract on behalf of someone else.
+</p>
+
+</div>
+
+
+<!-- CARD 13 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 13 · RELATED REQUIREMENTS
+</div>
+
+<h2>Capacity vs. Other Contract Requirements</h2>
+
+<h3>Capacity vs. Consent</h3>
+
+<p>
+Capacity asks whether the person has the legal ability to enter into the contract.
+</p>
+
+<p>
+Consent asks whether the person genuinely agreed to the contract.
+</p>
+
+<p>
+A person may have full capacity but argue that their consent was affected by duress, undue influence, misrepresentation, or fraud.
+</p>
+
+<h3>Capacity vs. Consideration</h3>
+
+<p>
+Capacity concerns whether a person can legally contract.
+</p>
+
+<p>
+Consideration concerns what was exchanged in support of the promise.
+</p>
+
+<h3>Capacity vs. Intention</h3>
+
+<p>
+Intention asks whether the parties intended their agreement to have legal consequences.
+</p>
+
+<p>
+Capacity asks whether the parties were legally capable of creating those consequences.
+</p>
+
+</div>
+
+
+<!-- CARD 14 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 14 · CONSEQUENCES
+</div>
+
+<h2>Consequences of Lack of Capacity</h2>
+
+<p>
+The legal consequences of lacking capacity can vary depending on the jurisdiction and the type of contract.
+</p>
+
+<p>
+An agreement may be:
+</p>
+
+<ul>
+
+<li>Binding.</li>
+
+<li>Void.</li>
+
+<li>Voidable.</li>
+
+<li>Unenforceable.</li>
+
+<li>Enforceable only to a limited extent.</li>
+
+<li>Subject to restitution or another remedy.</li>
+
+</ul>
+
+<h3>Void</h3>
+
+<p>
+A void contract is treated as having no legal effect from the beginning.
+</p>
+
+<h3>Voidable</h3>
+
+<p>
+A voidable contract is generally valid unless and until the protected party takes legally recognized steps to avoid it.
+</p>
+
+<h3>Restitution</h3>
+
+<p>
+Where a contract is avoided or cannot be enforced because of capacity, questions may arise about whether money or property should be returned.
+</p>
+
+</div>
+
+
+<!-- CARD 15 -->
+
+<div class="note-card">
+
+<div class="card-number">
+CARD 15 · KEY TAKEAWAY
+</div>
+
+<h2>Key Takeaway</h2>
+
+<div class="definition">
+
+Capacity to contract refers to a person's legal ability to enter into a binding contract.
+
+</div>
+
+<p>
+The law recognizes that certain people may require special protection, particularly:
+</p>
+
+<ul>
+
+<li>Minors.</li>
+
+<li>People lacking sufficient mental capacity.</li>
+
+<li>People affected by certain forms of intoxication.</li>
+
+</ul>
+
+<p>
+Capacity issues can also arise with companies and agents, although these involve different legal questions.
+</p>
+
+<h3>Important Distinctions</h3>
+
+<div class="definition">
+
+<strong>Capacity ≠ Consent</strong>
+<br><br>
+<strong>Capacity ≠ Consideration</strong>
+<br><br>
+<strong>Capacity ≠ Authority</strong>
+
+</div>
+
+<p>
+A person may have the ability to contract but still have problems with consent. Similarly, an employee may have full personal capacity but lack authority to bind a company.
+</p>
+
+<p>
+The key question in a contract case is therefore:
+</p>
+
+<div class="definition">
+
+<strong>"Did the parties have the legal capacity and authority necessary to enter into this agreement?"</strong>
+
+</div>
+
+<p>
+Once capacity is established, other requirements of contract formation must still be considered.
+</p>
+
+<div class="sources">
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Restatement (Second) of Contracts, provisions concerning capacity to contract.</li>
+
+<li>Cornell Law School Legal Information Institute, materials concerning capacity, minors, mental incapacity, and contracts.</li>
+
+<li>Relevant domestic contract legislation and case law concerning minors, mental capacity, corporate capacity, and agency.</li>
+
+<li>Applicable consumer-protection and electronic-contract legislation concerning contractual capacity.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- NOTE NAVIGATION -->
+
+<div class="navigation" id="noteNavigation">
+
+<button class="nav-button" id="prevButton" onclick="previousCard()" disabled>
+← Previous
+</button>
+
+<button class="nav-button next-button" id="nextButton" onclick="nextCard()">
+Next →
+</button>
+
+</div>
+
+
+<!-- QUIZ INTRO -->
+
+<div class="quiz-start" id="quizStart" style="display:none;">
+
+<h2>🎓 Note Complete!</h2>
+
+<p>
+You've finished the legal note on <strong>Capacity to Contract</strong>.
+Now test your understanding with a short quiz.
+</p>
+
+<button class="quiz-button" onclick="startQuiz()">
+Start Quiz →
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-section" id="quizSection">
+
+<div class="quiz-card">
+
+<div class="quiz-label">
+QUESTION <span id="questionNumber">1</span> OF 5
+</div>
+
+<h2 id="questionText"></h2>
+
+<div id="options"></div>
+
+<div class="quiz-feedback" id="feedback"></div>
+
+<button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p><strong>Law Research Hub</strong></p>
+
+<p>
+An independent educational project dedicated to making legal knowledge accessible through case studies, notes, and quizzes.
+</p>
+
+<p>
+© 2026 Law Research Hub. All Rights Reserved.
+</p>
+
+</footer
