@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Right to Education | Women's Rights | Law Research Hub</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia, "Times New Roman", serif;
+    background:#f5f7fa;
+    color:#222;
+    line-height:1.75;
+}
+
+a{
+    color:#1f4e79;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+header{
+    background:#172a3a;
+    color:white;
+    padding:58px 20px 52px;
+    text-align:center;
+}
+
+.header-tag{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+    opacity:.8;
+}
+
+header h1{
+    font-size:clamp(36px, 6vw, 58px);
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+header p{
+    max-width:780px;
+    margin:0 auto;
+    font-size:18px;
+    color:#e5edf4;
+}
+
+.nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:#ffffff;
+    border-bottom:1px solid #d9e0e6;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.nav-inner{
+    max-width:1100px;
+    margin:auto;
+    padding:12px 18px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.nav a{
+    font-family:Arial, sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:#334e68;
+}
+
+.container{
+    max-width:1000px;
+    margin:42px auto;
+    padding:0 20px;
+}
+
+.intro-box{
+    background:white;
+    border-left:5px solid #1f4e79;
+    padding:25px 28px;
+    margin-bottom:28px;
+    box-shadow:0 4px 16px rgba(0,0,0,.05);
+}
+
+.intro-box strong{
+    color:#172a3a;
+}
+
+section{
+    background:white;
+    margin-bottom:25px;
+    padding:31px;
+    border:1px solid #e0e5ea;
+    box-shadow:0 3px 12px rgba(0,0,0,.035);
+    border-radius:4px;
+}
+
+.section-label{
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.7px;
+    text-transform:uppercase;
+    color:#687b8c;
+    margin-bottom:8px;
+}
+
+h2{
+    color:#172a3a;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+h3{
+    color:#1f4e79;
+    font-size:21px;
+    margin:23px 0 8px;
+}
+
+p{
+    margin-bottom:13px;
+}
+
+.question{
+    margin-top:20px;
+    padding:18px 20px;
+    background:#eef4f8;
+    border:1px solid #d6e2ea;
+    font-style:italic;
+    color:#263b4c;
+}
+
+.source-card{
+    border:1px solid #dfe5ea;
+    border-radius:5px;
+    padding:20px;
+    margin:14px 0;
+    background:#fbfcfd;
+}
+
+.source-card h3{
+    margin-top:0;
+}
+
+.source-card p{
+    margin-bottom:8px;
+}
+
+.pill{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.7px;
+    padding:4px 8px;
+    border-radius:999px;
+    background:#e9eff4;
+    color:#425466;
+    margin-bottom:9px;
+}
+
+.dimensions{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:16px;
+    margin-top:18px;
+}
+
+.dimension{
+    border:1px solid #dfe5ea;
+    padding:20px;
+    background:#fbfcfd;
+}
+
+.dimension h3{
+    margin-top:0;
+}
+
+.barrier{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid #e6eaee;
+}
+
+.barrier:last-child{
+    border-bottom:none;
+}
+
+.barrier-title{
+    font-weight:700;
+    color:#172a3a;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th, td{
+    border:1px solid #dce2e7;
+    padding:13px;
+    text-align:left;
+    vertical-align:top;
+}
+
+th{
+    background:#edf2f6;
+    color:#172a3a;
+}
+
+ul{
+    margin:10px 0 8px 24px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.research-box{
+    background:#172a3a;
+    color:white;
+    padding:30px;
+    border-radius:4px;
+}
+
+.research-box h2{
+    color:white;
+}
+
+.research-box .question{
+    background:rgba(255,255,255,.08);
+    border-color:rgba(255,255,255,.18);
+    color:#f0f5f8;
+}
+
+.case-card{
+    background:#f8fafb;
+    border:1px solid #dce3e8;
+    padding:20px;
+    margin-top:14px;
+}
+
+.case-card h3{
+    margin-top:0;
+}
+
+footer{
+    background:#111d27;
+    color:#cdd8e1;
+    padding:38px 20px;
+}
+
+.footer-inner{
+    max-width:1000px;
+    margin:auto;
+}
+
+footer h2{
+    color:white;
+    font-size:24px;
+}
+
+footer p{
+    font-size:14px;
+}
+
+footer a{
+    color:#b9d7ef;
+}
+
+.last-updated{
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    opacity:.75;
+    margin-top:20px;
+}
+
+@media (max-width:700px){
+    section{
+        padding:23px 18px;
+    }
+
+    .dimensions{
+        grid-template-columns:1fr;
+    }
+
+    .barrier{
+        grid-template-columns:1fr;
+        gap:4px;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-tag">Women's Rights · Human Rights Law</div>
+    <h1>Right to Education</h1>
+    <p>Understanding the legal protection of education for women and girls through international, African, and Ethiopian law.</p>
+</header>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#definition">Definition</a>
+        <a href="#why">Why It Matters</a>
+        <a href="#international">International Law</a>
+        <a href="#african">African Framework</a>
+        <a href="#dimensions">Education Framework</a>
+        <a href="#barriers">Barriers</a>
+        <a href="#ethiopia">Ethiopia</a>
+        <a href="#research">Research Question</a>
+        <a href="#sources">Sources</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <div class="intro-box">
+        <strong>Core legal question:</strong>
+        What legal protections exist to ensure that women and girls can access education equally and without discrimination?
+    </div>
+
+    <section id="definition">
+        <div class="section-label">01 · Definition</div>
+        <h2>What is the Right to Education?</h2>
+
+        <p>
+            The right to education is a human right that protects every person's ability to access education.
+            International human-rights law does not treat education simply as a service provided by a government;
+            it recognizes education as a right connected to human dignity, equality, participation, and the development of the individual.
+        </p>
+
+        <p>
+            For women and girls, the right to education also requires protection against discrimination.
+            A legal system should therefore not merely provide schools in general. It must also address rules,
+            practices, and barriers that prevent girls and women from enjoying education on an equal basis.
+        </p>
+
+        <div class="question">
+            The key idea is simple: <strong>education must be available, accessible, and enjoyed without discrimination.</strong>
+        </div>
+    </section>
+
+    <section id="why">
+        <div class="section-label">02 · Why It Matters</div>
+        <h2>Why is Education a Human-Rights Issue?</h2>
+
+        <p>
+            Education can affect a person's ability to exercise other rights and participate fully in society.
+            The United Nations describes education as a human right, a public good, and a public responsibility.
+        </p>
+
+        <p>
+            When girls are denied education because of discrimination, poverty, early marriage, household responsibilities,
+            conflict, unsafe conditions, or other barriers, the issue is not only educational. It can also raise questions
+            about equality, dignity, participation, and the responsibilities of the state.
+        </p>
+
+        <p>
+            This is why the right to education is especially important in women's-rights law: formal equality is not enough
+            when practical barriers continue to prevent girls from attending, staying in, and completing school.
+        </p>
+    </section>
+
+    <section id="international">
+        <div class="section-label">03 · International Legal Framework</div>
+        <h2>International Protection</h2>
+
+        <div class="source-card">
+            <span class="pill">UDHR · Article 26</span>
+            <h3>Universal Declaration of Human Rights</h3>
+            <p>
+                Article 26 recognizes that everyone has the right to education. It provides that elementary education
+                should be free and compulsory, that technical and professional education should be generally available,
+                and that higher education should be equally accessible on the basis of merit.
+            </p>
+            <p><a href="https://www.un.org/en/about-us/universal-declaration-of-human-rights" target="_blank" rel="noopener">Read the UN text →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">CEDAW · Article 10</span>
+            <h3>Convention on the Elimination of All Forms of Discrimination against Women</h3>
+            <p>
+                CEDAW gives the issue a specifically gender-equality framework. Article 10 requires States Parties
+                to take measures to eliminate discrimination against women in education and to ensure equality of men
+                and women in access to studies, examinations, vocational guidance, teaching standards, facilities,
+                curricula, and other aspects of education.
+            </p>
+            <p><a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-elimination-all-forms-discrimination-against-women" target="_blank" rel="noopener">Read more from OHCHR →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">ICESCR · Articles 13–14</span>
+            <h3>International Covenant on Economic, Social and Cultural Rights</h3>
+            <p>
+                Article 13 recognizes the right of everyone to education and explains that education should contribute
+                to the full development of the human personality and respect for human rights. It also sets out duties
+                concerning primary, secondary, and higher education.
+            </p>
+            <p><a href="https://2covenants.ohchr.org/About-ICESCR.html" target="_blank" rel="noopener">Read the Covenant →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">CRC · Articles 28–29</span>
+            <h3>Convention on the Rights of the Child</h3>
+            <p>
+                The Convention recognizes every child's right to education. Article 28 addresses access, compulsory
+                primary education, secondary education, higher education, guidance, attendance, and reducing dropout.
+                Article 29 addresses the aims of education, including the development of the child's personality,
+                abilities, dignity, and respect for human rights.
+            </p>
+            <p><a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-child" target="_blank" rel="noopener">Read more from OHCHR →</a></p>
+        </div>
+    </section>
+
+    <section id="african">
+        <div class="section-label">04 · African Human-Rights Law</div>
+        <h2>The African Legal Framework</h2>
+
+        <div class="source-card">
+            <span class="pill">African Charter · Article 17</span>
+            <h3>Right to Education</h3>
+            <p>
+                Article 17 of the African Charter on Human and Peoples' Rights states that every individual has the
+                right to education. Article 18 also requires the state to ensure the elimination of discrimination
+                against women and the protection of women's and children's rights.
+            </p>
+            <p><a href="https://achpr.au.int/en/node/689" target="_blank" rel="noopener">Read the African Charter →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">Maputo Protocol · Article 12</span>
+            <h3>Women and Girls' Education</h3>
+            <p>
+                Article 12 is particularly important for this section. It requires States Parties to eliminate
+                discrimination against women and guarantee equal opportunity and access to education and training.
+                It also addresses stereotypes in educational materials, abuse and sexual harassment in schools,
+                literacy, education and training at all levels, and the enrolment and retention of girls.
+            </p>
+            <p><a href="https://achpr.au.int/index.php/en/node/878" target="_blank" rel="noopener">Read Article 12 →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">Ethiopia · Regional obligations</span>
+            <h3>Ethiopia and the Maputo Protocol</h3>
+            <p>
+                Ethiopia ratified the Maputo Protocol on 18 July 2018. The African Commission has subsequently
+                reviewed Ethiopia's implementation of the African Charter and the Maputo Protocol.
+            </p>
+            <p><a href="https://achpr.au.int/index.php/pt/node/4384" target="_blank" rel="noopener">African Commission review of Ethiopia →</a></p>
+        </div>
+    </section>
+
+    <section id="dimensions">
+        <div class="section-label">05 · Understanding the Right</div>
+        <h2>Four Dimensions of Education</h2>
+
+        <p>
+            A useful human-rights framework is to ask not only whether schools exist, but whether education is genuinely
+            reachable and appropriate for everyone.
+        </p>
+
+        <div class="dimensions">
+            <div class="dimension">
+                <h3>Availability</h3>
+                <p>Are functioning educational institutions, programmes, teachers, and necessary facilities available?</p>
+            </div>
+
+            <div class="dimension">
+                <h3>Accessibility</h3>
+                <p>Can people access education without discrimination or unreasonable legal, economic, physical, or geographic barriers?</p>
+            </div>
+
+            <div class="dimension">
+                <h3>Acceptability</h3>
+                <p>Is the education provided of appropriate quality and consistent with human dignity and rights?</p>
+            </div>
+
+            <div class="dimension">
+                <h3>Adaptability</h3>
+                <p>Can education respond to the needs of different students and changing social circumstances?</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="barriers">
+        <div class="section-label">06 · Women and Girls</div>
+        <h2>Barriers to Education</h2>
+
+        <p>
+            A right can exist in law while remaining difficult to enjoy in practice. For women and girls,
+            barriers may operate at household, community, institutional, economic, geographic, or state levels.
+        </p>
+
+        <div class="barrier">
+            <div class="barrier-title">Gender discrimination</div>
+            <div>When girls receive fewer educational opportunities, face different rules, or are discouraged from studying because of their sex.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Poverty</div>
+            <div>School may be formally available while transport, materials, uniforms, or other costs make attendance difficult for low-income families.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Child marriage</div>
+            <div>Marriage during childhood can interrupt schooling and create responsibilities that make continued education harder.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Household work</div>
+            <div>Domestic responsibilities can reduce the time girls have to attend school, study, or complete homework.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Conflict and displacement</div>
+            <div>Conflict can damage schools, interrupt teaching, displace families, and prevent children from reaching classrooms safely.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Unsafe school environments</div>
+            <div>Violence, harassment, discrimination, or inadequate facilities can make continued education difficult or unsafe.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Distance and geography</div>
+            <div>Long journeys and limited access to schools can create major practical barriers, particularly in rural and remote areas.</div>
+        </div>
+    </section>
+
+    <section id="ethiopia">
+        <div class="section-label">07 · Ethiopia</div>
+        <h2>Right to Education in Ethiopia</h2>
+
+        <p>
+            Ethiopia's constitutional framework connects education with equality, children's rights, and social objectives.
+        </p>
+
+        <h3>Article 25 · Right to Equality</h3>
+        <p>
+            The Constitution provides that all persons are equal before the law and are entitled to equal protection
+            without discrimination, including discrimination on grounds of sex.
+        </p>
+
+        <h3>Article 36 · Rights of Children</h3>
+        <p>
+            The Constitution protects children from practices that may be harmful to their education, health, or
+            well-being. It also requires the best interests of the child to be a primary consideration in actions
+            concerning children.
+        </p>
+
+        <h3>Article 90 · Social Objectives</h3>
+        <p>
+            The Constitution states that, to the extent the country's resources permit, policies should aim to provide
+            all Ethiopians access to public health and education. It also states that education should be provided free
+            from religious influence, political partisanship, or cultural prejudices.
+        </p>
+
+        <h3>What does this mean for girls?</h3>
+        <p>
+            Read together, these provisions create an important legal picture: education is connected to access,
+            equality, protection from harmful practices, and the state's social responsibilities. The practical
+            question is how effectively these legal commitments are translated into real access for girls across Ethiopia.
+        </p>
+
+        <div class="case-card">
+            <h3>Ethiopian context</h3>
+            <p>
+                UNICEF reports that girls in rural and emergency-affected areas can face barriers including poverty,
+                household responsibilities, long distances to school, conflict, climate-related disruption,
+                and social norms. This shows why a legal right must also be examined in its social and practical context.
+            </p>
+            <p><a href="https://www.unicef.org/ethiopia/learning-and-development" target="_blank" rel="noopener">UNICEF Ethiopia: Learning and Development →</a></p>
+        </div>
+
+        <div class="case-card">
+            <h3>A current example</h3>
+            <p>
+                UNICEF documented in 2026 the experience of a Grade 12 student in Tigray who had lost three years
+                of schooling because of conflict and later travelled about an hour each way to school. The story
+                illustrates how conflict, infrastructure, and distance can affect the real enjoyment of the right to education.
+            </p>
+            <p><a href="https://www.unicef.org/ethiopia/stories/long-walk-brighter-future" target="_blank" rel="noopener">Read the UNICEF Ethiopia case story →</a></p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-label">08 · Legal Analysis</div>
+        <h2>Law on Paper vs. Education in Practice</h2>
+
+        <p>
+            One of the most important questions in human-rights research is whether a right exists only formally,
+            or whether people can actually exercise it.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Legal promise</th>
+                    <th>Practical question</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Everyone has a right to education.</td>
+                    <td>Are there functioning schools that students can actually reach?</td>
+                </tr>
+                <tr>
+                    <td>Education must be enjoyed without discrimination.</td>
+                    <td>Do girls face different barriers or treatment because they are girls?</td>
+                </tr>
+                <tr>
+                    <td>Girls should have equal access to education and training.</td>
+                    <td>Can girls enroll, remain in school, complete their education, and progress to higher levels?</td>
+                </tr>
+                <tr>
+                    <td>Children are protected from practices harmful to education.</td>
+                    <td>What happens when child marriage, child labour, conflict, or other pressures interfere with schooling?</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="research" class="research-box">
+        <div class="section-label">09 · Research Question</div>
+        <h2>Think Like a Human-Rights Researcher</h2>
+
+        <div class="question">
+            If education is a fundamental human right, what responsibility does a government have when social,
+            economic, cultural, or geographical barriers prevent girls from accessing it?
+        </div>
+
+        <p style="margin-top:20px;">
+            A strong legal analysis should ask three things:
+            <strong>What does the law promise?</strong>
+            <strong>What barriers exist?</strong>
+            <strong>What duties does the state have to close the gap?</strong>
+        </p>
+    </section>
+
+</main>
+
+<footer id="sources">
+    <div class="footer-inner">
+        <h2>Primary &amp; Supporting Sources</h2>
+
+        <p>
+            <strong>Primary international sources:</strong>
+            United Nations, Universal Declaration of Human Rights, Article 26;
+            Convention on the Elimination of All Forms of Discrimination against Women, Article 10;
+            International Covenant on Economic, Social and Cultural Rights, Articles 13–14;
+            Convention on the Rights of the Child, Articles 28–29.
+        </p>
+
+        <p>
+            <strong>African sources:</strong>
+            African Charter on Human and Peoples' Rights, Articles 17–18;
+            Protocol to the African Charter on Human and Peoples' Rights on the Rights of Women in Africa
+            (Maputo Protocol), Article 12.
+        </p>
+
+        <p>
+            <strong>Ethiopian source:</strong>
+            Constitution of the Federal Democratic Republic of Ethiopia (1995), including Articles 25, 36, and 90.
+        </p>
+
+        <p>
+            <strong>Contextual sources:</strong>
+            UNICEF Ethiopia materials on girls' education, barriers to education, conflict, and school access.
+        </p>
+
+        <div class="last-updated">Research page prepared September 2026 · Law Research Hub</div>
+    </div>
+</footer>
+
+</body>
+</html>
