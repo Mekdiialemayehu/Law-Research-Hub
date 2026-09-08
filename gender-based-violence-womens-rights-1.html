@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gender-Based Violence | Women's Rights | Law Research Hub</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia, "Times New Roman", serif;
+    background:#f5f7fa;
+    color:#222;
+    line-height:1.75;
+}
+
+a{
+    color:#1f4e79;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+header{
+    background:#172a3a;
+    color:white;
+    padding:58px 20px 52px;
+    text-align:center;
+}
+
+.header-tag{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+    opacity:.8;
+}
+
+header h1{
+    font-size:clamp(36px, 6vw, 58px);
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+header p{
+    max-width:780px;
+    margin:0 auto;
+    font-size:18px;
+    color:#e5edf4;
+}
+
+.nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:#ffffff;
+    border-bottom:1px solid #d9e0e6;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.nav-inner{
+    max-width:1100px;
+    margin:auto;
+    padding:12px 18px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.nav a{
+    font-family:Arial, sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:#334e68;
+}
+
+.container{
+    max-width:1000px;
+    margin:42px auto;
+    padding:0 20px;
+}
+
+.intro-box{
+    background:white;
+    border-left:5px solid #1f4e79;
+    padding:25px 28px;
+    margin-bottom:28px;
+    box-shadow:0 4px 16px rgba(0,0,0,.05);
+}
+
+.intro-box strong{
+    color:#172a3a;
+}
+
+section{
+    background:white;
+    margin-bottom:25px;
+    padding:31px;
+    border:1px solid #e0e5ea;
+    box-shadow:0 3px 12px rgba(0,0,0,.035);
+    border-radius:4px;
+}
+
+.section-label{
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.7px;
+    text-transform:uppercase;
+    color:#687b8c;
+    margin-bottom:8px;
+}
+
+h2{
+    color:#172a3a;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+h3{
+    color:#1f4e79;
+    font-size:21px;
+    margin:23px 0 8px;
+}
+
+p{
+    margin-bottom:13px;
+}
+
+.question{
+    margin-top:20px;
+    padding:18px 20px;
+    background:#eef4f8;
+    border:1px solid #d6e2ea;
+    font-style:italic;
+    color:#263b4c;
+}
+
+.source-card{
+    border:1px solid #dfe5ea;
+    border-radius:5px;
+    padding:20px;
+    margin:14px 0;
+    background:#fbfcfd;
+}
+
+.source-card h3{
+    margin-top:0;
+}
+
+.source-card p{
+    margin-bottom:8px;
+}
+
+.pill{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.7px;
+    padding:4px 8px;
+    border-radius:999px;
+    background:#e9eff4;
+    color:#425466;
+    margin-bottom:9px;
+}
+
+.principles{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:16px;
+    margin-top:18px;
+}
+
+.principle{
+    border:1px solid #dfe5ea;
+    padding:20px;
+    background:#fbfcfd;
+}
+
+.principle h3{
+    margin-top:0;
+}
+
+.barrier{
+    display:grid;
+    grid-template-columns:190px 1fr;
+    gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid #e6eaee;
+}
+
+.barrier:last-child{
+    border-bottom:none;
+}
+
+.barrier-title{
+    font-weight:700;
+    color:#172a3a;
+}
+
+.case-feature{
+    background:#f8fafb;
+    border:1px solid #d3dee6;
+    border-left:5px solid #1f4e79;
+    padding:23px;
+    margin-top:16px;
+}
+
+.case-feature h3{
+    margin-top:0;
+}
+
+.case-link{
+    display:inline-block;
+    margin-top:8px;
+    padding:10px 15px;
+    border:1px solid #1f4e79;
+    border-radius:4px;
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.3px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th, td{
+    border:1px solid #dce2e7;
+    padding:13px;
+    text-align:left;
+    vertical-align:top;
+}
+
+th{
+    background:#edf2f6;
+    color:#172a3a;
+}
+
+.research-box{
+    background:#172a3a;
+    color:white;
+    padding:30px;
+    border-radius:4px;
+}
+
+.research-box h2{
+    color:white;
+}
+
+.research-box .question{
+    background:rgba(255,255,255,.08);
+    border-color:rgba(255,255,255,.18);
+    color:#f0f5f8;
+}
+
+footer{
+    background:#111d27;
+    color:#cdd8e1;
+    padding:38px 20px;
+}
+
+.footer-inner{
+    max-width:1000px;
+    margin:auto;
+}
+
+footer h2{
+    color:white;
+    font-size:24px;
+}
+
+footer p{
+    font-size:14px;
+}
+
+footer a{
+    color:#b9d7ef;
+}
+
+.last-updated{
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    opacity:.75;
+    margin-top:20px;
+}
+
+@media (max-width:700px){
+    section{
+        padding:23px 18px;
+    }
+
+    .principles{
+        grid-template-columns:1fr;
+    }
+
+    .barrier{
+        grid-template-columns:1fr;
+        gap:4px;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-tag">Women's Rights · Human Rights Law</div>
+    <h1>Gender-Based Violence</h1>
+    <p>Understanding gender-based violence against women through international, African, and Ethiopian human-rights law.</p>
+</header>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#definition">Definition</a>
+        <a href="#why">Why It Matters</a>
+        <a href="#international">International Law</a>
+        <a href="#african">African Framework</a>
+        <a href="#case">Case Study</a>
+        <a href="#principles">Key Principles</a>
+        <a href="#barriers">Barriers</a>
+        <a href="#ethiopia">Ethiopia</a>
+        <a href="#research">Research Question</a>
+        <a href="#sources">Sources</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <div class="intro-box">
+        <strong>Core legal question:</strong>
+        What legal duties do states have to prevent, investigate, punish, and provide protection against gender-based violence affecting women and girls?
+    </div>
+
+    <section id="definition">
+        <div class="section-label">01 · Definition</div>
+        <h2>What is Gender-Based Violence?</h2>
+
+        <p>
+            Gender-based violence against women refers to violence that is directed against a woman because she is a woman
+            or that affects women disproportionately. It can impair or prevent women from enjoying their human rights and
+            fundamental freedoms on an equal basis with men.
+        </p>
+
+        <p>
+            International human-rights law recognizes that gender-based violence is not limited to one setting.
+            It may occur in private or public life and can take different forms, including physical, sexual,
+            psychological, and economic harm, as well as threats, coercion, harassment, and arbitrary deprivation of liberty.
+        </p>
+
+        <div class="question">
+            The key idea is simple: <strong>violence against women is a human-rights issue when it interferes with women's equal enjoyment of their rights.</strong>
+        </div>
+    </section>
+
+    <section id="why">
+        <div class="section-label">02 · Why It Matters</div>
+        <h2>Why is Gender-Based Violence a Human-Rights Issue?</h2>
+
+        <p>
+            Gender-based violence can interfere with fundamental rights including the rights to life, equality,
+            liberty and security, freedom from torture or cruel, inhuman or degrading treatment, and equal protection
+            under the law.
+        </p>
+
+        <p>
+            Human-rights law therefore looks beyond the individual act of violence and asks whether public authorities
+            took reasonable steps to prevent foreseeable harm, protect people at risk, investigate allegations,
+            prosecute offenders where appropriate, and provide effective remedies.
+        </p>
+
+        <p>
+            The legal significance becomes especially clear where repeated violence is known to authorities but the
+            state response is ineffective. In such circumstances, the issue can involve not only the actions of a private
+            perpetrator, but also the state's own human-rights responsibilities.
+        </p>
+    </section>
+
+    <section id="international">
+        <div class="section-label">03 · International Legal Framework</div>
+        <h2>International Protection</h2>
+
+        <div class="source-card">
+            <span class="pill">CEDAW · Articles 1–2</span>
+            <h3>Convention on the Elimination of All Forms of Discrimination against Women</h3>
+            <p>
+                CEDAW provides the central international equality framework for women. The CEDAW Committee has clarified
+                that gender-based violence against women is a form of discrimination and that states may be responsible
+                for private acts when they fail to act with due diligence to prevent, investigate, punish, or provide
+                compensation for such violence.
+            </p>
+            <p><a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-elimination-all-forms-discrimination-against-women" target="_blank" rel="noopener">Read the Convention →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">CEDAW · General Recommendation No. 35</span>
+            <h3>Gender-Based Violence as Discrimination</h3>
+            <p>
+                General Recommendation No. 35 explains that the term “gender-based violence against women” emphasizes
+                the gendered causes and effects of the violence and treats the problem as a social and structural issue,
+                requiring comprehensive state responses rather than responses limited to individual incidents.
+            </p>
+            <p><a href="https://docstore.ohchr.org/SelfServices/FilesHandler.ashx?enc=mdnxIPKfpXr0kaBuhkSZBE60Jj395tBuVQNr22I61CYuHGpRAY4ZmER3Y02lqUqhY2zevx3M8DtWjPOwVWioYQ%3D%3D" target="_blank" rel="noopener">Read General Recommendation No. 35 →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">Declaration on the Elimination of Violence against Women</span>
+            <h3>United Nations Definition</h3>
+            <p>
+                The UN Declaration defines violence against women as gender-based violence that causes, or is likely to cause,
+                physical, sexual, or psychological harm or suffering, including threats, coercion, or arbitrary deprivation
+                of liberty. It covers violence in the family, the community, and violence perpetrated or condoned by the state.
+            </p>
+            <p><a href="https://www.ohchr.org/Documents/ProfessionalInterest/eliminationvaw.pdf" target="_blank" rel="noopener">Read the Declaration →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">UN Human Rights Framework</span>
+            <h3>State Responsibility and Due Diligence</h3>
+            <p>
+                A central principle is that human-rights obligations can require states to take positive steps to protect
+                women from violence by private individuals. The question is not simply whether the state itself committed
+                the violence, but whether its authorities responded adequately to known or foreseeable risks and provided
+                effective legal protection.
+            </p>
+        </div>
+    </section>
+
+    <section id="african">
+        <div class="section-label">04 · African Human-Rights Law</div>
+        <h2>The African Legal Framework</h2>
+
+        <div class="source-card">
+            <span class="pill">Maputo Protocol · Article 4</span>
+            <h3>Elimination of Violence Against Women</h3>
+            <p>
+                Article 4 of the Protocol to the African Charter on Human and Peoples' Rights on the Rights of Women in Africa
+                requires states to protect women against all forms of violence and to adopt appropriate measures to prevent
+                and punish violence against women, including domestic and sexual violence.
+            </p>
+            <p><a href="https://achpr.au.int/index.php/en/node/878" target="_blank" rel="noopener">Read the Maputo Protocol →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">African Charter · Articles 4–5–18</span>
+            <h3>Life, Dignity, and Protection</h3>
+            <p>
+                The African Charter protects the right to life and integrity, prohibits torture and cruel, inhuman,
+                or degrading treatment, and requires the state to ensure the elimination of discrimination against women
+                and to protect the rights of women and children.
+            </p>
+            <p><a href="https://achpr.au.int/en/node/689" target="_blank" rel="noopener">Read the African Charter →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">Ethiopia · Regional obligations</span>
+            <h3>Ethiopia and the Maputo Protocol</h3>
+            <p>
+                Ethiopia ratified the Maputo Protocol on 18 July 2018. Its obligations under the Protocol therefore form
+                part of the regional legal framework relevant to the protection of women against violence.
+            </p>
+            <p><a href="https://achpr.au.int/index.php/pt/node/4384" target="_blank" rel="noopener">African Commission review of Ethiopia →</a></p>
+        </div>
+    </section>
+
+    <section id="case">
+        <div class="section-label">05 · Featured Case</div>
+        <h2>Opuz v. Turkey</h2>
+
+        <div class="case-feature">
+            <span class="pill">European Court of Human Rights · 2009</span>
+            <h3>A landmark case on domestic violence and state responsibility</h3>
+
+            <p>
+                <strong>Opuz v. Turkey</strong> concerned a woman who had experienced repeated domestic violence and threats,
+                together with violence against her mother. The case reached the European Court of Human Rights after the
+                Turkish authorities had repeatedly failed to provide effective protection.
+            </p>
+
+            <p>
+                The Court held that Turkey had violated Article 2 (right to life) in relation to the applicant's mother,
+                Article 3 (prohibition of inhuman or degrading treatment) in relation to the applicant, and Article 14
+                (prohibition of discrimination) taken together with Articles 2 and 3. The Court considered that the
+                authorities' general lack of response to domestic violence had a discriminatory effect on women.
+            </p>
+
+            <h3>Why is it relevant?</h3>
+            <p>
+                Opuz is directly relevant because it shows how gender-based violence can become a human-rights violation
+                involving state responsibility. The case demonstrates that a government may have obligations to respond
+                effectively to violence committed by private individuals and that persistent institutional inaction can
+                raise questions of discrimination against women.
+            </p>
+
+            <p>
+                This is also an example of the difference between having legal rules on paper and implementing them in practice:
+                protection is meaningful only when institutions respond effectively to known risks.
+            </p>
+
+            <a class="case-link" href="https://mekdiialemayehu.github.io/Law-Research-Hub/" target="_blank" rel="noopener">
+                Read the full Opuz v. Turkey case study on Law Research Hub →
+            </a>
+        </div>
+    </section>
+
+    <section id="principles">
+        <div class="section-label">06 · Key Legal Principles</div>
+        <h2>What Duties Can States Have?</h2>
+
+        <div class="principles">
+            <div class="principle">
+                <h3>Prevention</h3>
+                <p>States should take reasonable measures to reduce and prevent foreseeable gender-based violence.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Protection</h3>
+                <p>Authorities should provide effective protection where women face serious or known risks of violence.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Investigation</h3>
+                <p>Allegations of serious violence should be investigated through procedures capable of establishing the facts.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Accountability</h3>
+                <p>States should have laws and institutions capable of holding perpetrators accountable and providing remedies to victims and survivors.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Non-discrimination</h3>
+                <p>Women should receive equal protection of the law, without discriminatory attitudes or practices based on sex.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Effective Remedies</h3>
+                <p>People whose rights have been violated should have access to meaningful legal and institutional remedies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="barriers">
+        <div class="section-label">07 · Understanding the Problem</div>
+        <h2>Why Can Violence Persist?</h2>
+
+        <p>
+            Human-rights analysis often requires examining the systems surrounding individual incidents.
+            Violence may continue where legal protections exist but are not effectively implemented.
+        </p>
+
+        <div class="barrier">
+            <div class="barrier-title">Under-reporting</div>
+            <div>Fear, economic dependence, stigma, social pressure, or lack of trust in institutions can make reporting difficult.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Institutional inaction</div>
+            <div>Authorities may fail to investigate complaints, enforce protection measures, or treat violence as a serious legal matter.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Discriminatory attitudes</div>
+            <div>Stereotypes or beliefs about gender roles can influence how complaints are received and how laws are enforced.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Economic dependence</div>
+            <div>Financial dependence can make it more difficult for women to leave unsafe situations or obtain legal and social support.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Conflict and instability</div>
+            <div>Conflict and institutional disruption can weaken access to justice and increase risks for women and girls.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Lack of access to justice</div>
+            <div>Distance, cost, limited information, weak institutions, or inaccessible procedures can prevent effective remedies.</div>
+        </div>
+    </section>
+
+    <section id="ethiopia">
+        <div class="section-label">08 · Ethiopia</div>
+        <h2>Gender-Based Violence in Ethiopia</h2>
+
+        <p>
+            Ethiopia's constitutional framework protects equality, dignity, and personal security and provides a legal
+            foundation for examining gender-based violence through a human-rights lens.
+        </p>
+
+        <h3>Article 25 · Right to Equality</h3>
+        <p>
+            The Constitution provides that all persons are equal before the law and are entitled to equal protection
+            without discrimination, including discrimination on grounds of sex.
+        </p>
+
+        <h3>Article 16 · Right to Security of Person</h3>
+        <p>
+            The Constitution protects every person from bodily harm and establishes a right to liberty and security of person.
+            These protections are relevant when considering state duties concerning violence against women.
+        </p>
+
+        <h3>Article 35 · Rights of Women</h3>
+        <p>
+            The Constitution recognizes women's equal enjoyment of rights and requires measures to address discrimination
+            against women. It also specifically recognizes women's right to protection from harmful customs and practices.
+        </p>
+
+        <h3>Article 18 · Prohibition of Cruel, Inhuman or Degrading Treatment</h3>
+        <p>
+            The Constitution states that everyone has the right not to be subjected to cruel, inhuman, or degrading
+            treatment or punishment. This provides an important constitutional protection when examining serious violence.
+        </p>
+
+        <h3>Why the Ethiopian context matters</h3>
+        <p>
+            A human-rights approach asks not only whether Ethiopia has legal protections, but also whether women can
+            actually use those protections. Access to justice, effective investigation, protection mechanisms, social
+            barriers, and institutional implementation are therefore important parts of the legal question.
+        </p>
+    </section>
+
+    <section>
+        <div class="section-label">09 · Legal Analysis</div>
+        <h2>Law on Paper vs. Protection in Practice</h2>
+
+        <p>
+            Gender-based violence demonstrates why human-rights law often examines both formal rules and their practical implementation.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Legal promise</th>
+                    <th>Practical question</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Women are entitled to equal protection of the law.</td>
+                    <td>Do institutions treat complaints from women seriously and without discriminatory assumptions?</td>
+                </tr>
+                <tr>
+                    <td>The state must protect fundamental rights.</td>
+                    <td>Does the state respond effectively when authorities know that a woman faces a serious risk?</td>
+                </tr>
+                <tr>
+                    <td>Violence should be prevented and punished.</td>
+                    <td>Are prevention measures, investigations, prosecutions, and protective orders effective in practice?</td>
+                </tr>
+                <tr>
+                    <td>Victims and survivors should have access to remedies.</td>
+                    <td>Can women realistically obtain protection, justice, support, and appropriate remedies?</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="research" class="research-box">
+        <div class="section-label">10 · Research Question</div>
+        <h2>Think Like a Human-Rights Researcher</h2>
+
+        <div class="question">
+            When a state knows that women are facing gender-based violence, when does a failure to respond become a violation of human rights?
+        </div>
+
+        <p style="margin-top:20px;">
+            A strong legal analysis should ask three things:
+            <strong>What rights are being affected?</strong>
+            <strong>What duties does the state have?</strong>
+            <strong>Was the response effective, timely, and non-discriminatory?</strong>
+        </p>
+    </section>
+
+</main>
+
+<footer id="sources">
+    <div class="footer-inner">
+        <h2>Primary &amp; Supporting Sources</h2>
+
+        <p>
+            <strong>Primary international sources:</strong>
+            Convention on the Elimination of All Forms of Discrimination against Women;
+            CEDAW General Recommendation No. 35;
+            UN Declaration on the Elimination of Violence against Women.
+        </p>
+
+        <p>
+            <strong>African sources:</strong>
+            African Charter on Human and Peoples' Rights;
+            Protocol to the African Charter on Human and Peoples' Rights on the Rights of Women in Africa
+            (Maputo Protocol), especially Article 4.
+        </p>
+
+        <p>
+            <strong>Case law:</strong>
+            European Court of Human Rights, <em>Opuz v. Turkey</em>, Application no. 33401/02,
+            judgment of 9 June 2009.
+        </p>
+
+        <p>
+            <strong>Ethiopian source:</strong>
+            Constitution of the Federal Democratic Republic of Ethiopia (1995), including Articles 16, 18, 25, and 35.
+        </p>
+
+        <div class="last-updated">Research page prepared September 2026 · Law Research Hub</div>
+    </div>
+</footer>
+
+</body>
+</html>
