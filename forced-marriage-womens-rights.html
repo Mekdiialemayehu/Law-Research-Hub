@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Forced Marriage | Women's Rights | Law Research Hub</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia, "Times New Roman", serif;
+    background:#f5f7fa;
+    color:#222;
+    line-height:1.75;
+}
+
+a{
+    color:#1f4e79;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+header{
+    background:#172a3a;
+    color:white;
+    padding:58px 20px 52px;
+    text-align:center;
+}
+
+.header-tag{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+    opacity:.8;
+}
+
+header h1{
+    font-size:clamp(36px, 6vw, 58px);
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+header p{
+    max-width:780px;
+    margin:0 auto;
+    font-size:18px;
+    color:#e5edf4;
+}
+
+.nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:#ffffff;
+    border-bottom:1px solid #d9e0e6;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.nav-inner{
+    max-width:1100px;
+    margin:auto;
+    padding:12px 18px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.nav a{
+    font-family:Arial, sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:#334e68;
+}
+
+.container{
+    max-width:1000px;
+    margin:42px auto;
+    padding:0 20px;
+}
+
+.intro-box{
+    background:white;
+    border-left:5px solid #1f4e79;
+    padding:25px 28px;
+    margin-bottom:28px;
+    box-shadow:0 4px 16px rgba(0,0,0,.05);
+}
+
+.intro-box strong{
+    color:#172a3a;
+}
+
+section{
+    background:white;
+    margin-bottom:25px;
+    padding:31px;
+    border:1px solid #e0e5ea;
+    box-shadow:0 3px 12px rgba(0,0,0,.035);
+    border-radius:4px;
+}
+
+.section-label{
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.7px;
+    text-transform:uppercase;
+    color:#687b8c;
+    margin-bottom:8px;
+}
+
+h2{
+    color:#172a3a;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+h3{
+    color:#1f4e79;
+    font-size:21px;
+    margin:23px 0 8px;
+}
+
+p{
+    margin-bottom:13px;
+}
+
+.question{
+    margin-top:20px;
+    padding:18px 20px;
+    background:#eef4f8;
+    border:1px solid #d6e2ea;
+    font-style:italic;
+    color:#263b4c;
+}
+
+.source-card{
+    border:1px solid #dfe5ea;
+    border-radius:5px;
+    padding:20px;
+    margin:14px 0;
+    background:#fbfcfd;
+}
+
+.source-card h3{
+    margin-top:0;
+}
+
+.source-card p{
+    margin-bottom:8px;
+}
+
+.pill{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.7px;
+    padding:4px 8px;
+    border-radius:999px;
+    background:#e9eff4;
+    color:#425466;
+    margin-bottom:9px;
+}
+
+.principles{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:16px;
+    margin-top:18px;
+}
+
+.principle{
+    border:1px solid #dfe5ea;
+    padding:20px;
+    background:#fbfcfd;
+}
+
+.principle h3{
+    margin-top:0;
+}
+
+.barrier{
+    display:grid;
+    grid-template-columns:190px 1fr;
+    gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid #e6eaee;
+}
+
+.barrier:last-child{
+    border-bottom:none;
+}
+
+.barrier-title{
+    font-weight:700;
+    color:#172a3a;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th, td{
+    border:1px solid #dce2e7;
+    padding:13px;
+    text-align:left;
+    vertical-align:top;
+}
+
+th{
+    background:#edf2f6;
+    color:#172a3a;
+}
+
+.research-box{
+    background:#172a3a;
+    color:white;
+    padding:30px;
+    border-radius:4px;
+}
+
+.research-box h2{
+    color:white;
+}
+
+.research-box .question{
+    background:rgba(255,255,255,.08);
+    border-color:rgba(255,255,255,.18);
+    color:#f0f5f8;
+}
+
+footer{
+    background:#111d27;
+    color:#cdd8e1;
+    padding:38px 20px;
+}
+
+.footer-inner{
+    max-width:1000px;
+    margin:auto;
+}
+
+footer h2{
+    color:white;
+    font-size:24px;
+}
+
+footer p{
+    font-size:14px;
+}
+
+footer a{
+    color:#b9d7ef;
+}
+
+.last-updated{
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    opacity:.75;
+    margin-top:20px;
+}
+
+@media (max-width:700px){
+    section{
+        padding:23px 18px;
+    }
+
+    .principles{
+        grid-template-columns:1fr;
+    }
+
+    .barrier{
+        grid-template-columns:1fr;
+        gap:4px;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-tag">Women's Rights · Human Rights Law</div>
+    <h1>Forced Marriage</h1>
+    <p>Understanding the legal protection of free and full consent to marriage through international, African, and Ethiopian law.</p>
+</header>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#definition">Definition</a>
+        <a href="#why">Why It Matters</a>
+        <a href="#international">International Law</a>
+        <a href="#african">African Framework</a>
+        <a href="#principles">Key Principles</a>
+        <a href="#barriers">Barriers</a>
+        <a href="#ethiopia">Ethiopia</a>
+        <a href="#research">Research Question</a>
+        <a href="#sources">Sources</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <div class="intro-box">
+        <strong>Core legal question:</strong>
+        What legal protections ensure that a person can choose whether and whom to marry and can enter marriage only with free and full consent?
+    </div>
+
+    <section id="definition">
+        <div class="section-label">01 · Definition</div>
+        <h2>What is Forced Marriage?</h2>
+
+        <p>
+            Forced marriage is a marriage in which one or both people do not give free and full consent to the marriage.
+            Pressure or coercion may take different forms, including threats, intimidation, deception, or other circumstances
+            that prevent a person from making a genuinely voluntary choice.
+        </p>
+
+        <p>
+            The legal principle is not simply that a marriage should be formally registered. The central question is whether
+            each person had the freedom to decide whether to marry and whom to marry. International human-rights law
+            protects this freedom as part of equality and personal autonomy in marriage and family relations.
+        </p>
+
+        <div class="question">
+            The key idea is simple: <strong>marriage requires free and full consent, not merely the absence of an objection.</strong>
+        </div>
+    </section>
+
+    <section id="why">
+        <div class="section-label">02 · Why It Matters</div>
+        <h2>Why is Forced Marriage a Human-Rights Issue?</h2>
+
+        <p>
+            Forced marriage can interfere with fundamental rights including equality, dignity, personal autonomy,
+            freedom from violence and coercion, and the right to choose whether and whom to marry.
+        </p>
+
+        <p>
+            The issue is especially important where pressure comes from family members, communities, or other private
+            individuals. Human-rights law can require states to create legal protections and institutions capable of
+            preventing forced marriage, protecting people at risk, and providing effective remedies.
+        </p>
+
+        <p>
+            Child marriage is closely related but should not be treated as exactly the same legal concept. A child marriage
+            may involve circumstances in which meaningful consent cannot legally be given, while a forced marriage can also
+            involve an adult whose free and full consent has been overcome by coercion.
+        </p>
+    </section>
+
+    <section id="international">
+        <div class="section-label">03 · International Legal Framework</div>
+        <h2>International Protection</h2>
+
+        <div class="source-card">
+            <span class="pill">CEDAW · Article 16</span>
+            <h3>Free and Full Consent to Marriage</h3>
+            <p>
+                Article 16 of CEDAW requires States Parties to eliminate discrimination against women in marriage and
+                family relations. It specifically requires equality between men and women, including the same right freely
+                to choose a spouse and to enter into marriage only with their free and full consent.
+            </p>
+            <p><a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-elimination-all-forms-discrimination-against-women" target="_blank" rel="noopener">Read the CEDAW text →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">UDHR · Article 16</span>
+            <h3>Right to Marry by Free Consent</h3>
+            <p>
+                Article 16 of the Universal Declaration of Human Rights recognizes the right of men and women of full age
+                to marry and found a family without limitation due to race, nationality, or religion. It also states that
+                marriage should be entered into only with the free and full consent of the intending spouses.
+            </p>
+            <p><a href="https://www.un.org/en/about-us/universal-declaration-of-human-rights" target="_blank" rel="noopener">Read Article 16 →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">ICCPR · Article 23</span>
+            <h3>Marriage and Consent</h3>
+            <p>
+                The International Covenant on Civil and Political Rights recognizes the right of men and women of marriageable
+                age to marry and found a family and requires that no marriage be entered into without the free and full consent
+                of the intending spouses.
+            </p>
+            <p><a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/international-covenant-civil-and-political-rights" target="_blank" rel="noopener">Read the ICCPR →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">CEDAW · General Recommendation No. 21</span>
+            <h3>Equality in Marriage and Family Relations</h3>
+            <p>
+                The CEDAW Committee has explained that a woman's right to choose a spouse and enter marriage freely is central
+                to her dignity and equality. General Recommendation No. 21 examines the consequences of inequality in marriage
+                and emphasizes the importance of free consent.
+            </p>
+            <p><a href="https://www.un.org/womenwatch/daw/cedaw/recommendations/recomm.htm" target="_blank" rel="noopener">Read CEDAW General Recommendations →</a></p>
+        </div>
+    </section>
+
+    <section id="african">
+        <div class="section-label">04 · African Human-Rights Law</div>
+        <h2>The African Legal Framework</h2>
+
+        <div class="source-card">
+            <span class="pill">Maputo Protocol · Article 6</span>
+            <h3>Marriage and Free Consent</h3>
+            <p>
+                Article 6 requires states to ensure equality between women and men in marriage and specifically requires
+                national measures providing that no marriage shall take place without the free and full consent of both parties.
+                It also establishes a minimum marriage age of 18 years for women and requires marriages to be recorded and registered.
+            </p>
+            <p><a href="https://achpr.au.int/en/node/878" target="_blank" rel="noopener">Read the Maputo Protocol →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">African Charter on the Rights and Welfare of the Child · Article 21</span>
+            <h3>Child Marriage</h3>
+            <p>
+                The African Charter on the Rights and Welfare of the Child requires states to eliminate harmful social and
+                cultural practices affecting children. It expressly prohibits child marriage and betrothal and requires
+                legislation establishing 18 as the minimum age of marriage.
+            </p>
+            <p><a href="https://au.int/en/node/30913" target="_blank" rel="noopener">Read the Children's Charter →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">African Charter · Article 18</span>
+            <h3>Family Protection and Equality</h3>
+            <p>
+                Article 18 recognizes the family as a natural unit and basis of society and requires states to ensure
+                equality of rights and responsibilities of spouses with regard to children during marriage and when marriage ends.
+            </p>
+            <p><a href="https://achpr.au.int/en/node/689" target="_blank" rel="noopener">Read the African Charter →</a></p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">Ethiopia · Regional obligations</span>
+            <h3>Ethiopia and the Maputo Protocol</h3>
+            <p>
+                Ethiopia ratified the Maputo Protocol on 18 July 2018. Its protections concerning marriage, consent,
+                harmful practices, and women's rights therefore form part of the regional human-rights framework relevant to Ethiopia.
+            </p>
+            <p><a href="https://achpr.au.int/index.php/pt/node/4384" target="_blank" rel="noopener">African Commission review of Ethiopia →</a></p>
+        </div>
+    </section>
+
+    <section id="principles">
+        <div class="section-label">05 · Key Legal Principles</div>
+        <h2>What Does Free Consent Require?</h2>
+
+        <div class="principles">
+            <div class="principle">
+                <h3>Freedom of Choice</h3>
+                <p>A person must be free to decide whether to marry and whom to marry.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Free Consent</h3>
+                <p>Consent must be voluntary rather than produced through threats, coercion, intimidation, or other improper pressure.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Full Consent</h3>
+                <p>Consent must come from the person entering the marriage and must be genuine rather than assumed from silence or family approval.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Equality</h3>
+                <p>Women and men should have equal rights in choosing a spouse and entering marriage.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Legal Protection</h3>
+                <p>States should have laws and institutions capable of preventing forced marriage and protecting people at risk.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Effective Remedies</h3>
+                <p>People affected by forced marriage should be able to access appropriate legal protection and remedies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="barriers">
+        <div class="section-label">06 · Understanding the Problem</div>
+        <h2>Why Can Forced Marriage Persist?</h2>
+
+        <p>
+            Human-rights analysis examines not only the marriage itself but also the circumstances that can make free choice
+            difficult or impossible.
+        </p>
+
+        <div class="barrier">
+            <div class="barrier-title">Family pressure</div>
+            <div>Family expectations may create intense pressure on a person to marry someone they do not freely choose.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Social norms</div>
+            <div>Community expectations about gender, family honour, or marriage can limit genuine freedom of choice.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Economic dependence</div>
+            <div>Dependence on relatives or a future spouse can make refusing a proposed marriage more difficult.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Gender inequality</div>
+            <div>Unequal social or legal power can reduce a woman's ability to exercise her right to choose freely.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Child marriage</div>
+            <div>Children require special protection because marriage during childhood can undermine education, autonomy, development, and other rights.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Limited access to justice</div>
+            <div>Distance, cost, lack of information, fear, or weak protection mechanisms can make legal safeguards difficult to use.</div>
+        </div>
+    </section>
+
+    <section id="ethiopia">
+        <div class="section-label">07 · Ethiopia</div>
+        <h2>Forced Marriage in Ethiopia</h2>
+
+        <p>
+            Ethiopia's constitutional and family-law framework recognizes marriage as a matter requiring the free and full
+            consent of the parties and protects women and girls against discrimination and harmful practices.
+        </p>
+
+        <h3>Article 34 · Marital, Personal and Family Rights</h3>
+        <p>
+            The Constitution provides that men and women who have attained marriageable age as defined by law have the right
+            to marry and found a family. It expressly states that marriage may be entered into only with the free and full
+            consent of the intending spouses.
+        </p>
+
+        <h3>Article 35 · Rights of Women</h3>
+        <p>
+            The Constitution guarantees women's equal enjoyment of rights and requires measures to prevent and eliminate
+            discrimination against women. It also recognizes women's right to protection from harmful customs and practices.
+        </p>
+
+        <h3>Article 25 · Right to Equality</h3>
+        <p>
+            The Constitution provides equal protection of the law and prohibits discrimination on grounds including sex.
+            This equality principle is relevant when examining whether women and girls receive effective protection from
+            forced marriage.
+        </p>
+
+        <h3>Marriage under Ethiopian law</h3>
+        <p>
+            Ethiopia's family-law framework reinforces the constitutional principle that consent is essential to a valid
+            marriage. The Revised Family Code, applicable in Addis Ababa and Dire Dawa, identifies the free and full consent
+            of the spouses as an essential condition of marriage.
+        </p>
+
+        <h3>Why the Ethiopian context matters</h3>
+        <p>
+            The existence of a legal rule against forced marriage does not by itself answer whether everyone can safely
+            exercise the right to choose. A complete human-rights analysis therefore asks how effectively laws are enforced,
+            whether people can obtain protection, and whether social and economic barriers prevent genuine freedom of choice.
+        </p>
+    </section>
+
+    <section>
+        <div class="section-label">08 · Legal Analysis</div>
+        <h2>Law on Paper vs. Freedom in Practice</h2>
+
+        <p>
+            Forced marriage illustrates the difference between formal legal protection and the practical ability to exercise a right.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Legal promise</th>
+                    <th>Practical question</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Marriage requires free and full consent.</td>
+                    <td>Can a person safely refuse a marriage without threats, coercion, or serious consequences?</td>
+                </tr>
+                <tr>
+                    <td>Women and men have equal rights in marriage.</td>
+                    <td>Do women and girls have the same real ability to choose whether and whom to marry?</td>
+                </tr>
+                <tr>
+                    <td>Child marriage is prohibited under the African children's rights framework.</td>
+                    <td>Are laws protecting children from marriage effectively implemented in practice?</td>
+                </tr>
+                <tr>
+                    <td>People should have legal protection and remedies.</td>
+                    <td>Can a person at risk obtain effective protection from authorities before the forced marriage occurs?</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="research" class="research-box">
+        <div class="section-label">09 · Research Question</div>
+        <h2>Think Like a Human-Rights Researcher</h2>
+
+        <div class="question">
+            If marriage is protected only when it is based on free and full consent, what responsibility does a state have when family, social, or economic pressure prevents a person from making a genuinely voluntary choice?
+        </div>
+
+        <p style="margin-top:20px;">
+            A strong legal analysis should ask three things:
+            <strong>Was consent genuinely free?</strong>
+            <strong>What legal protections were available?</strong>
+            <strong>Could the person actually access those protections in practice?</strong>
+        </p>
+    </section>
+
+</main>
+
+<footer id="sources">
+    <div class="footer-inner">
+        <h2>Primary &amp; Supporting Sources</h2>
+
+        <p>
+            <strong>Primary international sources:</strong>
+            Universal Declaration of Human Rights, Article 16;
+            Convention on the Elimination of All Forms of Discrimination against Women, Article 16;
+            International Covenant on Civil and Political Rights, Article 23.
+        </p>
+
+        <p>
+            <strong>African sources:</strong>
+            Protocol to the African Charter on Human and Peoples' Rights on the Rights of Women in Africa
+            (Maputo Protocol), Article 6;
+            African Charter on the Rights and Welfare of the Child, Article 21;
+            African Charter on Human and Peoples' Rights, Article 18.
+        </p>
+
+        <p>
+            <strong>Ethiopian source:</strong>
+            Constitution of the Federal Democratic Republic of Ethiopia (1995), including Articles 25, 34, and 35;
+            Revised Family Code, including the requirement of free and full consent to marriage.
+        </p>
+
+        <div class="last-updated">Research page prepared September 2026 · Law Research Hub</div>
+    </div>
+</footer>
+
+</body>
+</html>
