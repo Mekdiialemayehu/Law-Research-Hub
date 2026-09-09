@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Child Labour | Children's Rights | Law Research Hub</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia, "Times New Roman", serif;
+    background:#f5f7fa;
+    color:#222;
+    line-height:1.75;
+}
+
+a{
+    color:#1f4e79;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+header{
+    background:#172a3a;
+    color:white;
+    padding:58px 20px 52px;
+    text-align:center;
+}
+
+.header-tag{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+    opacity:.8;
+}
+
+header h1{
+    font-size:clamp(36px, 6vw, 58px);
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+header p{
+    max-width:780px;
+    margin:0 auto;
+    font-size:18px;
+    color:#e5edf4;
+}
+
+.nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:#ffffff;
+    border-bottom:1px solid #d9e0e6;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.nav-inner{
+    max-width:1100px;
+    margin:auto;
+    padding:12px 18px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.nav a{
+    font-family:Arial, sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:#334e68;
+}
+
+.container{
+    max-width:1000px;
+    margin:42px auto;
+    padding:0 20px;
+}
+
+.intro-box{
+    background:white;
+    border-left:5px solid #1f4e79;
+    padding:25px 28px;
+    margin-bottom:28px;
+    box-shadow:0 4px 16px rgba(0,0,0,.05);
+}
+
+.intro-box strong{
+    color:#172a3a;
+}
+
+section{
+    background:white;
+    margin-bottom:25px;
+    padding:31px;
+    border:1px solid #e0e5ea;
+    box-shadow:0 3px 12px rgba(0,0,0,.035);
+    border-radius:4px;
+}
+
+.section-label{
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.7px;
+    text-transform:uppercase;
+    color:#687b8c;
+    margin-bottom:8px;
+}
+
+h2{
+    color:#172a3a;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+h3{
+    color:#1f4e79;
+    font-size:21px;
+    margin:23px 0 8px;
+}
+
+p{
+    margin-bottom:13px;
+}
+
+.question{
+    margin-top:20px;
+    padding:18px 20px;
+    background:#eef4f8;
+    border:1px solid #d6e2ea;
+    font-style:italic;
+    color:#263b4c;
+}
+
+.source-card{
+    border:1px solid #dfe5ea;
+    border-radius:5px;
+    padding:20px;
+    margin:14px 0;
+    background:#fbfcfd;
+}
+
+.source-card h3{
+    margin-top:0;
+}
+
+.source-card p{
+    margin-bottom:8px;
+}
+
+.pill{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.7px;
+    padding:4px 8px;
+    border-radius:999px;
+    background:#e9eff4;
+    color:#425466;
+    margin-bottom:9px;
+}
+
+.principles{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:16px;
+    margin-top:18px;
+}
+
+.principle{
+    border:1px solid #dfe5ea;
+    padding:20px;
+    background:#fbfcfd;
+}
+
+.principle h3{
+    margin-top:0;
+}
+
+.barrier{
+    display:grid;
+    grid-template-columns:190px 1fr;
+    gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid #e6eaee;
+}
+
+.barrier:last-child{
+    border-bottom:none;
+}
+
+.barrier-title{
+    font-weight:700;
+    color:#172a3a;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th, td{
+    border:1px solid #dce2e7;
+    padding:13px;
+    text-align:left;
+    vertical-align:top;
+}
+
+th{
+    background:#edf2f6;
+    color:#172a3a;
+}
+
+.research-box{
+    background:#172a3a;
+    color:white;
+    padding:30px;
+    border-radius:4px;
+}
+
+.research-box h2{
+    color:white;
+}
+
+.research-box .question{
+    background:rgba(255,255,255,.08);
+    border-color:rgba(255,255,255,.18);
+    color:#f0f5f8;
+}
+
+footer{
+    background:#111d27;
+    color:#cdd8e1;
+    padding:38px 20px;
+}
+
+.footer-inner{
+    max-width:1000px;
+    margin:auto;
+}
+
+footer h2{
+    color:white;
+    font-size:24px;
+}
+
+footer p{
+    font-size:14px;
+}
+
+footer a{
+    color:#b9d7ef;
+}
+
+.last-updated{
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    opacity:.75;
+    margin-top:20px;
+}
+
+@media (max-width:700px){
+    section{
+        padding:23px 18px;
+    }
+
+    .principles{
+        grid-template-columns:1fr;
+    }
+
+    .barrier{
+        grid-template-columns:1fr;
+        gap:4px;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-tag">Children's Rights · Human Rights Law</div>
+    <h1>Child Labour</h1>
+    <p>Understanding child labour through international, African, and Ethiopian human-rights and labour law.</p>
+</header>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#definition">Definition</a>
+        <a href="#why">Why It Matters</a>
+        <a href="#international">International Law</a>
+        <a href="#african">African Framework</a>
+        <a href="#principles">Key Principles</a>
+        <a href="#barriers">Barriers</a>
+        <a href="#ethiopia">Ethiopia</a>
+        <a href="#analysis">Legal Analysis</a>
+        <a href="#research">Research Question</a>
+        <a href="#sources">Sources</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <div class="intro-box">
+        <strong>Core legal question:</strong>
+        What legal duties do states have to prevent child labour, protect children from economic exploitation and hazardous work, and ensure that children can enjoy their rights to education, health, development, and protection?
+    </div>
+
+    <section id="definition">
+        <div class="section-label">01 · Definition</div>
+        <h2>What is Child Labour?</h2>
+
+        <p>
+            Child labour generally refers to work that deprives children of their childhood, dignity, potential,
+            education, or development, particularly where the work is hazardous, exploitative, performed at too young
+            an age, or interferes with schooling.
+        </p>
+
+        <p>
+            Not every activity performed by a child is automatically considered child labour. International labour
+            standards distinguish between appropriate forms of age-appropriate work and work that violates minimum-age
+            rules, interferes with education, or places children in harmful or hazardous conditions.
+        </p>
+
+        <p>
+            The International Labour Organization's framework focuses on the minimum age for admission to employment
+            and the elimination of the worst forms of child labour. Under Convention No. 138, the general minimum age
+            should normally not be below fifteen, while hazardous work is subject to a higher minimum age of eighteen.
+        </p>
+
+        <div class="question">
+            The key idea is simple: <strong>children's need for protection does not disappear merely because work is economically necessary or socially accepted.</strong>
+        </div>
+    </section>
+
+    <section id="why">
+        <div class="section-label">02 · Why It Matters</div>
+        <h2>Why is Child Labour a Human-Rights Issue?</h2>
+
+        <p>
+            Child labour can interfere with fundamental rights including the rights to education, health, development,
+            rest and leisure, dignity, protection from exploitation, and freedom from harmful or hazardous treatment.
+        </p>
+
+        <p>
+            The Convention on the Rights of the Child specifically recognizes a child's right to protection from
+            economic exploitation and from performing work that is hazardous, interferes with education, or harms the
+            child's health or physical, mental, spiritual, moral, or social development.
+        </p>
+
+        <p>
+            The legal question therefore extends beyond whether a child is receiving payment. Human-rights law asks
+            whether the child's work is compatible with their age, education, safety, health, development, and dignity.
+        </p>
+
+        <p>
+            Child labour can also reinforce cycles of poverty. When children leave school or are unable to obtain a
+            meaningful education because of work, their future opportunities may become more limited, making it harder
+            to escape economic insecurity later in life.
+        </p>
+    </section>
+
+    <section id="international">
+        <div class="section-label">03 · International Legal Framework</div>
+        <h2>International Protection</h2>
+
+        <div class="source-card">
+            <span class="pill">Convention on the Rights of the Child · Article 32</span>
+            <h3>Protection from Economic Exploitation</h3>
+
+            <p>
+                Article 32 of the Convention on the Rights of the Child recognizes the right of every child to be
+                protected from economic exploitation and from work that is likely to be hazardous, interfere with
+                education, or harm the child's health or development.
+            </p>
+
+            <p>
+                States are required to establish appropriate legal, administrative, social, and educational measures
+                to implement this protection, including minimum ages for employment, regulation of working hours and
+                conditions, and appropriate penalties or sanctions.
+            </p>
+
+            <p>
+                <a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-child"
+                   target="_blank" rel="noopener">
+                   Read the Convention on the Rights of the Child →
+                </a>
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">ILO Convention No. 138 · Minimum Age</span>
+            <h3>Minimum Age for Employment</h3>
+
+            <p>
+                The ILO Minimum Age Convention requires states to pursue a national policy designed to secure the
+                effective abolition of child labour and progressively raise the minimum age for admission to employment.
+            </p>
+
+            <p>
+                The general international standard is that the minimum age should not be below the age of completion
+                of compulsory schooling and, in principle, should not be below fifteen. The Convention also permits
+                certain limited exceptions for developing states and for appropriately regulated light work.
+            </p>
+
+            <p>
+                <a href="https://normlex.ilo.org/dyn/nrmlx_en/f?p=NORMLEXPUB:12100:0::NO::P12100_ILO_CODE:C138"
+                   target="_blank" rel="noopener">
+                   Read ILO Convention No. 138 →
+                </a>
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">ILO Convention No. 182 · Worst Forms</span>
+            <h3>Eliminating the Worst Forms of Child Labour</h3>
+
+            <p>
+                Convention No. 182 requires states to take immediate and effective measures to prohibit and eliminate
+                the worst forms of child labour as a matter of urgency.
+            </p>
+
+            <p>
+                These forms include slavery and similar practices, trafficking, forced labour, the use of children in
+                illicit activities, and work that is likely to harm children's health, safety, or morals.
+            </p>
+
+            <p>
+                The Convention applies to every person under eighteen for the purposes of defining the worst forms of
+                child labour.
+            </p>
+
+            <p>
+                <a href="https://normlex.ilo.org/dyn/nrmlx_en/f?p=NORMLEXPUB:12100:0::NO::P12100_ILO_CODE:C182"
+                   target="_blank" rel="noopener">
+                   Read ILO Convention No. 182 →
+                </a>
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">UN Human Rights Framework</span>
+            <h3>Education, Development, and Protection</h3>
+
+            <p>
+                Child labour must be considered together with the child's other rights. A state response that simply
+                prohibits work without addressing access to education, poverty, family livelihoods, social protection,
+                and rehabilitation may fail to address the conditions that produce child labour.
+            </p>
+
+            <p>
+                International human-rights law therefore connects the prohibition of exploitation with positive duties
+                to create conditions in which children can develop safely and remain in education.
+            </p>
+        </div>
+    </section>
+
+    <section id="african">
+        <div class="section-label">04 · African Human-Rights Law</div>
+        <h2>The African Legal Framework</h2>
+
+        <div class="source-card">
+            <span class="pill">African Children's Charter · Article 15</span>
+            <h3>Protection from Child Labour</h3>
+
+            <p>
+                Article 15 of the African Charter on the Rights and Welfare of the Child protects every child from
+                economic exploitation and from work that is hazardous or interferes with the child's physical, mental,
+                spiritual, moral, or social development.
+            </p>
+
+            <p>
+                Importantly, the provision covers both formal and informal sectors. States must regulate working hours
+                and conditions, establish appropriate penalties or sanctions, and take legislative and administrative
+                measures to make the protection effective.
+            </p>
+
+            <p>
+                <a href="https://au.int/en/node/30913"
+                   target="_blank" rel="noopener">
+                   Read the African Children's Charter →
+                </a>
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">African Children's Charter · Articles 11–12–15</span>
+            <h3>Education and Protection Must Work Together</h3>
+
+            <p>
+                The African Children's Charter protects children's rights to education and development while also
+                requiring protection from economic exploitation. This means child labour cannot be examined in isolation
+                from whether children can realistically access and remain in school.
+            </p>
+
+            <p>
+                A strong legal framework must therefore address both exploitation and the conditions that make children
+                economically dependent on work.
+            </p>
+
+            <p>
+                <a href="https://au.int/en/node/30913"
+                   target="_blank" rel="noopener">
+                   Read the African Charter on the Rights and Welfare of the Child →
+                </a>
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">African Human-Rights Approach</span>
+            <h3>Formal Law and Informal Work</h3>
+
+            <p>
+                Child labour in Africa can occur outside conventional workplaces, including agriculture, domestic work,
+                small family enterprises, street-based activities, mining, and other informal economic activities.
+                Article 15 of the African Children's Charter is important because its protection expressly extends to
+                both formal and informal sectors.
+            </p>
+
+            <p>
+                This creates a broader legal responsibility than simply inspecting registered businesses. States must
+                develop systems capable of identifying and addressing exploitation wherever it occurs.
+            </p>
+        </div>
+    </section>
+
+    <section id="principles">
+        <div class="section-label">05 · Key Legal Principles</div>
+        <h2>What Duties Can States Have?</h2>
+
+        <div class="principles">
+
+            <div class="principle">
+                <h3>Minimum-Age Protection</h3>
+                <p>
+                    States should establish and enforce clear minimum ages for employment consistent with international
+                    labour and human-rights standards.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Protection from Hazardous Work</h3>
+                <p>
+                    Children must be protected from work that threatens their health, safety, morals, or development,
+                    with hazardous work generally prohibited for persons under eighteen.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Protection of Education</h3>
+                <p>
+                    Work should not prevent children from attending school, completing compulsory education, or obtaining
+                    the education necessary for their development.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Best Interests of the Child</h3>
+                <p>
+                    Public authorities should treat the child's best interests as a primary consideration when designing
+                    laws, policies, investigations, and protective measures.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Effective Enforcement</h3>
+                <p>
+                    Child-labour laws require effective inspections, investigations, sanctions, monitoring, and
+                    institutional cooperation rather than existing only on paper.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Recovery and Reintegration</h3>
+                <p>
+                    Children removed from exploitative work should have access to education, protection, support,
+                    rehabilitation, and pathways back into safe development.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="barriers">
+        <div class="section-label">06 · Understanding the Problem</div>
+        <h2>Why Can Child Labour Persist?</h2>
+
+        <p>
+            Child labour can remain widespread even where laws prohibit it. Human-rights analysis therefore requires
+            examining the economic, social, institutional, and educational conditions that make exploitation possible.
+        </p>
+
+        <div class="barrier">
+            <div class="barrier-title">Poverty</div>
+            <div>
+                Families facing severe financial pressure may depend on children's income or labour to meet basic needs,
+                making legal prohibition difficult to enforce without broader social and economic support.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Limited access to education</div>
+            <div>
+                Where schools are distant, damaged, unaffordable to attend, or disrupted by emergencies, children may
+                become more vulnerable to entering work.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Informal employment</div>
+            <div>
+                Domestic work, agriculture, street-based work, family enterprises, and other informal activities can be
+                difficult for authorities to monitor and regulate.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Weak enforcement</div>
+            <div>
+                Laws are less effective when labour inspections, investigations, sanctions, reporting systems, or
+                coordination between institutions are insufficient.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Conflict and displacement</div>
+            <div>
+                Conflict, displacement, drought, and other emergencies can interrupt education and weaken child-protection
+                systems while increasing household economic insecurity.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Social acceptance</div>
+            <div>
+                Some forms of children's work may be treated as normal or necessary within families or communities,
+                making harmful practices harder to identify and challenge.
+            </div>
+        </div>
+
+    </section>
+
+    <section id="ethiopia">
+        <div class="section-label">07 · Ethiopia</div>
+        <h2>Child Labour in Ethiopia</h2>
+
+        <p>
+            Child labour remains a significant human-rights and development issue in Ethiopia. UNICEF's current country
+            data reports that about 45 percent of children aged 5–17 are engaged in child labour, based on the latest
+            available underlying survey data. The ILO Child Labour Observatory identifies Ethiopia's most recent
+            nationally reported child-labour data as coming from 2015.
+        </p>
+
+        <p>
+            UNICEF Ethiopia has also documented how poverty and conflict can place children at greater risk of entering
+            labour, sometimes at the expense of education. In 2024, UNICEF reported on children working in activities
+            including gold mining in Gambella who had left school to support their families.
+        </p>
+
+        <h3>Article 36 · Rights of Children</h3>
+
+        <p>
+            Article 36(1)(d) of the FDRE Constitution gives every child the right not to be subjected to exploitative
+            practices and not to be required or permitted to perform work that may be hazardous or harmful to the
+            child's education, health, or well-being.
+        </p>
+
+        <p>
+            Article 36 also establishes the child's best interests as a primary consideration in actions concerning
+            children undertaken by courts, administrative authorities, legislative bodies, and public or private welfare
+            institutions.
+        </p>
+
+        <h3>Article 18 · Protection from Slavery and Forced Labour</h3>
+
+        <p>
+            Article 18 of the Constitution protects every person from slavery and servitude and prohibits trafficking
+            in human beings for any purpose. These protections are particularly relevant when child labour involves
+            coercion, trafficking, or other forms of forced exploitation.
+        </p>
+
+        <h3>Labour Proclamation No. 1156/2019 · Minimum Age</h3>
+
+        <p>
+            Ethiopia's current federal Labour Proclamation defines a "young worker" as a person who has attained fifteen
+            years of age but is below eighteen. Section 89(2) prohibits the employment of persons under fifteen years
+            of age.
+        </p>
+
+        <h3>Hazardous Work · Protection of Young Workers</h3>
+
+        <p>
+            Section 89(3) prohibits assigning young workers to work that, because of its nature or the conditions under
+            which it is carried out, endangers their lives or health. Ethiopia's regulatory framework also identifies
+            prohibited activities for young workers, including certain mining, underground, heavy-lifting, transport,
+            electrical, and construction-related work.
+        </p>
+
+        <h3>International Labour Commitments</h3>
+
+        <p>
+            Ethiopia ratified ILO Convention No. 138 on 27 May 1999, specifying fifteen as its minimum age for admission
+            to work, and ratified ILO Convention No. 182 on 2 September 2003. These conventions form an important part
+            of the international framework against child labour in Ethiopia.
+        </p>
+
+        <h3>Why the Ethiopian context matters</h3>
+
+        <p>
+            Ethiopia demonstrates the difference between establishing legal protection and making that protection work
+            in practice. The country has constitutional guarantees, minimum-age legislation, hazardous-work restrictions,
+            and international labour obligations. Yet child labour remains widespread, particularly in settings where
+            poverty, informality, emergencies, and limited access to education make enforcement difficult.
+        </p>
+
+        <p>
+            The legal question is therefore not simply whether Ethiopia has prohibited certain forms of child labour.
+            It is whether children are actually protected from exploitation, whether institutions can identify violations,
+            whether employers and other actors are held accountable, and whether children can safely return to education
+            and development.
+        </p>
+
+    </section>
+
+    <section id="analysis">
+        <div class="section-label">08 · Legal Analysis</div>
+        <h2>Law on Paper vs. Protection in Practice</h2>
+
+        <p>
+            Child labour demonstrates why human-rights law must examine both formal legislation and the conditions under
+            which children actually live and work.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Legal promise</th>
+                    <th>Practical question</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>
+                        Children under the legal minimum age should not be employed.
+                    </td>
+                    <td>
+                        Can authorities identify and prevent underage employment in formal and informal sectors?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Children must be protected from hazardous work.
+                    </td>
+                    <td>
+                        Are dangerous occupations and working conditions actually monitored and stopped?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Children have a right to education.
+                    </td>
+                    <td>
+                        Does work interfere with school attendance, learning, completion of education, or the child's ability to rest?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Children are protected from economic exploitation.
+                    </td>
+                    <td>
+                        Can the legal system identify exploitation when it occurs inside homes, farms, family businesses,
+                        mines, streets, or other informal settings?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        States must eliminate the worst forms of child labour.
+                    </td>
+                    <td>
+                        Are trafficking, forced labour, and other severe forms of exploitation effectively investigated and punished?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Children should receive protection and support.
+                    </td>
+                    <td>
+                        Are children removed from harmful work given realistic access to education, rehabilitation,
+                        social protection, and reintegration?
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="question">
+            A prohibition is only meaningful when children are actually protected. Human-rights law asks whether legal
+            rules are accessible, enforceable, monitored, and effective in the environments where children work.
+        </div>
+
+    </section>
+
+    <section id="research" class="research-box">
+        <div class="section-label">09 · Research Question</div>
+
+        <h2>Think Like a Human-Rights Researcher</h2>
+
+        <div class="question">
+            When a state has laws prohibiting child labour, when does a failure to prevent or enforce those laws become a violation of children's human rights?
+        </div>
+
+        <p style="margin-top:20px;">
+            A strong legal analysis should ask three things:
+            <strong>What rights are being affected?</strong>
+            <strong>What legal duties does the state have?</strong>
+            <strong>Is the protection effective in the places where children are actually working?</strong>
+        </p>
+
+    </section>
+
+</main>
+
+<footer id="sources">
+
+    <div class="footer-inner">
+
+        <h2>Primary &amp; Supporting Sources</h2>
+
+        <p>
+            <strong>Primary international sources:</strong>
+            Convention on the Rights of the Child, especially Article 32;
+            ILO Minimum Age Convention, 1973 (No. 138);
+            ILO Worst Forms of Child Labour Convention, 1999 (No. 182).
+        </p>
+
+        <p>
+            <strong>African sources:</strong>
+            African Charter on the Rights and Welfare of the Child,
+            especially Article 15 concerning child labour;
+            related African child-rights protections concerning education, development, and protection from exploitation.
+        </p>
+
+        <p>
+            <strong>Ethiopian sources:</strong>
+            Constitution of the Federal Democratic Republic of Ethiopia (1995),
+            especially Articles 18 and 36;
+            Labour Proclamation No. 1156/2019, especially Section 89.
+        </p>
+
+        <p>
+            <strong>Current country evidence:</strong>
+            ILO Child Labour Observatory, Ethiopia country profile;
+            UNICEF Ethiopia, <em>Child Labour Analysis in Ethiopia</em>;
+            UNICEF Ethiopia, 2024 reporting on child labour, poverty, conflict, and education.
+        </p>
+
+        <p>
+            <a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-child"
+               target="_blank" rel="noopener">
+                Convention on the Rights of the Child →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://normlex.ilo.org/dyn/nrmlx_en/f?p=NORMLEXPUB:12100:0::NO::P12100_ILO_CODE:C138"
+               target="_blank" rel="noopener">
+                ILO Minimum Age Convention No. 138 →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://normlex.ilo.org/dyn/nrmlx_en/f?p=NORMLEXPUB:12100:0::NO::P12100_ILO_CODE:C182"
+               target="_blank" rel="noopener">
+                ILO Worst Forms of Child Labour Convention No. 182 →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://au.int/en/node/30913"
+               target="_blank" rel="noopener">
+                African Charter on the Rights and Welfare of the Child →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://www.refworld.org/legal/legislation/natlegbod/1995/en/18206"
+               target="_blank" rel="noopener">
+                Constitution of Ethiopia →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://www.ilo.org/sites/default/files/wcmsp5/groups/public/%40africa/%40ilo-addis_ababa/documents/publication/wcms_732685.pdf"
+               target="_blank" rel="noopener">
+                Ethiopia Labour Law / Labour Proclamation Resources →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://webapps.ilo.org/clodashboard/country/1A/ETH"
+               target="_blank" rel="noopener">
+                ILO Child Labour Observatory — Ethiopia →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://www.unicef.org/ethiopia/reports/child-labour-analysis-ethiopia"
+               target="_blank" rel="noopener">
+                UNICEF Ethiopia — Child Labour Analysis →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://www.unicef.org/ethiopia/stories/child-labour-tale-two-children"
+               target="_blank" rel="noopener">
+                UNICEF Ethiopia — Child Labour and Education →
+            </a>
+        </p>
+
+        <div class="last-updated">
+            Research page prepared September 2026 · Law Research Hub
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+                                                </html>
