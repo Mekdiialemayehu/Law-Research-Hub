@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>State Responsibility | Women's Rights | Law Research Hub</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia, "Times New Roman", serif;
+    background:#f5f7fa;
+    color:#222;
+    line-height:1.75;
+}
+
+a{
+    color:#1f4e79;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+header{
+    background:#172a3a;
+    color:white;
+    padding:58px 20px 52px;
+    text-align:center;
+}
+
+.header-tag{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+    opacity:.8;
+}
+
+header h1{
+    font-size:clamp(36px, 6vw, 58px);
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+header p{
+    max-width:780px;
+    margin:0 auto;
+    font-size:18px;
+    color:#e5edf4;
+}
+
+.nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:#ffffff;
+    border-bottom:1px solid #d9e0e6;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.nav-inner{
+    max-width:1100px;
+    margin:auto;
+    padding:12px 18px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.nav a{
+    font-family:Arial, sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:#334e68;
+}
+
+.container{
+    max-width:1000px;
+    margin:42px auto;
+    padding:0 20px;
+}
+
+.intro-box{
+    background:white;
+    border-left:5px solid #1f4e79;
+    padding:25px 28px;
+    margin-bottom:28px;
+    box-shadow:0 4px 16px rgba(0,0,0,.05);
+}
+
+.intro-box strong{
+    color:#172a3a;
+}
+
+section{
+    background:white;
+    margin-bottom:25px;
+    padding:31px;
+    border:1px solid #e0e5ea;
+    box-shadow:0 3px 12px rgba(0,0,0,.035);
+    border-radius:4px;
+}
+
+.section-label{
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.7px;
+    text-transform:uppercase;
+    color:#687b8c;
+    margin-bottom:8px;
+}
+
+h2{
+    color:#172a3a;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+h3{
+    color:#1f4e79;
+    font-size:21px;
+    margin:23px 0 8px;
+}
+
+p{
+    margin-bottom:13px;
+}
+
+.question{
+    margin-top:20px;
+    padding:18px 20px;
+    background:#eef4f8;
+    border:1px solid #d6e2ea;
+    font-style:italic;
+    color:#263b4c;
+}
+
+.source-card{
+    border:1px solid #dfe5ea;
+    border-radius:5px;
+    padding:20px;
+    margin:14px 0;
+    background:#fbfcfd;
+}
+
+.source-card h3{
+    margin-top:0;
+}
+
+.source-card p{
+    margin-bottom:8px;
+}
+
+.pill{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.7px;
+    padding:4px 8px;
+    border-radius:999px;
+    background:#e9eff4;
+    color:#425466;
+    margin-bottom:9px;
+}
+
+.principles{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:16px;
+    margin-top:18px;
+}
+
+.principle{
+    border:1px solid #dfe5ea;
+    padding:20px;
+    background:#fbfcfd;
+}
+
+.principle h3{
+    margin-top:0;
+}
+
+.barrier{
+    display:grid;
+    grid-template-columns:190px 1fr;
+    gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid #e6eaee;
+}
+
+.barrier:last-child{
+    border-bottom:none;
+}
+
+.barrier-title{
+    font-weight:700;
+    color:#172a3a;
+}
+
+.case-feature{
+    background:#f8fafb;
+    border:1px solid #d3dee6;
+    border-left:5px solid #1f4e79;
+    padding:23px;
+    margin-top:16px;
+}
+
+.case-feature h3{
+    margin-top:0;
+}
+
+.case-link{
+    display:inline-block;
+    margin-top:8px;
+    padding:10px 15px;
+    border:1px solid #1f4e79;
+    border-radius:4px;
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.3px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th, td{
+    border:1px solid #dce2e7;
+    padding:13px;
+    text-align:left;
+    vertical-align:top;
+}
+
+th{
+    background:#edf2f6;
+    color:#172a3a;
+}
+
+.research-box{
+    background:#172a3a;
+    color:white;
+    padding:30px;
+    border-radius:4px;
+}
+
+.research-box h2{
+    color:white;
+}
+
+.research-box .question{
+    background:rgba(255,255,255,.08);
+    border-color:rgba(255,255,255,.18);
+    color:#f0f5f8;
+}
+
+footer{
+    background:#111d27;
+    color:#cdd8e1;
+    padding:38px 20px;
+}
+
+.footer-inner{
+    max-width:1000px;
+    margin:auto;
+}
+
+footer h2{
+    color:white;
+    font-size:24px;
+}
+
+footer p{
+    font-size:14px;
+}
+
+footer a{
+    color:#b9d7ef;
+}
+
+.last-updated{
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    opacity:.75;
+    margin-top:20px;
+}
+
+@media (max-width:700px){
+    section{
+        padding:23px 18px;
+    }
+
+    .principles{
+        grid-template-columns:1fr;
+    }
+
+    .barrier{
+        grid-template-columns:1fr;
+        gap:4px;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-tag">Women's Rights · Human Rights Law</div>
+    <h1>State Responsibility</h1>
+    <p>Understanding the legal responsibility of states to protect, respect, and fulfil women's human rights.</p>
+</header>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#definition">Definition</a>
+        <a href="#why">Why It Matters</a>
+        <a href="#international">International Law</a>
+        <a href="#duties">State Duties</a>
+        <a href="#case">Case Study</a>
+        <a href="#principles">Key Principles</a>
+        <a href="#barriers">Barriers</a>
+        <a href="#ethiopia">Ethiopia</a>
+        <a href="#research">Research Question</a>
+        <a href="#sources">Sources</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <div class="intro-box">
+        <strong>Core legal question:</strong>
+        When does a state's failure to respect, protect, or fulfil women's rights become a violation of its human-rights obligations?
+    </div>
+
+    <section id="definition">
+        <div class="section-label">01 · Definition</div>
+        <h2>What is State Responsibility?</h2>
+
+        <p>
+            State responsibility in women's rights refers to the legal responsibility governments may have when their
+            actions or failures to act violate rights protected by national, regional, or international human-rights law.
+        </p>
+
+        <p>
+            A state may be responsible not only when government officials directly violate a woman's rights, but also
+            when authorities fail to take reasonable measures to protect women from serious violations committed by
+            private individuals.
+        </p>
+
+        <p>
+            State responsibility therefore involves both <strong>negative obligations</strong>—duties not to violate
+            rights—and <strong>positive obligations</strong>—duties to take appropriate measures to protect and fulfil
+            rights.
+        </p>
+
+        <div class="question">
+            The key idea is simple: <strong>a state can have human-rights responsibilities even when the immediate harm is caused by a private individual.</strong>
+        </div>
+    </section>
+
+    <section id="why">
+        <div class="section-label">02 · Why It Matters</div>
+        <h2>Why is State Responsibility Important for Women's Rights?</h2>
+
+        <p>
+            Human-rights protections become meaningful only when states take steps to make those rights effective in practice.
+            Laws on equality, dignity, security, and freedom from violence require functioning institutions capable of enforcing them.
+        </p>
+
+        <p>
+            This means that governments may have responsibilities to prevent foreseeable violations, protect people facing
+            serious risks, investigate allegations, prosecute offenders where appropriate, and provide effective remedies.
+        </p>
+
+        <p>
+            State responsibility is particularly important in cases involving violence against women because the immediate
+            perpetrator may be a private individual. Human-rights law can nevertheless examine whether government authorities
+            knew, or should have known, about the risk and whether they responded appropriately.
+        </p>
+    </section>
+
+    <section id="international">
+        <div class="section-label">03 · International Legal Framework</div>
+        <h2>International Protection</h2>
+
+        <div class="source-card">
+            <span class="pill">CEDAW · Articles 1–2</span>
+            <h3>Convention on the Elimination of All Forms of Discrimination against Women</h3>
+            <p>
+                CEDAW establishes a broad international framework for eliminating discrimination against women.
+                Article 2 requires states to pursue policies aimed at eliminating discrimination and to take appropriate
+                measures to ensure the effective protection of women's rights.
+            </p>
+            <p>
+                The CEDAW Committee has further explained that states can have responsibility for private acts when they
+                fail to act with due diligence to prevent, investigate, punish, or provide redress for gender-based violence.
+            </p>
+            <p>
+                <a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-elimination-all-forms-discrimination-against-women" target="_blank" rel="noopener">
+                    Read the Convention →
+                </a>
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">CEDAW · General Recommendation No. 35</span>
+            <h3>Due Diligence and State Responsibility</h3>
+            <p>
+                General Recommendation No. 35 explains that gender-based violence against women can constitute discrimination
+                under CEDAW. It emphasizes that states must respond to violence through appropriate legislative,
+                administrative, judicial, and other measures.
+            </p>
+            <p>
+                The principle of due diligence is important because it asks whether the state took reasonable steps to
+                prevent and respond to violations rather than focusing only on the identity of the immediate perpetrator.
+            </p>
+            <p>
+                <a href="https://docstore.ohchr.org/SelfServices/FilesHandler.ashx?enc=mdnxIPKfpXr0kaBuhkSZBE60Jj395tBuVQNr22I61CYuHGpRAY4ZmER3Y02lqUqhY2zevx3M8DtWjPOwVWioYQ%3D%3D" target="_blank" rel="noopener">
+                    Read General Recommendation No. 35 →
+                </a>
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">International Human Rights Law</span>
+            <h3>Positive Obligations</h3>
+            <p>
+                Human-rights obligations can require states to take active measures to make rights effective.
+                These positive obligations may include establishing legal protections, creating effective institutions,
+                investigating serious violations, and protecting individuals from foreseeable harm.
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">Due Diligence</span>
+            <h3>Private Acts and State Responsibility</h3>
+            <p>
+                A state does not necessarily escape responsibility simply because a violation was committed by a private
+                person. Where authorities knew or should have known about a serious risk and failed to take reasonable
+                measures within their powers, the state's response can become a human-rights issue.
+            </p>
+        </div>
+    </section>
+
+    <section id="duties">
+        <div class="section-label">04 · State Duties</div>
+        <h2>What Responsibilities Do States Have?</h2>
+
+        <div class="source-card">
+            <span class="pill">Respect</span>
+            <h3>Respect Women's Rights</h3>
+            <p>
+                States must refrain from directly violating women's human rights through laws, policies, practices,
+                or actions carried out by public authorities.
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">Protect</span>
+            <h3>Protect Women from Violations</h3>
+            <p>
+                States may need to take reasonable measures to protect women from violations committed by private
+                individuals when serious risks are known or reasonably foreseeable.
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">Fulfil</span>
+            <h3>Fulfil Human Rights</h3>
+            <p>
+                States should create the legal, institutional, and practical conditions necessary for women to enjoy
+                their rights effectively and equally.
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">Accountability</span>
+            <h3>Investigate and Provide Remedies</h3>
+            <p>
+                Where serious violations occur, states may have duties to investigate effectively, hold perpetrators
+                accountable where appropriate, and provide accessible and meaningful remedies.
+            </p>
+        </div>
+    </section>
+
+    <section id="case">
+        <div class="section-label">05 · Featured Case</div>
+        <h2>M.C. v. Bulgaria</h2>
+
+        <div class="case-feature">
+            <span class="pill">European Court of Human Rights · 2003</span>
+            <h3>A landmark case on state obligations and sexual violence</h3>
+
+            <p>
+                <strong>M.C. v. Bulgaria</strong> concerned an allegation of sexual violence against a young woman and
+                the subsequent response of the Bulgarian authorities. The applicant argued that the investigation had
+                failed to provide effective protection against serious violations of her rights.
+            </p>
+
+            <p>
+                The European Court of Human Rights examined Bulgaria's obligations under Article 3, which prohibits
+                torture and inhuman or degrading treatment, and Article 8, which protects private life.
+            </p>
+
+            <p>
+                The Court emphasized that states have positive obligations to establish and effectively apply a system
+                of criminal law capable of punishing non-consensual sexual acts. It found that the Bulgarian authorities'
+                investigation had not adequately addressed the circumstances of the alleged sexual violence.
+            </p>
+
+            <h3>Why is it relevant?</h3>
+            <p>
+                M.C. is directly relevant to state responsibility because it demonstrates that human-rights law can
+                impose positive obligations on states to protect individuals from serious violations committed by private
+                persons.
+            </p>
+
+            <p>
+                The case also demonstrates that state responsibility is not limited to situations where government
+                officials personally commit the violation. A state's failure to maintain an effective legal and
+                investigative framework can itself raise questions under human-rights law.
+            </p>
+
+            <p>
+                M.C. therefore illustrates an important principle: <strong>protecting women's rights requires more than
+                laws existing on paper; institutions must apply those laws effectively.</strong>
+            </p>
+
+            <a class="case-link" href="case-mc-bulgaria.html" target="_blank" rel="noopener">
+                Read the full M.C. v. Bulgaria case study on Law Research Hub →
+            </a>
+        </div>
+    </section>
+
+    <section id="principles">
+        <div class="section-label">06 · Key Legal Principles</div>
+        <h2>Key Principles of State Responsibility</h2>
+
+        <div class="principles">
+            <div class="principle">
+                <h3>Due Diligence</h3>
+                <p>States should take reasonable measures to prevent, investigate, punish, and remedy serious human-rights violations.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Positive Obligations</h3>
+                <p>Human-rights law can require states to take active measures to make women's rights effective in practice.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Effective Investigation</h3>
+                <p>Serious allegations should be investigated through procedures capable of establishing the relevant facts and responsibility.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Non-discrimination</h3>
+                <p>States must ensure that women receive equal protection and that discriminatory practices do not undermine their rights.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Access to Justice</h3>
+                <p>Women should be able to access legal institutions and procedures capable of protecting their rights and providing remedies.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Effective Remedies</h3>
+                <p>Where rights have been violated, states should provide meaningful legal and institutional remedies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="barriers">
+        <div class="section-label">07 · Understanding the Problem</div>
+        <h2>Why Can State Responsibility Be Difficult to Enforce?</h2>
+
+        <p>
+            Establishing state responsibility often requires examining what authorities knew, what they were legally
+            required to do, and whether the measures they took were reasonable and effective.
+        </p>
+
+        <div class="barrier">
+            <div class="barrier-title">Weak institutions</div>
+            <div>Courts, police, or other public institutions may lack the resources or capacity needed to protect rights effectively.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Failure to investigate</div>
+            <div>Inadequate investigations can prevent serious violations from being properly established and addressed.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Discriminatory attitudes</div>
+            <div>Gender stereotypes can influence how authorities respond to complaints and can weaken women's access to justice.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Lack of awareness</div>
+            <div>Women may not know what legal protections or remedies are available to them.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Limited access to justice</div>
+            <div>Cost, distance, social pressure, and institutional barriers can make legal remedies difficult to obtain.</div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Implementation gaps</div>
+            <div>Strong legal protections may exist formally while enforcement and practical protection remain limited.</div>
+        </div>
+    </section>
+
+    <section id="ethiopia">
+        <div class="section-label">08 · Ethiopia</div>
+        <h2>State Responsibility in Ethiopia</h2>
+
+        <p>
+            Ethiopia's constitutional framework provides important protections that can be examined through the principle
+            of state responsibility. These include equality, personal security, freedom from cruel or degrading treatment,
+            and specific protections concerning women's rights.
+        </p>
+
+        <h3>Article 25 · Right to Equality</h3>
+        <p>
+            The Constitution provides that all persons are equal before the law and are entitled to equal protection
+            without discrimination, including discrimination on grounds of sex.
+        </p>
+
+        <h3>Article 16 · Right to Security of Person</h3>
+        <p>
+            The Constitution protects every person from bodily harm and recognizes the right to liberty and security
+            of person. These protections are relevant when examining whether the state has taken appropriate measures
+            to protect women from violence.
+        </p>
+
+        <h3>Article 18 · Prohibition of Cruel, Inhuman or Degrading Treatment</h3>
+        <p>
+            The Constitution provides that everyone has the right not to be subjected to cruel, inhuman, or degrading
+            treatment or punishment. This protection is relevant when considering the state's responsibility to respond
+            to serious violations of personal integrity.
+        </p>
+
+        <h3>Article 35 · Rights of Women</h3>
+        <p>
+            Article 35 recognizes women's equal enjoyment of rights and requires measures to address discrimination
+            against women. It also recognizes women's right to protection from harmful customs and practices.
+        </p>
+
+        <h3>Why the Ethiopian context matters</h3>
+        <p>
+            State responsibility in Ethiopia is not only a question of whether legal protections exist. It also raises
+            questions about implementation: whether women can access justice, whether authorities respond effectively
+            to violations, whether investigations are adequate, and whether legal protections operate equally in practice.
+        </p>
+    </section>
+
+    <section>
+        <div class="section-label">09 · Legal Analysis</div>
+        <h2>State Responsibility: Law vs. Implementation</h2>
+
+        <p>
+            The concept of state responsibility demonstrates why human-rights analysis must examine both formal legal
+            protections and the actions of institutions responsible for enforcing them.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>State obligation</th>
+                    <th>Practical question</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Respect women's rights.</td>
+                    <td>Do government authorities themselves avoid actions that violate women's rights?</td>
+                </tr>
+                <tr>
+                    <td>Protect women from violations.</td>
+                    <td>Does the state respond appropriately when authorities know that a woman faces a serious risk?</td>
+                </tr>
+                <tr>
+                    <td>Investigate serious violations.</td>
+                    <td>Are allegations investigated effectively, independently, and without discriminatory assumptions?</td>
+                </tr>
+                <tr>
+                    <td>Provide effective remedies.</td>
+                    <td>Can women realistically obtain protection, justice, compensation, or other appropriate remedies?</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="research" class="research-box">
+        <div class="section-label">10 · Research Question</div>
+        <h2>Think Like a Human-Rights Researcher</h2>
+
+        <div class="question">
+            When does a state's failure to protect women's rights become a violation of its human-rights obligations?
+        </div>
+
+        <p style="margin-top:20px;">
+            A strong legal analysis should ask three things:
+            <strong>What right has been affected?</strong>
+            <strong>What legal duty does the state have?</strong>
+            <strong>Did the state take reasonable and effective measures to fulfil that duty?</strong>
+        </p>
+    </section>
+
+</main>
+
+<footer id="sources">
+    <div class="footer-inner">
+        <h2>Primary &amp; Supporting Sources</h2>
+
+        <p>
+            <strong>Primary international sources:</strong>
+            Convention on the Elimination of All Forms of Discrimination against Women;
+            CEDAW General Recommendation No. 35;
+            UN human-rights materials on state responsibility and violence against women.
+        </p>
+
+        <p>
+            <strong>Regional sources:</strong>
+            European Convention on Human Rights;
+            European Court of Human Rights case law concerning positive obligations and protection from violence.
+        </p>
+
+        <p>
+            <strong>Case law:</strong>
+            European Court of Human Rights, <em>M.C. v. Bulgaria</em>, Application no. 39272/98,
+            judgment of 4 December 2003.
+        </p>
+
+        <p>
+            <strong>Ethiopian source:</strong>
+            Constitution of the Federal Democratic Republic of Ethiopia (1995), including Articles 16, 18, 25, and 35.
+        </p>
+
+        <div class="last-updated">Research page prepared September 2026 · Law Research Hub</div>
+    </div>
+</footer>
+
+</body>
+          </html>
