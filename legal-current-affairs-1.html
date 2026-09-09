@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Legal Current Affairs | Law Research Hub</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia, "Times New Roman", serif;
+    background:#f5f5f3;
+    color:#172a43;
+    line-height:1.7;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar{
+    background:#0d2744;
+    padding:25px 18px 28px;
+    text-align:center;
+    box-shadow:0 3px 10px rgba(0,0,0,0.16);
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+    font-size:1.08rem;
+    font-weight:bold;
+    margin:5px 9px;
+    display:inline-block;
+    transition:0.25s ease;
+}
+
+.navbar a:hover{
+    color:#d4af37;
+}
+
+/* =========================
+   PAGE WRAPPER
+========================= */
+
+.page{
+    max-width:1000px;
+    margin:0 auto;
+    background:white;
+    min-height:100vh;
+    padding:65px 65px 90px;
+    box-shadow:0 0 14px rgba(0,0,0,0.05);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.page-tag{
+    display:inline-block;
+    background:#d1aa27;
+    color:#0d2744;
+    padding:9px 18px;
+    letter-spacing:3px;
+    font-size:0.84rem;
+    font-weight:bold;
+    transform:rotate(-2deg);
+    box-shadow:0 2px 5px rgba(0,0,0,0.08);
+    margin-bottom:28px;
+}
+
+.eyebrow{
+    color:#b08a17;
+    letter-spacing:5px;
+    font-size:0.9rem;
+    font-weight:bold;
+    text-transform:uppercase;
+    margin-bottom:9px;
+}
+
+.page-title{
+    color:#102b4a;
+    font-size:3rem;
+    line-height:1.15;
+    margin-bottom:14px;
+}
+
+.page-subtitle{
+    color:#6f6f6f;
+    font-size:1.12rem;
+    font-style:italic;
+    max-width:760px;
+    margin-bottom:30px;
+}
+
+.divider{
+    border:0;
+    border-top:1px solid #ddd;
+    margin:28px 0 38px;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+    max-width:820px;
+    margin-bottom:52px;
+}
+
+.intro p{
+    font-size:1.12rem;
+    color:#2d2d2d;
+    margin-bottom:18px;
+}
+
+.intro strong{
+    color:#172a43;
+}
+
+/* =========================
+   LATEST PUBLICATION
+========================= */
+
+.latest-label{
+    color:#b08a17;
+    letter-spacing:4px;
+    font-size:0.88rem;
+    font-weight:bold;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+
+.latest-card{
+    position:relative;
+    background:#f8f7f2;
+    border:1px solid #ded9c9;
+    padding:38px 38px 35px;
+    box-shadow:0 5px 18px rgba(0,0,0,0.06);
+    margin-bottom:70px;
+}
+
+.latest-card::before{
+    content:"LATEST";
+    position:absolute;
+    top:-12px;
+    right:22px;
+    background:#0d2744;
+    color:white;
+    padding:5px 13px;
+    font-size:0.72rem;
+    letter-spacing:2px;
+    font-weight:bold;
+}
+
+.latest-date{
+    color:#777;
+    font-size:0.92rem;
+    margin-bottom:13px;
+}
+
+.latest-title{
+    display:block;
+    color:#102b4a;
+    font-size:2.15rem;
+    line-height:1.25;
+    text-decoration:none;
+    margin-bottom:10px;
+    transition:0.25s ease;
+}
+
+.latest-title:hover{
+    color:#b08a17;
+}
+
+.latest-subtitle{
+    color:#555;
+    font-style:italic;
+    font-size:1.08rem;
+    margin-bottom:20px;
+}
+
+.latest-summary{
+    color:#303030;
+    font-size:1.04rem;
+    margin-bottom:23px;
+}
+
+.read-link{
+    display:inline-block;
+    background:#0d2744;
+    color:white;
+    text-decoration:none;
+    padding:10px 18px;
+    font-size:0.95rem;
+    font-weight:bold;
+    letter-spacing:0.5px;
+    transition:0.25s ease;
+}
+
+.read-link:hover{
+    background:#d1aa27;
+    color:#0d2744;
+}
+
+/* =========================
+   ARCHIVE
+========================= */
+
+.archive-heading{
+    color:#102b4a;
+    font-size:2rem;
+    margin-bottom:9px;
+}
+
+.archive-description{
+    color:#6d6d6d;
+    font-size:1.02rem;
+    margin-bottom:30px;
+}
+
+.archive-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:22px;
+}
+
+.archive-card{
+    border:1px solid #dedede;
+    background:white;
+    padding:27px;
+    transition:0.25s ease;
+    box-shadow:0 3px 10px rgba(0,0,0,0.04);
+}
+
+.archive-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.archive-card .category{
+    color:#b08a17;
+    letter-spacing:2.5px;
+    font-size:0.72rem;
+    font-weight:bold;
+    text-transform:uppercase;
+    margin-bottom:8px;
+}
+
+.archive-card h3{
+    margin-bottom:9px;
+}
+
+.archive-card h3 a{
+    color:#102b4a;
+    text-decoration:none;
+    font-size:1.35rem;
+    line-height:1.3;
+    transition:0.25s ease;
+}
+
+.archive-card h3 a:hover{
+    color:#b08a17;
+}
+
+.archive-card .date{
+    color:#888;
+    font-size:0.85rem;
+    margin-bottom:12px;
+}
+
+.archive-card p{
+    color:#4a4a4a;
+    font-size:0.96rem;
+    margin-bottom:15px;
+}
+
+.archive-card .mini-link{
+    color:#0d527d;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:0.9rem;
+}
+
+.archive-card .mini-link:hover{
+    text-decoration:underline;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    margin-top:70px;
+    padding-top:25px;
+    border-top:1px solid #ddd;
+    text-align:center;
+    color:#777;
+    font-size:0.9rem;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:760px){
+
+    .navbar{
+        padding:20px 10px 24px;
+    }
+
+    .navbar a{
+        font-size:0.98rem;
+        margin:5px 6px;
+    }
+
+    .page{
+        padding:45px 24px 65px;
+    }
+
+    .page-tag{
+        letter-spacing:2px;
+        font-size:0.72rem;
+    }
+
+    .eyebrow{
+        font-size:0.76rem;
+        letter-spacing:3px;
+    }
+
+    .page-title{
+        font-size:2.25rem;
+    }
+
+    .page-subtitle{
+        font-size:1rem;
+    }
+
+    .latest-card{
+        padding:30px 23px 28px;
+    }
+
+    .latest-title{
+        font-size:1.75rem;
+    }
+
+    .archive-grid{
+        grid-template-columns:1fr;
+    }
+
+    .archive-heading{
+        font-size:1.7rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="notes.html">Notes</a>
+    <a href="quizzes.html">Quizzes</a>
+    <br>
+    <a href="women-children.html">Women &amp; Children</a>
+    <a href="legal-current-affairs.html">Legal Current Affairs</a>
+    <br>
+    <a href="about-me.html">About Me</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+
+<main class="page">
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-tag">LEGAL CURRENT AFFAIRS</div>
+
+    <div class="eyebrow">Weekly Publication</div>
+
+    <h1 class="page-title">The Law Behind the Headlines</h1>
+
+    <p class="page-subtitle">
+        Following recent legal developments, court decisions, human-rights
+        issues, and the questions they raise.
+    </p>
+
+    <hr class="divider">
+
+
+    <!-- INTRO -->
+
+    <section class="intro">
+        <p>
+            Welcome to the <strong>Legal Current Affairs</strong> section of
+            Law Research Hub — a student publication exploring the law behind
+            important events and developments in the real world.
+        </p>
+
+        <p>
+            Each publication combines factual reporting with legal research
+            and independent analysis. The goal is not only to explain
+            <strong>what happened</strong>, but to ask
+            <strong>why it matters</strong>.
+        </p>
+    </section>
+
+
+    <!-- LATEST PUBLICATION -->
+
+    <div class="latest-label">Latest Publication</div>
+
+    <section class="latest-card">
+
+        <div class="latest-date">
+            September 2026 · By Mekdes Alemayehu
+        </div>
+
+        <!-- CLICKING THIS OPENS THE ARTICLE -->
+        <a class="latest-title" href="as-v-latvia.html">
+            When Is an Investigation Enough?
+            The European Court of Human Rights Rules on Forced Labour
+        </a>
+
+        <p class="latest-subtitle">
+            A.S. v. Latvia and the difficult question of what states must do
+            when allegations of exploitation arise
+        </p>
+
+        <p class="latest-summary">
+            On 3 September 2026, the European Court of Human Rights delivered
+            its judgment in A.S. v. Latvia. The Court found no violation of
+            Article 4 of the European Convention on Human Rights. But the case
+            raises a difficult question: when someone alleges exploitation,
+            what exactly must a state do to satisfy its human-rights
+            obligations?
+        </p>
+
+        <a class="read-link" href="as-v-latvia.html">
+            Read the Full Publication →
+        </a>
+
+    </section>
+
+
+    <!-- ARCHIVE -->
+
+    <section class="archive">
+
+        <h2 class="archive-heading">Publication Archive</h2>
+
+        <p class="archive-description">
+            Explore current and future articles published through Law
+            Research Hub.
+        </p>
+
+        <div class="archive-grid">
+
+            <!-- ARTICLE 1 -->
+
+            <article class="archive-card">
+
+                <div class="category">September 2026</div>
+
+                <h3>
+                    <a href="as-v-latvia.html">
+                        When Is an Investigation Enough?
+                        The European Court of Human Rights Rules on Forced Labour
+                    </a>
+                </h3>
+
+                <div class="date">
+                    A.S. v. Latvia
+                </div>
+
+                <p>
+                    An examination of the European Court of Human Rights'
+                    approach to allegations of forced labour, effective
+                    investigations, and state responsibility.
+                </p>
+
+                <a class="mini-link" href="as-v-latvia.html">
+                    Read Article →
+                </a>
+
+            </article>
+
+
+            <!-- FUTURE ARTICLE PLACEHOLDER -->
+
+            <article class="archive-card">
+
+                <div class="category">Coming Soon</div>
+
+                <h3>
+                    <a href="javascript:void(0);">
+                        More Legal Current Affairs
+                    </a>
+                </h3>
+
+                <div class="date">
+                    Future publication
+                </div>
+
+                <p>
+                    New articles will appear here as the Legal Current
+                    Affairs collection grows.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        <p>
+            © 2026 Law Research Hub · Legal Current Affairs
+        </p>
+
+        <p>
+            Independent student legal research and analysis.
+        </p>
+    </footer>
+
+</main>
+
+</body>
+</html>
