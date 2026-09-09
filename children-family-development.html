@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Family Development | Children's Rights | Law Research Hub</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia, "Times New Roman", serif;
+    background:#f5f7fa;
+    color:#222;
+    line-height:1.75;
+}
+
+a{
+    color:#1f4e79;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+header{
+    background:#172a3a;
+    color:white;
+    padding:58px 20px 52px;
+    text-align:center;
+}
+
+.header-tag{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+    opacity:.8;
+}
+
+header h1{
+    font-size:clamp(36px, 6vw, 58px);
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+header p{
+    max-width:780px;
+    margin:0 auto;
+    font-size:18px;
+    color:#e5edf4;
+}
+
+.nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:#ffffff;
+    border-bottom:1px solid #d9e0e6;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.nav-inner{
+    max-width:1100px;
+    margin:auto;
+    padding:12px 18px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.nav a{
+    font-family:Arial, sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:#334e68;
+}
+
+.container{
+    max-width:1000px;
+    margin:42px auto;
+    padding:0 20px;
+}
+
+.intro-box{
+    background:white;
+    border-left:5px solid #1f4e79;
+    padding:25px 28px;
+    margin-bottom:28px;
+    box-shadow:0 4px 16px rgba(0,0,0,.05);
+}
+
+.intro-box strong{
+    color:#172a3a;
+}
+
+section{
+    background:white;
+    margin-bottom:25px;
+    padding:31px;
+    border:1px solid #e0e5ea;
+    box-shadow:0 3px 12px rgba(0,0,0,.035);
+    border-radius:4px;
+}
+
+.section-label{
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.7px;
+    text-transform:uppercase;
+    color:#687b8c;
+    margin-bottom:8px;
+}
+
+h2{
+    color:#172a3a;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+h3{
+    color:#1f4e79;
+    font-size:21px;
+    margin:23px 0 8px;
+}
+
+p{
+    margin-bottom:13px;
+}
+
+.question{
+    margin-top:20px;
+    padding:18px 20px;
+    background:#eef4f8;
+    border:1px solid #d6e2ea;
+    font-style:italic;
+    color:#263b4c;
+}
+
+.source-card{
+    border:1px solid #dfe5ea;
+    border-radius:5px;
+    padding:20px;
+    margin:14px 0;
+    background:#fbfcfd;
+}
+
+.source-card h3{
+    margin-top:0;
+}
+
+.source-card p{
+    margin-bottom:8px;
+}
+
+.pill{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.7px;
+    padding:4px 8px;
+    border-radius:999px;
+    background:#e9eff4;
+    color:#425466;
+    margin-bottom:9px;
+}
+
+.principles{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:16px;
+    margin-top:18px;
+}
+
+.principle{
+    border:1px solid #dfe5ea;
+    padding:20px;
+    background:#fbfcfd;
+}
+
+.principle h3{
+    margin-top:0;
+}
+
+.barrier{
+    display:grid;
+    grid-template-columns:190px 1fr;
+    gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid #e6eaee;
+}
+
+.barrier:last-child{
+    border-bottom:none;
+}
+
+.barrier-title{
+    font-weight:700;
+    color:#172a3a;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th, td{
+    border:1px solid #dce2e7;
+    padding:13px;
+    text-align:left;
+    vertical-align:top;
+}
+
+th{
+    background:#edf2f6;
+    color:#172a3a;
+}
+
+.research-box{
+    background:#172a3a;
+    color:white;
+    padding:30px;
+    border-radius:4px;
+}
+
+.research-box h2{
+    color:white;
+}
+
+.research-box .question{
+    background:rgba(255,255,255,.08);
+    border-color:rgba(255,255,255,.18);
+    color:#f0f5f8;
+}
+
+footer{
+    background:#111d27;
+    color:#cdd8e1;
+    padding:38px 20px;
+}
+
+.footer-inner{
+    max-width:1000px;
+    margin:auto;
+}
+
+footer h2{
+    color:white;
+    font-size:24px;
+}
+
+footer p{
+    font-size:14px;
+}
+
+footer a{
+    color:#b9d7ef;
+}
+
+.last-updated{
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    opacity:.75;
+    margin-top:20px;
+}
+
+@media (max-width:700px){
+    section{
+        padding:23px 18px;
+    }
+
+    .principles{
+        grid-template-columns:1fr;
+    }
+
+    .barrier{
+        grid-template-columns:1fr;
+        gap:4px;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-tag">Children's Rights · Family Rights · Human Rights Law</div>
+    <h1>Family Development</h1>
+    <p>Understanding children's rights to family life, parental care, protection, and healthy development through international, African, and Ethiopian law.</p>
+</header>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#definition">Definition</a>
+        <a href="#why">Why It Matters</a>
+        <a href="#international">International Law</a>
+        <a href="#african">African Framework</a>
+        <a href="#principles">Key Principles</a>
+        <a href="#barriers">Barriers</a>
+        <a href="#ethiopia">Ethiopia</a>
+        <a href="#analysis">Legal Analysis</a>
+        <a href="#research">Research Question</a>
+        <a href="#sources">Sources</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <div class="intro-box">
+        <strong>Core legal question:</strong>
+        What legal duties do states have to protect children's family relationships, support parents and caregivers, prevent unnecessary family separation, and ensure that children can develop in safe and supportive family environments?
+    </div>
+
+    <section id="definition">
+        <div class="section-label">01 · Definition</div>
+        <h2>What is Family Development?</h2>
+
+        <p>
+            Family development in children's-rights law concerns the conditions in which children grow, receive care,
+            develop their identities, and maintain meaningful relationships with their parents, guardians, extended
+            family, or other appropriate caregivers.
+        </p>
+
+        <p>
+            International children's-rights law does not treat the family simply as a private institution. The family is
+            recognized as an important environment for a child's growth and well-being, while children remain independent
+            rights-holders whose interests and views must also be respected.
+        </p>
+
+        <p>
+            This means that family life involves more than the legal existence of a parent-child relationship. It can
+            include parental guidance, care, maintenance, protection, family unity, contact with parents, family
+            reunification, and appropriate alternative care when a child cannot safely remain with their family.
+        </p>
+
+        <div class="question">
+            The key idea is simple: <strong>children have a right to develop within a safe and supportive family environment whenever that is consistent with their rights and best interests.</strong>
+        </div>
+    </section>
+
+    <section id="why">
+        <div class="section-label">02 · Why It Matters</div>
+        <h2>Why is Family Life a Children's-Rights Issue?</h2>
+
+        <p>
+            A child's family environment can influence their identity, emotional development, education, health,
+            security, and ability to participate fully in society. For this reason, international children's-rights law
+            protects family relationships while also recognizing that children must be protected from abuse, neglect,
+            exploitation, and other forms of harm.
+        </p>
+
+        <p>
+            The Convention on the Rights of the Child recognizes parental responsibilities and requires states to
+            respect children's relationships with their parents. It also establishes protections against unnecessary
+            separation and provides safeguards for children who cannot remain in their original family environment.
+        </p>
+
+        <p>
+            Family rights therefore require a balance. States should not unnecessarily interfere with family life,
+            but they also have responsibilities to protect children when remaining in a family environment would place
+            them at serious risk.
+        </p>
+
+        <p>
+            A human-rights analysis must therefore ask whether government decisions strengthen children's ability to
+            grow safely within families while protecting them when family relationships become harmful or unsafe.
+        </p>
+    </section>
+
+    <section id="international">
+        <div class="section-label">03 · International Legal Framework</div>
+        <h2>International Protection</h2>
+
+        <div class="source-card">
+            <span class="pill">Convention on the Rights of the Child · Article 5</span>
+            <h3>Parental Guidance and the Child's Evolving Capacities</h3>
+
+            <p>
+                Article 5 requires states to respect the responsibilities, rights, and duties of parents and other
+                legally responsible persons to provide appropriate direction and guidance to children in the exercise
+                of their rights.
+            </p>
+
+            <p>
+                The provision also recognizes that parental guidance must be consistent with the child's evolving
+                capacities. Children are therefore not simply passive recipients of parental decisions; their growing
+                ability to exercise their own rights must be respected.
+            </p>
+
+            <p>
+                <a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-child"
+                   target="_blank" rel="noopener">
+                   Read the Convention on the Rights of the Child →
+                </a>
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">CRC · Article 9</span>
+            <h3>Protection Against Unnecessary Separation</h3>
+
+            <p>
+                Article 9 establishes an important protection against the arbitrary separation of children from their
+                parents. States must ensure that a child is not separated from their parents against their will unless
+                competent authorities determine, subject to judicial review, that separation is necessary for the child's
+                best interests.
+            </p>
+
+            <p>
+                The provision also recognizes the child's right to maintain personal relations and direct contact with
+                both parents on a regular basis when separated, unless that would be contrary to the child's best interests.
+            </p>
+
+            <p>
+                <a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-child"
+                   target="_blank" rel="noopener">
+                   Read Article 9 in the Convention →
+                </a>
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">CRC · Article 10</span>
+            <h3>Family Reunification</h3>
+
+            <p>
+                Article 10 protects applications by children and their parents to enter or leave a state for the purpose
+                of family reunification. It requires such applications to be dealt with in a positive, humane, and
+                expeditious manner.
+            </p>
+
+            <p>
+                This recognizes that borders and immigration systems can directly affect children's family life and
+                that legal procedures should not unnecessarily prevent children from maintaining family relationships.
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">CRC · Article 18</span>
+            <h3>Parental Responsibility and State Support</h3>
+
+            <p>
+                Article 18 recognizes that parents have common responsibilities for the upbringing and development of
+                their children. The best interests of the child should be their basic concern.
+            </p>
+
+            <p>
+                The Convention also requires states to provide appropriate assistance to parents and legal guardians in
+                carrying out their child-rearing responsibilities and to ensure the development of institutions,
+                facilities, and services for the care of children.
+            </p>
+
+            <p>
+                <a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-child"
+                   target="_blank" rel="noopener">
+                   Read Article 18 in the Convention →
+                </a>
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">CRC · Articles 20 and 21</span>
+            <h3>Alternative Care and the Child's Best Interests</h3>
+
+            <p>
+                When a child cannot remain in their family environment, the Convention requires special protection and
+                assistance. States must ensure suitable alternative care while continuing to protect the child's rights
+                and best interests.
+            </p>
+
+            <p>
+                The Convention's provisions concerning alternative care and adoption demonstrate that family
+                relationships must be considered alongside safety, stability, identity, and the child's overall development.
+            </p>
+        </div>
+    </section>
+
+    <section id="african">
+        <div class="section-label">04 · African Human-Rights Law</div>
+        <h2>The African Legal Framework</h2>
+
+        <div class="source-card">
+            <span class="pill">African Children's Charter · Article 18</span>
+            <h3>Protection of the Family</h3>
+
+            <p>
+                Article 18 recognizes the family as the natural unit and basis of society and requires states to provide
+                protection and support for its establishment and development.
+            </p>
+
+            <p>
+                The Charter also requires states to protect children's interests when families separate and makes clear
+                that a child should not lose rights to maintenance because of the marital status of the parents.
+            </p>
+
+            <p>
+                <a href="https://au.int/en/node/30913"
+                   target="_blank" rel="noopener">
+                   Read the African Children's Charter →
+                </a>
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">African Children's Charter · Article 19</span>
+            <h3>Parental Care and Protection</h3>
+
+            <p>
+                Article 19 provides every child with a right to parental care and protection and, whenever possible,
+                the right to reside with their parents.
+            </p>
+
+            <p>
+                The Charter places an important limit on family separation: a child should not be separated from their
+                parents against their will unless a judicial authority determines, according to law, that the separation
+                is in the child's best interests.
+            </p>
+
+            <p>
+                It also protects continuing personal relations and direct contact with separated parents.
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">African Children's Charter · Article 20</span>
+            <h3>Parental Responsibilities</h3>
+
+            <p>
+                Article 20 recognizes parents and other persons responsible for children as having primary responsibility
+                for their upbringing and development.
+            </p>
+
+            <p>
+                States are also required, according to their means and national conditions, to assist parents through
+                material assistance, social programmes, health, nutrition, education, housing, childcare, and other
+                measures that support child-rearing.
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">African Human-Rights Approach</span>
+            <h3>Family Unity and Child Protection</h3>
+
+            <p>
+                The African framework therefore combines two principles that must operate together: family unity should
+                generally be protected, but the child's rights and best interests remain central.
+            </p>
+
+            <p>
+                A state cannot justify leaving a child in an unsafe situation simply because family unity is important.
+                At the same time, separation should not be treated as a routine solution when family support and
+                protection could safely address the problem.
+            </p>
+        </div>
+    </section>
+
+    <section id="principles">
+        <div class="section-label">05 · Key Legal Principles</div>
+        <h2>What Duties Can States Have?</h2>
+
+        <div class="principles">
+
+            <div class="principle">
+                <h3>Family Unity</h3>
+                <p>
+                    States should respect and protect children's meaningful relationships with their parents and family
+                    members and avoid unnecessary interference with family life.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Parental Support</h3>
+                <p>
+                    States should assist parents and caregivers in meeting children's developmental, educational, health,
+                    housing, and care needs.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Best Interests</h3>
+                <p>
+                    The child's best interests should be a primary consideration whenever authorities make decisions
+                    affecting family relationships, care, separation, or reunification.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Child Participation</h3>
+                <p>
+                    Children should be given appropriate opportunities to express their views in matters concerning their
+                    family life, with their views given due weight according to age and maturity.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Protection from Harm</h3>
+                <p>
+                    Family unity does not override the child's right to protection from abuse, neglect, exploitation,
+                    violence, or other serious harm.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Family Reunification</h3>
+                <p>
+                    Where children are separated from parents for legitimate reasons, states should support safe and
+                    appropriate family contact and reunification whenever consistent with the child's rights and best interests.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="barriers">
+        <div class="section-label">06 · Understanding the Problem</div>
+        <h2>Why Can Family Rights Be Difficult to Protect?</h2>
+
+        <p>
+            Children's family rights can be affected by poverty, conflict, migration, disability, discrimination,
+            violence, institutional decisions, and weak social-support systems. Human-rights analysis therefore requires
+            examining the conditions surrounding family life rather than looking only at formal custody or family law.
+        </p>
+
+        <div class="barrier">
+            <div class="barrier-title">Poverty</div>
+            <div>
+                Economic hardship can make it difficult for parents and caregivers to provide adequate food, housing,
+                education, health care, and other conditions necessary for a child's development.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Family separation</div>
+            <div>
+                Children may become separated from parents because of conflict, displacement, migration, poverty,
+                institutional placement, detention, illness, or other circumstances.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Conflict and displacement</div>
+            <div>
+                Conflict and humanitarian emergencies can separate families, destroy homes and services, and make it
+                difficult to trace children and reunite them safely with their families.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Weak social services</div>
+            <div>
+                When family-support programmes, social workers, childcare services, and community systems are limited,
+                families may struggle to obtain assistance before problems become severe.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Institutional decisions</div>
+            <div>
+                Decisions by courts, welfare agencies, schools, immigration authorities, or other institutions can have
+                major effects on children's family relationships and must therefore protect children's rights.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Lack of child participation</div>
+            <div>
+                Children can be affected by major family decisions without having meaningful opportunities to express
+                their views or understand what is happening to them.
+            </div>
+        </div>
+
+    </section>
+
+    <section id="ethiopia">
+        <div class="section-label">07 · Ethiopia</div>
+        <h2>Family Development and Children's Rights in Ethiopia</h2>
+
+        <p>
+            Ethiopia's constitutional framework recognizes the importance of family life and gives children an explicit
+            right to know and be cared for by their parents or legal guardians.
+        </p>
+
+        <p>
+            Article 34 of the FDRE Constitution describes the family as the natural and fundamental unit of society and
+            states that it is entitled to protection by society and the State. It also requires laws to protect the
+            rights and interests of children when parents divorce.
+        </p>
+
+        <h3>Article 36 · Right to Know and Be Cared For</h3>
+
+        <p>
+            Article 36(1)(c) of the Constitution gives every child the right to know and be cared for by his or her
+            parents or legal guardians.
+        </p>
+
+        <p>
+            This provision places family relationships directly within Ethiopia's constitutional children's-rights
+            framework rather than treating them only as matters of private family law.
+        </p>
+
+        <h3>Article 36 · Best Interests of the Child</h3>
+
+        <p>
+            Article 36(2) provides that in all actions concerning children undertaken by public and private welfare
+            institutions, courts, administrative authorities, or legislative bodies, the primary consideration shall
+            be the best interests of the child.
+        </p>
+
+        <h3>Article 34 · Family Protection</h3>
+
+        <p>
+            Article 34 recognizes the family as the natural and fundamental unit of society and provides that it is
+            entitled to protection by society and the State.
+        </p>
+
+        <p>
+            The constitutional framework therefore creates a relationship between family protection and children's
+            individual rights. Protecting a family cannot mean ignoring the rights of the child within it.
+        </p>
+
+        <h3>Article 35 · Equality in Family Life</h3>
+
+        <p>
+            Article 35 provides women with equal rights and protections and recognizes their equal rights in marriage.
+            This is relevant to children's development because equality within the family can affect parental
+            responsibilities, care, household decision-making, and children's living conditions.
+        </p>
+
+        <h3>International Obligations</h3>
+
+        <p>
+            Ethiopia is also bound by international and African children's-rights standards concerning family life,
+            parental care, family unity, protection, and child development. The Convention on the Rights of the Child
+            and the African Charter on the Rights and Welfare of the Child are therefore important sources for interpreting
+            children's family rights in Ethiopia.
+        </p>
+
+        <h3>Family Separation and Alternative Care</h3>
+
+        <p>
+            Family separation is particularly important during conflict, displacement, and humanitarian emergencies.
+            UNICEF-supported programmes in Ethiopia have included family tracing, reunification, kinship care, foster
+            arrangements, and other forms of community-based alternative care for children separated from their families.
+            ([unicef.org](https://www.unicef.org/media/164361/file/UNICEF%20Ethiopia%20Humanitarian%20Situation%20Report%20No.%208%20-%20August%20-%20September%202024.pdf.pdf?utm_source=chatgpt.com))
+        </p>
+
+        <p>
+            These approaches reflect an important child-protection principle: when a child cannot safely remain with
+            their parents, alternative care should still seek to preserve safety, stability, relationships, identity,
+            and the child's development wherever possible.
+        </p>
+
+        <h3>Why the Ethiopian context matters</h3>
+
+        <p>
+            Ethiopia illustrates the broader legal challenge of turning family rights into practical protection.
+            Constitutional recognition of family and children's rights must be supported by social services, functioning
+            justice systems, family-support programmes, birth registration, child-protection mechanisms, and appropriate
+            alternative-care systems.
+        </p>
+
+        <p>
+            The UN Committee on the Rights of the Child's 2026 concluding observations also recognize developments in
+            Ethiopia's children's-rights framework while continuing to assess the country's implementation of child
+            protection and family-related obligations. ([ohchr.org](https://docstore.ohchr.org/SelfServices/FilesHandler.ashx?enc=T8gKzVi0h8yeije7hqBRDs%2FrHaA9s3PuLMg2HTPBNSPtX8FZjnFEso%2B%2FFiliJUznaXe1CB3XaXiBfuOa9%2Botsg%3D%3D&utm_source=chatgpt.com))
+        </p>
+
+    </section>
+
+    <section id="analysis">
+        <div class="section-label">08 · Legal Analysis</div>
+        <h2>Family Unity vs. Child Protection</h2>
+
+        <p>
+            Family-rights law creates an important legal balance. The law values family relationships, but family unity
+            cannot automatically override the child's individual rights.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Legal principle</th>
+                    <th>Practical question</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>
+                        Children have a right to know and be cared for by their parents.
+                    </td>
+                    <td>
+                        Are children able to maintain meaningful and safe relationships with their parents and caregivers?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Family separation should not occur arbitrarily.
+                    </td>
+                    <td>
+                        Is separation legally justified, necessary, and based on an individualized assessment of the child's best interests?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Parents have responsibilities for children's upbringing and development.
+                    </td>
+                    <td>
+                        Are parents and caregivers receiving adequate social, economic, educational, and institutional support?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Children have a right to participate in matters affecting them.
+                    </td>
+                    <td>
+                        Are children's views genuinely heard in decisions concerning custody, care, placement, and reunification?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Children must be protected from harm.
+                    </td>
+                    <td>
+                        Does the state intervene effectively when family circumstances place a child at serious risk?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Separated children should retain family relationships where appropriate.
+                    </td>
+                    <td>
+                        Are contact, tracing, and family-reunification systems available and effective?
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="question">
+            Protecting the family does not mean protecting every family situation at any cost. Human-rights law asks whether family policies preserve meaningful relationships while keeping the child's rights, safety, development, and best interests at the centre.
+        </div>
+
+    </section>
+
+    <section id="research" class="research-box">
+        <div class="section-label">09 · Research Question</div>
+
+        <h2>Think Like a Human-Rights Researcher</h2>
+
+        <div class="question">
+            When does a state's failure to protect a child's family life, parental care, or development become a violation of the child's human rights?
+        </div>
+
+        <p style="margin-top:20px;">
+            A strong legal analysis should ask three things:
+            <strong>What family-related rights does the child have?</strong>
+            <strong>What duties does the state have to support and protect those rights?</strong>
+            <strong>Are family unity, child protection, and the child's best interests being balanced effectively?</strong>
+        </p>
+
+    </section>
+
+</main>
+
+<footer id="sources">
+
+    <div class="footer-inner">
+
+        <h2>Primary &amp; Supporting Sources</h2>
+
+        <p>
+            <strong>Primary international sources:</strong>
+            Convention on the Rights of the Child, especially Articles 3, 5, 9, 10, 12, 18, 20 and 21;
+            Committee on the Rights of the Child guidance concerning family environment and alternative care.
+        </p>
+
+        <p>
+            <strong>African sources:</strong>
+            African Charter on the Rights and Welfare of the Child,
+            especially Articles 4, 18, 19 and 20 concerning the best interests of the child,
+            protection of the family, parental care, and parental responsibilities.
+        </p>
+
+        <p>
+            <strong>Ethiopian sources:</strong>
+            Constitution of the Federal Democratic Republic of Ethiopia (1995),
+            especially Articles 34, 35 and 36.
+        </p>
+
+        <p>
+            <strong>Current country evidence:</strong>
+            UN Committee on the Rights of the Child, <em>Concluding observations on the combined sixth and seventh
+            periodic reports of Ethiopia</em>, 2026;
+            UNICEF Ethiopia materials concerning separated children, family tracing,
+            reunification, and alternative care.
+        </p>
+
+        <p>
+            <a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-child"
+               target="_blank" rel="noopener">
+                Convention on the Rights of the Child →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://au.int/en/node/30913"
+               target="_blank" rel="noopener">
+                African Charter on the Rights and Welfare of the Child →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://www.refworld.org/legal/legislation/natlegbod/1995/en/18206"
+               target="_blank" rel="noopener">
+                Constitution of Ethiopia →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://docstore.ohchr.org/SelfServices/FilesHandler.ashx?enc=T8gKzVi0h8yeije7hqBRDs%2FrHaA9s3PuLMg2HTPBNSPtX8FZjnFEso%2B%2FFiliJUznaXe1CB3XaXiBfuOa9%2Botsg%3D%3D"
+               target="_blank" rel="noopener">
+                UN Committee on the Rights of the Child — Ethiopia 2026 →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://www.unicef.org/media/164361/file/UNICEF%20Ethiopia%20Humanitarian%20Situation%20Report%20No.%208%20-%20August%20-%20September%202024.pdf.pdf"
+               target="_blank" rel="noopener">
+                UNICEF Ethiopia — Family Tracing, Reunification and Alternative Care →
+            </a>
+        </p>
+
+        <div class="last-updated">
+            Research page prepared September 2026 · Law Research Hub
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+          </html>
