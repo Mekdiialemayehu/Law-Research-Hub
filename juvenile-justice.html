@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Juvenile Justice | Children's Rights | Law Research Hub</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia, "Times New Roman", serif;
+    background:#f5f7fa;
+    color:#222;
+    line-height:1.75;
+}
+
+a{
+    color:#1f4e79;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+header{
+    background:#172a3a;
+    color:white;
+    padding:58px 20px 52px;
+    text-align:center;
+}
+
+.header-tag{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+    opacity:.8;
+}
+
+header h1{
+    font-size:clamp(36px, 6vw, 58px);
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+header p{
+    max-width:780px;
+    margin:0 auto;
+    font-size:18px;
+    color:#e5edf4;
+}
+
+.nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:#ffffff;
+    border-bottom:1px solid #d9e0e6;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.nav-inner{
+    max-width:1100px;
+    margin:auto;
+    padding:12px 18px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.nav a{
+    font-family:Arial, sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:#334e68;
+}
+
+.container{
+    max-width:1000px;
+    margin:42px auto;
+    padding:0 20px;
+}
+
+.intro-box{
+    background:white;
+    border-left:5px solid #1f4e79;
+    padding:25px 28px;
+    margin-bottom:28px;
+    box-shadow:0 4px 16px rgba(0,0,0,.05);
+}
+
+.intro-box strong{
+    color:#172a3a;
+}
+
+section{
+    background:white;
+    margin-bottom:25px;
+    padding:31px;
+    border:1px solid #e0e5ea;
+    box-shadow:0 3px 12px rgba(0,0,0,.035);
+    border-radius:4px;
+}
+
+.section-label{
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.7px;
+    text-transform:uppercase;
+    color:#687b8c;
+    margin-bottom:8px;
+}
+
+h2{
+    color:#172a3a;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+h3{
+    color:#1f4e79;
+    font-size:21px;
+    margin:23px 0 8px;
+}
+
+p{
+    margin-bottom:13px;
+}
+
+.question{
+    margin-top:20px;
+    padding:18px 20px;
+    background:#eef4f8;
+    border:1px solid #d6e2ea;
+    font-style:italic;
+    color:#263b4c;
+}
+
+.source-card{
+    border:1px solid #dfe5ea;
+    border-radius:5px;
+    padding:20px;
+    margin:14px 0;
+    background:#fbfcfd;
+}
+
+.source-card h3{
+    margin-top:0;
+}
+
+.source-card p{
+    margin-bottom:8px;
+}
+
+.pill{
+    display:inline-block;
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.7px;
+    padding:4px 8px;
+    border-radius:999px;
+    background:#e9eff4;
+    color:#425466;
+    margin-bottom:9px;
+}
+
+.principles{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:16px;
+    margin-top:18px;
+}
+
+.principle{
+    border:1px solid #dfe5ea;
+    padding:20px;
+    background:#fbfcfd;
+}
+
+.principle h3{
+    margin-top:0;
+}
+
+.barrier{
+    display:grid;
+    grid-template-columns:190px 1fr;
+    gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid #e6eaee;
+}
+
+.barrier:last-child{
+    border-bottom:none;
+}
+
+.barrier-title{
+    font-weight:700;
+    color:#172a3a;
+}
+
+.case-feature{
+    background:#f8fafb;
+    border:1px solid #d3dee6;
+    border-left:5px solid #1f4e79;
+    padding:23px;
+    margin-top:16px;
+}
+
+.case-feature h3{
+    margin-top:0;
+}
+
+.case-link{
+    display:inline-block;
+    margin-top:8px;
+    padding:10px 15px;
+    border:1px solid #1f4e79;
+    border-radius:4px;
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.3px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th, td{
+    border:1px solid #dce2e7;
+    padding:13px;
+    text-align:left;
+    vertical-align:top;
+}
+
+th{
+    background:#edf2f6;
+    color:#172a3a;
+}
+
+.research-box{
+    background:#172a3a;
+    color:white;
+    padding:30px;
+    border-radius:4px;
+}
+
+.research-box h2{
+    color:white;
+}
+
+.research-box .question{
+    background:rgba(255,255,255,.08);
+    border-color:rgba(255,255,255,.18);
+    color:#f0f5f8;
+}
+
+footer{
+    background:#111d27;
+    color:#cdd8e1;
+    padding:38px 20px;
+}
+
+.footer-inner{
+    max-width:1000px;
+    margin:auto;
+}
+
+footer h2{
+    color:white;
+    font-size:24px;
+}
+
+footer p{
+    font-size:14px;
+}
+
+footer a{
+    color:#b9d7ef;
+}
+
+.last-updated{
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    opacity:.75;
+    margin-top:20px;
+}
+
+@media (max-width:700px){
+    section{
+        padding:23px 18px;
+    }
+
+    .principles{
+        grid-template-columns:1fr;
+    }
+
+    .barrier{
+        grid-template-columns:1fr;
+        gap:4px;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-tag">Children's Rights · Justice · Human Rights Law</div>
+    <h1>Juvenile Justice</h1>
+    <p>Understanding juvenile justice and the rights of children in conflict with the law through international, African, and Ethiopian law.</p>
+</header>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#definition">Definition</a>
+        <a href="#why">Why It Matters</a>
+        <a href="#international">International Law</a>
+        <a href="#african">African Framework</a>
+        <a href="#case">Case Study</a>
+        <a href="#principles">Key Principles</a>
+        <a href="#barriers">Barriers</a>
+        <a href="#ethiopia">Ethiopia</a>
+        <a href="#research">Research Question</a>
+        <a href="#sources">Sources</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <div class="intro-box">
+        <strong>Core legal question:</strong>
+        What legal duties do states have to ensure that children accused or found responsible for offences are treated with dignity, receive fair procedures, and are given opportunities for rehabilitation and reintegration rather than being treated simply as adult offenders?
+    </div>
+
+    <section id="definition">
+        <div class="section-label">01 · Definition</div>
+        <h2>What is Juvenile Justice?</h2>
+
+        <p>
+            Juvenile justice refers to the laws, institutions, procedures, and measures used when children come into
+            contact with the criminal justice system because they are suspected, accused, or found to have committed
+            an offence.
+        </p>
+
+        <p>
+            International children's-rights law uses a distinct approach to children in conflict with the law.
+            A child is not simply a smaller version of an adult defendant. The justice system must take account of
+            the child's age, development, dignity, education, rehabilitation, and prospects for reintegration into
+            family and society.
+        </p>
+
+        <p>
+            Juvenile justice therefore concerns more than punishment. It includes police procedures, legal representation,
+            diversion, mediation, courts, detention, sentencing, rehabilitation, education, family contact, and
+            reintegration.
+        </p>
+
+        <div class="question">
+            The key idea is simple: <strong>children in conflict with the law retain their human rights and require a justice system designed around their age, dignity, development, and rehabilitation.</strong>
+        </div>
+    </section>
+
+    <section id="why">
+        <div class="section-label">02 · Why It Matters</div>
+        <h2>Why is Juvenile Justice a Human-Rights Issue?</h2>
+
+        <p>
+            Contact with the criminal justice system can affect a child's liberty, education, family relationships,
+            privacy, dignity, development, and future opportunities.
+        </p>
+
+        <p>
+            The Convention on the Rights of the Child therefore requires states to create a system specifically adapted
+            to children. Children accused of criminal offences are entitled to fair procedures, legal safeguards,
+            humane treatment, and measures that promote their reintegration into society.
+        </p>
+
+        <p>
+            Human-rights law also places limits on detention. Because imprisonment can significantly affect a child's
+            development and future, international standards require deprivation of liberty to be used only as a measure
+            of last resort and for the shortest appropriate period.
+        </p>
+
+        <p>
+            Juvenile justice is therefore based on a fundamental balance: society has an interest in accountability and
+            public safety, but children also have a right to a justice system that recognizes their age and capacity for
+            development and change.
+        </p>
+    </section>
+
+    <section id="international">
+        <div class="section-label">03 · International Legal Framework</div>
+        <h2>International Protection</h2>
+
+        <div class="source-card">
+            <span class="pill">Convention on the Rights of the Child · Article 37</span>
+            <h3>Liberty, Dignity, and Detention</h3>
+
+            <p>
+                Article 37 protects children from torture and cruel, inhuman, or degrading treatment and establishes
+                important safeguards for children deprived of liberty.
+            </p>
+
+            <p>
+                It requires that the arrest, detention, or imprisonment of a child be used only as a measure of last
+                resort and for the shortest appropriate period. Children deprived of liberty must also be treated with
+                humanity and respect for their inherent dignity and, in principle, separated from adults.
+            </p>
+
+            <p>
+                <a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-child"
+                   target="_blank" rel="noopener">
+                   Read the Convention on the Rights of the Child →
+                </a>
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">Convention on the Rights of the Child · Article 40</span>
+            <h3>Fair Treatment and Reintegration</h3>
+
+            <p>
+                Article 40 recognizes the right of every child alleged as, accused of, or recognized as having infringed
+                criminal law to be treated in a manner consistent with the promotion of the child's dignity and worth.
+            </p>
+
+            <p>
+                Children are entitled to fundamental fair-trial safeguards, including the presumption of innocence,
+                information about the allegations, legal assistance, a fair hearing, and protection against being
+                compelled to confess guilt.
+            </p>
+
+            <p>
+                The Convention also requires states to promote laws, procedures, authorities, and institutions
+                specifically applicable to children and to encourage measures for dealing with children without resorting
+                to judicial proceedings wherever appropriate.
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">CRC · General Comment No. 24</span>
+            <h3>A Child-Centred Justice System</h3>
+
+            <p>
+                General Comment No. 24 explains that child justice systems should prioritize prevention, diversion,
+                restorative approaches, rehabilitation, and reintegration rather than relying unnecessarily on
+                formal judicial proceedings or detention.
+            </p>
+
+            <p>
+                The Committee emphasizes that deprivation of liberty should remain a measure of last resort and that
+                states should develop alternatives such as diversion, probation, supervision, community-based measures,
+                and other responses appropriate to the child's circumstances.
+            </p>
+
+            <p>
+                <a href="https://www.ohchr.org/en/documents/general-comments-and-recommendations/general-comment-no-24-2019-childrens-rights-child"
+                   target="_blank" rel="noopener">
+                   Read General Comment No. 24 →
+                </a>
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">Universal Human-Rights Principles</span>
+            <h3>Presumption of Innocence and Due Process</h3>
+
+            <p>
+                Children accused of offences are entitled to fundamental legal safeguards. The presumption of innocence,
+                access to legal assistance, an impartial hearing, the right to understand the proceedings, and protection
+                against arbitrary detention are central elements of a rights-based juvenile justice system.
+            </p>
+
+            <p>
+                These safeguards are not privileges given only to children who are innocent. They are legal protections
+                that apply because every child accused of an offence remains a rights-holder throughout the process.
+            </p>
+        </div>
+    </section>
+
+    <section id="african">
+        <div class="section-label">04 · African Human-Rights Law</div>
+        <h2>The African Legal Framework</h2>
+
+        <div class="source-card">
+            <span class="pill">African Children's Charter · Article 17</span>
+            <h3>Administration of Juvenile Justice</h3>
+
+            <p>
+                Article 17 of the African Charter on the Rights and Welfare of the Child expressly protects children
+                accused or found guilty of infringing penal law.
+            </p>
+
+            <p>
+                It requires special treatment consistent with the child's dignity and worth and protects children
+                against torture and degrading treatment. Children deprived of liberty must be separated from adults,
+                and accused children are entitled to safeguards including the presumption of innocence, information
+                about the charges, legal assistance, a speedy determination by an impartial tribunal, and the right
+                to appeal.
+            </p>
+
+            <p>
+                <a href="https://au.int/en/node/30913"
+                   target="_blank" rel="noopener">
+                   Read the African Children's Charter →
+                </a>
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">African Children's Charter · Article 17(3)</span>
+            <h3>Reformation and Social Reintegration</h3>
+
+            <p>
+                The African Children's Charter states that the essential aim of treatment during proceedings and after
+                a child is found to have infringed penal law should be the child's reformation, reintegration into
+                family, and social rehabilitation.
+            </p>
+
+            <p>
+                This is significant because the African framework places rehabilitation and reintegration at the
+                centre of juvenile justice rather than treating punishment as the only purpose of the system.
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">African Children's Charter · Article 17(4)</span>
+            <h3>Minimum Age of Criminal Responsibility</h3>
+
+            <p>
+                Article 17 also requires states to establish a minimum age below which children are presumed incapable
+                of infringing penal law.
+            </p>
+
+            <p>
+                The provision reflects the principle that very young children should not be drawn into the ordinary
+                criminal justice system in the same way as adults and that age must be considered when determining
+                appropriate legal responses.
+            </p>
+        </div>
+
+        <div class="source-card">
+            <span class="pill">African Human-Rights Approach</span>
+            <h3>Justice and the Child's Development</h3>
+
+            <p>
+                African children's-rights law connects justice with development. A system that protects society but
+                permanently excludes children from education, family relationships, and social participation may fail
+                to achieve the rehabilitative objectives required by the regional framework.
+            </p>
+        </div>
+    </section>
+
+    <section id="case">
+        <div class="section-label">05 · Featured Case</div>
+        <h2>S. and Marper v. the United Kingdom</h2>
+
+        <div class="case-feature">
+            <span class="pill">European Court of Human Rights · 2008</span>
+            <h3>A landmark case on children, criminal justice, and privacy</h3>
+
+            <p>
+                <strong>S. and Marper v. the United Kingdom</strong> concerned the retention of fingerprints,
+                cellular samples, and DNA profiles of individuals who had been suspected of criminal offences but
+                were not convicted.
+            </p>
+
+            <p>
+                One of the applicants, S., had been arrested as a child. The European Court of Human Rights considered
+                the continued retention of his personal data under Article 8 of the European Convention on Human Rights,
+                which protects private life.
+            </p>
+
+            <p>
+                The Court emphasized the special position of minors within the criminal-justice system and recognized
+                that particular attention should be given to protecting juveniles from harm resulting from the retention
+                of their private information after an allegation does not result in conviction.
+            </p>
+
+            <h3>Why is it relevant?</h3>
+
+            <p>
+                The case is relevant to juvenile justice because it demonstrates that a child's interaction with the
+                criminal justice system can have consequences beyond the immediate investigation or court process.
+                Children's privacy and developmental interests must remain protected even when they come into contact
+                with criminal-justice authorities.
+            </p>
+
+            <p>
+                It also illustrates a broader principle: the state must balance legitimate law-enforcement interests
+                against the individual rights of children. A juvenile justice system cannot assume that every measure
+                useful to law enforcement is automatically proportionate when it affects a child's rights.
+            </p>
+
+            <p>
+                The case is particularly useful for understanding the idea that children occupy a special position
+                in criminal justice and require additional safeguards because of their age and vulnerability.
+            </p>
+
+            <a class="case-link" href="S-and-Marper-v-united-kingdom.html" target="_blank" rel="noopener">
+                Read the full S. and Marper v. the United Kingdom case study on Law Research Hub →
+            </a>
+        </div>
+    </section>
+
+    <section id="principles">
+        <div class="section-label">06 · Key Legal Principles</div>
+        <h2>What Duties Can States Have?</h2>
+
+        <div class="principles">
+
+            <div class="principle">
+                <h3>Dignity</h3>
+                <p>
+                    Children accused of offences must be treated with dignity and respect throughout every stage of
+                    the justice process.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Presumption of Innocence</h3>
+                <p>
+                    Every child accused of an offence must be presumed innocent until guilt is established through
+                    a lawful and fair process.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Legal Assistance</h3>
+                <p>
+                    Children should have access to appropriate legal assistance and information that they can understand
+                    about the proceedings affecting them.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Child-Friendly Procedures</h3>
+                <p>
+                    Police, courts, prosecutors, lawyers, and other institutions should use procedures that take account
+                    of children's age, development, communication needs, and dignity.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Diversion</h3>
+                <p>
+                    Wherever appropriate, children should be dealt with through measures outside formal judicial
+                    proceedings, including diversion and mediation consistent with their rights.
+                </p>
+            </div>
+
+            <div class="principle">
+                <h3>Rehabilitation and Reintegration</h3>
+                <p>
+                    The justice system should promote the child's rehabilitation, education, family relationships,
+                    development, and successful reintegration into society.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="barriers">
+        <div class="section-label">07 · Understanding the Problem</div>
+        <h2>Why Can Juvenile Justice Systems Fail Children?</h2>
+
+        <p>
+            A juvenile justice system may contain special rules for children and still fail to protect them effectively.
+            Human-rights analysis therefore requires examining how institutions actually operate.
+        </p>
+
+        <div class="barrier">
+            <div class="barrier-title">Adult-oriented systems</div>
+            <div>
+                Children may be processed through ordinary criminal procedures that do not adequately account for
+                their age, understanding, development, or communication needs.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Excessive detention</div>
+            <div>
+                Detention can become routine even though international standards require it to be used only as a
+                last resort and for the shortest appropriate period.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Limited legal assistance</div>
+            <div>
+                Children may struggle to understand criminal proceedings or defend their rights when qualified legal
+                assistance and child-friendly information are unavailable.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Lack of diversion</div>
+            <div>
+                Where diversion and mediation programmes are limited, children may enter formal criminal proceedings
+                even when a community-based or restorative response could be more appropriate.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Poor detention conditions</div>
+            <div>
+                Overcrowding, inadequate healthcare, limited education, insufficient recreational opportunities,
+                and separation problems can undermine children's dignity and rehabilitation.
+            </div>
+        </div>
+
+        <div class="barrier">
+            <div class="barrier-title">Stigma</div>
+            <div>
+                Criminal proceedings can produce long-term stigma that interferes with education, family relationships,
+                employment opportunities, and successful reintegration into society.
+            </div>
+        </div>
+
+    </section>
+
+    <section id="ethiopia">
+        <div class="section-label">08 · Ethiopia</div>
+        <h2>Juvenile Justice in Ethiopia</h2>
+
+        <p>
+            Ethiopia's Constitution recognizes that children who come into conflict with the law require special
+            treatment. The constitutional framework is supplemented by the Criminal Code, criminal procedure rules,
+            child-protection structures, and international obligations.
+        </p>
+
+        <h3>Article 36 · Juvenile Offenders</h3>
+
+        <p>
+            Article 36(3) of the FDRE Constitution provides that juvenile offenders admitted to corrective or
+            rehabilitative institutions, and juveniles who become wards of the State or are placed in public or private
+            orphanages, shall be kept separately from adults.
+        </p>
+
+        <p>
+            This constitutional requirement reflects the broader principle that children should not simply be placed
+            into the ordinary adult criminal justice environment.
+        </p>
+
+        <h3>Article 36 · Best Interests of the Child</h3>
+
+        <p>
+            Article 36(2) establishes the best interests of the child as a primary consideration in actions concerning
+            children undertaken by courts, administrative authorities, legislative bodies, and public or private welfare
+            institutions.
+        </p>
+
+        <h3>Criminal Code · Age of Criminal Responsibility</h3>
+
+        <p>
+            Ethiopia's Criminal Code provides that children who have not attained nine years of age are not criminally
+            responsible. For young persons between nine and fifteen years, the Code establishes special provisions under
+            which the ordinary penalties applicable to adults are not imposed.
+        </p>
+
+        <p>
+            The Criminal Code's approach therefore recognizes that children require a different legal response from
+            adults. However, the current international standard and recent UN recommendations have raised questions about
+            whether Ethiopia's minimum age of criminal responsibility is sufficiently protective.
+        </p>
+
+        <h3>2026 UN Committee on the Rights of the Child</h3>
+
+        <p>
+            In its concluding observations issued in 2026, the UN Committee on the Rights of the Child urged Ethiopia
+            to assess its child-justice system and bring it fully into line with the Convention on the Rights of the Child
+            and other international standards.
+        </p>
+
+        <p>
+            The Committee specifically recommended that Ethiopia draft a comprehensive law on juvenile justice, expand
+            specialized child justice and child-friendly benches, and raise the legal age of criminal responsibility
+            to at least fourteen years.
+        </p>
+
+        <p>
+            The Committee also called for greater use of non-judicial measures such as diversion and mediation for
+            children under eighteen and emphasized that detention should be used only as a last resort and for the
+            shortest appropriate period, with regular judicial review.
+        </p>
+
+        <h3>Specialized Child Justice</h3>
+
+        <p>
+            Ethiopia has developed specialized structures for children in contact with the justice system, including
+            child-friendly benches, specialized investigation and prosecution arrangements, and child-protection
+            structures.
+        </p>
+
+        <p>
+            UNICEF reported in 2025 on the development of a child-friendly bench at the Yeka Federal First Instance Court
+            in Addis Ababa, designed to provide a safer and more supportive environment for children involved in justice
+            proceedings.
+        </p>
+
+        <h3>Diversion and Rehabilitation</h3>
+
+        <p>
+            Diversion is increasingly recognized in the Eastern and Southern African region as an important alternative
+            to formal criminal proceedings for children. UNICEF's regional research, which included Ethiopia, identifies
+            diversion as a developing part of child-justice systems across the region.
+        </p>
+
+        <p>
+            The importance of diversion lies in its potential to reduce unnecessary contact with formal criminal justice
+            institutions while allowing accountability, support, education, mediation, and rehabilitation to occur in
+            ways better suited to the child's circumstances.
+        </p>
+
+        <h3>Why the Ethiopian context matters</h3>
+
+        <p>
+            Ethiopia demonstrates the difference between having special rules for children and having a fully
+            child-centred justice system. Constitutional protections and specialized institutions provide an important
+            foundation, but questions remain concerning the minimum age of criminal responsibility, the availability of
+            diversion, specialized legislation, detention, legal assistance, and the consistent implementation of
+            child-friendly procedures.
+        </p>
+
+        <p>
+            The legal question is therefore not simply whether children receive different treatment from adults.
+            It is whether the entire justice system actually protects their dignity, education, development, family
+            relationships, fair-trial rights, rehabilitation, and prospects for reintegration.
+        </p>
+
+    </section>
+
+    <section id="analysis">
+        <div class="section-label">09 · Legal Analysis</div>
+        <h2>Law on Paper vs. Justice in Practice</h2>
+
+        <p>
+            Juvenile justice demonstrates why human-rights law must examine both formal legal rules and the actual
+            experience of children within the justice system.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Legal promise</th>
+                    <th>Practical question</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>
+                        Children are entitled to special treatment in the justice system.
+                    </td>
+                    <td>
+                        Are police, prosecutors, lawyers, and courts using procedures specifically adapted to children?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Detention should be a measure of last resort.
+                    </td>
+                    <td>
+                        Are children being detained only when necessary, and for the shortest appropriate period?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Children are entitled to fair-trial safeguards.
+                    </td>
+                    <td>
+                        Do children understand the proceedings and have meaningful access to legal assistance and a defence?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Diversion should be available where appropriate.
+                    </td>
+                    <td>
+                        Are police, prosecutors, and courts actually using alternatives to formal judicial proceedings?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Juvenile justice should promote rehabilitation.
+                    </td>
+                    <td>
+                        Do children receive education, healthcare, psychosocial support, family contact, and rehabilitation services?
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Children deprived of liberty should be protected from harm.
+                    </td>
+                    <td>
+                        Are detention facilities separate from adults and consistent with children's rights and developmental needs?
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="question">
+            A child-centred justice system is measured not only by what the law says, but by whether a child actually experiences dignity, fairness, safety, rehabilitation, and a realistic path back into society.
+        </div>
+
+    </section>
+
+    <section id="research" class="research-box">
+        <div class="section-label">10 · Research Question</div>
+
+        <h2>Think Like a Human-Rights Researcher</h2>
+
+        <div class="question">
+            When does a state's treatment of a child in conflict with the law become inconsistent with the child's human rights?
+        </div>
+
+        <p style="margin-top:20px;">
+            A strong legal analysis should ask three things:
+            <strong>What rights does the child have?</strong>
+            <strong>What duties does the state have throughout the justice process?</strong>
+            <strong>Does the system promote rehabilitation and reintegration rather than unnecessary punishment and exclusion?</strong>
+        </p>
+
+    </section>
+
+</main>
+
+<footer id="sources">
+
+    <div class="footer-inner">
+
+        <h2>Primary &amp; Supporting Sources</h2>
+
+        <p>
+            <strong>Primary international sources:</strong>
+            Convention on the Rights of the Child, especially Articles 37 and 40;
+            Committee on the Rights of the Child, General Comment No. 24 (2019)
+            on children's rights in the child justice system.
+        </p>
+
+        <p>
+            <strong>African sources:</strong>
+            African Charter on the Rights and Welfare of the Child,
+            especially Article 17 concerning the administration of juvenile justice.
+        </p>
+
+        <p>
+            <strong>Case law:</strong>
+            European Court of Human Rights, <em>S. and Marper v. the United Kingdom</em>,
+            Applications nos. 30562/04 and 30566/04, Grand Chamber judgment of 4 December 2008.
+        </p>
+
+        <p>
+            <strong>Ethiopian sources:</strong>
+            Constitution of the Federal Democratic Republic of Ethiopia (1995),
+            especially Article 36;
+            Criminal Code of the Federal Democratic Republic of Ethiopia,
+            Proclamation No. 414/2004.
+        </p>
+
+        <p>
+            <strong>Current country evidence:</strong>
+            UN Committee on the Rights of the Child,
+            <em>Concluding observations on the combined sixth and seventh periodic reports of Ethiopia</em>,
+            CRC/C/ETH/CO/6-7, 2026;
+            UNICEF Ethiopia materials on child-friendly justice;
+            UNICEF regional research on diversion of children in conflict with the law.
+        </p>
+
+        <p>
+            <a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-child"
+               target="_blank" rel="noopener">
+                Convention on the Rights of the Child →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://www.ohchr.org/en/documents/general-comments-and-recommendations/general-comment-no-24-2019-childrens-rights-child"
+               target="_blank" rel="noopener">
+                CRC General Comment No. 24 →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://au.int/en/node/30913"
+               target="_blank" rel="noopener">
+                African Charter on the Rights and Welfare of the Child →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://www.refworld.org/legal/legislation/natlegbod/1995/en/18206"
+               target="_blank" rel="noopener">
+                Constitution of Ethiopia →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://www.refworld.org/legal/legislation/natlegbod/2005/63782"
+               target="_blank" rel="noopener">
+                Ethiopian Criminal Code →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://www.unicef.org/ethiopia/documents/advancing-justice-children-ethiopia-0"
+               target="_blank" rel="noopener">
+                UNICEF Ethiopia — Advancing Justice for Children →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://www.unicef.org/esa/reports/diversion-children-conflict-law-eastern-and-southern-africa"
+               target="_blank" rel="noopener">
+                UNICEF — Diversion of Children in Conflict with the Law →
+            </a>
+        </p>
+
+        <p>
+            <a href="https://docstore.ohchr.org/SelfServices/FilesHandler.ashx?enc=T8gKzVi0h8yeije7hqBRDs%2FrHaA9s3PuLMg2HTPBNSPtX8FZjnFEso%2B%2FFiliJUznaXe1CB3XaXiBfuOa9%2Botsg%3D%3D"
+               target="_blank" rel="noopener">
+                UN Committee on the Rights of the Child — Ethiopia 2026 →
+            </a>
+        </p>
+
+        <div class="last-updated">
+            Research page prepared September 2026 · Law Research Hub
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+                                                                  </html>
